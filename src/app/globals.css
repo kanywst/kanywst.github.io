@@ -1,0 +1,326 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary: #2563eb;
+  --secondary: #0ea5e9;
+  --accent: #8b5cf6;
+  --muted: #f1f5f9;
+  --kubernetes: #326ce5;
+  --security: #ef4444;
+  --cloud: #0ea5e9;
+  --architecture: #8b5cf6;
+  --devops: #10b981;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-kubernetes: var(--kubernetes);
+  --color-security: var(--security);
+  --color-cloud: var(--cloud);
+  --color-architecture: var(--architecture);
+  --color-devops: var(--devops);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --primary: #3b82f6;
+    --secondary: #38bdf8;
+    --accent: #a78bfa;
+    --muted: #1e293b;
+    --kubernetes: #326ce5;
+    --security: #f87171;
+    --cloud: #38bdf8;
+    --architecture: #a78bfa;
+    --devops: #34d399;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.profile-section {
+  @apply mb-12 p-6 rounded-xl transition-all duration-300;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  z-index: -1;
+}
+
+.profile-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.profile-heading {
+  @apply text-2xl font-bold mb-4 inline-block;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.profile-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 3px;
+}
+
+.skill-tag {
+  @apply px-3 py-1 rounded-full text-sm font-medium m-1 inline-block transition-all duration-300;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.skill-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.skill-tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.skill-tag:hover::before {
+  transform: scale(1.1);
+}
+
+.tag-kubernetes {
+  background: var(--kubernetes);
+}
+
+.tag-security {
+  background: var(--security);
+}
+
+.tag-cloud {
+  background: var(--cloud);
+}
+
+.tag-architecture {
+  background: var(--architecture);
+}
+
+.tag-devops {
+  background: var(--devops);
+}
+
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.05;
+  background: radial-gradient(circle at 50% 50%, var(--kubernetes), transparent 60%),
+              radial-gradient(circle at 85% 30%, var(--security), transparent 50%),
+              radial-gradient(circle at 15% 70%, var(--cloud), transparent 50%),
+              radial-gradient(circle at 75% 80%, var(--architecture), transparent 50%),
+              radial-gradient(circle at 25% 20%, var(--devops), transparent 50%);
+  background-size: 200% 200%;
+  animation: pulse 15s ease infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-size: 150% 150%;
+  }
+  50% {
+    background-size: 200% 200%;
+  }
+  100% {
+    background-size: 150% 150%;
+  }
+}
+
+.tech-icon {
+  @apply inline-block p-2 rounded-lg transition-all duration-300;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-icon:hover {
+  transform: translateY(-5px) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.code-block {
+  @apply p-4 rounded-lg my-4 overflow-x-auto font-mono text-sm;
+  background: rgba(0, 0, 0, 0.8);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.highlight {
+  @apply px-1 py-0.5 rounded;
+  background: rgba(139, 92, 246, 0.2);
+  color: var(--accent);
+}
+
+.diagram-container {
+  @apply p-4 rounded-lg my-4 overflow-hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.diagram-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(50, 108, 229, 0.1), rgba(139, 92, 246, 0.1));
+  z-index: -1;
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.rotating {
+  animation: rotating 10s linear infinite;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.blob-1 {
+  top: 10%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: var(--kubernetes);
+  animation: blob-move-1 20s ease-in-out infinite;
+}
+
+.blob-2 {
+  bottom: 20%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  background: var(--security);
+  animation: blob-move-2 25s ease-in-out infinite;
+}
+
+.blob-3 {
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background: var(--cloud);
+  animation: blob-move-3 15s ease-in-out infinite;
+}
+
+@keyframes blob-move-1 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(50px, 30px);
+  }
+}
+
+@keyframes blob-move-2 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-40px, -60px);
+  }
+}
+
+@keyframes blob-move-3 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, -40px);
+  }
+}
