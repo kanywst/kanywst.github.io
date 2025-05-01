@@ -36,6 +36,13 @@ jobs:
       - name: Export static HTML
         run: npm run export
 
+      # 👇 明示的に upload-artifact@v3 を呼び出して依存解決（ダミー）
+      - name: Preload upload-artifact to avoid missing info error
+        uses: actions/upload-artifact@v3
+        with:
+          name: preload-dummy
+          path: README.md
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
