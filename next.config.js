@@ -6,7 +6,7 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: process.env.NODE_ENV === 'production' ? '/kanywst.github.io' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/kanywst.github.io/' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/kanywst.github.io' : '',
   trailingSlash: true,
 }
 
