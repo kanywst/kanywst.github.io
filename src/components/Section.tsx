@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { ReactNode } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import type { ReactNode } from 'react';
 
 // Common staggered animation configuration
 export const defaultTransitions = {
