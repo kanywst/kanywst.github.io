@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Section, ProgressBar } from './components/Section';
-import { ChaosWall } from './components/ChaosWall';
 import { CodeBlock } from './components/CodeBlock';
 import { MachineAuthSection } from './components/MachineAuth';
 
@@ -173,10 +172,22 @@ function App() {
       {/* Section 8: Machine Auth Diagram */}
       <MachineAuthSection />
 
-      {/* Section 9: Chaos Wall */}
-      <ChaosWall />
+      {/* Section 9: The Count */}
+      <section className="min-h-[50vh] flex flex-col items-center justify-center p-8 border-t border-zinc-900 bg-black text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", damping: 16 }}
+          className="max-w-4xl"
+        >
+          <p className="text-2xl md:text-4xl text-gray-600 font-bold uppercase tracking-widest mb-8">You now manage</p>
+          <div className="text-[clamp(4rem,15vw,9rem)] font-black text-[var(--color-error)] leading-none mb-8">14</div>
+          <p className="text-2xl md:text-4xl text-white font-bold uppercase tracking-widest">identity providers.</p>
+        </motion.div>
+      </section>
 
-      {/* Section 9: Resignation */}
+      {/* Section 10: Resignation */}
       <Section className="bg-neutral-950 border-t border-zinc-900 border-dashed">
         <h2 className="text-3xl md:text-5xl mb-24 text-gray-600 font-bold uppercase tracking-widest text-center max-w-4xl">So you do what you have to do.</h2>
         <CodeBlock />
