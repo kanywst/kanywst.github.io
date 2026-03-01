@@ -85,16 +85,22 @@ function App() {
           <p className="text-2xl md:text-4xl text-gray-300">
             An Enterprise customer says:
           </p>
-          <div className="text-[var(--color-terminal)] text-xl md:text-3xl border-l-4 border-[var(--color-terminal)] pl-6 text-left mx-auto max-w-3xl py-4 bg-zinc-900/50">
-            "We only use Corporate SSO. Do you support SAML?"
+          <div className="text-[var(--color-terminal)] text-xl md:text-3xl border-l-4 border-[var(--color-terminal)] pl-6 text-left mx-auto max-w-4xl py-4 bg-zinc-900/50">
+            "We only use Corporate SSO. Can you just connect to our Active Directory?"
           </div>
+          <p className="text-xl md:text-2xl text-gray-400">
+            You start with <span className="text-white font-bold bg-zinc-800 px-2 py-1">LDAP</span>. It's horrible. <br className="hidden md:block"/>
+            Then they ask for <span className="text-white font-bold bg-zinc-800 px-2 py-1">SAML</span>. You learn XML again.<br className="hidden md:block"/>
+            Finally, everyone agrees on <span className="text-white font-bold bg-zinc-800 px-2 py-1">OIDC</span> Federation.
+          </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-12 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 max-w-4xl mx-auto">
+            <LogoPair src="/logos/ldap.png" alt="OpenLDAP" text="LDAP" />
             <LogoPair src="/logos/okta.png" alt="Okta" text="Okta" />
             <LogoPair src="/logos/pingidentity.png" alt="PingIdentity" text="PingIdentity" />
             <LogoPair src="/logos/zitadel.png" alt="Zitadel" text="Zitadel" />
           </div>
-          <p className="text-xl text-gray-500 font-bold uppercase">You learn XML again. You survive.</p>
+          <p className="text-xl text-gray-500 font-bold uppercase">Identity Providers orchestration begins. You survive.</p>
         </div>
       </Section>
 
