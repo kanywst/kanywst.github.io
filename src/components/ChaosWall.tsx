@@ -26,20 +26,6 @@ export function ChaosWall() {
           </motion.div>
         ))}
       </div>
-
-      <motion.div 
-        initial={{ scale: 0.8, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', damping: 20, delay: 0.5 }}
-        className="relative z-20 bg-black/90 p-8 border border-[var(--color-error)] max-w-4xl text-center shadow-[0_0_50px_rgba(255,0,0,0.5)]"
-      >
-        <h3 className="text-3xl md:text-5xl font-black mb-6 uppercase text-[var(--color-error)]">AND THEN THE MACHINE AUTH ARRIVES</h3>
-        <p className="text-xl md:text-3xl text-[var(--color-terminal)] mb-4 font-mono">"Wait, do we need a PDP? A PEP? A PIP?"</p>
-        <p className="text-lg md:text-2xl text-gray-400 font-mono mb-8">"Is this L4 or L7? Did you issue the SPIFFE ID?"</p>
-        <div className="inline-block bg-[var(--color-error)] text-white font-bold p-4 text-2xl md:text-4xl uppercase animate-pulse">
-          You now manage 14 identity providers
-        </div>
-      </motion.div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Section, ProgressBar } from './components/Section';
 import { ChaosWall } from './components/ChaosWall';
 import { CodeBlock } from './components/CodeBlock';
+import { MachineAuthSection } from './components/MachineAuth';
 
 const LogoPair = ({ src, alt, text }: { src: string, alt: string, text: string }) => (
   <div className="border-2 border-zinc-800 bg-zinc-950 flex flex-col items-center justify-center aspect-square transition-all duration-300 hover:border-[var(--color-error)] hover:scale-105 hover:-rotate-2 group relative overflow-hidden">
@@ -163,7 +164,10 @@ function App() {
         </div>
       </Section>
 
-      {/* Section 8: Chaos Wall */}
+      {/* Section 8: Machine Auth Diagram */}
+      <MachineAuthSection />
+
+      {/* Section 9: Chaos Wall */}
       <ChaosWall />
 
       {/* Section 9: Resignation */}
