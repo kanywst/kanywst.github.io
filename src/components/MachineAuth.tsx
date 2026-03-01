@@ -30,7 +30,7 @@ const layer1: Node[] = [
     id: "spire",
     name: "SPIRE Server",
     sub: "Workload Identity (SVID)",
-    src: "/logos/spiffe.png",
+    src: "/logos/spire.svg",
     color: "#2E8B57",
     snark: "Issues X.509 SVIDs to every pod. Because trusting the IP address was so 2010.",
   },
@@ -50,7 +50,7 @@ const layer2: Node[] = [
     id: "agent",
     name: "SPIRE Agent",
     sub: "DaemonSet — every node",
-    src: "/logos/spiffe.png",
+    src: "/logos/spire.svg",
     color: "#2E8B57",
     snark:
       "Runs on every single node. Talks to SPIRE Server to attest workload identity via node attestation.",
