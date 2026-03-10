@@ -1,125 +1,73 @@
-# kanywst's Terminal Portfolio
+# React + TypeScript + Vite
 
-A modern, elegant terminal-style self-introduction web application built with 2026's cutting-edge technology.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## ✨ Features
+Currently, two official plugins are available:
 
-- **Terminal UI** with interactive command interface
-- **Modern Design** - Glassmorphism, smooth animations, neon accents
-- **Command System** - Extensible command architecture with easy customization
-- **Built with** - React, TypeScript, Vite, Tailwind CSS, Framer Motion
-- **Command History** - Navigate through command history with ↑/↓
-- **Responsive** - Works seamlessly on desktop and tablet
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🎮 Available Commands
+## React Compiler
 
-### Core Commands
-- `whoami` - Show current user
-- `about` - Display personal information
-- `projects` - List notable projects
-- `skills` - Show technical skills
-- `contact` - Display contact information
-- `social` - Show social media links
-- `help` - Show all available commands
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### System Commands
-- `ls` - List available sections
-- `cat [file]` - Read file contents
-- `pwd` - Print working directory
-- `date` - Show current date/time
-- `echo [text]` - Echo text to terminal
-- `clear` - Clear terminal screen
+## Expanding the ESLint configuration
 
-## 🚀 Quick Start
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-### Development
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-```bash
-npm install
-npm run dev
-```
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-Visit `http://localhost:5173`
-
-### Build
-```bash
-npm run build
-```
-
-### Preview
-```bash
-npm run preview
-```
-
-## 📝 Customization
-
-### Adding Custom Commands
-
-Edit `src/terminal.ts` in the `registerBuiltInCommands()` method:
-
-```typescript
-this.register('mycommand', () => 'My custom output');
-```
-
-### Updating Profile Information
-
-Edit `src/config.ts`:
-
-```typescript
-const config: CommandConfig = {
-  profile: {
-    name: 'your-name',
-    title: 'Your Title',
-    bio: 'Your bio',
-    // ... more fields
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
   },
-  // ... rest of config
-};
+])
 ```
 
-### Styling
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-The app uses Tailwind CSS for styling. Customize colors and animations in `tailwind.config.ts`.
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-## 🛠️ Tech Stack
-
-- **Frontend Framework**: React 19
-- **Language**: TypeScript
-- **Build Tool**: Vite 7
-- **Styling**: Tailwind CSS 4 + Framer Motion
-- **Node Runtime**: Node 20+
-
-## 📦 Project Structure
-
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-src/
-├── components/
-│   └── TerminalUI.tsx      # Main terminal component
-├── config.ts               # Profile & command config
-├── terminal.ts             # Command system logic
-├── App.tsx                 # Root component
-├── main.tsx                # Entry point
-└── index.css               # Global styles
-```
-
-## 🌐 Deployment
-
-This project is deployed to GitHub Pages via GitHub Actions.
-
-### Manual Deploy
-```bash
-npm run build
-# The dist/ folder contains your static site
-```
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 🤝 Contributing
-
-Feel free to fork, modify, and use this project as a template for your own portfolio!
-
----
-
-**Made with ❤️ by kanywst**
