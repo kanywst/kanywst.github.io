@@ -1,20 +1,39 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Terminal from '../terminal';
+import Typewriter from './Typewriter';
 
 interface HistoryItem {
   command: string;
   output: string;
   isError?: boolean;
+  showTypewriter?: boolean;
 }
 
 const TerminalUI: React.FC = () => {
   const [history, setHistory] = useState<HistoryItem[]>([
     {
       command: '',
-      output: `Welcome to kanywst's terminal portfolio! 🚀
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Try 'help' for available commands or 'whoami' to get started!`,
+      output: `
+ █████╗  █████╗ ███╗   ██╗██╗   ██╗██╗    ██╗███████╗████████╗
+██╔════╝ ██╔══██╗████╗  ██║╚██╗ ██╔╝██║    ██║██╔════╝╚══██╔══╝
+███████╗ ███████║██╔██╗ ██║ ╚████╔╝ ██║ █╗ ██║███████╗   ██║   
+╚════██║ ██╔══██║██║╚██╗██║  ╚██╔╝  ██║███╗██║╚════██║   ██║   
+ █████╔╝ ██║  ██║██║ ╚████║   ██║   ╚███╔███╔╝███████║   ██║   
+ ╚════╝  ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝    ╚══╝╚══╝ ╚══════╝   ╚═╝   
+
+✨ Welcome to kanywst's Modern Terminal Portfolio
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 Try these commands to get started:
+   • whoami    - Display ASCII art greeting
+   • about     - Learn about me
+   • projects  - See my work
+   • skills    - Check out my tech stack
+   • help      - View all commands
+
+Type 'help' for the complete command list!`,
+      showTypewriter: true,
     },
   ]);
   const [input, setInput] = useState('');
@@ -23,7 +42,6 @@ Try 'help' for available commands or 'whoami' to get started!`,
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Auto-scroll to bottom
   useEffect(() => {
     if (scrollRef.current) {
       setTimeout(() => {
@@ -32,7 +50,6 @@ Try 'help' for available commands or 'whoami' to get started!`,
     }
   }, [history]);
 
-  // Focus input on mount and click
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -57,6 +74,7 @@ Try 'help' for available commands or 'whoami' to get started!`,
             command,
             output: result.output,
             isError: result.isError,
+            showTypewriter: true,
           },
         ]);
       }
@@ -79,59 +97,130 @@ Try 'help' for available commands or 'whoami' to get started!`,
 
   return (
     <div
-      className="w-full h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden flex flex-col"
+      className="w-full h-screen bg-slate-950 overflow-hidden flex flex-col font-mono relative"
       onClick={() => inputRef.current?.focus()}
     >
-      {/* Background effects */}
+      {/* Smooth background gradients - future-forward design */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500 opacity-5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 opacity-5 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950" />
+        
+        {/* Flowing orbs */}
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.5, 1],
+            opacity: [0.05, 0.15, 0.05],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute -top-40 -left-40 w-80 h-80 bg-cyan-500 rounded-full blur-3xl will-change-transform"
+        />
+        <motion.div
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 120, 0],
+            scale: [1.5, 1, 1.5],
+            opacity: [0.08, 0.18, 0.08],
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          className="absolute -bottom-40 -right-40 w-96 h-96 bg-pink-500 rounded-full blur-3xl will-change-transform"
+        />
+        <motion.div
+          animate={{
+            x: [0, 120, 0],
+            y: [0, 80, 0],
+            scale: [1.2, 1.3, 1.2],
+            opacity: [0.04, 0.12, 0.04],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+          className="absolute top-1/3 left-1/2 w-72 h-72 bg-purple-500 rounded-full blur-3xl will-change-transform"
+        />
       </div>
 
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 px-6 py-4 border-b border-slate-700/50 backdrop-blur-md bg-slate-900/30"
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="relative z-10 px-8 py-6 border-b border-cyan-500/20 backdrop-blur-2xl bg-slate-900/40"
       >
-        <div className="flex items-center gap-3">
-          <div className="w-3 h-3 rounded-full bg-cyan-500 animate-pulse"></div>
-          <span className="text-cyan-300 font-mono text-sm">kanywst@terminal</span>
-          <span className="text-slate-500">~</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+                boxShadow: [
+                  '0 0 10px rgba(0, 240, 255, 0.4)',
+                  '0 0 30px rgba(0, 240, 255, 0.8)',
+                  '0 0 10px rgba(0, 240, 255, 0.4)',
+                ],
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-3 h-3 rounded-full bg-cyan-400"
+            />
+            <span className="text-cyan-300 font-mono text-xs tracking-widest">KANYWST@TERMINAL</span>
+            <span className="text-cyan-500/60">→</span>
+            <span className="text-slate-400 font-mono text-xs">portfolio</span>
+          </div>
+          <motion.span
+            animate={{ opacity: [0.5, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="text-cyan-400/60 text-xs font-mono"
+          >
+            ◆ LIVE
+          </motion.span>
         </div>
       </motion.div>
 
       {/* Terminal Output */}
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto relative z-10 px-6 py-4 font-mono text-sm"
+        className="flex-1 overflow-y-auto relative z-10 px-8 py-6 space-y-4"
       >
-        <AnimatePresence>
+        <AnimatePresence mode="popLayout">
           {history.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="mb-4"
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="space-y-2"
             >
               {/* Command line */}
               {item.command && (
-                <div className="flex items-start gap-2 text-cyan-400 mb-2">
-                  <span className="text-green-400">$</span>
-                  <span className="flex-1 break-words">{item.command}</span>
-                </div>
+                <motion.div
+                  className="flex items-center gap-3"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1, duration: 0.4 }}
+                >
+                  <motion.span
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 1 }}
+                    className="text-green-400 font-bold"
+                  >
+                    ➜
+                  </motion.span>
+                  <span className="text-cyan-300 font-mono">{item.command}</span>
+                </motion.div>
               )}
 
               {/* Output */}
-              <div
-                className={`whitespace-pre-wrap break-words leading-relaxed ${
-                  item.isError ? 'text-red-400' : 'text-slate-300'
-                }`}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+                className={`pl-6 ${item.isError ? 'text-red-400' : 'text-slate-300'}`}
               >
-                {item.output}
-              </div>
+                {item.showTypewriter ? (
+                  <Typewriter text={item.output} delay={100} speed={15} />
+                ) : (
+                  <pre className="font-mono text-sm leading-relaxed whitespace-pre-wrap break-words">
+                    {item.output}
+                  </pre>
+                )}
+              </motion.div>
             </motion.div>
           ))}
         </AnimatePresence>
@@ -141,30 +230,38 @@ Try 'help' for available commands or 'whoami' to get started!`,
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-cyan-400"
+            className="flex items-center gap-2 text-cyan-400"
           >
-            <span className="inline-block">
-              <motion.span
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                className="inline-block"
-              >
-                ⟳
-              </motion.span>
-            </span>
+            <motion.span
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+            >
+              ⟳
+            </motion.span>
+            <span className="text-cyan-300">Processing...</span>
           </motion.div>
         )}
       </div>
 
       {/* Input Area */}
       <motion.form
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
         onSubmit={handleSubmit}
-        className="relative z-10 px-6 py-4 border-t border-slate-700/50 backdrop-blur-md bg-slate-900/30"
+        className="relative z-10 px-8 py-6 border-t border-cyan-500/20 backdrop-blur-2xl bg-slate-900/40"
       >
-        <div className="flex items-center gap-2">
-          <span className="text-green-400 font-mono text-sm">$</span>
+        <div className="flex items-center gap-4">
+          <motion.span
+            animate={{
+              scale: [1, 1.15, 1],
+              color: ['#00f0ff', '#ff006e', '#00f0ff'],
+            }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            className="font-bold text-lg"
+          >
+            ❯
+          </motion.span>
           <input
             ref={inputRef}
             type="text"
@@ -172,15 +269,22 @@ Try 'help' for available commands or 'whoami' to get started!`,
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             disabled={isLoading}
-            placeholder="Type a command..."
-            className="flex-1 bg-transparent text-cyan-300 placeholder-slate-500 outline-none font-mono text-sm"
+            placeholder="Enter command..."
+            className="flex-1 bg-transparent text-cyan-300 placeholder-slate-500 outline-none font-mono text-sm caret-pink-400 focus:text-cyan-200 transition-colors duration-300"
             autoComplete="off"
             spellCheck="false"
           />
           <motion.div
-            animate={{ opacity: [0.5, 1] }}
-            transition={{ duration: 0.8, repeat: Infinity }}
-            className="w-2 h-5 bg-cyan-400"
+            animate={{
+              opacity: [0.4, 1, 0.4],
+              boxShadow: [
+                '0 0 5px rgba(0, 240, 255, 0.3)',
+                '0 0 15px rgba(255, 0, 110, 0.6)',
+                '0 0 5px rgba(0, 240, 255, 0.3)',
+              ],
+            }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-1 h-6 bg-gradient-to-b from-cyan-400 to-pink-400 rounded-full"
           />
         </div>
       </motion.form>
@@ -189,10 +293,11 @@ Try 'help' for available commands or 'whoami' to get started!`,
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="relative z-10 px-6 py-2 text-center text-xs text-slate-500 border-t border-slate-700/50 backdrop-blur-md bg-slate-900/30"
+        transition={{ delay: 0.6, duration: 0.8 }}
+        className="relative z-10 px-8 py-3 text-center border-t border-cyan-500/10 backdrop-blur-xl bg-slate-900/20"
       >
-        <p>Press ↑ and ↓ to navigate command history • Type 'help' for commands</p>
+        <p className="text-cyan-500/70 font-mono text-xs tracking-wider">↑ ↓ history • help • whoami • about</p>
+        <p className="text-slate-500 text-xs mt-1">2026 • Modern Terminal Portfolio</p>
       </motion.div>
     </div>
   );

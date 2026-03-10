@@ -33,6 +33,7 @@ A modern, elegant terminal-style self-introduction web application built with 20
 ## 🚀 Quick Start
 
 ### Development
+
 ```bash
 npm install
 npm run dev
