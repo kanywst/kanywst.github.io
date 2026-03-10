@@ -29,8 +29,10 @@ class Terminal {
     this.register('ls', () => this.lsCommand());
     this.register('cat', (args) => this.catCommand(args));
     this.register('echo', (args) => args.join(' '));
-    this.register('whoami', () => config.profile.name);
     this.register('date', () => new Date().toLocaleString());
+    this.register('uname', () => 'kanywst-portfolio v1.0.0 (Modern Terminal 2026)');
+    this.register('motd', () => this.motdCommand());
+    this.register('resume', () => this.resumeCommand());
   }
 
   private helpCommand(): string {
@@ -45,13 +47,16 @@ class Terminal {
       'skills          Show technical skills',
       'contact         Display contact information',
       'social          Show social media links',
+      'resume          View resume/CV',
+      'motd            Message of the day',
+      'uname           System information',
       'ls              List available sections',
       'cat [file]      Read file contents',
-      'clear           Clear terminal screen',
+      'echo [text]     Echo text to terminal',
       'pwd             Print working directory',
       'date            Show current date/time',
+      'clear           Clear terminal screen',
       'help            Show this help message',
-      'echo [text]     Echo text to terminal',
       '',
       '💡 Tip: Try typing "whoami" or "about" to get started!',
     ];
@@ -152,6 +157,47 @@ class Terminal {
     };
 
     return fileContents[file] || `cat: ${file}: No such file or directory`;
+  }
+
+  private motdCommand(): string {
+    const messages = [
+      '🚀 Welcome to kanywst\'s modern terminal portfolio!',
+      '✨ Built with React, TypeScript, Vite & Tailwind CSS',
+      '🎯 Type "help" to see available commands',
+      '💫 Command history: Use ↑ and ↓ to navigate',
+    ];
+    const today = new Date().toLocaleDateString();
+    const lines = [
+      '╭─ Message of the Day ─────────────────────────────╮',
+      `│ ${today}`,
+      '│',
+      ...messages.map((msg) => `│ ${msg}`),
+      '│',
+      '╰───────────────────────────────────────────────────╯',
+      '',
+    ];
+    return lines.join('\n');
+  }
+
+  private resumeCommand(): string {
+    const lines = [
+      '',
+      '╭─ Resume ─────────────────────────────────────────╮',
+      `│ Name: ${config.profile.name}`,
+      `│ Title: ${config.profile.title}`,
+      '│',
+      '│ Quick Summary:',
+      '│ Full-stack engineer with expertise in cloud-native',
+      '│ systems, DevOps, and modern web technologies.',
+      '│',
+      '│ Contact: ' + config.profile.email,
+      '│ GitHub: https://github.com/' + config.profile.github,
+      '│',
+      '│ For full resume, visit LinkedIn or GitHub profile',
+      '╰───────────────────────────────────────────────────╯',
+      '',
+    ];
+    return lines.join('\n');
   }
 
   register(name: string, handler: CommandHandler) {
