@@ -1,4 +1,4 @@
-# KANYWST.OS
+# kanywst
 
 A terminal-based portfolio.
 
