@@ -1,16 +1,11 @@
-# kanywst
+# kanywst.github.io
 
-A terminal-based portfolio.
+[kanywst.github.io](https://kanywst.github.io/)
 
-## Setup and Development
+## Develop
 
 ```bash
-# Install dependencies with legacy peer deps for React 19 compatibility
-npm install --legacy-peer-deps
-
-# Start the development server
-npm run dev
-
-# Build the production-ready assets
-npm run build
+npm install
+npm run dev      # start dev server
+npm run build    # production build
 ```

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -sL https://atilatair.tech/ -o /tmp/atila.html)",
+      "Read(//tmp/**)"
+    ]
+  }
+}
