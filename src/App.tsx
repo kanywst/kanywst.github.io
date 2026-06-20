@@ -298,7 +298,8 @@ export default function App() {
     const doc = document as Document & {
       startViewTransition?: (cb: () => void) => unknown;
     };
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // optional-chain: matchMedia is absent in some environments (jsdom, old/SSR) — treat as no preference
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
     if (doc.startViewTransition && !reduceMotion) {
       doc.startViewTransition(() => flushSync(() => setOpen(next)));
     } else {
