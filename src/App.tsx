@@ -112,7 +112,10 @@ function ContribCloud({
   // responds to the chips
   const ownerCounts = [
     ...items
-      .reduce((m, c) => m.set(c.owner, (m.get(c.owner) ?? 0) + 1), new Map<string, number>())
+      .reduce((m, c) => {
+        m.set(c.owner, (m.get(c.owner) ?? 0) + 1);
+        return m;
+      }, new Map<string, number>())
       .entries(),
   ]
     .map(([owner, count]) => ({ owner, count }))
@@ -220,7 +223,9 @@ function Detail({ onClose }: { onClose: () => void }) {
             ))}
           </div>
         </div>
-        <ContribCloud items={contributions} noun="pull request" style={delay()} />
+        {contributions.length > 0 && (
+          <ContribCloud items={contributions} noun="pull request" style={delay()} />
+        )}
         <ContribRows items={visiblePrs} base={reserve(visiblePrs.length)} />
       </section>
 
@@ -229,7 +234,7 @@ function Detail({ onClose }: { onClose: () => void }) {
           <h2 className="label">upstream — issues filed</h2>
           <span className="label-note">{issues.length} bug reports &amp; proposals in external projects</span>
         </div>
-        <ContribCloud items={issues} noun="issue" style={delay()} />
+        {issues.length > 0 && <ContribCloud items={issues} noun="issue" style={delay()} />}
         <ContribRows items={issues} base={reserve(issues.length)} />
       </section>
 
