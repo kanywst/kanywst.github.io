@@ -176,11 +176,13 @@ function Detail({ onClose }: { onClose: () => void }) {
     <div className="detail">
       <section className="sec">
         <div className="sec-head reveal" style={delay()}>
-          <h2 className="label">selected work</h2>
+          <h2 className="label">my projects</h2>
           <span className="label-note">tools &amp; reference implementations</span>
         </div>
         <ul className="rows">
-          {flagships.map((f) => (
+          {[...flagships]
+            .sort((a, b) => b.stars - a.stars)
+            .map((f) => (
             <li key={f.url} className="reveal" style={delay()}>
               <a className="row" href={f.url} target="_blank" rel="noreferrer">
                 <span className="row-name">{f.name}</span>
