@@ -1,0 +1,108 @@
+{
+  "profile": {
+    "name": "kanywst",
+    "alias": "kt",
+    "tagline": "Identity, Authorization, and Cloud Native Security.",
+    "domains": ["Authorization", "Workload Identity", "Supply Chain", "Cloud Native"],
+    "links": {
+      "github": "https://github.com/kanywst",
+      "org": "https://github.com/0-draft",
+      "devto": "https://dev.to/kanywst",
+      "blog": "https://kanywst.github.io/"
+    }
+  },
+  "flagships": [
+    {
+      "name": "omega",
+      "owner": "0-draft",
+      "lang": "Go",
+      "license": "Apache-2.0",
+      "version": null,
+      "stars": 1,
+      "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary — Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
+      "url": "https://github.com/0-draft/omega",
+      "featured": true
+    },
+    {
+      "name": "rapg",
+      "owner": "kanywst",
+      "lang": "Go",
+      "license": "MIT",
+      "version": "v0.3.0",
+      "stars": 4,
+      "tagline": "Local-first secret manager for the AI-agent era — keep API keys out of .env files and out of your agent transcripts.",
+      "url": "https://github.com/kanywst/rapg",
+      "featured": true
+    },
+    {
+      "name": "opa-authzen-plugin",
+      "owner": "kanywst",
+      "lang": "Go",
+      "license": "Apache-2.0",
+      "version": "v0.4.0",
+      "stars": 3,
+      "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
+      "url": "https://github.com/kanywst/opa-authzen-plugin",
+      "featured": false
+    },
+    {
+      "name": "y509",
+      "owner": "kanywst",
+      "lang": "Go",
+      "license": "MIT",
+      "version": "v0.12.0",
+      "stars": 2,
+      "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
+      "url": "https://github.com/kanywst/y509",
+      "featured": false
+    },
+    {
+      "name": "brtc",
+      "owner": "kanywst",
+      "lang": "Go",
+      "license": "MIT",
+      "version": "v1.1.0",
+      "stars": 0,
+      "tagline": "Cost calculator for offline password brute-force — time + USD per GPU profile, with a CI gatekeeper.",
+      "url": "https://github.com/kanywst/brtc",
+      "featured": false
+    },
+    {
+      "name": "awesome-authorization",
+      "owner": "kanywst",
+      "lang": "List",
+      "license": "CC0",
+      "version": null,
+      "stars": 5,
+      "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
+      "url": "https://github.com/kanywst/awesome-authorization",
+      "featured": false
+    }
+  ],
+  "org": {
+    "name": "0-draft",
+    "url": "https://github.com/0-draft",
+    "blurb": "Research & incubation org — reference implementations, build-it-the-hard-way guides, and deep dives across identity, authorization, and supply-chain security.",
+    "repos": [
+      { "name": "mcp-opa", "lang": "Go", "blurb": "Expose OPA / Rego evaluation as an MCP tool for LLM agents.", "url": "https://github.com/0-draft/mcp-opa" },
+      { "name": "mcp-authzen", "lang": "Go", "blurb": "Front a real OpenID AuthZEN 1.0 PDP over MCP.", "url": "https://github.com/0-draft/mcp-authzen" },
+      { "name": "spiffe-compliance-checker", "lang": "Go", "blurb": "Static MUST-clause compliance checker for SPIFFE artifacts.", "url": "https://github.com/0-draft/spiffe-compliance-checker" },
+      { "name": "webauthn-the-hard-way", "lang": "Python", "blurb": "Build a WebAuthn Relying Party from scratch — CBOR, COSE, attestation by hand.", "url": "https://github.com/0-draft/webauthn-the-hard-way" },
+      { "name": "sigil", "lang": "Shell", "blurb": "Secure-by-default GitHub template — signed commits, SLSA provenance, sigstore.", "url": "https://github.com/0-draft/sigil" }
+    ]
+  },
+  "contributions": [
+    { "owner": "spiffe", "repo": "spire", "number": 7066, "state": "merged", "domain": "Workload Identity", "title": "Fix http_challenge agent name validation regex", "url": "https://github.com/spiffe/spire/pull/7066" },
+    { "owner": "sigstore", "repo": "sigstore-go", "number": 645, "state": "merged", "domain": "Supply Chain", "title": "Reject certificate identity with no SAN or issuer criteria", "url": "https://github.com/sigstore/sigstore-go/pull/645" },
+    { "owner": "falcosecurity", "repo": "plugins", "number": 1400, "state": "merged", "domain": "Runtime Security", "title": "Extract per-container fields from init and ephemeral containers (k8saudit)", "url": "https://github.com/falcosecurity/plugins/pull/1400" },
+    { "owner": "authzed", "repo": "spicedb", "number": 3184, "state": "merged", "domain": "Authorization", "title": "Match IPv4-mapped IPv6 addresses in the in_cidr caveat", "url": "https://github.com/authzed/spicedb/pull/3184" },
+    { "owner": "dexidp", "repo": "dex", "number": 4828, "state": "open", "domain": "OIDC", "title": "Verify userinfo sub matches the ID Token sub", "url": "https://github.com/dexidp/dex/pull/4828" },
+    { "owner": "theupdateframework", "repo": "go-tuf", "number": 739, "state": "open", "domain": "Supply Chain", "title": "Reject ed25519 public keys with invalid length", "url": "https://github.com/theupdateframework/go-tuf/pull/739" },
+    { "owner": "in-toto", "repo": "in-toto-golang", "number": 467, "state": "open", "domain": "Supply Chain", "title": "Reset isAuthorizedSignature per link in threshold verification", "url": "https://github.com/in-toto/in-toto-golang/pull/467" },
+    { "owner": "Permify", "repo": "permify", "number": 3005, "state": "open", "domain": "Authorization", "title": "Prevent lexer panic on unterminated string literal", "url": "https://github.com/Permify/permify/pull/3005" },
+    { "owner": "smallstep", "repo": "certificates", "number": 2715, "state": "open", "domain": "PKI", "title": "Fix name policy panic on empty or short domain", "url": "https://github.com/smallstep/certificates/pull/2715" }
+  ],
+  "meta": {
+    "syncedAt": "2026-06-20"
+  }
+}
