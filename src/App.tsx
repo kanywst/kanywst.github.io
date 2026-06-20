@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
+import { flushSync } from 'react-dom';
 import profile from './data/profile.json';
 
 const { profile: me, flagships, org, contributions, issues } = profile;
@@ -23,46 +24,50 @@ function GitHubIcon() {
 function Hero({ compact }: { compact: boolean }) {
   return (
     <header className={`main-content${compact ? ' main-content--top' : ''}`}>
-      <img
-        src="https://github.com/kanywst.png?size=160"
-        alt=""
-        width={64}
-        height={64}
-        className="avatar"
-      />
+      {/* hero-inner is the View Transition unit: same content/size in both states, so it
+          morphs by a pure translate from centered (landing) to top (compact) */}
+      <div className="hero-inner">
+        <img
+          src="https://github.com/kanywst.png?size=160"
+          alt=""
+          width={64}
+          height={64}
+          className="avatar"
+        />
 
-      <div className="text-content">
-        <p>👋 Hi, I&rsquo;m {me.name}.</p>
-        <p>
-          {me.tagline.split(/(Authorization)/).map((part, i) =>
-            part === 'Authorization' ? (
-              <span className="hl" key={i}>
-                {part}
-              </span>
-            ) : (
-              part
-            ),
-          )}
-        </p>
-      </div>
+        <div className="text-content">
+          <p>👋 Hi, I&rsquo;m {me.name}.</p>
+          <p>
+            {me.tagline.split(/(Authorization)/).map((part, i) =>
+              part === 'Authorization' ? (
+                <span className="hl" key={i}>
+                  {part}
+                </span>
+              ) : (
+                part
+              ),
+            )}
+          </p>
+        </div>
 
-      <div className="social-links">
-        <a
-          href={me.links.github}
-          aria-label="GitHub"
-          title="GitHub"
-          className="social-link"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <GitHubIcon />
-        </a>
-        <a className="social-link text-link" href={me.links.devto} target="_blank" rel="noreferrer">
-          dev.to
-        </a>
-        <a className="social-link text-link" href={me.links.org} target="_blank" rel="noreferrer">
-          0-draft
-        </a>
+        <div className="social-links">
+          <a
+            href={me.links.github}
+            aria-label="GitHub"
+            title="GitHub"
+            className="social-link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GitHubIcon />
+          </a>
+          <a className="social-link text-link" href={me.links.devto} target="_blank" rel="noreferrer">
+            dev.to
+          </a>
+          <a className="social-link text-link" href={me.links.org} target="_blank" rel="noreferrer">
+            0-draft
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -277,12 +282,29 @@ function Detail({ onClose }: { onClose: () => void }) {
 
 export default function App() {
   const [open, setOpen] = useState(false);
-  const toggle = useCallback(() => setOpen((v) => !v), []);
+
+  // Drive the open/close state change through the View Transition API so the hero glides
+  // from its centered (landing) position to the top — animated from the real measured
+  // positions, no magic offset. Falls back to an instant swap where VT is unsupported
+  // (e.g. Firefox) or when the user prefers reduced motion.
+  const setOpenAnimated = useCallback((next: boolean | ((v: boolean) => boolean)) => {
+    const doc = document as Document & {
+      startViewTransition?: (cb: () => void) => unknown;
+    };
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (doc.startViewTransition && !reduceMotion) {
+      doc.startViewTransition(() => flushSync(() => setOpen(next)));
+    } else {
+      setOpen(next);
+    }
+  }, []);
+
+  const toggle = useCallback(() => setOpenAnimated((v) => !v), [setOpenAnimated]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {
-        setOpen(false);
+        setOpenAnimated(false);
         return;
       }
       // Space only *opens* (collapsed → detail). Once open the page can be long,
@@ -297,18 +319,18 @@ export default function App() {
         return;
       }
       e.preventDefault();
-      setOpen(true);
+      setOpenAnimated(true);
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [open]);
+  }, [open, setOpenAnimated]);
 
   return (
     <main className="container">
       {open ? (
         <>
           <Hero compact />
-          <Detail onClose={() => setOpen(false)} />
+          <Detail onClose={() => setOpenAnimated(false)} />
         </>
       ) : (
         <div

@@ -75,18 +75,49 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 28px;
 }
 
 .main-content--top {
   min-height: 0;
   justify-content: flex-start;
   padding: 72px 0 0;
-  gap: 24px;
-  animation: hero-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* hero glides up from where it sat centered on the landing */
+/* the actual hero content — its own box so the View Transition morphs just this block */
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  view-transition-name: hero;
+}
+
+.main-content--top .hero-inner {
+  gap: 24px;
+}
+
+/* View Transition: glide the hero between its centered and top positions, measured from
+   the real before/after layout. Same content both sides, so suppress the cross-fade and
+   let the group's translate carry it. */
+::view-transition-group(hero) {
+  animation-duration: 0.85s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(hero),
+::view-transition-new(hero) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Fallback for browsers without the View Transition API (e.g. Firefox): approximate the
+   rise with a keyframe. Disabled under prefers-reduced-motion (see the media block below). */
+@supports not (view-transition-name: none) {
+  .main-content--top {
+    animation: hero-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
 @keyframes hero-up {
   from {
     transform: translateY(38vh);
