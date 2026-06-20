@@ -16,7 +16,8 @@ const ownerCounts = [
 ]
   .map(([owner, count]) => ({ owner, count }))
   .sort((a, b) => b.count - a.count);
-const maxOwnerCount = Math.max(...ownerCounts.map((o) => o.count));
+// floor at 1 so an empty contributions list doesn't yield Math.max(...[]) === -Infinity
+const maxOwnerCount = Math.max(1, ...ownerCounts.map((o) => o.count));
 
 function GitHubIcon() {
   return (
