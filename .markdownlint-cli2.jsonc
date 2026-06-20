@@ -1,0 +1,16 @@
+{
+  // Mirrors the author's global ~/.markdownlint-cli2.jsonc so CI lints markdown by the same
+  // ruleset used while authoring (editor real-time warnings). Keeps these rules disabled:
+  // MD013 line-length, MD024 no-duplicate-heading, MD036 no-emphasis-as-heading,
+  // MD041 first-line-heading, MD060 table-column-style.
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD024": false,
+    "MD036": false,
+    "MD041": false,
+    "MD060": false
+  },
+  "globs": ["**/*.md"],
+  "ignores": ["node_modules", "dist"]
+}

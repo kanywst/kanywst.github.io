@@ -103,7 +103,7 @@ function ContribRows({ items, base }: { items: Contribution[]; base: number }) {
   );
 }
 
-function ContribCloud({
+export function ContribCloud({
   items,
   noun,
   style,
@@ -183,12 +183,13 @@ function Detail({ onClose }: { onClose: () => void }) {
     });
   const visiblePrs = contributions.filter((c) => active.has(c.state));
 
-  // single running counter so every revealed element (headers + rows) staggers in order
-  let step = 0;
-  const delay = (): CSSProperties => ({ ['--i']: step++ } as CSSProperties);
+  // single running counter so every revealed element (headers + rows) staggers in order.
+  // held on a const object so the counter advances during render without reassigning a binding
+  const stagger = { i: 0 };
+  const delay = (): CSSProperties => ({ ['--i']: stagger.i++ } as CSSProperties);
   const reserve = (n: number) => {
-    const start = step;
-    step += n;
+    const start = stagger.i;
+    stagger.i += n;
     return start;
   };
 
