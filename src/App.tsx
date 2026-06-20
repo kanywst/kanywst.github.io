@@ -195,7 +195,7 @@ function Detail({ onClose }: { onClose: () => void }) {
       </section>
 
       <footer className="foot reveal" style={delay()}>
-        <span>synced {profile.meta.syncedAt} · auto-generated from the GitHub &amp; dev.to APIs</span>
+        <span>synced {profile.meta?.syncedAt} · auto-generated from the GitHub &amp; dev.to APIs</span>
         <button className="collapse" onClick={onClose}>
           <span className="kbd">esc</span> collapse
         </button>
@@ -219,16 +219,7 @@ export default function App() {
       // Use e.key (layout/IME aware) and skip while composing.
       if (e.key !== ' ' || open || e.isComposing) return;
       const target = e.target as HTMLElement;
-      const tag = target?.tagName;
-      if (
-        tag === 'BUTTON' ||
-        tag === 'A' ||
-        tag === 'INPUT' ||
-        tag === 'TEXTAREA' ||
-        target?.isContentEditable
-      ) {
-        return;
-      }
+      if (target?.closest('a, button, input, textarea, select, [contenteditable]')) return;
       e.preventDefault();
       setOpen(true);
     }
@@ -236,13 +227,8 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  useEffect(() => {
-    document.body.classList.toggle('is-open', open);
-    return () => document.body.classList.remove('is-open');
-  }, [open]);
-
   return (
-    <main className={`container${open ? ' is-open' : ''}`}>
+    <main className="container">
       {open ? (
         <>
           <Hero compact />
