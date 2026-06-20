@@ -150,9 +150,18 @@ export default function App() {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      const tag = (e.target as HTMLElement)?.tagName;
+      const target = e.target as HTMLElement;
+      const tag = target?.tagName;
       if (e.code === 'Space') {
-        if (tag === 'BUTTON' || tag === 'A') return;
+        if (
+          tag === 'BUTTON' ||
+          tag === 'A' ||
+          tag === 'INPUT' ||
+          tag === 'TEXTAREA' ||
+          target?.isContentEditable
+        ) {
+          return;
+        }
         e.preventDefault();
         toggle();
       } else if (e.key === 'Escape') {
@@ -169,21 +178,33 @@ export default function App() {
   }, [open]);
 
   return (
-    <div className={`container${open ? ' is-open' : ''}`}>
+    <main className={`container${open ? ' is-open' : ''}`}>
       {open ? (
         <>
           <Hero compact />
           <Detail onClose={() => setOpen(false)} />
         </>
       ) : (
-        <main className="landing" onClick={toggle} role="button" tabIndex={0} aria-label="Open">
+        <div
+          className="landing"
+          onClick={toggle}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              toggle();
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Open profile details"
+        >
           <Hero compact={false} />
           <div className="hint">
             <span className="kbd">space</span>
             <span>more</span>
           </div>
-        </main>
+        </div>
       )}
-    </div>
+    </main>
   );
 }
