@@ -53,16 +53,21 @@ for (const repo of profile.flagships) {
 const own = /^(kanywst|0-draft)\//;
 const domainByUrl = Object.fromEntries(profile.contributions.map((c) => [c.url, c.domain]));
 
+// NOTE: limit must stay high. kanywst opens hundreds of self-PRs (agent loops) in own
+// repos; a low limit returns only the most-recent PRs, which are swamped by self-PRs and
+// silently hide older EXTERNAL contributions. 1000 comfortably covers the current ~450
+// total; if that's ever exceeded this needs real pagination.
 const prs = ghJSON([
   'search',
   'prs',
   '--author=kanywst',
   '--limit',
-  '100',
+  '1000',
   '--json',
   'repository,title,state,number,url,createdAt',
 ])
-  .filter((p) => !own.test(p.repository.nameWithOwner))
+  // external repos only, and drop closed/rejected PRs (not a credibility signal)
+  .filter((p) => !own.test(p.repository.nameWithOwner) && p.state.toLowerCase() !== 'closed')
   .map((p) => {
     const [owner, repo] = p.repository.nameWithOwner.split('/');
     return {
