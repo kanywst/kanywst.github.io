@@ -98,12 +98,20 @@ function ContribRows({ items, base }: { items: Contribution[]; base: number }) {
   );
 }
 
-function ContribCloud({ style }: { style?: CSSProperties }) {
+function ContribCloud({
+  items,
+  noun,
+  style,
+}: {
+  items: Contribution[];
+  noun: string;
+  style?: CSSProperties;
+}) {
   // total contribution footprint (all states), aggregated by org — intentionally NOT
   // tied to the state filter, so the cloud stays a stable overview while the list below
   // responds to the chips
   const ownerCounts = [
-    ...contributions
+    ...items
       .reduce((m, c) => m.set(c.owner, (m.get(c.owner) ?? 0) + 1), new Map<string, number>())
       .entries(),
   ]
@@ -129,8 +137,8 @@ function ContribCloud({ style }: { style?: CSSProperties }) {
             href={`https://github.com/${owner}`}
             target="_blank"
             rel="noreferrer"
-            title={`${owner} · ${count} PR${count > 1 ? 's' : ''}`}
-            aria-label={`${owner}, ${count} pull request${count > 1 ? 's' : ''}`}
+            title={`${owner} · ${count} ${noun}${count > 1 ? 's' : ''}`}
+            aria-label={`${owner}, ${count} ${noun}${count > 1 ? 's' : ''}`}
             style={{ width: size }}
           >
             <img
@@ -212,7 +220,7 @@ function Detail({ onClose }: { onClose: () => void }) {
             ))}
           </div>
         </div>
-        <ContribCloud style={delay()} />
+        <ContribCloud items={contributions} noun="pull request" style={delay()} />
         <ContribRows items={visiblePrs} base={reserve(visiblePrs.length)} />
       </section>
 
@@ -221,6 +229,7 @@ function Detail({ onClose }: { onClose: () => void }) {
           <h2 className="label">upstream — issues filed</h2>
           <span className="label-note">{issues.length} bug reports &amp; proposals in external projects</span>
         </div>
+        <ContribCloud items={issues} noun="issue" style={delay()} />
         <ContribRows items={issues} base={reserve(issues.length)} />
       </section>
 
