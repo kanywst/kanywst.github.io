@@ -131,7 +131,8 @@ if (!prs.length) {
   throw new Error('No upstream PRs returned; aborting to avoid stale sync metadata.');
 }
 profile.contributions = prs;
-profile.issues = issues;
+// don't wipe a real issue list if the issues fetch came back empty (gh hiccup)
+profile.issues = issues.length ? issues : (profile.issues ?? []);
 profile.meta ??= {};
 profile.meta.syncedAt = new Date().toISOString().slice(0, 10);
 
