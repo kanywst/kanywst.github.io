@@ -129,16 +129,19 @@ function ContribCloud({ style }: { style?: CSSProperties }) {
             target="_blank"
             rel="noreferrer"
             title={`${owner} · ${count} PR${count > 1 ? 's' : ''}`}
+            aria-label={`${owner}, ${count} pull request${count > 1 ? 's' : ''}`}
             style={{ width: size }}
           >
             <img
               src={`https://github.com/${owner}.png?size=160`}
-              alt={owner}
+              alt=""
               width={size}
               height={size}
               loading="lazy"
             />
-            <span className="org-count">{count}</span>
+            <span className="org-count" aria-hidden="true">
+              {count}
+            </span>
           </a>
         );
       })}
