@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, type CSSProperties } from 'react';
 import profile from './data/profile.json';
 
 const { profile: me, flagships, org, contributions, issues } = profile;
@@ -82,7 +82,7 @@ function ContribRows({ items, base }: { items: Contribution[]; base: number }) {
   return (
     <ul className="rows">
       {items.map((c, i) => (
-        <li key={c.url} className="reveal" style={{ ['--i' as string]: base + i }}>
+        <li key={c.url} className="reveal" style={{ ['--i']: base + i } as CSSProperties}>
           <a className="row contrib" href={c.url} target="_blank" rel="noreferrer">
             <span className={`tag tag-${c.state}`}>{c.state}</span>
             <span className="row-name mono">
@@ -112,7 +112,7 @@ function Detail({ onClose }: { onClose: () => void }) {
   const visiblePrs = contributions.filter((c) => active.has(c.state));
 
   let step = 0;
-  const delay = () => ({ ['--i' as string]: step++ });
+  const delay = (): CSSProperties => ({ ['--i']: step++ } as CSSProperties);
 
   return (
     <div className="detail">
@@ -210,7 +210,8 @@ export default function App() {
       }
       // Space only *opens* (collapsed → detail). Once open the page can be long,
       // so let Space scroll natively and use Esc / the button to collapse.
-      if (e.code !== 'Space' || open) return;
+      // Use e.key (layout/IME aware) and skip while composing.
+      if (e.key !== ' ' || open || e.isComposing) return;
       const target = e.target as HTMLElement;
       const tag = target?.tagName;
       if (
