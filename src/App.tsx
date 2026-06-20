@@ -104,7 +104,7 @@ function ContribCloud({
   style,
 }: {
   items: Contribution[];
-  noun: string;
+  noun: 'pull request' | 'issue';
   style?: CSSProperties;
 }) {
   // total contribution footprint (all states), aggregated by org — intentionally NOT
