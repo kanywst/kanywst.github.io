@@ -218,8 +218,13 @@ export default function App() {
       // so let Space scroll natively and use Esc / the button to collapse.
       // Use e.key (layout/IME aware) and skip while composing.
       if (e.key !== ' ' || open || e.isComposing) return;
-      const target = e.target as HTMLElement;
-      if (target?.closest('a, button, input, textarea, select, [contenteditable]')) return;
+      const target = e.target;
+      if (
+        target instanceof Element &&
+        target.closest('a, button, input, textarea, select, [contenteditable]')
+      ) {
+        return;
+      }
       e.preventDefault();
       setOpen(true);
     }
