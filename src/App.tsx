@@ -111,8 +111,14 @@ function Detail({ onClose }: { onClose: () => void }) {
     });
   const visiblePrs = contributions.filter((c) => active.has(c.state));
 
+  // single running counter so every revealed element (headers + rows) staggers in order
   let step = 0;
   const delay = (): CSSProperties => ({ ['--i']: step++ } as CSSProperties);
+  const reserve = (n: number) => {
+    const start = step;
+    step += n;
+    return start;
+  };
 
   return (
     <div className="detail">
@@ -154,7 +160,7 @@ function Detail({ onClose }: { onClose: () => void }) {
             ))}
           </div>
         </div>
-        <ContribRows items={visiblePrs} base={2} />
+        <ContribRows items={visiblePrs} base={reserve(visiblePrs.length)} />
       </section>
 
       <section className="sec">
@@ -162,7 +168,7 @@ function Detail({ onClose }: { onClose: () => void }) {
           <h2 className="label">upstream — issues filed</h2>
           <span className="label-note">{issues.length} bug reports &amp; proposals in external projects</span>
         </div>
-        <ContribRows items={issues} base={2} />
+        <ContribRows items={issues} base={reserve(issues.length)} />
       </section>
 
       <section className="sec">
