@@ -5,6 +5,19 @@ const { profile: me, flagships, org, contributions, issues } = profile;
 
 const PR_STATES = ['merged', 'open', 'closed'] as const;
 
+// orgs I've sent PRs to, counted — drives the avatar cloud (bigger = more PRs)
+const ownerCounts = [
+  ...contributions
+    .reduce(
+      (m, c) => m.set(c.owner, (m.get(c.owner) ?? 0) + 1),
+      new Map<string, number>(),
+    )
+    .entries(),
+]
+  .map(([owner, count]) => ({ owner, count }))
+  .sort((a, b) => b.count - a.count);
+const maxOwnerCount = Math.max(...ownerCounts.map((o) => o.count));
+
 function GitHubIcon() {
   return (
     <svg
@@ -98,6 +111,36 @@ function ContribRows({ items, base }: { items: Contribution[]; base: number }) {
   );
 }
 
+function ContribCloud({ style }: { style?: CSSProperties }) {
+  return (
+    <div className="cloud reveal" style={style}>
+      {ownerCounts.map(({ owner, count }) => {
+        const size = Math.round(28 + (count / maxOwnerCount) * 52); // 28–80px by PR count
+        return (
+          <a
+            key={owner}
+            className="cloud-org"
+            href={`https://github.com/${owner}`}
+            target="_blank"
+            rel="noreferrer"
+            title={`${owner} · ${count} PR${count > 1 ? 's' : ''}`}
+            style={{ width: size }}
+          >
+            <img
+              src={`https://github.com/${owner}.png?size=160`}
+              alt={owner}
+              width={size}
+              height={size}
+              loading="lazy"
+            />
+            <span className="org-count">{count}</span>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
 function Detail({ onClose }: { onClose: () => void }) {
   const prCount = (s: string) => contributions.filter((c) => c.state === s).length;
   // closed PRs are rejected/superseded — hidden by default, toggleable
@@ -160,6 +203,7 @@ function Detail({ onClose }: { onClose: () => void }) {
             ))}
           </div>
         </div>
+        <ContribCloud style={delay()} />
         <ContribRows items={visiblePrs} base={reserve(visiblePrs.length)} />
       </section>
 
