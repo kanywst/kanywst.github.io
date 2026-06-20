@@ -83,17 +83,16 @@ a:hover {
   padding: 72px 0 0;
 }
 
-/* the actual hero content — its own box so the View Transition morphs just this block */
+/* the actual hero content — its own box so the View Transition morphs just this block.
+   gap stays identical in both states on purpose: .hero-inner is the VT target, so a size
+   change would make the browser scale the (flattened) snapshot — blurry text + an end snap.
+   Keeping it constant makes the morph a pure, crisp translate. */
 .hero-inner {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 28px;
   view-transition-name: hero;
-}
-
-.main-content--top .hero-inner {
-  gap: 24px;
 }
 
 /* View Transition: glide the hero between its centered and top positions, measured from
