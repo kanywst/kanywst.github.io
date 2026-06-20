@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
 import profile from './data/profile.json';
 
 const { profile: me, flagships, org, contributions, issues } = profile;
@@ -110,16 +110,20 @@ function ContribCloud({
   // total contribution footprint (all states), aggregated by org — intentionally NOT
   // tied to the state filter, so the cloud stays a stable overview while the list below
   // responds to the chips
-  const ownerCounts = [
-    ...items
-      .reduce((m, c) => {
-        m.set(c.owner, (m.get(c.owner) ?? 0) + 1);
-        return m;
-      }, new Map<string, number>())
-      .entries(),
-  ]
-    .map(([owner, count]) => ({ owner, count }))
-    .sort((a, b) => b.count - a.count);
+  const ownerCounts = useMemo(
+    () =>
+      [
+        ...items
+          .reduce((m, c) => {
+            m.set(c.owner, (m.get(c.owner) ?? 0) + 1);
+            return m;
+          }, new Map<string, number>())
+          .entries(),
+      ]
+        .map(([owner, count]) => ({ owner, count }))
+        .sort((a, b) => b.count - a.count),
+    [items],
+  );
 
   if (ownerCounts.length === 0) return null;
 
