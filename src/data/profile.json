@@ -3,7 +3,12 @@
     "name": "kanywst",
     "alias": "kt",
     "tagline": "Identity, Authorization, and Cloud Native Security.",
-    "domains": ["Authorization", "Workload Identity", "Supply Chain", "Cloud Native"],
+    "domains": [
+      "Authorization",
+      "Workload Identity",
+      "Supply Chain",
+      "Cloud Native"
+    ],
     "links": {
       "github": "https://github.com/kanywst",
       "org": "https://github.com/0-draft",
@@ -17,7 +22,7 @@
       "owner": "0-draft",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": null,
+      "version": "v0.0.2",
       "stars": 1,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary — Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/0-draft/omega",
@@ -84,25 +89,448 @@
     "url": "https://github.com/0-draft",
     "blurb": "Research & incubation org — reference implementations, build-it-the-hard-way guides, and deep dives across identity, authorization, and supply-chain security.",
     "repos": [
-      { "name": "mcp-opa", "lang": "Go", "blurb": "Expose OPA / Rego evaluation as an MCP tool for LLM agents.", "url": "https://github.com/0-draft/mcp-opa" },
-      { "name": "mcp-authzen", "lang": "Go", "blurb": "Front a real OpenID AuthZEN 1.0 PDP over MCP.", "url": "https://github.com/0-draft/mcp-authzen" },
-      { "name": "spiffe-compliance-checker", "lang": "Go", "blurb": "Static MUST-clause compliance checker for SPIFFE artifacts.", "url": "https://github.com/0-draft/spiffe-compliance-checker" },
-      { "name": "webauthn-the-hard-way", "lang": "Python", "blurb": "Build a WebAuthn Relying Party from scratch — CBOR, COSE, attestation by hand.", "url": "https://github.com/0-draft/webauthn-the-hard-way" },
-      { "name": "sigil", "lang": "Shell", "blurb": "Secure-by-default GitHub template — signed commits, SLSA provenance, sigstore.", "url": "https://github.com/0-draft/sigil" }
+      {
+        "name": "mcp-opa",
+        "lang": "Go",
+        "blurb": "Expose OPA / Rego evaluation as an MCP tool for LLM agents.",
+        "url": "https://github.com/0-draft/mcp-opa"
+      },
+      {
+        "name": "mcp-authzen",
+        "lang": "Go",
+        "blurb": "Front a real OpenID AuthZEN 1.0 PDP over MCP.",
+        "url": "https://github.com/0-draft/mcp-authzen"
+      },
+      {
+        "name": "spiffe-compliance-checker",
+        "lang": "Go",
+        "blurb": "Static MUST-clause compliance checker for SPIFFE artifacts.",
+        "url": "https://github.com/0-draft/spiffe-compliance-checker"
+      },
+      {
+        "name": "webauthn-the-hard-way",
+        "lang": "Python",
+        "blurb": "Build a WebAuthn Relying Party from scratch — CBOR, COSE, attestation by hand.",
+        "url": "https://github.com/0-draft/webauthn-the-hard-way"
+      },
+      {
+        "name": "sigil",
+        "lang": "Shell",
+        "blurb": "Secure-by-default GitHub template — signed commits, SLSA provenance, sigstore.",
+        "url": "https://github.com/0-draft/sigil"
+      }
     ]
   },
   "contributions": [
-    { "owner": "spiffe", "repo": "spire", "number": 7066, "state": "merged", "domain": "Workload Identity", "title": "Fix http_challenge agent name validation regex", "url": "https://github.com/spiffe/spire/pull/7066" },
-    { "owner": "sigstore", "repo": "sigstore-go", "number": 645, "state": "merged", "domain": "Supply Chain", "title": "Reject certificate identity with no SAN or issuer criteria", "url": "https://github.com/sigstore/sigstore-go/pull/645" },
-    { "owner": "falcosecurity", "repo": "plugins", "number": 1400, "state": "merged", "domain": "Runtime Security", "title": "Extract per-container fields from init and ephemeral containers (k8saudit)", "url": "https://github.com/falcosecurity/plugins/pull/1400" },
-    { "owner": "authzed", "repo": "spicedb", "number": 3184, "state": "merged", "domain": "Authorization", "title": "Match IPv4-mapped IPv6 addresses in the in_cidr caveat", "url": "https://github.com/authzed/spicedb/pull/3184" },
-    { "owner": "dexidp", "repo": "dex", "number": 4828, "state": "open", "domain": "OIDC", "title": "Verify userinfo sub matches the ID Token sub", "url": "https://github.com/dexidp/dex/pull/4828" },
-    { "owner": "theupdateframework", "repo": "go-tuf", "number": 739, "state": "open", "domain": "Supply Chain", "title": "Reject ed25519 public keys with invalid length", "url": "https://github.com/theupdateframework/go-tuf/pull/739" },
-    { "owner": "in-toto", "repo": "in-toto-golang", "number": 467, "state": "open", "domain": "Supply Chain", "title": "Reset isAuthorizedSignature per link in threshold verification", "url": "https://github.com/in-toto/in-toto-golang/pull/467" },
-    { "owner": "Permify", "repo": "permify", "number": 3005, "state": "open", "domain": "Authorization", "title": "Prevent lexer panic on unterminated string literal", "url": "https://github.com/Permify/permify/pull/3005" },
-    { "owner": "smallstep", "repo": "certificates", "number": 2715, "state": "open", "domain": "PKI", "title": "Fix name policy panic on empty or short domain", "url": "https://github.com/smallstep/certificates/pull/2715" }
+    {
+      "owner": "authzed",
+      "repo": "spicedb",
+      "number": 3184,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "fix: match IPv4-mapped IPv6 addresses in the in_cidr caveat",
+      "url": "https://github.com/authzed/spicedb/pull/3184"
+    },
+    {
+      "owner": "falcosecurity",
+      "repo": "plugins",
+      "number": 1400,
+      "state": "merged",
+      "domain": "Runtime Security",
+      "title": "fix(k8saudit): extract per-container fields from init and ephemeral containers",
+      "url": "https://github.com/falcosecurity/plugins/pull/1400"
+    },
+    {
+      "owner": "sigstore",
+      "repo": "sigstore-go",
+      "number": 645,
+      "state": "merged",
+      "domain": "Supply Chain",
+      "title": "Reject certificate identity with no SAN or issuer criteria",
+      "url": "https://github.com/sigstore/sigstore-go/pull/645"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7066,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Fix http_challenge agent name validation regex",
+      "url": "https://github.com/spiffe/spire/pull/7066"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 6857,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Add iss claim support for WIT-SVIDs",
+      "url": "https://github.com/spiffe/spire/pull/6857"
+    },
+    {
+      "owner": "aserto-dev",
+      "repo": "topaz",
+      "number": 715,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "fix: Backup() returns nil instead of err",
+      "url": "https://github.com/aserto-dev/topaz/pull/715"
+    },
+    {
+      "owner": "golangci",
+      "repo": "golangci-lint",
+      "number": 6440,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "docs: fix typos and grammar errors in docs and code comments",
+      "url": "https://github.com/golangci/golangci-lint/pull/6440"
+    },
+    {
+      "owner": "openfga",
+      "repo": "openfga",
+      "number": 2980,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "docs: fix typos in RELEASES.md and Makefile",
+      "url": "https://github.com/openfga/openfga/pull/2980"
+    },
+    {
+      "owner": "smallstep",
+      "repo": "cli",
+      "number": 1580,
+      "state": "merged",
+      "domain": "PKI",
+      "title": "Fix typo in README.md",
+      "url": "https://github.com/smallstep/cli/pull/1580"
+    },
+    {
+      "owner": "istio",
+      "repo": "istio",
+      "number": 59306,
+      "state": "merged",
+      "domain": "Service Mesh",
+      "title": "dns: remove TODO about skipping node's own IP",
+      "url": "https://github.com/istio/istio/pull/59306"
+    },
+    {
+      "owner": "google-gemini",
+      "repo": "gemini-cli",
+      "number": 20964,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "docs: fix incorrect relative links to command reference",
+      "url": "https://github.com/google-gemini/gemini-cli/pull/20964"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4600,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "DEP for Identity Assertion JWT Authorization Grant (ID-JAG) / requested_token_type urn:ietf:params:oauth:token-type:id-jag",
+      "url": "https://github.com/dexidp/dex/pull/4600"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4599,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix: correct error message for device request expiry",
+      "url": "https://github.com/dexidp/dex/pull/4599"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8395,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "internal/providers/aws: Refactor deprecated crypto/elliptic APIs to crypto/ecdh",
+      "url": "https://github.com/open-policy-agent/opa/pull/8395"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 6693,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "chore: fix typos in common package",
+      "url": "https://github.com/spiffe/spire/pull/6693"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4598,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix: fix typo in grpc listener error message",
+      "url": "https://github.com/dexidp/dex/pull/4598"
+    },
+    {
+      "owner": "pwn2winctf",
+      "repo": "2020submissions",
+      "number": 149,
+      "state": "merged",
+      "domain": "CTF",
+      "title": "Register team kanyewest",
+      "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
+    },
+    {
+      "owner": "smallstep",
+      "repo": "certificates",
+      "number": 2715,
+      "state": "open",
+      "domain": "PKI",
+      "title": "Fix name policy panic on empty or short domain",
+      "url": "https://github.com/smallstep/certificates/pull/2715"
+    },
+    {
+      "owner": "Permify",
+      "repo": "permify",
+      "number": 3005,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "fix(lexer): prevent panic on unterminated string literal",
+      "url": "https://github.com/Permify/permify/pull/3005"
+    },
+    {
+      "owner": "in-toto",
+      "repo": "in-toto-golang",
+      "number": 467,
+      "state": "open",
+      "domain": "Supply Chain",
+      "title": "Reset isAuthorizedSignature per link in threshold verification",
+      "url": "https://github.com/in-toto/in-toto-golang/pull/467"
+    },
+    {
+      "owner": "theupdateframework",
+      "repo": "go-tuf",
+      "number": 739,
+      "state": "open",
+      "domain": "Supply Chain",
+      "title": "fix(metadata): reject ed25519 public keys with invalid length",
+      "url": "https://github.com/theupdateframework/go-tuf/pull/739"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4828,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "fix(oidc): verify userinfo sub matches the ID Token sub",
+      "url": "https://github.com/dexidp/dex/pull/4828"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "contrib",
+      "number": 296,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "Add missing READMEs for authzen, data_filter_azure, and wasm",
+      "url": "https://github.com/open-policy-agent/contrib/pull/296"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4611,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
+      "url": "https://github.com/dexidp/dex/pull/4611"
+    },
+    {
+      "owner": "sigstore",
+      "repo": "cosign",
+      "number": 4830,
+      "state": "closed",
+      "domain": "Supply Chain",
+      "title": "docs: add enterprise private-infrastructure guidance",
+      "url": "https://github.com/sigstore/cosign/pull/4830"
+    },
+    {
+      "owner": "cilium",
+      "repo": "cilium",
+      "number": 45293,
+      "state": "closed",
+      "domain": "Service Mesh",
+      "title": "auth/spire: Add configurable gRPC message size limit",
+      "url": "https://github.com/cilium/cilium/pull/45293"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8481,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "topdown/http: limit response body size in http.send",
+      "url": "https://github.com/open-policy-agent/opa/pull/8481"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8451,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "server: add configurable route aliases",
+      "url": "https://github.com/open-policy-agent/opa/pull/8451"
+    },
+    {
+      "owner": "prometheus",
+      "repo": "prometheus",
+      "number": 18265,
+      "state": "closed",
+      "domain": "Observability",
+      "title": "test: Clarify parser error position handling with inline comments",
+      "url": "https://github.com/prometheus/prometheus/pull/18265"
+    },
+    {
+      "owner": "prometheus",
+      "repo": "prometheus",
+      "number": 18264,
+      "state": "closed",
+      "domain": "Observability",
+      "title": "docs: Fix typos and improve comments",
+      "url": "https://github.com/prometheus/prometheus/pull/18264"
+    },
+    {
+      "owner": "cert-manager",
+      "repo": "cert-manager",
+      "number": 8592,
+      "state": "closed",
+      "domain": "PKI",
+      "title": "docs: Update Helm repository references to OCI registry",
+      "url": "https://github.com/cert-manager/cert-manager/pull/8592"
+    },
+    {
+      "owner": "kubernetes",
+      "repo": "kubernetes",
+      "number": 137316,
+      "state": "closed",
+      "domain": "Cloud Native",
+      "title": "cleanup: replace ioutil with os in abac_test.go",
+      "url": "https://github.com/kubernetes/kubernetes/pull/137316"
+    },
+    {
+      "owner": "enix",
+      "repo": "x509-certificate-exporter",
+      "number": 451,
+      "state": "closed",
+      "domain": "PKI",
+      "title": "feat: enhance shutdown function to accept context for improved control",
+      "url": "https://github.com/enix/x509-certificate-exporter/pull/451"
+    }
   ],
   "meta": {
     "syncedAt": "2026-06-20"
-  }
+  },
+  "issues": [
+    {
+      "owner": "smallstep",
+      "repo": "certificates",
+      "number": 2714,
+      "state": "open",
+      "domain": "PKI",
+      "title": "[Bug]: name policy panics on a SAN with an empty domain (e.g. an email like \"a@\")",
+      "url": "https://github.com/smallstep/certificates/issues/2714"
+    },
+    {
+      "owner": "Permify",
+      "repo": "permify",
+      "number": 3004,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "[BUG] DSL lexer panics (slice out of range) on an unterminated string",
+      "url": "https://github.com/Permify/permify/issues/3004"
+    },
+    {
+      "owner": "in-toto",
+      "repo": "in-toto-golang",
+      "number": 466,
+      "state": "open",
+      "domain": "Supply Chain",
+      "title": "VerifyLinkSignatureThesholds non-deterministically rejects valid links when a step mixes pubkey and certificate functionaries",
+      "url": "https://github.com/in-toto/in-toto-golang/issues/466"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4827,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "connector(oidc): userinfo sub is not verified against the ID Token sub",
+      "url": "https://github.com/dexidp/dex/issues/4827"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8480,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "topdown/http: limit response body size in http.send",
+      "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "sigstore",
+      "repo": "sigstore-go",
+      "number": 644,
+      "state": "closed",
+      "domain": "Supply Chain",
+      "title": "WithCertificateIdentity accepts an empty identity that matches any certificate",
+      "url": "https://github.com/sigstore/sigstore-go/issues/644"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7065,
+      "state": "closed",
+      "domain": "Workload Identity",
+      "title": "http_challenge: agent name regex rejects valid names and accepts symbols",
+      "url": "https://github.com/spiffe/spire/issues/7065"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 6856,
+      "state": "closed",
+      "domain": "Workload Identity",
+      "title": "WIT-SVID: add `iss` claim support",
+      "url": "https://github.com/spiffe/spire/issues/6856"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "gatekeeper-library",
+      "number": 743,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Add ServiceAccount validation template",
+      "url": "https://github.com/open-policy-agent/gatekeeper-library/issues/743"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8449,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Support for OpenID AuthZEN Authorization API 1.0",
+      "url": "https://github.com/open-policy-agent/opa/issues/8449"
+    },
+    {
+      "owner": "golang",
+      "repo": "go",
+      "number": 77942,
+      "state": "closed",
+      "domain": "PKI",
+      "title": "proposal: crypto/tls, crypto/x509: use %w rather than %s in fmt.Errorf",
+      "url": "https://github.com/golang/go/issues/77942"
+    },
+    {
+      "owner": "enix",
+      "repo": "x509-certificate-exporter",
+      "number": 172,
+      "state": "closed",
+      "domain": "PKI",
+      "title": "Feature request: Enhance shutdown function to accept context for improved control",
+      "url": "https://github.com/enix/x509-certificate-exporter/issues/172"
+    }
+  ]
 }
