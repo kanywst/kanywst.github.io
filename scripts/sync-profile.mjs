@@ -79,7 +79,8 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
     'repository,title,state,number,url,createdAt'];
   if (kind === 'issues') args.push('--include-prs=false');
   return ghJSON(args)
-    .filter((x) => !own.test(x.repository.nameWithOwner))
+    // guard against unexpected shapes, then keep external repos only
+    .filter((x) => x?.repository?.nameWithOwner && !own.test(x.repository.nameWithOwner))
     .map((x) => {
       const [owner, repo] = x.repository.nameWithOwner.split('/');
       return {

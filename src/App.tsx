@@ -32,9 +32,17 @@ function Hero({ compact }: { compact: boolean }) {
       />
 
       <div className="text-content">
-        <p>👋 Hi, I&rsquo;m kanywst.</p>
+        <p>👋 Hi, I&rsquo;m {me.name}.</p>
         <p>
-          Identity, <span className="hl">Authorization</span>, and Cloud Native Security.
+          {me.tagline.split(/(Authorization)/).map((part, i) =>
+            part === 'Authorization' ? (
+              <span className="hl" key={i}>
+                {part}
+              </span>
+            ) : (
+              part
+            ),
+          )}
         </p>
       </div>
 
@@ -183,7 +191,7 @@ function Detail({ onClose }: { onClose: () => void }) {
       <footer className="foot reveal" style={delay()}>
         <span>synced {profile.meta.syncedAt} · auto-generated from the GitHub &amp; dev.to APIs</span>
         <button className="collapse" onClick={onClose}>
-          <span className="kbd">space</span> collapse
+          <span className="kbd">esc</span> collapse
         </button>
       </footer>
     </div>
@@ -196,27 +204,30 @@ export default function App() {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        return;
+      }
+      // Space only *opens* (collapsed → detail). Once open the page can be long,
+      // so let Space scroll natively and use Esc / the button to collapse.
+      if (e.code !== 'Space' || open) return;
       const target = e.target as HTMLElement;
       const tag = target?.tagName;
-      if (e.code === 'Space') {
-        if (
-          tag === 'BUTTON' ||
-          tag === 'A' ||
-          tag === 'INPUT' ||
-          tag === 'TEXTAREA' ||
-          target?.isContentEditable
-        ) {
-          return;
-        }
-        e.preventDefault();
-        toggle();
-      } else if (e.key === 'Escape') {
-        setOpen(false);
+      if (
+        tag === 'BUTTON' ||
+        tag === 'A' ||
+        tag === 'INPUT' ||
+        tag === 'TEXTAREA' ||
+        target?.isContentEditable
+      ) {
+        return;
       }
+      e.preventDefault();
+      setOpen(true);
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [toggle]);
+  }, [open]);
 
   useEffect(() => {
     document.body.classList.toggle('is-open', open);
