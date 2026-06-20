@@ -276,6 +276,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "guacsec",
+      "repo": "guac",
+      "number": 3076,
+      "state": "open",
+      "domain": "",
+      "title": "fix(processor): bound decompressed document size to prevent decompression bombs",
+      "url": "https://github.com/guacsec/guac/pull/3076"
+    },
+    {
       "owner": "smallstep",
       "repo": "certificates",
       "number": 2715,
@@ -424,6 +433,15 @@
     "syncedAt": "2026-06-20"
   },
   "issues": [
+    {
+      "owner": "guacsec",
+      "repo": "guac",
+      "number": 3075,
+      "state": "open",
+      "domain": "",
+      "title": "[bug] Document decompression has no size limit (decompression bomb)",
+      "url": "https://github.com/guacsec/guac/issues/3075"
+    },
     {
       "owner": "smallstep",
       "repo": "certificates",
