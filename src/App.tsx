@@ -187,7 +187,11 @@ export default function App() {
       ) : (
         <div
           className="landing"
-          onClick={toggle}
+          onClick={(e) => {
+            // don't toggle when a nested link (GitHub / dev.to / 0-draft) is clicked
+            if ((e.target as HTMLElement).closest('a, button')) return;
+            toggle();
+          }}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               e.preventDefault();

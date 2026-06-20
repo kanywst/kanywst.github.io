@@ -15,8 +15,15 @@ import { dirname, resolve } from 'node:path';
 const here = dirname(fileURLToPath(import.meta.url));
 const FILE = resolve(here, '../src/data/profile.json');
 
+const GH_TIMEOUT_MS = 20_000;
+const GH_MAX_BUFFER = 5 * 1024 * 1024;
+
 function gh(args) {
-  return execFileSync('gh', args, { encoding: 'utf8' });
+  return execFileSync('gh', args, {
+    encoding: 'utf8',
+    timeout: GH_TIMEOUT_MS,
+    maxBuffer: GH_MAX_BUFFER,
+  });
 }
 
 function ghJSON(args) {
@@ -77,7 +84,12 @@ const prs = ghJSON([
   })
   .map(({ _date, ...c }) => c);
 
-if (prs.length) profile.contributions = prs;
+// Abort rather than bump syncedAt with possibly-stale data if the fetch came back empty
+// (kanywst always has external PRs now; an empty result means gh hiccuped).
+if (!prs.length) {
+  throw new Error('No upstream PRs returned; aborting to avoid stale sync metadata.');
+}
+profile.contributions = prs;
 
 profile.meta.syncedAt = new Date().toISOString().slice(0, 10);
 
