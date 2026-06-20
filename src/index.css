@@ -110,22 +110,9 @@ a:hover {
   mix-blend-mode: normal;
 }
 
-/* Fallback for browsers without the View Transition API (e.g. Firefox): approximate the
-   rise with a keyframe. Disabled under prefers-reduced-motion (see the media block below). */
-@supports not (view-transition-name: none) {
-  .main-content--top {
-    animation: hero-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-}
-
-@keyframes hero-up {
-  from {
-    transform: translateY(38vh);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
+/* Browsers without the View Transition API (e.g. Firefox) simply swap to the top layout
+   with no glide — intentionally no transform fallback: translating only .main-content--top
+   left .detail in its final flow position, so the rising hero overlapped it. */
 
 .avatar {
   width: 64px;
@@ -578,7 +565,6 @@ a:hover {
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .detail,
-  .main-content--top,
   .landing .kbd {
     animation: none !important;
   }
