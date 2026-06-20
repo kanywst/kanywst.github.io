@@ -16,8 +16,12 @@ const ownerCounts = [
 ]
   .map(([owner, count]) => ({ owner, count }))
   .sort((a, b) => b.count - a.count);
-// floor at 1 so an empty contributions list doesn't yield Math.max(...[]) === -Infinity
-const maxOwnerCount = Math.max(1, ...ownerCounts.map((o) => o.count));
+// min–max normalize so the smallest org actually hits the min size (and avoid
+// Math.max(...[]) === -Infinity / divide-by-zero when the list is empty or flat)
+const ownerCountValues = ownerCounts.map((o) => o.count);
+const maxOwnerCount = Math.max(1, ...ownerCountValues);
+const minOwnerCount = Math.min(maxOwnerCount, ...ownerCountValues);
+const ownerCountSpan = maxOwnerCount - minOwnerCount || 1;
 
 function GitHubIcon() {
   return (
@@ -116,7 +120,7 @@ function ContribCloud({ style }: { style?: CSSProperties }) {
   return (
     <div className="cloud reveal" style={style}>
       {ownerCounts.map(({ owner, count }) => {
-        const size = Math.round(28 + (count / maxOwnerCount) * 52); // 28–80px by PR count
+        const size = Math.round(30 + ((count - minOwnerCount) / ownerCountSpan) * 50); // 30–80px
         return (
           <a
             key={owner}
