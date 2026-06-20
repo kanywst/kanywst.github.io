@@ -5,24 +5,6 @@ const { profile: me, flagships, org, contributions, issues } = profile;
 
 const PR_STATES = ['merged', 'open', 'closed'] as const;
 
-// orgs I've sent PRs to, counted — drives the avatar cloud (bigger = more PRs)
-const ownerCounts = [
-  ...contributions
-    .reduce(
-      (m, c) => m.set(c.owner, (m.get(c.owner) ?? 0) + 1),
-      new Map<string, number>(),
-    )
-    .entries(),
-]
-  .map(([owner, count]) => ({ owner, count }))
-  .sort((a, b) => b.count - a.count);
-// min–max normalize so the smallest org actually hits the min size (and avoid
-// Math.max(...[]) === -Infinity / divide-by-zero when the list is empty or flat)
-const ownerCountValues = ownerCounts.map((o) => o.count);
-const maxOwnerCount = Math.max(1, ...ownerCountValues);
-const minOwnerCount = Math.min(maxOwnerCount, ...ownerCountValues);
-const ownerCountSpan = maxOwnerCount - minOwnerCount || 1;
-
 function GitHubIcon() {
   return (
     <svg
@@ -117,10 +99,29 @@ function ContribRows({ items, base }: { items: Contribution[]; base: number }) {
 }
 
 function ContribCloud({ style }: { style?: CSSProperties }) {
+  // total contribution footprint (all states), aggregated by org — intentionally NOT
+  // tied to the state filter, so the cloud stays a stable overview while the list below
+  // responds to the chips
+  const ownerCounts = [
+    ...contributions
+      .reduce((m, c) => m.set(c.owner, (m.get(c.owner) ?? 0) + 1), new Map<string, number>())
+      .entries(),
+  ]
+    .map(([owner, count]) => ({ owner, count }))
+    .sort((a, b) => b.count - a.count);
+
+  if (ownerCounts.length === 0) return null;
+
+  const counts = ownerCounts.map((o) => o.count);
+  const min = Math.min(...counts);
+  const span = Math.max(...counts) - min; // 0 when every org is tied
+
   return (
     <div className="cloud reveal" style={style}>
       {ownerCounts.map(({ owner, count }) => {
-        const size = Math.round(30 + ((count - minOwnerCount) / ownerCountSpan) * 50); // 30–80px
+        // 30–80px; tied orgs (span 0) fall back to a uniform mid size
+        const ratio = span === 0 ? 0.5 : (count - min) / span;
+        const size = Math.round(30 + ratio * 50);
         return (
           <a
             key={owner}
