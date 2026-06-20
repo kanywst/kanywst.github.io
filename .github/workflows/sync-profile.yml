@@ -1,0 +1,68 @@
+name: Sync profile data
+
+# Refresh src/data/profile.json from the GitHub API on a schedule, then (only if it
+# changed) commit and redeploy the page. Self-contained: a GITHUB_TOKEN push does NOT
+# trigger the on:push deploy workflow, so this job builds + deploys Pages itself.
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # daily at 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  sync-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Refresh profile.json
+        id: sync
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/sync-profile.mjs
+          if git diff --quiet -- src/data/profile.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit refreshed data
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -am 'chore: sync profile.json [skip ci]'
+          git push
+
+      - name: Build
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          npm install
+          npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.sync.outputs.changed == 'true'
+        with:
+          path: dist
+
+      - id: deployment
+        if: steps.sync.outputs.changed == 'true'
+        uses: actions/deploy-pages@v4
