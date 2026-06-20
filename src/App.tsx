@@ -182,27 +182,33 @@ function Detail({ onClose }: { onClose: () => void }) {
       return next;
     });
   const visiblePrs = contributions.filter((c) => active.has(c.state));
+  const hasPrCloud = contributions.length > 0;
+  const hasIssueCloud = issues.length > 0;
 
-  // single running counter so every revealed element (headers + rows) staggers in order.
-  // held on a const object so the counter advances during render without reassigning a binding
-  const stagger = { i: 0 };
-  const delay = (): CSSProperties => ({ ['--i']: stagger.i++ } as CSSProperties);
-  const reserve = (n: number) => {
-    const start = stagger.i;
-    stagger.i += n;
-    return start;
-  };
+  // Stagger indices, precomputed in DOM order so every revealed element gets a monotonic
+  // --i without mutating a counter mid-render (keeps render pure under Strict/concurrent).
+  const at = (n: number): CSSProperties => ({ ['--i']: n } as CSSProperties);
+  const workHead = 0;
+  const flagshipsStart = workHead + 1;
+  const prHead = flagshipsStart + flagships.length;
+  const prRowsStart = prHead + 1 + (hasPrCloud ? 1 : 0);
+  const issuesHead = prRowsStart + visiblePrs.length;
+  const issueRowsStart = issuesHead + 1 + (hasIssueCloud ? 1 : 0);
+  const draftHead = issueRowsStart + issues.length;
+  const orgBlurbAt = draftHead + 1;
+  const orgReposStart = orgBlurbAt + 1;
+  const footerAt = orgReposStart + org.repos.length;
 
   return (
     <div className="detail">
       <section className="sec">
-        <div className="sec-head reveal" style={delay()}>
+        <div className="sec-head reveal" style={at(workHead)}>
           <h2 className="label">selected work</h2>
           <span className="label-note">tools &amp; reference implementations</span>
         </div>
         <ul className="rows">
-          {flagships.map((f) => (
-            <li key={f.url} className="reveal" style={delay()}>
+          {flagships.map((f, i) => (
+            <li key={f.url} className="reveal" style={at(flagshipsStart + i)}>
               <a className="row" href={f.url} target="_blank" rel="noreferrer">
                 <span className="row-name">{f.name}</span>
                 <span className="row-desc">{f.tagline}</span>
@@ -218,7 +224,7 @@ function Detail({ onClose }: { onClose: () => void }) {
       </section>
 
       <section className="sec">
-        <div className="sec-head reveal" style={delay()}>
+        <div className="sec-head reveal" style={at(prHead)}>
           <h2 className="label">upstream — pull requests</h2>
           <div className="filter" role="group" aria-label="filter pull requests by state">
             {PR_STATES.map((s) => (
@@ -233,34 +239,34 @@ function Detail({ onClose }: { onClose: () => void }) {
             ))}
           </div>
         </div>
-        {contributions.length > 0 && (
-          <ContribCloud items={contributions} noun="pull request" style={delay()} />
+        {hasPrCloud && (
+          <ContribCloud items={contributions} noun="pull request" style={at(prHead + 1)} />
         )}
-        <ContribRows items={visiblePrs} base={reserve(visiblePrs.length)} />
+        <ContribRows items={visiblePrs} base={prRowsStart} />
       </section>
 
       <section className="sec">
-        <div className="sec-head reveal" style={delay()}>
+        <div className="sec-head reveal" style={at(issuesHead)}>
           <h2 className="label">upstream — issues filed</h2>
           <span className="label-note">{issues.length} bug reports &amp; proposals in external projects</span>
         </div>
-        {issues.length > 0 && <ContribCloud items={issues} noun="issue" style={delay()} />}
-        <ContribRows items={issues} base={reserve(issues.length)} />
+        {hasIssueCloud && <ContribCloud items={issues} noun="issue" style={at(issuesHead + 1)} />}
+        <ContribRows items={issues} base={issueRowsStart} />
       </section>
 
       <section className="sec">
-        <div className="sec-head reveal" style={delay()}>
+        <div className="sec-head reveal" style={at(draftHead)}>
           <h2 className="label">0-draft</h2>
           <a className="label-note link" href={org.url} target="_blank" rel="noreferrer">
             research &amp; incubation →
           </a>
         </div>
-        <p className="org-blurb reveal" style={delay()}>
+        <p className="org-blurb reveal" style={at(orgBlurbAt)}>
           {org.blurb}
         </p>
         <ul className="rows">
-          {org.repos.map((r) => (
-            <li key={r.url} className="reveal" style={delay()}>
+          {org.repos.map((r, i) => (
+            <li key={r.url} className="reveal" style={at(orgReposStart + i)}>
               <a className="row" href={r.url} target="_blank" rel="noreferrer">
                 <span className="row-name mono">{r.name}</span>
                 <span className="row-desc">{r.blurb}</span>
@@ -271,7 +277,7 @@ function Detail({ onClose }: { onClose: () => void }) {
         </ul>
       </section>
 
-      <footer className="foot reveal" style={delay()}>
+      <footer className="foot reveal" style={at(footerAt)}>
         <span>synced {profile.meta?.syncedAt} · auto-generated from the GitHub &amp; dev.to APIs</span>
         <button className="collapse" onClick={onClose}>
           <span className="kbd">esc</span> collapse
