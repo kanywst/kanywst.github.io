@@ -132,6 +132,7 @@ if (!prs.length) {
 }
 profile.contributions = prs;
 profile.issues = issues;
+profile.meta ??= {};
 profile.meta.syncedAt = new Date().toISOString().slice(0, 10);
 
 writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');
