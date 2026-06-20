@@ -327,6 +327,11 @@ a:hover {
   position: relative;
   flex: 0 0 auto;
   line-height: 0;
+  transition: transform 0.2s ease;
+}
+
+.cloud-org:hover {
+  transform: translateY(-3px);
 }
 
 .cloud-org img {
@@ -336,14 +341,13 @@ a:hover {
   outline-offset: 2px;
   filter: grayscale(0.45) brightness(0.88);
   opacity: 0.72;
-  transition: filter 0.2s ease, opacity 0.2s ease, outline-color 0.2s ease, transform 0.2s ease;
+  transition: filter 0.2s ease, opacity 0.2s ease, outline-color 0.2s ease;
 }
 
 .cloud-org:hover img {
   filter: none;
   opacity: 1;
   outline-color: var(--accent);
-  transform: translateY(-3px);
 }
 
 .org-count {
