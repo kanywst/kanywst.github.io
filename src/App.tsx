@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import profile from './data/profile.json';
 
-const { profile: me, flagships, org, contributions } = profile;
-const mergedCount = contributions.filter((c) => c.state === 'merged').length;
+const { profile: me, flagships, org, contributions, issues } = profile;
+
+const PR_STATES = ['merged', 'open', 'closed'] as const;
 
 function GitHubIcon() {
   return (
@@ -59,7 +60,49 @@ function Hero({ compact }: { compact: boolean }) {
   );
 }
 
+type Contribution = {
+  owner: string;
+  repo: string;
+  number: number;
+  state: string;
+  domain: string;
+  title: string;
+  url: string;
+};
+
+function ContribRows({ items, base }: { items: Contribution[]; base: number }) {
+  return (
+    <ul className="rows">
+      {items.map((c, i) => (
+        <li key={c.url} className="reveal" style={{ ['--i' as string]: base + i }}>
+          <a className="row contrib" href={c.url} target="_blank" rel="noreferrer">
+            <span className={`tag tag-${c.state}`}>{c.state}</span>
+            <span className="row-name mono">
+              {c.owner}/<b>{c.repo}</b>
+              <span className="num">#{c.number}</span>
+            </span>
+            <span className="row-desc">{c.title}</span>
+            <span className="row-meta">{c.domain}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function Detail({ onClose }: { onClose: () => void }) {
+  const prCount = (s: string) => contributions.filter((c) => c.state === s).length;
+  // closed PRs are rejected/superseded — hidden by default, toggleable
+  const [active, setActive] = useState<Set<string>>(() => new Set(['merged', 'open']));
+  const toggleState = (s: string) =>
+    setActive((prev) => {
+      const next = new Set(prev);
+      if (next.has(s)) next.delete(s);
+      else next.add(s);
+      return next;
+    });
+  const visiblePrs = contributions.filter((c) => active.has(c.state));
+
   let step = 0;
   const delay = () => ({ ['--i' as string]: step++ });
 
@@ -89,26 +132,29 @@ function Detail({ onClose }: { onClose: () => void }) {
 
       <section className="sec">
         <div className="sec-head reveal" style={delay()}>
-          <h2 className="label">upstream</h2>
-          <span className="label-note">
-            <b>{mergedCount} merged</b> · {contributions.length} total
-          </span>
+          <h2 className="label">upstream — pull requests</h2>
+          <div className="filter" role="group" aria-label="filter pull requests by state">
+            {PR_STATES.map((s) => (
+              <button
+                key={s}
+                className={`chip chip-${s}${active.has(s) ? ' on' : ''}`}
+                onClick={() => toggleState(s)}
+                aria-pressed={active.has(s)}
+              >
+                {s} <span className="chip-n">{prCount(s)}</span>
+              </button>
+            ))}
+          </div>
         </div>
-        <ul className="rows">
-          {contributions.map((c) => (
-            <li key={c.url} className="reveal" style={delay()}>
-              <a className="row contrib" href={c.url} target="_blank" rel="noreferrer">
-                <span className={`tag tag-${c.state}`}>{c.state}</span>
-                <span className="row-name mono">
-                  {c.owner}/<b>{c.repo}</b>
-                  <span className="num">#{c.number}</span>
-                </span>
-                <span className="row-desc">{c.title}</span>
-                <span className="row-meta">{c.domain}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <ContribRows items={visiblePrs} base={2} />
+      </section>
+
+      <section className="sec">
+        <div className="sec-head reveal" style={delay()}>
+          <h2 className="label">upstream — issues filed</h2>
+          <span className="label-note">{issues.length} bug reports &amp; proposals in external projects</span>
+        </div>
+        <ContribRows items={issues} base={2} />
       </section>
 
       <section className="sec">
