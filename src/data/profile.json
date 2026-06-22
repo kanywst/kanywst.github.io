@@ -276,6 +276,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "aserto-dev",
+      "repo": "azm",
+      "number": 81,
+      "state": "open",
+      "domain": "",
+      "title": "Fix SubjectSearch over-listing subjects excluded via a wildcard relation",
+      "url": "https://github.com/aserto-dev/azm/pull/81"
+    },
+    {
       "owner": "guacsec",
       "repo": "guac",
       "number": 3076,
@@ -430,7 +439,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-06-21"
+    "syncedAt": "2026-06-22"
   },
   "issues": [
     {
