@@ -66,7 +66,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v1.1.0",
+      "version": "v1.2.0",
       "stars": 0,
       "tagline": "Cost calculator for offline password brute-force — time + USD per GPU profile, with a CI gatekeeper.",
       "url": "https://github.com/kanywst/brtc",
@@ -276,6 +276,33 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "sigstore",
+      "repo": "rekor",
+      "number": 2861,
+      "state": "open",
+      "domain": "",
+      "title": "Use bytes.Equal for inclusion proof root hash comparison",
+      "url": "https://github.com/sigstore/rekor/pull/2861"
+    },
+    {
+      "owner": "openpubkey",
+      "repo": "openpubkey",
+      "number": 373,
+      "state": "open",
+      "domain": "",
+      "title": "fix: avoid panic on array aud in GQCommitment verification",
+      "url": "https://github.com/openpubkey/openpubkey/pull/373"
+    },
+    {
+      "owner": "go-jose",
+      "repo": "go-jose",
+      "number": 264,
+      "state": "open",
+      "domain": "",
+      "title": "jwe: don't strip internal whitespace before parsing JSON",
+      "url": "https://github.com/go-jose/go-jose/pull/264"
+    },
+    {
       "owner": "openfga",
       "repo": "openfga",
       "number": 3181,
@@ -448,7 +475,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-06-24"
+    "syncedAt": "2026-06-25"
   },
   "issues": [
     {
