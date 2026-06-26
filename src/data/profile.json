@@ -123,6 +123,15 @@
   },
   "contributions": [
     {
+      "owner": "openfga",
+      "repo": "openfga",
+      "number": 3181,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "fix: match IPv4-mapped IPv6 addresses in the in_cidr condition",
+      "url": "https://github.com/openfga/openfga/pull/3181"
+    },
+    {
       "owner": "authzed",
       "repo": "spicedb",
       "number": 3184,
@@ -303,15 +312,6 @@
       "url": "https://github.com/go-jose/go-jose/pull/264"
     },
     {
-      "owner": "openfga",
-      "repo": "openfga",
-      "number": 3181,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "fix: match IPv4-mapped IPv6 addresses in the in_cidr condition",
-      "url": "https://github.com/openfga/openfga/pull/3181"
-    },
-    {
       "owner": "aserto-dev",
       "repo": "azm",
       "number": 81,
@@ -475,7 +475,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-06-25"
+    "syncedAt": "2026-06-26"
   },
   "issues": [
     {
