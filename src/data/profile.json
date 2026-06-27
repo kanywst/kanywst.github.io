@@ -285,6 +285,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "lestrrat-go",
+      "repo": "jwx",
+      "number": 2235,
+      "state": "open",
+      "domain": "",
+      "title": "jws: reject duplicate JOSE header parameter names",
+      "url": "https://github.com/lestrrat-go/jwx/pull/2235"
+    },
+    {
       "owner": "sigstore",
       "repo": "rekor",
       "number": 2861,
@@ -475,9 +484,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-06-26"
+    "syncedAt": "2026-06-27"
   },
   "issues": [
+    {
+      "owner": "lestrrat-go",
+      "repo": "jwx",
+      "number": 2234,
+      "state": "open",
+      "domain": "",
+      "title": "jwt.Parse / jws.VerifyCompactFast accept duplicate JOSE header parameters that jws.Verify rejects",
+      "url": "https://github.com/lestrrat-go/jwx/issues/2234"
+    },
     {
       "owner": "guacsec",
       "repo": "guac",
