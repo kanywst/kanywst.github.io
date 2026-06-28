@@ -285,13 +285,22 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "lestrrat-go",
-      "repo": "jwx",
-      "number": 2235,
+      "owner": "sse-secure-systems",
+      "repo": "connaisseur",
+      "number": 2131,
       "state": "open",
       "domain": "",
-      "title": "jws: reject duplicate JOSE header parameter names",
-      "url": "https://github.com/lestrrat-go/jwx/pull/2235"
+      "title": "fix: match registry host case-insensitively in policy rules",
+      "url": "https://github.com/sse-secure-systems/connaisseur/pull/2131"
+    },
+    {
+      "owner": "FairwindsOps",
+      "repo": "polaris",
+      "number": 1204,
+      "state": "open",
+      "domain": "",
+      "title": "Validate ephemeral containers in per-container checks",
+      "url": "https://github.com/FairwindsOps/polaris/pull/1204"
     },
     {
       "owner": "sigstore",
@@ -402,6 +411,15 @@
       "url": "https://github.com/dexidp/dex/pull/4611"
     },
     {
+      "owner": "lestrrat-go",
+      "repo": "jwx",
+      "number": 2235,
+      "state": "closed",
+      "domain": "",
+      "title": "jws: reject duplicate JOSE header parameter names",
+      "url": "https://github.com/lestrrat-go/jwx/pull/2235"
+    },
+    {
       "owner": "sigstore",
       "repo": "cosign",
       "number": 4830,
@@ -484,17 +502,26 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-06-27"
+    "syncedAt": "2026-06-28"
   },
   "issues": [
     {
-      "owner": "lestrrat-go",
-      "repo": "jwx",
-      "number": 2234,
+      "owner": "sse-secure-systems",
+      "repo": "connaisseur",
+      "number": 2130,
       "state": "open",
       "domain": "",
-      "title": "jwt.Parse / jws.VerifyCompactFast accept duplicate JOSE header parameters that jws.Verify rejects",
-      "url": "https://github.com/lestrrat-go/jwx/issues/2234"
+      "title": "Policy rules match the registry host case-sensitively",
+      "url": "https://github.com/sse-secure-systems/connaisseur/issues/2130"
+    },
+    {
+      "owner": "FairwindsOps",
+      "repo": "polaris",
+      "number": 1203,
+      "state": "open",
+      "domain": "",
+      "title": "Per-container checks skip ephemeral containers",
+      "url": "https://github.com/FairwindsOps/polaris/issues/1203"
     },
     {
       "owner": "guacsec",
@@ -549,6 +576,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "lestrrat-go",
+      "repo": "jwx",
+      "number": 2234,
+      "state": "closed",
+      "domain": "",
+      "title": "jwt.Parse / jws.VerifyCompactFast accept duplicate JOSE header parameters that jws.Verify rejects",
+      "url": "https://github.com/lestrrat-go/jwx/issues/2234"
     },
     {
       "owner": "sigstore",
