@@ -22,7 +22,7 @@
       "owner": "0-draft",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.0.2",
+      "version": "v0.1.0",
       "stars": 1,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary — Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/0-draft/omega",
@@ -33,7 +33,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v0.3.0",
+      "version": "v0.3.1",
       "stars": 4,
       "tagline": "Local-first secret manager for the AI-agent era — keep API keys out of .env files and out of your agent transcripts.",
       "url": "https://github.com/kanywst/rapg",
@@ -44,7 +44,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.4.0",
+      "version": "v0.5.0",
       "stars": 3,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin",
@@ -502,7 +502,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-06-28"
+    "syncedAt": "2026-06-29"
   },
   "issues": [
     {
