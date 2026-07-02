@@ -22,7 +22,7 @@
       "owner": "0-draft",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.1.0",
+      "version": "v0.2.0",
       "stars": 1,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary — Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/0-draft/omega",
@@ -122,6 +122,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "sigstore",
+      "repo": "rekor",
+      "number": 2861,
+      "state": "merged",
+      "domain": "",
+      "title": "Use bytes.Equal for inclusion proof root hash comparison",
+      "url": "https://github.com/sigstore/rekor/pull/2861"
+    },
     {
       "owner": "openfga",
       "repo": "openfga",
@@ -285,6 +294,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "supabase",
+      "repo": "auth",
+      "number": 2605,
+      "state": "open",
+      "domain": "",
+      "title": "fix(oauthserver): consume authorization code under a row lock so it stays single-use",
+      "url": "https://github.com/supabase/auth/pull/2605"
+    },
+    {
       "owner": "sse-secure-systems",
       "repo": "connaisseur",
       "number": 2131,
@@ -301,15 +319,6 @@
       "domain": "",
       "title": "Validate ephemeral containers in per-container checks",
       "url": "https://github.com/FairwindsOps/polaris/pull/1204"
-    },
-    {
-      "owner": "sigstore",
-      "repo": "rekor",
-      "number": 2861,
-      "state": "open",
-      "domain": "",
-      "title": "Use bytes.Equal for inclusion proof root hash comparison",
-      "url": "https://github.com/sigstore/rekor/pull/2861"
     },
     {
       "owner": "openpubkey",
@@ -502,7 +511,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-07-01"
+    "syncedAt": "2026-07-02"
   },
   "issues": [
     {
