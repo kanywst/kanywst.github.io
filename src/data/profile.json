@@ -123,6 +123,15 @@
   },
   "contributions": [
     {
+      "owner": "woodpecker-ci",
+      "repo": "woodpecker",
+      "number": 6809,
+      "state": "merged",
+      "domain": "",
+      "title": "Gate Kubernetes nodeSelector backend step config behind agent config",
+      "url": "https://github.com/woodpecker-ci/woodpecker/pull/6809"
+    },
+    {
       "owner": "sigstore",
       "repo": "rekor",
       "number": 2861,
@@ -292,15 +301,6 @@
       "domain": "CTF",
       "title": "Register team kanyewest",
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
-    },
-    {
-      "owner": "woodpecker-ci",
-      "repo": "woodpecker",
-      "number": 6809,
-      "state": "open",
-      "domain": "",
-      "title": "Gate Kubernetes nodeSelector backend step config behind agent config",
-      "url": "https://github.com/woodpecker-ci/woodpecker/pull/6809"
     },
     {
       "owner": "supabase",
@@ -520,7 +520,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-07-05"
+    "syncedAt": "2026-07-06"
   },
   "issues": [
     {
