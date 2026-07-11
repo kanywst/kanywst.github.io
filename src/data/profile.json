@@ -312,15 +312,6 @@
       "url": "https://github.com/supabase/auth/pull/2605"
     },
     {
-      "owner": "sse-secure-systems",
-      "repo": "connaisseur",
-      "number": 2131,
-      "state": "open",
-      "domain": "",
-      "title": "fix: match registry host case-insensitively in policy rules",
-      "url": "https://github.com/sse-secure-systems/connaisseur/pull/2131"
-    },
-    {
       "owner": "FairwindsOps",
       "repo": "polaris",
       "number": 1204,
@@ -429,6 +420,15 @@
       "url": "https://github.com/dexidp/dex/pull/4611"
     },
     {
+      "owner": "sse-secure-systems",
+      "repo": "connaisseur",
+      "number": 2131,
+      "state": "closed",
+      "domain": "",
+      "title": "fix: match registry host case-insensitively in policy rules",
+      "url": "https://github.com/sse-secure-systems/connaisseur/pull/2131"
+    },
+    {
       "owner": "lestrrat-go",
       "repo": "jwx",
       "number": 2235,
@@ -520,18 +520,9 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-07-10"
+    "syncedAt": "2026-07-11"
   },
   "issues": [
-    {
-      "owner": "sse-secure-systems",
-      "repo": "connaisseur",
-      "number": 2130,
-      "state": "open",
-      "domain": "",
-      "title": "Policy rules match the registry host case-sensitively",
-      "url": "https://github.com/sse-secure-systems/connaisseur/issues/2130"
-    },
     {
       "owner": "FairwindsOps",
       "repo": "polaris",
@@ -594,6 +585,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "sse-secure-systems",
+      "repo": "connaisseur",
+      "number": 2130,
+      "state": "closed",
+      "domain": "",
+      "title": "Policy rules match the registry host case-sensitively",
+      "url": "https://github.com/sse-secure-systems/connaisseur/issues/2130"
     },
     {
       "owner": "lestrrat-go",
