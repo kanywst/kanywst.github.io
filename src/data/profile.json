@@ -141,6 +141,15 @@
       "url": "https://github.com/sigstore/rekor/pull/2861"
     },
     {
+      "owner": "openpubkey",
+      "repo": "openpubkey",
+      "number": 373,
+      "state": "merged",
+      "domain": "",
+      "title": "fix: avoid panic on array aud in GQCommitment verification",
+      "url": "https://github.com/openpubkey/openpubkey/pull/373"
+    },
+    {
       "owner": "openfga",
       "repo": "openfga",
       "number": 3181,
@@ -319,15 +328,6 @@
       "domain": "",
       "title": "Validate ephemeral containers in per-container checks",
       "url": "https://github.com/FairwindsOps/polaris/pull/1204"
-    },
-    {
-      "owner": "openpubkey",
-      "repo": "openpubkey",
-      "number": 373,
-      "state": "open",
-      "domain": "",
-      "title": "fix: avoid panic on array aud in GQCommitment verification",
-      "url": "https://github.com/openpubkey/openpubkey/pull/373"
     },
     {
       "owner": "go-jose",
@@ -520,9 +520,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-07-13"
+    "syncedAt": "2026-07-14"
   },
   "issues": [
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 554,
+      "state": "open",
+      "domain": "",
+      "title": "Fix incorrect metadata member name in Section 8.2.1",
+      "url": "https://github.com/openid/authzen/issues/554"
+    },
     {
       "owner": "FairwindsOps",
       "repo": "polaris",
