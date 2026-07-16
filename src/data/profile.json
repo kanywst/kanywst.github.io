@@ -321,6 +321,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "php-casbin",
+      "repo": "php-casbin",
+      "number": 174,
+      "state": "open",
+      "domain": "",
+      "title": "fix: evaluate domain link conditions on transitive role links",
+      "url": "https://github.com/php-casbin/php-casbin/pull/174"
+    },
+    {
       "owner": "FairwindsOps",
       "repo": "polaris",
       "number": 1204,
@@ -355,15 +364,6 @@
       "domain": "",
       "title": "fix(processor): bound decompressed document size to prevent decompression bombs",
       "url": "https://github.com/guacsec/guac/pull/3076"
-    },
-    {
-      "owner": "Permify",
-      "repo": "permify",
-      "number": 3005,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "fix(lexer): prevent panic on unterminated string literal",
-      "url": "https://github.com/Permify/permify/pull/3005"
     },
     {
       "owner": "in-toto",
@@ -436,6 +436,15 @@
       "domain": "",
       "title": "jws: reject duplicate JOSE header parameter names",
       "url": "https://github.com/lestrrat-go/jwx/pull/2235"
+    },
+    {
+      "owner": "Permify",
+      "repo": "permify",
+      "number": 3005,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "fix(lexer): prevent panic on unterminated string literal",
+      "url": "https://github.com/Permify/permify/pull/3005"
     },
     {
       "owner": "sigstore",
@@ -520,7 +529,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-07-15"
+    "syncedAt": "2026-07-16"
   },
   "issues": [
     {
@@ -549,15 +558,6 @@
       "domain": "",
       "title": "[bug] Document decompression has no size limit (decompression bomb)",
       "url": "https://github.com/guacsec/guac/issues/3075"
-    },
-    {
-      "owner": "Permify",
-      "repo": "permify",
-      "number": 3004,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "[BUG] DSL lexer panics (slice out of range) on an unterminated string",
-      "url": "https://github.com/Permify/permify/issues/3004"
     },
     {
       "owner": "in-toto",
@@ -612,6 +612,15 @@
       "domain": "PKI",
       "title": "[Bug]: name policy panics on a SAN with an empty domain (e.g. an email like \"a@\")",
       "url": "https://github.com/smallstep/certificates/issues/2714"
+    },
+    {
+      "owner": "Permify",
+      "repo": "permify",
+      "number": 3004,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "[BUG] DSL lexer panics (slice out of range) on an unterminated string",
+      "url": "https://github.com/Permify/permify/issues/3004"
     },
     {
       "owner": "sigstore",
