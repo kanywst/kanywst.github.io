@@ -29,14 +29,14 @@
       "featured": true
     },
     {
-      "name": "rapg",
+      "name": "wimsey",
       "owner": "kanywst",
-      "lang": "Go",
-      "license": "MIT",
-      "version": "v0.3.1",
-      "stars": 4,
-      "tagline": "Local-first secret manager for the AI-agent era — keep API keys out of .env files and out of your agent transcripts.",
-      "url": "https://github.com/kanywst/rapg",
+      "lang": "Rust",
+      "license": "Apache-2.0",
+      "version": "v0.1.0",
+      "stars": 0,
+      "tagline": "Vendor-neutral WIMSE workload-identity reference implementation — WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
+      "url": "https://github.com/kanywst/wimsey",
       "featured": true
     },
     {
