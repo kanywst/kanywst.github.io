@@ -123,6 +123,42 @@
   },
   "contributions": [
     {
+      "owner": "lldap",
+      "repo": "lldap",
+      "number": 1469,
+      "state": "merged",
+      "domain": "",
+      "title": "server: use OsRng for refresh and password-reset tokens",
+      "url": "https://github.com/lldap/lldap/pull/1469"
+    },
+    {
+      "owner": "lldap",
+      "repo": "lldap",
+      "number": 1468,
+      "state": "merged",
+      "domain": "",
+      "title": "Fix: panic in password modify when a regular user targets another user",
+      "url": "https://github.com/lldap/lldap/pull/1468"
+    },
+    {
+      "owner": "glauth",
+      "repo": "glauth",
+      "number": 470,
+      "state": "merged",
+      "domain": "",
+      "title": "fix: reject disabled users on all backends in Bind",
+      "url": "https://github.com/glauth/glauth/pull/470"
+    },
+    {
+      "owner": "php-casbin",
+      "repo": "php-casbin",
+      "number": 174,
+      "state": "merged",
+      "domain": "",
+      "title": "fix: evaluate domain link conditions on transitive role links",
+      "url": "https://github.com/php-casbin/php-casbin/pull/174"
+    },
+    {
       "owner": "woodpecker-ci",
       "repo": "woodpecker",
       "number": 6809,
@@ -319,15 +355,6 @@
       "domain": "CTF",
       "title": "Register team kanyewest",
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
-    },
-    {
-      "owner": "php-casbin",
-      "repo": "php-casbin",
-      "number": 174,
-      "state": "open",
-      "domain": "",
-      "title": "fix: evaluate domain link conditions on transitive role links",
-      "url": "https://github.com/php-casbin/php-casbin/pull/174"
     },
     {
       "owner": "FairwindsOps",
@@ -529,7 +556,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-07-18"
+    "syncedAt": "2026-07-19"
   },
   "issues": [
     {
@@ -585,6 +612,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "glauth",
+      "repo": "glauth",
+      "number": 469,
+      "state": "closed",
+      "domain": "",
+      "title": "A disabled user can still bind on the config backend",
+      "url": "https://github.com/glauth/glauth/issues/469"
     },
     {
       "owner": "sse-secure-systems",
