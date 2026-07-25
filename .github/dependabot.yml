@@ -7,6 +7,12 @@ updates:
     groups:
       all:
         patterns: ["*"]
+    # typescript-eslint peer-requires typescript <6.1.0, so a grouped bump to
+    # TS 7 breaks npm ci with ERESOLVE and fails every CI job. Drop this once
+    # typescript-eslint ships TS 7 support, then bump typescript by hand.
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
