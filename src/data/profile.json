@@ -22,8 +22,8 @@
       "owner": "0-draft",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.2.1",
-      "stars": 1,
+      "version": "v0.3.0",
+      "stars": 2,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary — Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/0-draft/omega",
       "featured": true
@@ -78,7 +78,7 @@
       "lang": "List",
       "license": "CC0",
       "version": null,
-      "stars": 5,
+      "stars": 6,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization",
       "featured": false
@@ -122,6 +122,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "spiffe",
+      "repo": "spiffe",
+      "number": 417,
+      "state": "merged",
+      "domain": "",
+      "title": "Add wit-svid to the list of supported use values",
+      "url": "https://github.com/spiffe/spiffe/pull/417"
+    },
     {
       "owner": "lldap",
       "repo": "lldap",
@@ -357,15 +366,6 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "spiffe",
-      "repo": "spiffe",
-      "number": 417,
-      "state": "open",
-      "domain": "",
-      "title": "Add wit-svid to the list of supported use values",
-      "url": "https://github.com/spiffe/spiffe/pull/417"
-    },
-    {
       "owner": "openid",
       "repo": "authzen",
       "number": 599,
@@ -583,7 +583,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-02"
+    "syncedAt": "2026-08-03"
   },
   "issues": [
     {
