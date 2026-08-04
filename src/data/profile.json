@@ -44,7 +44,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.5.0",
+      "version": "v0.5.1",
       "stars": 3,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin",
@@ -66,7 +66,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v1.3.0",
+      "version": "v1.3.1",
       "stars": 0,
       "tagline": "Cost calculator for offline password brute-force — time + USD per GPU profile, with a CI gatekeeper.",
       "url": "https://github.com/kanywst/brtc",
@@ -78,7 +78,7 @@
       "lang": "List",
       "license": "CC0",
       "version": null,
-      "stars": 6,
+      "stars": 7,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization",
       "featured": false
@@ -583,7 +583,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-03"
+    "syncedAt": "2026-08-04"
   },
   "issues": [
     {
