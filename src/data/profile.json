@@ -240,6 +240,15 @@
       "url": "https://github.com/sigstore/sigstore-go/pull/645"
     },
     {
+      "owner": "theupdateframework",
+      "repo": "go-tuf",
+      "number": 739,
+      "state": "merged",
+      "domain": "Supply Chain",
+      "title": "fix(metadata): reject ed25519 public keys with invalid length",
+      "url": "https://github.com/theupdateframework/go-tuf/pull/739"
+    },
+    {
       "owner": "spiffe",
       "repo": "spire",
       "number": 7066,
@@ -429,15 +438,6 @@
       "url": "https://github.com/in-toto/in-toto-golang/pull/467"
     },
     {
-      "owner": "theupdateframework",
-      "repo": "go-tuf",
-      "number": 739,
-      "state": "open",
-      "domain": "Supply Chain",
-      "title": "fix(metadata): reject ed25519 public keys with invalid length",
-      "url": "https://github.com/theupdateframework/go-tuf/pull/739"
-    },
-    {
       "owner": "dexidp",
       "repo": "dex",
       "number": 4828,
@@ -583,7 +583,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-07"
+    "syncedAt": "2026-08-08"
   },
   "issues": [
     {
