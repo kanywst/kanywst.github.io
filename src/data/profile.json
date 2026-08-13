@@ -55,8 +55,8 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v1.0.0",
-      "stars": 2,
+      "version": "v1.0.1",
+      "stars": 3,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -202,6 +202,15 @@
       "domain": "Authorization",
       "title": "fix: match IPv4-mapped IPv6 addresses in the in_cidr condition",
       "url": "https://github.com/openfga/openfga/pull/3181"
+    },
+    {
+      "owner": "guacsec",
+      "repo": "guac",
+      "number": 3076,
+      "state": "merged",
+      "domain": "",
+      "title": "fix(processor): bound decompressed document size to prevent decompression bombs",
+      "url": "https://github.com/guacsec/guac/pull/3076"
     },
     {
       "owner": "smallstep",
@@ -429,15 +438,6 @@
       "url": "https://github.com/aserto-dev/azm/pull/81"
     },
     {
-      "owner": "guacsec",
-      "repo": "guac",
-      "number": 3076,
-      "state": "open",
-      "domain": "",
-      "title": "fix(processor): bound decompressed document size to prevent decompression bombs",
-      "url": "https://github.com/guacsec/guac/pull/3076"
-    },
-    {
       "owner": "in-toto",
       "repo": "in-toto-golang",
       "number": 467,
@@ -592,7 +592,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-12"
+    "syncedAt": "2026-08-13"
   },
   "issues": [
     {
@@ -630,15 +630,6 @@
       "domain": "",
       "title": "Per-container checks skip ephemeral containers",
       "url": "https://github.com/FairwindsOps/polaris/issues/1203"
-    },
-    {
-      "owner": "guacsec",
-      "repo": "guac",
-      "number": 3075,
-      "state": "open",
-      "domain": "",
-      "title": "[bug] Document decompression has no size limit (decompression bomb)",
-      "url": "https://github.com/guacsec/guac/issues/3075"
     },
     {
       "owner": "in-toto",
@@ -693,6 +684,15 @@
       "domain": "",
       "title": "jwt.Parse / jws.VerifyCompactFast accept duplicate JOSE header parameters that jws.Verify rejects",
       "url": "https://github.com/lestrrat-go/jwx/issues/2234"
+    },
+    {
+      "owner": "guacsec",
+      "repo": "guac",
+      "number": 3075,
+      "state": "closed",
+      "domain": "",
+      "title": "[bug] Document decompression has no size limit (decompression bomb)",
+      "url": "https://github.com/guacsec/guac/issues/3075"
     },
     {
       "owner": "smallstep",
