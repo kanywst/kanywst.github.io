@@ -384,6 +384,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "envoyproxy",
+      "repo": "gateway",
+      "number": 9743,
+      "state": "open",
+      "domain": "",
+      "title": "fix(luavalidator): block getfenv/setfenv/newproxy/module in the Lua security sandbox",
+      "url": "https://github.com/envoyproxy/gateway/pull/9743"
+    },
+    {
       "owner": "rothgar",
       "repo": "awesome-tuis",
       "number": 814,
@@ -592,7 +601,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-13"
+    "syncedAt": "2026-08-14"
   },
   "issues": [
     {
