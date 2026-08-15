@@ -111,7 +111,7 @@
       "ghsa": "GHSA-jhjp-4c2q-xmx4",
       "severity": "medium",
       "title": "k8saudit rules miss privileged settings on init / ephemeral containers",
-      "domain": "Cloud Native",
+      "domain": "Runtime Security",
       "url": "https://github.com/falcosecurity/plugins/security/advisories/GHSA-jhjp-4c2q-xmx4"
     },
     {
