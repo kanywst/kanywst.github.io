@@ -58,7 +58,7 @@ const ADVISORY_SOURCES = [
 const SEVERITY_RANK = { critical: 0, high: 1, medium: 2, low: 3 };
 const KNOWN_SEVERITY = new Set(['critical', 'high', 'medium', 'low']);
 
-function fetchAdvisory({ repo, ghsa, title, cve, domain }) {
+function fetchAdvisory({ repo, ghsa, title, cve }) {
   let data;
   try {
     const out = execFileSync('gh', ['api', `repos/${repo}/security-advisories/${ghsa}`], {
@@ -94,7 +94,7 @@ function fetchAdvisory({ repo, ghsa, title, cve, domain }) {
     ...(cveId ? { cve: cveId } : {}),
     severity: KNOWN_SEVERITY.has(sev) ? sev : 'unknown',
     title: title ?? data.summary,
-    domain: domain ?? DOMAIN_BY_REPO[slug] ?? DOMAIN_BY_REPO[repo] ?? '',
+    domain: DOMAIN_BY_REPO[slug] ?? DOMAIN_BY_REPO[repo] ?? '',
     url,
   };
 }
