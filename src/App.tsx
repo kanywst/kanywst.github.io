@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'r
 import { flushSync } from 'react-dom';
 import profile from './data/profile.json';
 
-const { profile: me, flagships, org, contributions, issues } = profile;
+const { profile: me, flagships, advisories, org, contributions, issues } = profile;
 
 const PR_STATES = ['merged', 'open', 'closed'] as const;
 
@@ -103,6 +103,47 @@ function ContribRows({ items, base }: { items: Contribution[]; base: number }) {
   );
 }
 
+type Advisory = {
+  owner: string;
+  repo: string;
+  ghsa: string;
+  cve?: string;
+  severity: string;
+  title: string;
+  domain: string;
+  url: string;
+};
+
+function AdvisoryRows({ items, base }: { items: Advisory[]; base: number }) {
+  return (
+    <ul className="rows">
+      {items.map((a, i) => (
+        <li key={a.url} className="reveal" style={{ ['--i']: base + i } as CSSProperties}>
+          <a className="row advisory" href={a.url} target="_blank" rel="noreferrer">
+            <span className={`tag sev-${a.severity}`}>{a.severity}</span>
+            <span className="adv-body">
+              <span className="adv-head">
+                <span className="row-name mono">
+                  {a.owner}/<b>{a.repo}</b>
+                </span>
+                <span className="adv-meta">
+                  {a.cve ? (
+                    <span className="cve">{a.cve}</span>
+                  ) : (
+                    <span className="ghsa">{a.ghsa}</span>
+                  )}
+                  <span className="m-domain">{a.domain}</span>
+                </span>
+              </span>
+              <span className="row-desc">{a.title}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function ContribCloud({
   items,
   noun,
@@ -188,9 +229,12 @@ function Detail({ onClose }: { onClose: () => void }) {
   // Stagger indices, precomputed in DOM order so every revealed element gets a monotonic
   // --i without mutating a counter mid-render (keeps render pure under Strict/concurrent).
   const at = (n: number): CSSProperties => ({ ['--i']: n } as CSSProperties);
+  const cveCount = advisories.filter((a) => 'cve' in a && a.cve).length;
   const workHead = 0;
   const flagshipsStart = workHead + 1;
-  const prHead = flagshipsStart + flagships.length;
+  const advHead = flagshipsStart + flagships.length;
+  const advRowsStart = advHead + 1;
+  const prHead = advRowsStart + advisories.length;
   const prRowsStart = prHead + 1 + (hasPrCloud ? 1 : 0);
   const issuesHead = prRowsStart + visiblePrs.length;
   const issueRowsStart = issuesHead + 1 + (hasIssueCloud ? 1 : 0);
@@ -221,6 +265,16 @@ function Detail({ onClose }: { onClose: () => void }) {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="sec">
+        <div className="sec-head reveal" style={at(advHead)}>
+          <h2 className="label">upstream — security advisories</h2>
+          <span className="label-note">
+            {advisories.length} disclosed · {cveCount} CVE{cveCount === 1 ? '' : 's'} assigned
+          </span>
+        </div>
+        <AdvisoryRows items={advisories} base={advRowsStart} />
       </section>
 
       <section className="sec">
