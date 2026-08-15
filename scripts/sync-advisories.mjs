@@ -56,6 +56,7 @@ const ADVISORY_SOURCES = [
 ];
 
 const SEVERITY_RANK = { critical: 0, high: 1, medium: 2, low: 3 };
+const KNOWN_SEVERITY = new Set(['critical', 'high', 'medium', 'low']);
 
 function fetchAdvisory({ repo, ghsa, title, cve, domain }) {
   let data;
@@ -83,12 +84,15 @@ function fetchAdvisory({ repo, ghsa, title, cve, domain }) {
   const slug = m ? `${m[1]}/${m[2]}` : repo;
   const [owner, name] = slug.split('/');
   const cveId = data.cve_id ?? cve; // GitHub-assigned, else a pinned downstream CVE
+  // Don't fabricate a severity if the API omits/renames the field — flag it ('unknown',
+  // sorted last, warned below) rather than silently claiming a specific level.
+  const sev = (data.severity ?? '').toLowerCase();
   return {
     owner,
     repo: name,
     ghsa: data.ghsa_id,
     ...(cveId ? { cve: cveId } : {}),
-    severity: (data.severity || 'medium').toLowerCase(),
+    severity: KNOWN_SEVERITY.has(sev) ? sev : 'unknown',
     title: title ?? data.summary,
     domain: domain ?? DOMAIN_BY_REPO[slug] ?? DOMAIN_BY_REPO[repo] ?? '',
     url,
@@ -125,4 +129,9 @@ const untagged = advisories.filter((a) => !a.domain);
 if (untagged.length) {
   console.log(`! ${untagged.length} untagged — add their repo to scripts/domains.mjs:`);
   for (const a of untagged) console.log(`    ${a.owner}/${a.repo}`);
+}
+const unknownSev = advisories.filter((a) => a.severity === 'unknown');
+if (unknownSev.length) {
+  console.log(`! ${unknownSev.length} with an unrecognized severity from the API — check:`);
+  for (const a of unknownSev) console.log(`    ${a.owner}/${a.repo} ${a.ghsa}`);
 }

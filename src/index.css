@@ -365,7 +365,8 @@ a:hover {
   background: rgba(230, 165, 100, 0.1);
 }
 
-.sev-low {
+.sev-low,
+.sev-unknown {
   color: var(--muted);
   background: rgba(255, 255, 255, 0.05);
 }
