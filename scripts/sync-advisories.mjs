@@ -76,7 +76,12 @@ function fetchAdvisory({ repo, ghsa, title, cve, domain }) {
     throw new Error(`advisory fetch failed for ${repo} ${ghsa}: ${msg.trim() || err}`);
   }
   if (data.state !== 'published') return null;
-  const [owner, name] = repo.split('/');
+  // Derive owner/repo from the live html_url (GitHub keeps it current across renames),
+  // falling back to the static source slug — so a renamed repo doesn't show a stale slug.
+  const url = data.html_url ?? `https://github.com/${repo}/security/advisories/${ghsa}`;
+  const m = url.match(/github\.com\/([^/]+)\/([^/]+)\/security\/advisories\//);
+  const slug = m ? `${m[1]}/${m[2]}` : repo;
+  const [owner, name] = slug.split('/');
   const cveId = data.cve_id ?? cve; // GitHub-assigned, else a pinned downstream CVE
   return {
     owner,
@@ -85,8 +90,8 @@ function fetchAdvisory({ repo, ghsa, title, cve, domain }) {
     ...(cveId ? { cve: cveId } : {}),
     severity: (data.severity || 'medium').toLowerCase(),
     title: title ?? data.summary,
-    domain: domain ?? DOMAIN_BY_REPO[repo] ?? '',
-    url: data.html_url ?? `https://github.com/${repo}/security/advisories/${ghsa}`,
+    domain: domain ?? DOMAIN_BY_REPO[slug] ?? DOMAIN_BY_REPO[repo] ?? '',
+    url,
   };
 }
 
