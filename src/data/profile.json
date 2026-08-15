@@ -84,6 +84,55 @@
       "featured": false
     }
   ],
+  "advisories": [
+    {
+      "owner": "kubewarden",
+      "repo": "policies",
+      "ghsa": "GHSA-8p62-9vh2-272p",
+      "cve": "CVE-2026-63121",
+      "severity": "medium",
+      "title": "trusted-repos-policy: uppercase registry host bypasses image deny rules",
+      "domain": "Supply Chain",
+      "url": "https://github.com/kubewarden/policies/security/advisories/GHSA-8p62-9vh2-272p"
+    },
+    {
+      "owner": "kumahq",
+      "repo": "kuma",
+      "ghsa": "GHSA-744g-c785-x65q",
+      "cve": "CVE-2026-18677",
+      "severity": "medium",
+      "title": "Dataplane token without a workload binding can claim any workload's SPIFFE identity",
+      "domain": "Workload Identity",
+      "url": "https://github.com/kumahq/kuma/security/advisories/GHSA-744g-c785-x65q"
+    },
+    {
+      "owner": "falcosecurity",
+      "repo": "plugins",
+      "ghsa": "GHSA-jhjp-4c2q-xmx4",
+      "severity": "medium",
+      "title": "k8saudit rules miss privileged settings on init / ephemeral containers",
+      "domain": "Cloud Native",
+      "url": "https://github.com/falcosecurity/plugins/security/advisories/GHSA-jhjp-4c2q-xmx4"
+    },
+    {
+      "owner": "authzed",
+      "repo": "spicedb",
+      "ghsa": "GHSA-5784-6qcr-48fq",
+      "severity": "low",
+      "title": "in_cidr caveat does not match IPv4-mapped IPv6 addresses",
+      "domain": "Authorization",
+      "url": "https://github.com/authzed/spicedb/security/advisories/GHSA-5784-6qcr-48fq"
+    },
+    {
+      "owner": "zitadel",
+      "repo": "zitadel",
+      "ghsa": "GHSA-93hm-8q29-c8cr",
+      "severity": "low",
+      "title": "SSRF in organization domain HTTP verification",
+      "domain": "Identity",
+      "url": "https://github.com/zitadel/zitadel/security/advisories/GHSA-93hm-8q29-c8cr"
+    }
+  ],
   "org": {
     "name": "0-draft",
     "url": "https://github.com/0-draft",

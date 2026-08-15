@@ -69,6 +69,18 @@ describe('App landing → detail', () => {
     expect(contribRows(prSection()) - before).toBe(closedCount);
   });
 
+  it('renders one advisory row per entry and badges exactly the CVE-bearing ones', () => {
+    const cveCount = profile.advisories.filter((a) => 'cve' in a && a.cve).length;
+    render(<App />);
+    fireEvent.keyDown(window, { key: ' ' });
+
+    const section = screen
+      .getByRole('heading', { name: /security advisories/ })
+      .closest('section') as HTMLElement;
+    expect(section.querySelectorAll('.row.advisory')).toHaveLength(profile.advisories.length);
+    expect(section.querySelectorAll('.adv-meta .cve')).toHaveLength(cveCount);
+  });
+
   it('keeps the contribution cloud stable when the state filter changes', () => {
     render(<App />);
     fireEvent.keyDown(window, { key: ' ' });
