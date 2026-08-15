@@ -33,7 +33,7 @@ const ADVISORY_SOURCES = [
   { repo: 'kumahq/kuma', ghsa: 'GHSA-744g-c785-x65q', domain: 'Workload Identity',
     cve: 'CVE-2026-18677',
     title: "Dataplane token without a workload binding can claim any workload's SPIFFE identity" },
-  { repo: 'falcosecurity/plugins', ghsa: 'GHSA-jhjp-4c2q-xmx4', domain: 'Cloud Native',
+  { repo: 'falcosecurity/plugins', ghsa: 'GHSA-jhjp-4c2q-xmx4', domain: 'Runtime Security',
     title: 'k8saudit rules miss privileged settings on init / ephemeral containers' },
   { repo: 'authzed/spicedb', ghsa: 'GHSA-5784-6qcr-48fq', domain: 'Authorization' },
   { repo: 'zitadel/zitadel', ghsa: 'GHSA-93hm-8q29-c8cr', domain: 'Identity',
