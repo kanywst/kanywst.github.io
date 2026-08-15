@@ -91,7 +91,7 @@
       "ghsa": "GHSA-8p62-9vh2-272p",
       "cve": "CVE-2026-63121",
       "severity": "medium",
-      "title": "trusted-repos-policy: uppercase registry host bypasses image deny rules",
+      "title": "trusted-repos-policy: uppercase registry host bypasses registry/image deny rules",
       "domain": "Supply Chain",
       "url": "https://github.com/kubewarden/policies/security/advisories/GHSA-8p62-9vh2-272p"
     },
