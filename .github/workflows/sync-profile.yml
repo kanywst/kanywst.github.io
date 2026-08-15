@@ -38,6 +38,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           node scripts/sync-profile.mjs
+          node scripts/sync-advisories.mjs
           if git diff --quiet -- src/data/profile.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
