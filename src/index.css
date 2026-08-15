@@ -356,8 +356,8 @@ a:hover {
 
 .sev-critical,
 .sev-high {
-  color: #f0788a;
-  background: rgba(240, 120, 138, 0.1);
+  color: var(--hl);
+  background: rgba(248, 113, 113, 0.1); /* --hl at 10% */
 }
 
 .sev-medium {
