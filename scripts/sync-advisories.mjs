@@ -15,58 +15,65 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { DOMAIN_BY_REPO } from './domains.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const FILE = resolve(here, '../src/data/profile.json');
 
 const GH_TIMEOUT_MS = 20_000;
 
-// Every advisory kanywst has reported. `domain` is curated (the API has no such field);
-// `title` overrides the API summary when set (default: the advisory's own summary);
-// `cve` pins a CVE the upstream GHSA doesn't carry — a downstream vendor's own CNA can
-// assign one under its product name while the upstream advisory stays cve=null (kuma's
-// finding is CVE-2026-18677 via Kong Mesh, but kumahq's GHSA shows no cve). A GitHub-
-// assigned CVE fills in automatically from the API; only downstream ones need pinning.
-// Published → rendered; draft / triage / closed → 404 → silently skipped.
+// Every advisory kanywst has reported — one line each, even before it's public.
+// `domain` comes from the shared DOMAIN_BY_REPO table (same source contributions/issues
+// use, so a repo never shows two labels); `title` overrides the API summary; `cve` pins
+// a CVE the upstream GHSA doesn't carry — a downstream vendor's own CNA can assign one
+// under its product name while the upstream advisory stays cve=null (kuma's finding is
+// CVE-2026-18677 via Kong Mesh, but kumahq's GHSA shows no cve). A GitHub-assigned CVE
+// fills in automatically from the API; only downstream ones need pinning.
+// Published → rendered; draft / triage / closed → 404 → skipped.
 const ADVISORY_SOURCES = [
-  { repo: 'kubewarden/policies', ghsa: 'GHSA-8p62-9vh2-272p', domain: 'Supply Chain' },
-  { repo: 'kumahq/kuma', ghsa: 'GHSA-744g-c785-x65q', domain: 'Workload Identity',
-    cve: 'CVE-2026-18677',
+  { repo: 'kubewarden/policies', ghsa: 'GHSA-8p62-9vh2-272p' },
+  { repo: 'kumahq/kuma', ghsa: 'GHSA-744g-c785-x65q', cve: 'CVE-2026-18677',
     title: "Dataplane token without a workload binding can claim any workload's SPIFFE identity" },
-  { repo: 'falcosecurity/plugins', ghsa: 'GHSA-jhjp-4c2q-xmx4', domain: 'Runtime Security',
+  { repo: 'falcosecurity/plugins', ghsa: 'GHSA-jhjp-4c2q-xmx4',
     title: 'k8saudit rules miss privileged settings on init / ephemeral containers' },
-  { repo: 'authzed/spicedb', ghsa: 'GHSA-5784-6qcr-48fq', domain: 'Authorization' },
-  { repo: 'zitadel/zitadel', ghsa: 'GHSA-93hm-8q29-c8cr', domain: 'Identity',
+  { repo: 'authzed/spicedb', ghsa: 'GHSA-5784-6qcr-48fq' },
+  { repo: 'zitadel/zitadel', ghsa: 'GHSA-93hm-8q29-c8cr',
     title: 'SSRF in organization domain HTTP verification' },
   // Filed, not yet public — auto-appear once published:
-  { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-6f73-grvh-9gvc', domain: 'AI Gateway' },
-  { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-9c2x-f2fx-mc4q', domain: 'AI Gateway' },
-  { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-chmc-g5r6-q8xc', domain: 'AI Gateway' },
-  { repo: 'oras-project/oras-go', ghsa: 'GHSA-6hq5-qrvm-qhcx', domain: 'Supply Chain' },
-  { repo: 'zalando/skipper', ghsa: 'GHSA-7g9f-57qp-jhgx', domain: 'OIDC' },
-  { repo: 'zalando/skipper', ghsa: 'GHSA-v9vv-w45w-rppw', domain: 'OIDC' },
-  { repo: 'aquasecurity/trivy', ghsa: 'GHSA-mx8c-3cph-89vq', domain: 'Supply Chain' },
-  { repo: 'coder/coder', ghsa: 'GHSA-j58h-457w-w698', domain: 'Cloud Native' },
-  { repo: 'notaryproject/notation-go', ghsa: 'GHSA-8879-53fh-v6x7', domain: 'Supply Chain' },
-  { repo: 'notaryproject/ratify', ghsa: 'GHSA-88jq-fv55-rqr7', domain: 'Supply Chain' },
-  { repo: 'goauthentik/authentik', ghsa: 'GHSA-hm5g-jff6-5qh8', domain: 'Identity' },
-  { repo: 'cerbos/cerbos', ghsa: 'GHSA-rm2r-9fq8-vvj4', domain: 'Authorization' },
-  { repo: 'netbirdio/netbird', ghsa: 'GHSA-gvrx-7qv5-hmff', domain: 'Cloud Native' },
+  { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-6f73-grvh-9gvc' },
+  { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-9c2x-f2fx-mc4q' },
+  { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-chmc-g5r6-q8xc' },
+  { repo: 'oras-project/oras-go', ghsa: 'GHSA-6hq5-qrvm-qhcx' },
+  { repo: 'zalando/skipper', ghsa: 'GHSA-7g9f-57qp-jhgx' },
+  { repo: 'zalando/skipper', ghsa: 'GHSA-v9vv-w45w-rppw' },
+  { repo: 'aquasecurity/trivy', ghsa: 'GHSA-mx8c-3cph-89vq' },
+  { repo: 'coder/coder', ghsa: 'GHSA-j58h-457w-w698' },
+  { repo: 'notaryproject/notation-go', ghsa: 'GHSA-8879-53fh-v6x7' },
+  { repo: 'notaryproject/ratify', ghsa: 'GHSA-88jq-fv55-rqr7' },
+  { repo: 'goauthentik/authentik', ghsa: 'GHSA-hm5g-jff6-5qh8' },
+  { repo: 'cerbos/cerbos', ghsa: 'GHSA-rm2r-9fq8-vvj4' },
+  { repo: 'netbirdio/netbird', ghsa: 'GHSA-gvrx-7qv5-hmff' },
 ];
 
 const SEVERITY_RANK = { critical: 0, high: 1, medium: 2, low: 3 };
 
-function fetchAdvisory({ repo, ghsa, domain, title, cve }) {
+function fetchAdvisory({ repo, ghsa, title, cve, domain }) {
   let data;
   try {
     const out = execFileSync('gh', ['api', `repos/${repo}/security-advisories/${ghsa}`], {
       encoding: 'utf8',
       timeout: GH_TIMEOUT_MS,
-      stdio: ['ignore', 'pipe', 'ignore'], // swallow the 404 stderr for unpublished ones
+      stdio: ['ignore', 'pipe', 'pipe'],
     });
     data = JSON.parse(out);
-  } catch {
-    return null; // draft / triage / closed / withdrawn — not public yet
+  } catch (err) {
+    const msg = String(err.stderr || err.message || '');
+    // A 404 is the benign case: the advisory is draft/triage/closed or not visible to us
+    // yet — skip it. Anything else (rate limit, 5xx, timeout, auth) must NOT be silently
+    // read as "not published" — that would drop a real published row from the site — so
+    // abort the whole run and leave the existing list untouched.
+    if (/HTTP 404|Not Found/i.test(msg)) return null;
+    throw new Error(`advisory fetch failed for ${repo} ${ghsa}: ${msg.trim() || err}`);
   }
   if (data.state !== 'published') return null;
   const [owner, name] = repo.split('/');
@@ -78,7 +85,7 @@ function fetchAdvisory({ repo, ghsa, domain, title, cve }) {
     ...(cveId ? { cve: cveId } : {}),
     severity: (data.severity || 'medium').toLowerCase(),
     title: title ?? data.summary,
-    domain,
+    domain: domain ?? DOMAIN_BY_REPO[repo] ?? '',
     url: data.html_url ?? `https://github.com/${repo}/security/advisories/${ghsa}`,
   };
 }
@@ -108,4 +115,9 @@ console.log(
 );
 for (const a of advisories) {
   console.log(`    ${a.severity.padEnd(8)} ${a.owner}/${a.repo}  ${a.cve ?? a.ghsa}`);
+}
+const untagged = advisories.filter((a) => !a.domain);
+if (untagged.length) {
+  console.log(`! ${untagged.length} untagged — add their repo to scripts/domains.mjs:`);
+  for (const a of untagged) console.log(`    ${a.owner}/${a.repo}`);
 }

@@ -11,42 +11,13 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { DOMAIN_BY_REPO } from './domains.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const FILE = resolve(here, '../src/data/profile.json');
 
 const GH_TIMEOUT_MS = 20_000;
 const GH_MAX_BUFFER = 5 * 1024 * 1024;
-
-// owner/repo → domain. Anything unmapped falls back to '' (flagged at the end to tag).
-const DOMAIN_BY_REPO = {
-  'authzed/spicedb': 'Authorization',
-  'openfga/openfga': 'Authorization',
-  'Permify/permify': 'Authorization',
-  'open-policy-agent/opa': 'Authorization',
-  'open-policy-agent/contrib': 'Authorization',
-  'open-policy-agent/gatekeeper-library': 'Authorization',
-  'aserto-dev/topaz': 'Authorization',
-  'spiffe/spire': 'Workload Identity',
-  'sigstore/sigstore-go': 'Supply Chain',
-  'sigstore/cosign': 'Supply Chain',
-  'in-toto/in-toto-golang': 'Supply Chain',
-  'theupdateframework/go-tuf': 'Supply Chain',
-  'falcosecurity/plugins': 'Runtime Security',
-  'dexidp/dex': 'OIDC',
-  'smallstep/certificates': 'PKI',
-  'smallstep/cli': 'PKI',
-  'cert-manager/cert-manager': 'PKI',
-  'enix/x509-certificate-exporter': 'PKI',
-  'golang/go': 'PKI',
-  'istio/istio': 'Service Mesh',
-  'cilium/cilium': 'Service Mesh',
-  'kubernetes/kubernetes': 'Cloud Native',
-  'prometheus/prometheus': 'Observability',
-  'golangci/golangci-lint': 'Tooling',
-  'google-gemini/gemini-cli': 'Tooling',
-  'pwn2winctf/2020submissions': 'CTF',
-};
 
 const own = /^(kanywst|0-draft)\//;
 
