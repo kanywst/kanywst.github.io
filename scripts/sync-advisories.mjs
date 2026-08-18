@@ -74,6 +74,13 @@ function fetchAdvisory({ repo, ghsa, title, cve }) {
     // read as "not published" — that would drop a real published row from the site — so
     // abort the whole run and leave the existing list untouched.
     if (/HTTP 404|Not Found/i.test(msg)) return null;
+    // Same benign case, different status code. In Actions `gh` runs on GITHUB_TOKEN, an
+    // App installation token, and this endpoint answers 403 rather than 404 when the
+    // advisory isn't visible to the caller. Skipping it cannot hide a published row: a
+    // published advisory is world-readable (it returns 200 unauthenticated), so any token
+    // that gets 403 here would have got 200 had it been published. Matched on the
+    // integration message specifically — a rate-limit 403 still aborts.
+    if (/Resource not accessible by integration/i.test(msg)) return null;
     throw new Error(`advisory fetch failed for ${repo} ${ghsa}: ${msg.trim() || err}`);
   }
   if (data.state !== 'published') return null;
