@@ -33,7 +33,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "license": "Apache-2.0",
-      "version": "v0.1.0",
+      "version": "v0.2.0",
       "stars": 0,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation — WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey",
@@ -55,7 +55,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v1.0.1",
+      "version": "v1.0.2",
       "stars": 3,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
@@ -78,7 +78,7 @@
       "lang": "List",
       "license": "CC0",
       "version": null,
-      "stars": 7,
+      "stars": 8,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization",
       "featured": false
@@ -433,6 +433,24 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "Infisical",
+      "repo": "infisical",
+      "number": 7673,
+      "state": "open",
+      "domain": "",
+      "title": "fix(pki): scope EST enrollment routes by path params instead of the matched route",
+      "url": "https://github.com/Infisical/infisical/pull/7673"
+    },
+    {
+      "owner": "cloudflare",
+      "repo": "workers-oauth-provider",
+      "number": 303,
+      "state": "open",
+      "domain": "",
+      "title": "fix(ema): floor the jti replay marker TTL at KV's minimum",
+      "url": "https://github.com/cloudflare/workers-oauth-provider/pull/303"
+    },
+    {
       "owner": "envoyproxy",
       "repo": "gateway",
       "number": 9743,
@@ -650,7 +668,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-15"
+    "syncedAt": "2026-08-18"
   },
   "issues": [
     {
