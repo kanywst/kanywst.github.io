@@ -153,7 +153,7 @@ export function ContribCloud({
   noun: 'pull request' | 'issue';
   style?: CSSProperties;
 }) {
-  // total contribution footprint (all states), aggregated by org — intentionally NOT
+  // total contribution footprint (all states), aggregated by org. intentionally NOT
   // tied to the state filter, so the cloud stays a stable overview while the list below
   // responds to the chips
   const ownerCounts = useMemo(
@@ -213,7 +213,7 @@ export function ContribCloud({
 
 function Detail({ onClose }: { onClose: () => void }) {
   const prCount = (s: string) => contributions.filter((c) => c.state === s).length;
-  // closed PRs are rejected/superseded — hidden by default, toggleable
+  // closed PRs are rejected/superseded, so hidden by default and toggleable
   const [active, setActive] = useState<Set<string>>(() => new Set(['merged', 'open']));
   const toggleState = (s: string) =>
     setActive((prev) => {
@@ -269,7 +269,7 @@ function Detail({ onClose }: { onClose: () => void }) {
 
       <section className="sec">
         <div className="sec-head reveal" style={at(advHead)}>
-          <h2 className="label">upstream — security advisories</h2>
+          <h2 className="label">upstream · security advisories</h2>
           <span className="label-note">
             {advisories.length} disclosed · {cveCount} CVE{cveCount === 1 ? '' : 's'} assigned
           </span>
@@ -279,7 +279,7 @@ function Detail({ onClose }: { onClose: () => void }) {
 
       <section className="sec">
         <div className="sec-head reveal" style={at(prHead)}>
-          <h2 className="label">upstream — pull requests</h2>
+          <h2 className="label">upstream · pull requests</h2>
           <div className="filter" role="group" aria-label="filter pull requests by state">
             {PR_STATES.map((s) => (
               <button
@@ -301,7 +301,7 @@ function Detail({ onClose }: { onClose: () => void }) {
 
       <section className="sec">
         <div className="sec-head reveal" style={at(issuesHead)}>
-          <h2 className="label">upstream — issues filed</h2>
+          <h2 className="label">upstream · issues filed</h2>
           <span className="label-note">{issues.length} bug reports &amp; proposals in external projects</span>
         </div>
         {hasIssueCloud && <ContribCloud items={issues} noun="issue" style={at(issuesHead + 1)} />}
@@ -345,14 +345,14 @@ export default function App() {
   const [open, setOpen] = useState(false);
 
   // Drive the open/close state change through the View Transition API so the hero glides
-  // from its centered (landing) position to the top — animated from the real measured
+  // from its centered (landing) position to the top, animated from the real measured
   // positions, no magic offset. Falls back to an instant swap where VT is unsupported
   // (e.g. Firefox) or when the user prefers reduced motion.
   const setOpenAnimated = useCallback((next: boolean | ((v: boolean) => boolean)) => {
     const doc = document as Document & {
       startViewTransition?: (cb: () => void) => unknown;
     };
-    // optional-chain: matchMedia is absent in some environments (jsdom, old/SSR) — treat as no preference
+    // optional-chain: matchMedia is absent in some environments (jsdom, old/SSR), so treat as no preference
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
     if (doc.startViewTransition && !reduceMotion) {
       doc.startViewTransition(() => flushSync(() => setOpen(next)));

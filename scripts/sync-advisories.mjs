@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Regenerate the `advisories` array in src/data/profile.json from the live GitHub
-// advisory API. Only touches `advisories` — run alongside sync-profile.mjs.
+// advisory API. Only touches `advisories`; run alongside sync-profile.mjs.
 //
 // Usage:  node scripts/sync-advisories.mjs        # `gh` auth optional (published
 //         advisories are world-readable; drafts/closed 404 and are skipped)
@@ -8,7 +8,7 @@
 // The section is self-maintaining: list every advisory you file in ADVISORY_SOURCES
 // below (even before it's public). Each one is fetched every sync; a source that isn't
 // `published` yet returns 404 and is skipped, so it appears on the site the day it goes
-// public — and the CVE id / severity fill in automatically once assigned. When you file
+// public, and the CVE id / severity fill in automatically once assigned. When you file
 // a new advisory, add ONE line here; nothing else needs editing.
 
 import { execFileSync } from 'node:child_process';
@@ -22,10 +22,10 @@ const FILE = resolve(here, '../src/data/profile.json');
 
 const GH_TIMEOUT_MS = 20_000;
 
-// Every advisory kanywst has reported — one line each, even before it's public.
+// Every advisory kanywst has reported, one line each, even before it's public.
 // `domain` comes from the shared DOMAIN_BY_REPO table (same source contributions/issues
 // use, so a repo never shows two labels); `title` overrides the API summary; `cve` pins
-// a CVE the upstream GHSA doesn't carry — a downstream vendor's own CNA can assign one
+// a CVE the upstream GHSA doesn't carry, since a downstream vendor's own CNA can assign one
 // under its product name while the upstream advisory stays cve=null (kuma's finding is
 // CVE-2026-18677 via Kong Mesh, but kumahq's GHSA shows no cve). A GitHub-assigned CVE
 // fills in automatically from the API; only downstream ones need pinning.
@@ -39,7 +39,7 @@ const ADVISORY_SOURCES = [
   { repo: 'authzed/spicedb', ghsa: 'GHSA-5784-6qcr-48fq' },
   { repo: 'zitadel/zitadel', ghsa: 'GHSA-93hm-8q29-c8cr',
     title: 'SSRF in organization domain HTTP verification' },
-  // Filed, not yet public — auto-appear once published:
+  // Filed, not yet public; auto-appear once published:
   { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-6f73-grvh-9gvc' },
   { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-9c2x-f2fx-mc4q' },
   { repo: 'envoyproxy/ai-gateway', ghsa: 'GHSA-chmc-g5r6-q8xc' },
@@ -70,8 +70,8 @@ function fetchAdvisory({ repo, ghsa, title, cve }) {
   } catch (err) {
     const msg = String(err.stderr || err.message || '');
     // A 404 is the benign case: the advisory is draft/triage/closed or not visible to us
-    // yet — skip it. Anything else (rate limit, 5xx, timeout, auth) must NOT be silently
-    // read as "not published" — that would drop a real published row from the site — so
+    // yet, so skip it. Anything else (rate limit, 5xx, timeout, auth) must NOT be silently
+    // read as "not published", which would drop a real published row from the site, so
     // abort the whole run and leave the existing list untouched.
     if (/HTTP 404|Not Found/i.test(msg)) return null;
     // Same benign case, different status code. In Actions `gh` runs on GITHUB_TOKEN, an
@@ -79,19 +79,19 @@ function fetchAdvisory({ repo, ghsa, title, cve }) {
     // advisory isn't visible to the caller. Skipping it cannot hide a published row: a
     // published advisory is world-readable (it returns 200 unauthenticated), so any token
     // that gets 403 here would have got 200 had it been published. Matched on the
-    // integration message specifically — a rate-limit 403 still aborts.
+    // integration message specifically; a rate-limit 403 still aborts.
     if (/Resource not accessible by integration/i.test(msg)) return null;
     throw new Error(`advisory fetch failed for ${repo} ${ghsa}: ${msg.trim() || err}`);
   }
   if (data.state !== 'published') return null;
   // Derive owner/repo from the live html_url (GitHub keeps it current across renames),
-  // falling back to the static source slug — so a renamed repo doesn't show a stale slug.
+  // falling back to the static source slug, so a renamed repo doesn't show a stale slug.
   const url = data.html_url ?? `https://github.com/${repo}/security/advisories/${ghsa}`;
   const m = url.match(/github\.com\/([^/]+)\/([^/]+)\/security\/advisories\//);
   const slug = m ? `${m[1]}/${m[2]}` : repo;
   const [owner, name] = slug.split('/');
   const cveId = data.cve_id ?? cve; // GitHub-assigned, else a pinned downstream CVE
-  // Don't fabricate a severity if the API omits/renames the field — flag it ('unknown',
+  // Don't fabricate a severity if the API omits/renames the field; flag it ('unknown',
   // sorted last, warned below) rather than silently claiming a specific level.
   const sev = (data.severity ?? '').toLowerCase();
   return {
@@ -134,11 +134,11 @@ for (const a of advisories) {
 }
 const untagged = advisories.filter((a) => !a.domain);
 if (untagged.length) {
-  console.log(`! ${untagged.length} untagged — add their repo to scripts/domains.mjs:`);
+  console.log(`! ${untagged.length} untagged, add their repo to scripts/domains.mjs:`);
   for (const a of untagged) console.log(`    ${a.owner}/${a.repo}`);
 }
 const unknownSev = advisories.filter((a) => a.severity === 'unknown');
 if (unknownSev.length) {
-  console.log(`! ${unknownSev.length} with an unrecognized severity from the API — check:`);
+  console.log(`! ${unknownSev.length} with an unrecognized severity from the API, check:`);
   for (const a of unknownSev) console.log(`    ${a.owner}/${a.repo} ${a.ghsa}`);
 }

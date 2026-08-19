@@ -83,9 +83,9 @@ a:hover {
   padding: 72px 0 0;
 }
 
-/* the actual hero content — its own box so the View Transition morphs just this block.
+/* the actual hero content, in its own box so the View Transition morphs just this block.
    gap stays identical in both states on purpose: .hero-inner is the VT target, so a size
-   change would make the browser scale the (flattened) snapshot — blurry text + an end snap.
+   change would make the browser scale the (flattened) snapshot: blurry text + an end snap.
    Keeping it constant makes the morph a pure, crisp translate. */
 .hero-inner {
   display: flex;
@@ -110,7 +110,7 @@ a:hover {
 }
 
 /* Browsers without the View Transition API (e.g. Firefox) simply swap to the top layout
-   with no glide — intentionally no transform fallback: translating only .main-content--top
+   with no glide, intentionally no transform fallback: translating only .main-content--top
    left .detail in its final flow position, so the rising hero overlapped it. */
 
 .avatar {
@@ -341,7 +341,7 @@ a:hover {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* security advisories — severity marker + stacked name/desc row */
+/* security advisories: severity marker + stacked name/desc row */
 
 .advisory {
   grid-template-columns: 78px minmax(0, 1fr);
@@ -411,7 +411,7 @@ a:hover {
   color: var(--muted);
 }
 
-/* contribution cloud — org avatars sized by PR count */
+/* contribution cloud: org avatars sized by PR count */
 
 .cloud {
   display: flex;

@@ -88,7 +88,7 @@ for (const repo of profile.flagships) {
     const tag = gh(['release', 'view', '-R', slug, '--json', 'tagName', '-q', '.tagName']).trim();
     if (tag) repo.version = normalizeVersion(tag);
   } catch {
-    /* no releases — keep whatever curation set (often null) */
+    /* no releases, so keep whatever curation set (often null) */
   }
 }
 
@@ -117,6 +117,6 @@ console.log(
 );
 const untagged = [...prs, ...issues].filter((c) => !c.domain);
 if (untagged.length) {
-  console.log(`! ${untagged.length} untagged — add their repos to DOMAIN_BY_REPO:`);
+  console.log(`! ${untagged.length} untagged, add their repos to DOMAIN_BY_REPO:`);
   for (const c of untagged) console.log(`    ${c.owner}/${c.repo}`);
 }

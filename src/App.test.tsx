@@ -62,7 +62,7 @@ describe('App landing → detail', () => {
     const closed = screen.getByRole('button', { name: /^closed/ });
     expect(closed).toHaveAttribute('aria-pressed', 'false');
 
-    // toggling closed reveals exactly the closed rows — the actual filtering, not just chip state
+    // toggling closed reveals exactly the closed rows, i.e. the actual filtering, not just chip state
     const before = contribRows(prSection());
     fireEvent.click(closed);
     expect(closed).toHaveAttribute('aria-pressed', 'true');
