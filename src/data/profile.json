@@ -22,7 +22,7 @@
       "owner": "0-draft",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.3.0",
+      "version": "v0.3.1",
       "stars": 2,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary — Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/0-draft/omega",
@@ -44,7 +44,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.5.1",
+      "version": "v0.6.0",
       "stars": 3,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin",
@@ -56,7 +56,7 @@
       "lang": "Go",
       "license": "MIT",
       "version": "v1.0.2",
-      "stars": 3,
+      "stars": 8,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -66,7 +66,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v1.3.1",
+      "version": "v1.4.0",
       "stars": 0,
       "tagline": "Cost calculator for offline password brute-force — time + USD per GPU profile, with a CI gatekeeper.",
       "url": "https://github.com/kanywst/brtc",
@@ -113,6 +113,24 @@
       "title": "k8saudit rules miss privileged settings on init / ephemeral containers",
       "domain": "Runtime Security",
       "url": "https://github.com/falcosecurity/plugins/security/advisories/GHSA-jhjp-4c2q-xmx4"
+    },
+    {
+      "owner": "zalando",
+      "repo": "skipper",
+      "ghsa": "GHSA-7g9f-57qp-jhgx",
+      "severity": "medium",
+      "title": "OAuth2 grant and OIDC login flow state is not bound to the user agent, allowing login CSRF",
+      "domain": "OIDC",
+      "url": "https://github.com/zalando/skipper/security/advisories/GHSA-7g9f-57qp-jhgx"
+    },
+    {
+      "owner": "zalando",
+      "repo": "skipper",
+      "ghsa": "GHSA-v9vv-w45w-rppw",
+      "severity": "medium",
+      "title": "Token introspection client credentials are shared per issuer, so routes introspect as each other",
+      "domain": "OIDC",
+      "url": "https://github.com/zalando/skipper/security/advisories/GHSA-v9vv-w45w-rppw"
     },
     {
       "owner": "authzed",
@@ -668,7 +686,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-18"
+    "syncedAt": "2026-08-19"
   },
   "issues": [
     {
