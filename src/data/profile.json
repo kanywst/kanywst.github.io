@@ -19,7 +19,7 @@
   "flagships": [
     {
       "name": "omega",
-      "owner": "0-draft",
+      "owner": "kanywst",
       "lang": "Go",
       "license": "Apache-2.0",
       "version": "v0.3.1",
@@ -81,6 +81,17 @@
       "stars": 8,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization",
+      "featured": false
+    },
+    {
+      "name": "spiffe-compliance-checker",
+      "owner": "kanywst",
+      "lang": "Go",
+      "license": "Apache-2.0",
+      "version": "v0.2.0",
+      "stars": 0,
+      "tagline": "Static MUST-clause compliance checker for SPIFFE artifacts: SPIFFE-ID, X.509-SVID, JWT-SVID, trust bundle, each failure citing its spec section.",
+      "url": "https://github.com/kanywst/spiffe-compliance-checker",
       "featured": false
     }
   ],
@@ -163,10 +174,16 @@
         "url": "https://github.com/0-draft/xds-control-plane-the-hard-way"
       },
       {
-        "name": "spiffe-compliance-checker",
-        "lang": "Go",
-        "blurb": "Static MUST-clause compliance checker for SPIFFE artifacts.",
-        "url": "https://github.com/kanywst/spiffe-compliance-checker"
+        "name": "identity-deep-dive",
+        "lang": "Python",
+        "blurb": "Collect and score deep-dive candidates across the OAuth, WIMSE and digital-credentials working groups.",
+        "url": "https://github.com/0-draft/identity-deep-dive"
+      },
+      {
+        "name": "microsegmentation-deepdive",
+        "lang": "Shell",
+        "blurb": "Eight microsegmentation patterns run end to end on a laptop: NetworkPolicy, Cilium, Istio, SPIRE, nftables.",
+        "url": "https://github.com/0-draft/microsegmentation-deepdive"
       }
     ]
   },
