@@ -24,7 +24,7 @@
       "license": "Apache-2.0",
       "version": "v0.3.1",
       "stars": 2,
-      "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary — Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
+      "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega",
       "featured": true
     },
@@ -35,7 +35,7 @@
       "license": "Apache-2.0",
       "version": "v0.2.0",
       "stars": 0,
-      "tagline": "Vendor-neutral WIMSE workload-identity reference implementation — WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
+      "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey",
       "featured": true
     },
@@ -68,7 +68,7 @@
       "license": "MIT",
       "version": "v1.4.0",
       "stars": 0,
-      "tagline": "Cost calculator for offline password brute-force — time + USD per GPU profile, with a CI gatekeeper.",
+      "tagline": "Cost calculator for offline password brute-force: time + USD per GPU profile, with a CI gatekeeper.",
       "url": "https://github.com/kanywst/brtc",
       "featured": false
     },
@@ -154,7 +154,7 @@
   "org": {
     "name": "0-draft",
     "url": "https://github.com/0-draft",
-    "blurb": "Research & incubation org — reference implementations, build-it-the-hard-way guides, and deep dives across identity, authorization, and supply-chain security.",
+    "blurb": "Research & incubation org for reference implementations, build-it-the-hard-way guides, and deep dives across identity, authorization, and supply-chain security.",
     "repos": [
       {
         "name": "xds-control-plane-the-hard-way",
@@ -167,18 +167,6 @@
         "lang": "Go",
         "blurb": "Static MUST-clause compliance checker for SPIFFE artifacts.",
         "url": "https://github.com/kanywst/spiffe-compliance-checker"
-      },
-      {
-        "name": "webauthn-the-hard-way",
-        "lang": "Python",
-        "blurb": "Build a WebAuthn Relying Party from scratch — CBOR, COSE, attestation by hand.",
-        "url": "https://github.com/0-draft/webauthn-the-hard-way"
-      },
-      {
-        "name": "sigil",
-        "lang": "Shell",
-        "blurb": "Secure-by-default GitHub template — signed commits, SLSA provenance, sigstore.",
-        "url": "https://github.com/0-draft/sigil"
       }
     ]
   },
