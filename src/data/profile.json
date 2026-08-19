@@ -25,7 +25,7 @@
       "version": "v0.3.1",
       "stars": 2,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary — Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
-      "url": "https://github.com/0-draft/omega",
+      "url": "https://github.com/kanywst/omega",
       "featured": true
     },
     {
@@ -157,22 +157,16 @@
     "blurb": "Research & incubation org — reference implementations, build-it-the-hard-way guides, and deep dives across identity, authorization, and supply-chain security.",
     "repos": [
       {
-        "name": "mcp-opa",
-        "lang": "Go",
-        "blurb": "Expose OPA / Rego evaluation as an MCP tool for LLM agents.",
-        "url": "https://github.com/0-draft/mcp-opa"
-      },
-      {
-        "name": "mcp-authzen",
-        "lang": "Go",
-        "blurb": "Front a real OpenID AuthZEN 1.0 PDP over MCP.",
-        "url": "https://github.com/0-draft/mcp-authzen"
+        "name": "xds-control-plane-the-hard-way",
+        "lang": "Rust",
+        "blurb": "Build an Envoy xDS control plane from raw protobuf, no service mesh framework.",
+        "url": "https://github.com/0-draft/xds-control-plane-the-hard-way"
       },
       {
         "name": "spiffe-compliance-checker",
         "lang": "Go",
         "blurb": "Static MUST-clause compliance checker for SPIFFE artifacts.",
-        "url": "https://github.com/0-draft/spiffe-compliance-checker"
+        "url": "https://github.com/kanywst/spiffe-compliance-checker"
       },
       {
         "name": "webauthn-the-hard-way",
