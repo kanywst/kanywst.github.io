@@ -56,7 +56,7 @@
       "lang": "Go",
       "license": "MIT",
       "version": "v1.0.2",
-      "stars": 8,
+      "stars": 12,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -188,6 +188,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "cloudflare",
+      "repo": "workers-oauth-provider",
+      "number": 303,
+      "state": "merged",
+      "domain": "",
+      "title": "fix(ema): floor the jti replay marker TTL at KV's minimum",
+      "url": "https://github.com/cloudflare/workers-oauth-provider/pull/303"
+    },
     {
       "owner": "spiffe",
       "repo": "spiffe",
@@ -450,6 +459,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "sigstore",
+      "repo": "gitsign",
+      "number": 871,
+      "state": "open",
+      "domain": "",
+      "title": "fix(git): preserve trailing CR when splitting raw commit/tag objects",
+      "url": "https://github.com/sigstore/gitsign/pull/871"
+    },
+    {
       "owner": "Infisical",
       "repo": "infisical",
       "number": 7673,
@@ -457,15 +475,6 @@
       "domain": "",
       "title": "fix(pki): scope EST enrollment routes by path params instead of the matched route",
       "url": "https://github.com/Infisical/infisical/pull/7673"
-    },
-    {
-      "owner": "cloudflare",
-      "repo": "workers-oauth-provider",
-      "number": 303,
-      "state": "open",
-      "domain": "",
-      "title": "fix(ema): floor the jti replay marker TTL at KV's minimum",
-      "url": "https://github.com/cloudflare/workers-oauth-provider/pull/303"
     },
     {
       "owner": "envoyproxy",
@@ -685,7 +694,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-19"
+    "syncedAt": "2026-08-20"
   },
   "issues": [
     {
