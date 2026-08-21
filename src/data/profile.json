@@ -56,7 +56,7 @@
       "lang": "Go",
       "license": "MIT",
       "version": "v1.0.2",
-      "stars": 12,
+      "stars": 15,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -205,6 +205,15 @@
       "domain": "",
       "title": "Add wit-svid to the list of supported use values",
       "url": "https://github.com/spiffe/spiffe/pull/417"
+    },
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 599,
+      "state": "merged",
+      "domain": "",
+      "title": "Sync evaluation schemas with the final 1.0 text",
+      "url": "https://github.com/openid/authzen/pull/599"
     },
     {
       "owner": "lldap",
@@ -495,15 +504,6 @@
       "url": "https://github.com/rothgar/awesome-tuis/pull/814"
     },
     {
-      "owner": "openid",
-      "repo": "authzen",
-      "number": 599,
-      "state": "open",
-      "domain": "",
-      "title": "Sync evaluation schemas with the final 1.0 text",
-      "url": "https://github.com/openid/authzen/pull/599"
-    },
-    {
       "owner": "vouch",
       "repo": "vouch-proxy",
       "number": 616,
@@ -694,18 +694,9 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-20"
+    "syncedAt": "2026-08-21"
   },
   "issues": [
-    {
-      "owner": "openid",
-      "repo": "authzen",
-      "number": 598,
-      "state": "open",
-      "domain": "",
-      "title": "Fix evaluation JSON schemas to match the final 1.0 text",
-      "url": "https://github.com/openid/authzen/issues/598"
-    },
     {
       "owner": "vouch",
       "repo": "vouch-proxy",
@@ -759,6 +750,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 598,
+      "state": "closed",
+      "domain": "",
+      "title": "Fix evaluation JSON schemas to match the final 1.0 text",
+      "url": "https://github.com/openid/authzen/issues/598"
     },
     {
       "owner": "glauth",
