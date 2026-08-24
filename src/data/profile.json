@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.3.1",
+      "version": "v0.4.0",
       "stars": 2,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega",
@@ -33,7 +33,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "license": "Apache-2.0",
-      "version": "v0.2.0",
+      "version": "v0.3.0",
       "stars": 0,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey",
@@ -56,7 +56,7 @@
       "lang": "Go",
       "license": "MIT",
       "version": "v1.0.2",
-      "stars": 17,
+      "stars": 19,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -694,9 +694,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-23"
+    "syncedAt": "2026-08-24"
   },
   "issues": [
+    {
+      "owner": "ory",
+      "repo": "polis",
+      "number": 4077,
+      "state": "open",
+      "domain": "",
+      "title": "IdP-initiated SAML responses can be replayed; no used-assertion state is kept",
+      "url": "https://github.com/ory/polis/issues/4077"
+    },
     {
       "owner": "vouch",
       "repo": "vouch-proxy",
