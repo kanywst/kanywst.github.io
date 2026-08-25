@@ -33,7 +33,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "license": "Apache-2.0",
-      "version": "v0.3.0",
+      "version": "v0.4.0",
       "stars": 0,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey",
@@ -55,7 +55,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v1.0.2",
+      "version": "v1.0.3",
       "stars": 19,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
@@ -88,7 +88,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.2.0",
+      "version": "v0.3.0",
       "stars": 0,
       "tagline": "Static MUST-clause compliance checker for SPIFFE artifacts: SPIFFE-ID, X.509-SVID, JWT-SVID, trust bundle, each failure citing its spec section.",
       "url": "https://github.com/kanywst/spiffe-compliance-checker",
@@ -694,7 +694,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-24"
+    "syncedAt": "2026-08-25"
   },
   "issues": [
     {
