@@ -33,7 +33,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "license": "Apache-2.0",
-      "version": "v0.4.0",
+      "version": "v0.5.0",
       "stars": 0,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey",
@@ -56,7 +56,7 @@
       "lang": "Go",
       "license": "MIT",
       "version": "v1.0.3",
-      "stars": 19,
+      "stars": 21,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -78,7 +78,7 @@
       "lang": "List",
       "license": "CC0",
       "version": null,
-      "stars": 8,
+      "stars": 9,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization",
       "featured": false
@@ -694,7 +694,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-25"
+    "syncedAt": "2026-08-26"
   },
   "issues": [
     {
