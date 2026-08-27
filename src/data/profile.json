@@ -33,7 +33,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "license": "Apache-2.0",
-      "version": "v0.5.0",
+      "version": "v0.6.0",
       "stars": 0,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey",
@@ -56,7 +56,7 @@
       "lang": "Go",
       "license": "MIT",
       "version": "v1.0.3",
-      "stars": 21,
+      "stars": 22,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -288,6 +288,15 @@
       "url": "https://github.com/openfga/openfga/pull/3181"
     },
     {
+      "owner": "aserto-dev",
+      "repo": "azm",
+      "number": 81,
+      "state": "merged",
+      "domain": "",
+      "title": "Fix SubjectSearch over-listing subjects excluded via a wildcard relation",
+      "url": "https://github.com/aserto-dev/azm/pull/81"
+    },
+    {
       "owner": "guacsec",
       "repo": "guac",
       "number": 3076,
@@ -468,6 +477,24 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "kgateway-dev",
+      "repo": "kgateway",
+      "number": 14626,
+      "state": "open",
+      "domain": "",
+      "title": "fix: deny ListenerSet attachment when allowedListeners cannot be parsed",
+      "url": "https://github.com/kgateway-dev/kgateway/pull/14626"
+    },
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 296,
+      "state": "open",
+      "domain": "",
+      "title": "Add an implementation status entry for wimsey",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/296"
+    },
+    {
       "owner": "sigstore",
       "repo": "gitsign",
       "number": 871,
@@ -529,15 +556,6 @@
       "domain": "",
       "title": "jwe: don't strip internal whitespace before parsing JSON",
       "url": "https://github.com/go-jose/go-jose/pull/264"
-    },
-    {
-      "owner": "aserto-dev",
-      "repo": "azm",
-      "number": 81,
-      "state": "open",
-      "domain": "",
-      "title": "Fix SubjectSearch over-listing subjects excluded via a wildcard relation",
-      "url": "https://github.com/aserto-dev/azm/pull/81"
     },
     {
       "owner": "in-toto",
@@ -694,9 +712,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-26"
+    "syncedAt": "2026-08-27"
   },
   "issues": [
+    {
+      "owner": "kgateway-dev",
+      "repo": "kgateway",
+      "number": 14624,
+      "state": "open",
+      "domain": "",
+      "title": "Control plane panics when a Gateway's allowedListeners selector cannot be parsed",
+      "url": "https://github.com/kgateway-dev/kgateway/issues/14624"
+    },
     {
       "owner": "ory",
       "repo": "polis",
@@ -759,6 +786,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "kgateway-dev",
+      "repo": "kgateway",
+      "number": 14625,
+      "state": "closed",
+      "domain": "",
+      "title": "Control plane panics when a Gateway's allowedListeners selector cannot be parsed",
+      "url": "https://github.com/kgateway-dev/kgateway/issues/14625"
     },
     {
       "owner": "openid",
