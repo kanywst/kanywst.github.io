@@ -193,7 +193,7 @@
       "repo": "workers-oauth-provider",
       "number": 303,
       "state": "merged",
-      "domain": "",
+      "domain": "OIDC",
       "title": "fix(ema): floor the jti replay marker TTL at KV's minimum",
       "url": "https://github.com/cloudflare/workers-oauth-provider/pull/303"
     },
@@ -202,7 +202,7 @@
       "repo": "spiffe",
       "number": 417,
       "state": "merged",
-      "domain": "",
+      "domain": "Workload Identity",
       "title": "Add wit-svid to the list of supported use values",
       "url": "https://github.com/spiffe/spiffe/pull/417"
     },
@@ -211,7 +211,7 @@
       "repo": "authzen",
       "number": 599,
       "state": "merged",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Sync evaluation schemas with the final 1.0 text",
       "url": "https://github.com/openid/authzen/pull/599"
     },
@@ -220,7 +220,7 @@
       "repo": "lldap",
       "number": 1469,
       "state": "merged",
-      "domain": "",
+      "domain": "Identity",
       "title": "server: use OsRng for refresh and password-reset tokens",
       "url": "https://github.com/lldap/lldap/pull/1469"
     },
@@ -229,7 +229,7 @@
       "repo": "lldap",
       "number": 1468,
       "state": "merged",
-      "domain": "",
+      "domain": "Identity",
       "title": "Fix: panic in password modify when a regular user targets another user",
       "url": "https://github.com/lldap/lldap/pull/1468"
     },
@@ -238,7 +238,7 @@
       "repo": "glauth",
       "number": 470,
       "state": "merged",
-      "domain": "",
+      "domain": "Identity",
       "title": "fix: reject disabled users on all backends in Bind",
       "url": "https://github.com/glauth/glauth/pull/470"
     },
@@ -247,7 +247,7 @@
       "repo": "php-casbin",
       "number": 174,
       "state": "merged",
-      "domain": "",
+      "domain": "Authorization",
       "title": "fix: evaluate domain link conditions on transitive role links",
       "url": "https://github.com/php-casbin/php-casbin/pull/174"
     },
@@ -256,7 +256,7 @@
       "repo": "woodpecker",
       "number": 6809,
       "state": "merged",
-      "domain": "",
+      "domain": "Supply Chain",
       "title": "Gate Kubernetes nodeSelector backend step config behind agent config",
       "url": "https://github.com/woodpecker-ci/woodpecker/pull/6809"
     },
@@ -265,7 +265,7 @@
       "repo": "rekor",
       "number": 2861,
       "state": "merged",
-      "domain": "",
+      "domain": "Supply Chain",
       "title": "Use bytes.Equal for inclusion proof root hash comparison",
       "url": "https://github.com/sigstore/rekor/pull/2861"
     },
@@ -274,7 +274,7 @@
       "repo": "openpubkey",
       "number": 373,
       "state": "merged",
-      "domain": "",
+      "domain": "OIDC",
       "title": "fix: avoid panic on array aud in GQCommitment verification",
       "url": "https://github.com/openpubkey/openpubkey/pull/373"
     },
@@ -292,7 +292,7 @@
       "repo": "azm",
       "number": 81,
       "state": "merged",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Fix SubjectSearch over-listing subjects excluded via a wildcard relation",
       "url": "https://github.com/aserto-dev/azm/pull/81"
     },
@@ -301,7 +301,7 @@
       "repo": "guac",
       "number": 3076,
       "state": "merged",
-      "domain": "",
+      "domain": "Supply Chain",
       "title": "fix(processor): bound decompressed document size to prevent decompression bombs",
       "url": "https://github.com/guacsec/guac/pull/3076"
     },
@@ -481,7 +481,7 @@
       "repo": "kgateway",
       "number": 14626,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "fix: deny ListenerSet attachment when allowedListeners cannot be parsed",
       "url": "https://github.com/kgateway-dev/kgateway/pull/14626"
     },
@@ -490,7 +490,7 @@
       "repo": "draft-ietf-wimse-s2s-protocol",
       "number": 296,
       "state": "open",
-      "domain": "",
+      "domain": "Workload Identity",
       "title": "Add an implementation status entry for wimsey",
       "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/296"
     },
@@ -499,7 +499,7 @@
       "repo": "gitsign",
       "number": 871,
       "state": "open",
-      "domain": "",
+      "domain": "Supply Chain",
       "title": "fix(git): preserve trailing CR when splitting raw commit/tag objects",
       "url": "https://github.com/sigstore/gitsign/pull/871"
     },
@@ -508,7 +508,7 @@
       "repo": "infisical",
       "number": 7673,
       "state": "open",
-      "domain": "",
+      "domain": "Identity",
       "title": "fix(pki): scope EST enrollment routes by path params instead of the matched route",
       "url": "https://github.com/Infisical/infisical/pull/7673"
     },
@@ -517,7 +517,7 @@
       "repo": "gateway",
       "number": 9743,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "fix(luavalidator): block getfenv/setfenv/newproxy/module in the Lua security sandbox",
       "url": "https://github.com/envoyproxy/gateway/pull/9743"
     },
@@ -526,7 +526,7 @@
       "repo": "awesome-tuis",
       "number": 814,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add y509 to Development",
       "url": "https://github.com/rothgar/awesome-tuis/pull/814"
     },
@@ -535,7 +535,7 @@
       "repo": "vouch-proxy",
       "number": 616,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "fix panic in cookie.Cookie() on malformed multipart cookie names",
       "url": "https://github.com/vouch/vouch-proxy/pull/616"
     },
@@ -544,7 +544,7 @@
       "repo": "polaris",
       "number": 1204,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Validate ephemeral containers in per-container checks",
       "url": "https://github.com/FairwindsOps/polaris/pull/1204"
     },
@@ -553,7 +553,7 @@
       "repo": "go-jose",
       "number": 264,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "jwe: don't strip internal whitespace before parsing JSON",
       "url": "https://github.com/go-jose/go-jose/pull/264"
     },
@@ -598,7 +598,7 @@
       "repo": "auth",
       "number": 2605,
       "state": "closed",
-      "domain": "",
+      "domain": "Identity",
       "title": "fix(oauthserver): consume authorization code under a row lock so it stays single-use",
       "url": "https://github.com/supabase/auth/pull/2605"
     },
@@ -607,7 +607,7 @@
       "repo": "connaisseur",
       "number": 2131,
       "state": "closed",
-      "domain": "",
+      "domain": "Supply Chain",
       "title": "fix: match registry host case-insensitively in policy rules",
       "url": "https://github.com/sse-secure-systems/connaisseur/pull/2131"
     },
@@ -616,7 +616,7 @@
       "repo": "jwx",
       "number": 2235,
       "state": "closed",
-      "domain": "",
+      "domain": "OIDC",
       "title": "jws: reject duplicate JOSE header parameter names",
       "url": "https://github.com/lestrrat-go/jwx/pull/2235"
     },
@@ -720,7 +720,7 @@
       "repo": "kgateway",
       "number": 14624,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "Control plane panics when a Gateway's allowedListeners selector cannot be parsed",
       "url": "https://github.com/kgateway-dev/kgateway/issues/14624"
     },
@@ -729,7 +729,7 @@
       "repo": "polis",
       "number": 4077,
       "state": "open",
-      "domain": "",
+      "domain": "Identity",
       "title": "IdP-initiated SAML responses can be replayed; no used-assertion state is kept",
       "url": "https://github.com/ory/polis/issues/4077"
     },
@@ -738,7 +738,7 @@
       "repo": "vouch-proxy",
       "number": 615,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "panic in cookie.Cookie() on malformed multipart cookie names",
       "url": "https://github.com/vouch/vouch-proxy/issues/615"
     },
@@ -747,7 +747,7 @@
       "repo": "authzen",
       "number": 554,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Fix incorrect metadata member name in Section 8.2.1",
       "url": "https://github.com/openid/authzen/issues/554"
     },
@@ -756,7 +756,7 @@
       "repo": "polaris",
       "number": 1203,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Per-container checks skip ephemeral containers",
       "url": "https://github.com/FairwindsOps/polaris/issues/1203"
     },
@@ -788,20 +788,11 @@
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
     },
     {
-      "owner": "kgateway-dev",
-      "repo": "kgateway",
-      "number": 14625,
-      "state": "closed",
-      "domain": "",
-      "title": "Control plane panics when a Gateway's allowedListeners selector cannot be parsed",
-      "url": "https://github.com/kgateway-dev/kgateway/issues/14625"
-    },
-    {
       "owner": "openid",
       "repo": "authzen",
       "number": 598,
       "state": "closed",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Fix evaluation JSON schemas to match the final 1.0 text",
       "url": "https://github.com/openid/authzen/issues/598"
     },
@@ -810,7 +801,7 @@
       "repo": "glauth",
       "number": 469,
       "state": "closed",
-      "domain": "",
+      "domain": "Identity",
       "title": "A disabled user can still bind on the config backend",
       "url": "https://github.com/glauth/glauth/issues/469"
     },
@@ -819,7 +810,7 @@
       "repo": "connaisseur",
       "number": 2130,
       "state": "closed",
-      "domain": "",
+      "domain": "Supply Chain",
       "title": "Policy rules match the registry host case-sensitively",
       "url": "https://github.com/sse-secure-systems/connaisseur/issues/2130"
     },
@@ -828,7 +819,7 @@
       "repo": "jwx",
       "number": 2234,
       "state": "closed",
-      "domain": "",
+      "domain": "OIDC",
       "title": "jwt.Parse / jws.VerifyCompactFast accept duplicate JOSE header parameters that jws.Verify rejects",
       "url": "https://github.com/lestrrat-go/jwx/issues/2234"
     },
@@ -837,7 +828,7 @@
       "repo": "guac",
       "number": 3075,
       "state": "closed",
-      "domain": "",
+      "domain": "Supply Chain",
       "title": "[bug] Document decompression has no size limit (decompression bomb)",
       "url": "https://github.com/guacsec/guac/issues/3075"
     },

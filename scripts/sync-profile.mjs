@@ -21,6 +21,10 @@ const GH_MAX_BUFFER = 5 * 1024 * 1024;
 
 const own = /^(kanywst|0-draft)\//;
 
+// Items that exist upstream but don't belong in the showcase. kgateway#14625 is a
+// duplicate of #14624 that a `gh issue create` retry opened; it was closed minutes later.
+const EXCLUDE = new Set(['kgateway-dev/kgateway#14625']);
+
 function gh(args) {
   return execFileSync('gh', args, {
     encoding: 'utf8',
@@ -52,6 +56,7 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
   return ghJSON(args)
     // guard against unexpected shapes, then keep external repos only
     .filter((x) => x?.repository?.nameWithOwner && !own.test(x.repository.nameWithOwner))
+    .filter((x) => !EXCLUDE.has(`${x.repository.nameWithOwner}#${x.number}`))
     .map((x) => {
       const [owner, repo] = x.repository.nameWithOwner.split('/');
       return {
