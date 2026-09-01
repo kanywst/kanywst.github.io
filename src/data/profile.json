@@ -56,7 +56,7 @@
       "lang": "Go",
       "license": "MIT",
       "version": "v1.0.3",
-      "stars": 25,
+      "stars": 26,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -188,6 +188,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "kgateway-dev",
+      "repo": "kgateway",
+      "number": 14626,
+      "state": "merged",
+      "domain": "Cloud Native",
+      "title": "fix: deny ListenerSet attachment when allowedListeners cannot be parsed",
+      "url": "https://github.com/kgateway-dev/kgateway/pull/14626"
+    },
     {
       "owner": "cloudflare",
       "repo": "workers-oauth-provider",
@@ -477,15 +486,6 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "kgateway-dev",
-      "repo": "kgateway",
-      "number": 14626,
-      "state": "open",
-      "domain": "Cloud Native",
-      "title": "fix: deny ListenerSet attachment when allowedListeners cannot be parsed",
-      "url": "https://github.com/kgateway-dev/kgateway/pull/14626"
-    },
-    {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-s2s-protocol",
       "number": 296,
@@ -712,18 +712,9 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-08-31"
+    "syncedAt": "2026-09-01"
   },
   "issues": [
-    {
-      "owner": "kgateway-dev",
-      "repo": "kgateway",
-      "number": 14624,
-      "state": "open",
-      "domain": "Cloud Native",
-      "title": "Control plane panics when a Gateway's allowedListeners selector cannot be parsed",
-      "url": "https://github.com/kgateway-dev/kgateway/issues/14624"
-    },
     {
       "owner": "ory",
       "repo": "polis",
@@ -786,6 +777,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "kgateway-dev",
+      "repo": "kgateway",
+      "number": 14624,
+      "state": "closed",
+      "domain": "Cloud Native",
+      "title": "Control plane panics when a Gateway's allowedListeners selector cannot be parsed",
+      "url": "https://github.com/kgateway-dev/kgateway/issues/14624"
     },
     {
       "owner": "openid",
