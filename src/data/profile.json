@@ -198,6 +198,15 @@
       "url": "https://github.com/kgateway-dev/kgateway/pull/14626"
     },
     {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 296,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Add an implementation status entry for wimsey",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/296"
+    },
+    {
       "owner": "cloudflare",
       "repo": "workers-oauth-provider",
       "number": 303,
@@ -486,15 +495,6 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "ietf-wg-wimse",
-      "repo": "draft-ietf-wimse-s2s-protocol",
-      "number": 296,
-      "state": "open",
-      "domain": "Workload Identity",
-      "title": "Add an implementation status entry for wimsey",
-      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/296"
-    },
-    {
       "owner": "sigstore",
       "repo": "gitsign",
       "number": 871,
@@ -712,7 +712,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-01"
+    "syncedAt": "2026-09-02"
   },
   "issues": [
     {
