@@ -44,7 +44,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.6.0",
+      "version": "v0.6.1",
       "stars": 3,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin",
@@ -55,7 +55,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v1.0.3",
+      "version": "v1.0.4",
       "stars": 26,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
@@ -66,7 +66,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "MIT",
-      "version": "v1.4.0",
+      "version": "v2.0.2",
       "stars": 0,
       "tagline": "Cost calculator for offline password brute-force: time + USD per GPU profile, with a CI gatekeeper.",
       "url": "https://github.com/kanywst/brtc",
@@ -205,6 +205,15 @@
       "domain": "Workload Identity",
       "title": "Add an implementation status entry for wimsey",
       "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/296"
+    },
+    {
+      "owner": "sigstore",
+      "repo": "gitsign",
+      "number": 871,
+      "state": "merged",
+      "domain": "Supply Chain",
+      "title": "fix(git): preserve trailing CR when splitting raw commit/tag objects",
+      "url": "https://github.com/sigstore/gitsign/pull/871"
     },
     {
       "owner": "cloudflare",
@@ -495,13 +504,22 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "sigstore",
-      "repo": "gitsign",
-      "number": 871,
+      "owner": "NixOS",
+      "repo": "nixpkgs",
+      "number": 559182,
       "state": "open",
-      "domain": "Supply Chain",
-      "title": "fix(git): preserve trailing CR when splitting raw commit/tag objects",
-      "url": "https://github.com/sigstore/gitsign/pull/871"
+      "domain": "",
+      "title": "y509: init at 1.0.4",
+      "url": "https://github.com/NixOS/nixpkgs/pull/559182"
+    },
+    {
+      "owner": "charm-and-friends",
+      "repo": "charm-in-the-wild",
+      "number": 122,
+      "state": "open",
+      "domain": "",
+      "title": "Add y509 to Cyber Security",
+      "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/122"
     },
     {
       "owner": "Infisical",
@@ -712,7 +730,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-02"
+    "syncedAt": "2026-09-03"
   },
   "issues": [
     {
