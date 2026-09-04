@@ -44,7 +44,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "license": "Apache-2.0",
-      "version": "v0.6.1",
+      "version": "v0.7.0",
       "stars": 3,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin",
@@ -78,7 +78,7 @@
       "lang": "List",
       "license": "CC0",
       "version": null,
-      "stars": 9,
+      "stars": 10,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization",
       "featured": false
@@ -188,6 +188,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "charm-and-friends",
+      "repo": "charm-in-the-wild",
+      "number": 122,
+      "state": "merged",
+      "domain": "",
+      "title": "Add y509 to Cyber Security",
+      "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/122"
+    },
     {
       "owner": "kgateway-dev",
       "repo": "kgateway",
@@ -513,15 +522,6 @@
       "url": "https://github.com/NixOS/nixpkgs/pull/559182"
     },
     {
-      "owner": "charm-and-friends",
-      "repo": "charm-in-the-wild",
-      "number": 122,
-      "state": "open",
-      "domain": "",
-      "title": "Add y509 to Cyber Security",
-      "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/122"
-    },
-    {
       "owner": "Infisical",
       "repo": "infisical",
       "number": 7673,
@@ -556,15 +556,6 @@
       "domain": "OIDC",
       "title": "fix panic in cookie.Cookie() on malformed multipart cookie names",
       "url": "https://github.com/vouch/vouch-proxy/pull/616"
-    },
-    {
-      "owner": "FairwindsOps",
-      "repo": "polaris",
-      "number": 1204,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "Validate ephemeral containers in per-container checks",
-      "url": "https://github.com/FairwindsOps/polaris/pull/1204"
     },
     {
       "owner": "go-jose",
@@ -628,6 +619,15 @@
       "domain": "Supply Chain",
       "title": "fix: match registry host case-insensitively in policy rules",
       "url": "https://github.com/sse-secure-systems/connaisseur/pull/2131"
+    },
+    {
+      "owner": "FairwindsOps",
+      "repo": "polaris",
+      "number": 1204,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Validate ephemeral containers in per-container checks",
+      "url": "https://github.com/FairwindsOps/polaris/pull/1204"
     },
     {
       "owner": "lestrrat-go",
@@ -730,7 +730,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-03"
+    "syncedAt": "2026-09-04"
   },
   "issues": [
     {
@@ -759,15 +759,6 @@
       "domain": "Authorization",
       "title": "Fix incorrect metadata member name in Section 8.2.1",
       "url": "https://github.com/openid/authzen/issues/554"
-    },
-    {
-      "owner": "FairwindsOps",
-      "repo": "polaris",
-      "number": 1203,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "Per-container checks skip ephemeral containers",
-      "url": "https://github.com/FairwindsOps/polaris/issues/1203"
     },
     {
       "owner": "in-toto",
@@ -831,6 +822,15 @@
       "domain": "Supply Chain",
       "title": "Policy rules match the registry host case-sensitively",
       "url": "https://github.com/sse-secure-systems/connaisseur/issues/2130"
+    },
+    {
+      "owner": "FairwindsOps",
+      "repo": "polaris",
+      "number": 1203,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Per-container checks skip ephemeral containers",
+      "url": "https://github.com/FairwindsOps/polaris/issues/1203"
     },
     {
       "owner": "lestrrat-go",
