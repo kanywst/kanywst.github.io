@@ -19,8 +19,16 @@ describe('profile.json contract', () => {
       expect(f.name).toBeTruthy();
       expect(f.url).toMatch(/^https?:\/\//);
       expect(typeof f.stars).toBe('number');
-      expect(f.lang).toBeTruthy();
+      // GitHub can't classify every repo, so lang is allowed to be empty (the UI omits it)
+      expect(typeof f.lang).toBe('string');
     }
+  });
+
+  it('only carries starred repos, in descending star order', () => {
+    // the selection rule itself: sync-profile.mjs discovers by stars, nothing is hand-picked
+    for (const f of profile.flagships) expect(f.stars).toBeGreaterThan(0);
+    const stars = profile.flagships.map((f) => f.stars);
+    expect(stars).toEqual([...stars].sort((a, b) => b - a));
   });
 
   it('only ever uses known PR states in contributions', () => {

@@ -74,5 +74,7 @@ export const DOMAIN_BY_REPO = {
   'golangci/golangci-lint': 'Tooling',
   'google-gemini/gemini-cli': 'Tooling',
   'rothgar/awesome-tuis': 'Tooling',
+  'charm-and-friends/charm-in-the-wild': 'Tooling',
+  'NixOS/nixpkgs': 'Tooling',
   'pwn2winctf/2020submissions': 'CTF',
 };
