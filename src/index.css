@@ -12,27 +12,75 @@ body,
   min-height: 100dvh;
 }
 
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: dark;
 
   --bg: #0e0e0e;
-  --fg: #ffffff;
-  --muted: #6e6e76;
-  --faint: #4a4a50;
+
+  /* Text ramp. Measured against --bg: pure #fff is 19.3:1 / APCA Lc -107.6, past the Lc -90
+     dark ceiling where emitted white haloes into the background. --fg is pulled back to
+     #ededed (16.5:1, Lc -96) and #ffffff is demoted to a rare emphasis token. The old
+     muted/faint pair sat at 3.82:1 and 2.19:1 — under AA, and under APCA's Lc 30 floor for
+     any text at all — so every tier below --fg moved up. */
+  --fg-emph: #ffffff;
+  --fg: #ededed;
+  --muted: #9a9aa2;
+  --faint: #6e6e76;
+
+  /* One hue at three intensities, because the bright step used to do every teal job at once
+     (section labels, links, hover, merged badges, the CVE chip, selection) and at Lc -80 it
+     is nearly as loud as body text, so it had stopped reading as emphasis. Bright is now
+     interaction and the section labels; --accent-2 is the quiet semantic mark; --accent-line
+     is borders. */
   --accent: #5eead4;
+  --accent-2: #3fa593;
+  --accent-line: rgba(94, 234, 212, 0.4);
+
   --hl: #f87171;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-soft: rgba(255, 255, 255, 0.05);
-  --line-strong: rgba(255, 255, 255, 0.16);
+  --star: #e6a564;
+
+  /* Hairlines, tiered by job. White at 0.05 over --bg resolves to #1a1a1a — 1.11:1, i.e.
+     invisible on a dim panel. Three deliberate steps beat one blanket value. */
+  --line-soft: rgba(255, 255, 255, 0.06); /* row rules inside a list */
+  --line: rgba(255, 255, 255, 0.1); /* card and group borders */
+  --line-strong: rgba(255, 255, 255, 0.18); /* the few structural rules meant to be seen */
+
+  --card-radius: 10px;
 
   font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-feature-settings: 'ss01', 'ss02', 'cv11';
+  /* The old `font-feature-settings: 'ss01','ss02','cv11'` was dead three times over: cv11 is
+     an Inter tag that Geist has never had, and the Google Fonts build this page used to load
+     carries no OpenType features and no box-drawing glyphs at all (52 glyphs, zero GSUB
+     features, against 1159 and ss01-ss11 in the official build). Self-hosting brings the
+     real sets back, but turning any of them on now would change every 'a' and 'l' on the
+     page, so the letterforms stay at their defaults and the declaration is simply gone.
+     lining-nums uses the high-level property, which composes rather than clobbering
+     inherited features; tabular-nums would be redundant in a monospace, alternates are not. */
+  font-variant-numeric: lining-nums;
   font-weight: 400;
   font-size: 14px;
-  letter-spacing: -0.01em;
   line-height: 1.8;
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* letter-spacing with an em value computes ONCE and then inherits as an absolute length:
+   -0.01em at the 14px root became -0.14px, and the 21px podium name inherited that same
+   -0.14px — i.e. -0.0067em, two thirds of the intended tracking. Any element that steps its
+   font-size has to re-declare it to re-resolve against its own size; --track exists so the
+   ratio is stated once and those elements just repeat the declaration. */
+:root {
+  --track: -0.01em;
+  letter-spacing: var(--track);
 }
 
 body {
@@ -52,12 +100,35 @@ a {
   transition: opacity 0.2s ease;
 }
 
-a:hover {
-  opacity: 0.7;
+@media (hover: hover) {
+  a:hover {
+    opacity: 0.7;
+  }
 }
 
+/* One ring for all 99 focusable elements — previously only .social-link had one and
+   everything else fell through to the UA default. outline rather than box-shadow on
+   purpose: box-shadow is dropped in forced-colors mode, outline survives it, and outline
+   has followed border-radius in every current engine for years. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* rows are edge-to-edge, so an outset ring would clip against the neighbouring row */
+.row:focus-visible,
+.more:focus-visible {
+  outline-offset: -2px;
+}
+
+/* 820, not 720: the sections are dense data and the extra 100px is what stops repo names and
+   titles from wrapping. It does not disturb the hero's View Transition — .hero-inner is a
+   flex item under align-items:flex-start, so it is sized by its content (~420px) in both
+   states regardless of how wide this gets, and VT only smears when the same element changes
+   size across the two states. */
 .container {
-  max-width: 720px;
+  max-width: 820px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -190,8 +261,37 @@ a:hover {
   animation: fade 0.45s ease both;
 }
 
+/* Rhythm. Five sections all separated by the same 60px read as one repeated block, so the
+   spacing now says where a movement starts: --open opens one (the upstream findings, then
+   0-draft), plain continues it, --tight binds issues to the pull requests above it as a
+   single upstream pair. */
 .sec {
   margin-top: 60px;
+}
+
+.sec--open {
+  margin-top: 92px;
+}
+
+.sec--tight {
+  margin-top: 44px;
+}
+
+/* The feature section earns its weight from density rather than decoration: the same row
+   shape as every other list, given more air and a slightly larger reading size, so it sits
+   apart from the dense lists that follow without any added chrome. */
+.sec--feature .row {
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+
+.sec--feature .row-desc {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.sec--feature .rows {
+  border-top-color: var(--line-strong);
 }
 
 .sec-head {
@@ -245,15 +345,23 @@ a:hover {
   grid-template-columns: 160px minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 8px 20px;
-  padding: 14px 4px;
-  border-bottom: 1px solid var(--line);
+  /* padding, not margin, between rows: no dead zone between adjacent hit areas, and the
+     hover bleeds past the container edge so a list reads as one surface */
+  padding: 13px 14px;
+  margin: 0 -14px;
+  border-bottom: 1px solid var(--line-soft);
   color: var(--fg);
-  line-height: 1.5;
+  /* 1.4, not the 1.8 root: that is a prose measure and it makes 50 data rows unscannable */
+  line-height: 1.4;
 }
 
-.row:hover {
-  opacity: 1;
-  background: linear-gradient(90deg, var(--line-soft), transparent 70%);
+/* gated so it never sticks after a tap on touch, and instant because a 50-row list is a
+   high-frequency surface — a transition on every row reads as lag, not polish */
+@media (hover: hover) {
+  .row:hover {
+    opacity: 1;
+    background: var(--line-soft);
+  }
 }
 
 .row-name {
@@ -264,8 +372,10 @@ a:hover {
   text-overflow: ellipsis;
 }
 
-.row:hover .row-name {
-  color: var(--accent);
+@media (hover: hover) {
+  .row:hover .row-name {
+    color: var(--accent);
+  }
 }
 
 .row-name.mono {
@@ -278,18 +388,22 @@ a:hover {
   font-weight: 500;
 }
 
-.row:hover .row-name.mono b {
-  color: var(--accent);
+@media (hover: hover) {
+  .row:hover .row-name.mono b {
+    color: var(--accent);
+  }
 }
 
 .row-name .num {
-  color: var(--faint);
+  color: var(--muted);
   margin-left: 5px;
 }
 
 .row-desc {
   font-size: 13px;
   color: var(--muted);
+  /* kills the one-word last line the descriptions were full of ("parsed", "objects") */
+  text-wrap: pretty;
 }
 
 .row-meta {
@@ -297,7 +411,7 @@ a:hover {
   align-items: center;
   gap: 12px;
   font-size: 12px;
-  color: var(--faint);
+  color: var(--muted);
   white-space: nowrap;
   justify-self: end;
 }
@@ -307,85 +421,234 @@ a:hover {
 }
 
 .m-star {
-  color: #e6a564;
+  color: var(--star);
 }
 
-/* contribution rows */
+/* language, as a colored dot + name (GitHub's own hues, so it reads at a glance) */
 
-.contrib {
-  grid-template-columns: 70px 170px minmax(0, 1fr) auto;
-}
-
-.tag {
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 2px 0;
-  text-align: center;
-  border-radius: 4px;
-  align-self: center;
-}
-
-.tag-merged {
-  color: var(--accent);
-  background: rgba(94, 234, 212, 0.1);
-}
-
-.tag-open {
-  color: #e6a564;
-  background: rgba(230, 165, 100, 0.1);
-}
-
-.tag-closed {
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--muted);
-  background: rgba(255, 255, 255, 0.05);
+  white-space: nowrap;
 }
 
-/* security advisories: severity marker + stacked name/desc row */
-
-.advisory {
-  grid-template-columns: 78px minmax(0, 1fr);
-  align-items: start;
+.lang-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: 0 0 auto;
 }
 
-.advisory .tag {
-  justify-self: start;
-  padding: 3px 8px;
-  margin-top: 1px;
-}
+/* ---------- selected work: podium ---------- */
 
-.sev-critical,
-.sev-high {
-  color: var(--hl);
-  background: rgba(248, 113, 113, 0.1); /* --hl at 10% */
-}
-
-.sev-medium {
-  color: #e6a564;
-  background: rgba(230, 165, 100, 0.1);
-}
-
-.sev-low,
-.sev-unknown {
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.adv-body {
+.podium {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+}
+
+/* The podium and the 0-draft grid are the only two card surfaces on the page; sharing the
+   border, radius and transition here keeps them one language instead of two that happen to
+   look similar. */
+.pod,
+.org-card {
+  border: 1px solid var(--line);
+  border-radius: var(--card-radius);
+  color: var(--fg);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.pod {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  /* the accent only leaks in from the left, so the card stays dark and monospace */
+  background: linear-gradient(100deg, var(--line-soft), transparent 55%);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.pod:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+}
+
+.pod-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.pod-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   min-width: 0;
 }
 
-.adv-head {
+/* re-declared at every stepped size so the em tracking resolves against that size and not
+   against the 14px root it would otherwise inherit as an absolute px value */
+.pod-name {
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--fg-emph);
+  letter-spacing: var(--track);
+}
+
+.pod:hover .pod-name {
+  color: var(--accent);
+}
+
+.pod-desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.pod-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.pod-stars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  color: var(--star);
+  line-height: 1;
+  justify-self: end;
+}
+
+.pod-star-glyph {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.pod-stars b {
+  font-size: 20px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track);
+}
+
+/* rank 1 is the loudest: gold crown, gold edge, largest name */
+
+.pod-1 {
+  border-color: rgba(230, 165, 100, 0.32);
+  background: linear-gradient(100deg, rgba(230, 165, 100, 0.09), transparent 60%);
+  padding: 24px 20px;
+}
+
+.pod-1:hover {
+  border-color: rgba(230, 165, 100, 0.6);
+}
+
+.pod-1 .pod-name {
+  font-size: 21px;
+  letter-spacing: var(--track);
+}
+
+.pod-1 .pod-rank {
+  width: 38px;
+  height: 38px;
+  color: var(--star);
+  border-color: rgba(230, 165, 100, 0.4);
+  background: rgba(230, 165, 100, 0.08);
+}
+
+.pod-1 .pod-stars b {
+  font-size: 26px;
+  letter-spacing: var(--track);
+}
+
+.pod-2 .pod-name {
+  font-size: 19px;
+  letter-spacing: var(--track);
+}
+
+.pod-2 .pod-rank,
+.pod-3 .pod-rank {
+  border-color: var(--line-strong);
+  color: var(--muted);
+}
+
+/* ranked remainder: the podium's numbering carries on down the plain rows. Same stacked
+   shape as every other list on the page — as a three-column grid the description was
+   squeezed into ~250px between a fixed name column and the meta, so neighbouring rows
+   wrapped to two and four lines and the list lost its rhythm. */
+
+.row.work {
+  grid-template-columns: 34px minmax(0, 1fr);
+}
+
+.row.work .row-name {
+  font-size: 14px;
+  color: var(--fg-emph);
+}
+
+.row.work .row-meta {
+  justify-self: auto;
+}
+
+/* the rank numerals continue the podium's 1/2/3 down the list, so they carry the section's
+   whole premise and have to clear AA like any other visible text */
+.row-rank {
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- entry rows: one shape for contributions and advisories ----------
+   Both were separate grids before, and the contribution grid squeezed the repo name into
+   170px, so six of them truncated mid-word ("ietf-wg-wimse/draft-i…") and the #number
+   appeared or vanished depending on the name's length. Stacking head over description gives
+   the name the full measure and makes the two lists one idiom. */
+
+.entry {
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: start;
+  gap: 8px 16px;
+}
+
+.row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.row-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
 }
 
-.adv-meta {
+.entry .row-name {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.row-meta-inline {
   display: inline-flex;
   align-items: baseline;
   gap: 12px;
@@ -393,22 +656,80 @@ a:hover {
   font-size: 12px;
 }
 
-.advisory .cve {
-  color: var(--accent);
-  border: 1px solid rgba(94, 234, 212, 0.35);
+/* state / severity marker */
+
+.marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+.marker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: currentColor;
+  /* the dot is the scan target, so it keeps the semantic hue at full strength while the
+     word next to it stays in the neutral ramp — colour marks, type reads */
+  color: var(--muted);
+}
+
+.marker-merged .marker-dot {
+  color: var(--accent-2);
+}
+
+.marker-open .marker-dot {
+  color: var(--star);
+}
+
+.marker-closed .marker-dot {
+  color: var(--faint);
+}
+
+.marker-sev-critical .marker-dot,
+.marker-sev-high .marker-dot {
+  color: var(--hl);
+}
+
+.marker-sev-medium .marker-dot {
+  color: var(--star);
+}
+
+.marker-sev-low .marker-dot,
+.marker-sev-unknown .marker-dot {
+  color: var(--faint);
+}
+
+/* a filed CVE is the strongest single fact on this page, so it is the one place that gets
+   a real chip. 15% tint + 25% border + full-strength foreground: an opaque fill of a bright
+   hue collapses to ~1.3:1 on a dark ground, a tint of the same hue holds above 4.5:1. */
+.cve {
+  color: var(--star);
+  background: color-mix(in oklab, var(--star) 15%, transparent);
+  border: 1px solid color-mix(in oklab, var(--star) 30%, transparent);
   border-radius: 4px;
   padding: 1px 7px;
   font-size: 11px;
   letter-spacing: 0.02em;
 }
 
-.advisory .ghsa {
-  color: var(--faint);
+.ghsa {
+  color: var(--muted);
   font-size: 11.5px;
 }
 
-.advisory .m-domain {
+.m-domain {
   color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* contribution cloud: org avatars sized by PR count */
@@ -419,6 +740,33 @@ a:hover {
   align-items: center;
   gap: 18px 16px;
   margin: 18px 0 30px;
+}
+
+/* Off-screen until focused, then a real target in the flow. Not display:none — that would
+   take it out of the tab order, which is the entire point of it. */
+.skip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.skip:focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  padding: 6px 12px;
+  border: 1px solid var(--accent-line);
+  border-radius: 100px;
+  align-self: center;
 }
 
 .cloud-org {
@@ -437,15 +785,21 @@ a:hover {
   display: block;
   outline: 1px solid var(--line);
   outline-offset: 2px;
-  filter: grayscale(0.45) brightness(0.88);
-  opacity: 0.72;
+  /* Size encodes contribution count — but left alone, an avatar's own artwork decides its
+     visual weight instead: logos drawn on white became ~19:1 discs, the loudest thing on the
+     page, while dark ones vanished. contrast() below 1 compresses the set toward mid-grey so
+     the whites come down and the blacks come up, and size is what reads again. Hover returns
+     the real brand at full strength. */
+  filter: grayscale(1) contrast(0.55) brightness(1.05);
+  opacity: 0.95;
   transition: filter 0.2s ease, opacity 0.2s ease, outline-color 0.2s ease;
 }
 
-.cloud-org:hover img {
-  filter: none;
-  opacity: 1;
-  outline-color: var(--accent);
+@media (hover: hover) {
+  .cloud-org:hover img {
+    filter: none;
+    outline-color: var(--accent);
+  }
 }
 
 .org-count {
@@ -483,7 +837,7 @@ a:hover {
   font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--faint);
+  color: var(--muted);
   padding: 4px 11px;
   border: 1px solid var(--line);
   border-radius: 100px;
@@ -507,16 +861,16 @@ a:hover {
 
 .chip-merged.on {
   color: var(--accent);
-  border-color: rgba(94, 234, 212, 0.4);
+  border-color: var(--accent-line);
 }
 
 .chip-open.on {
-  color: #e6a564;
+  color: var(--star);
   border-color: rgba(230, 165, 100, 0.4);
 }
 
 .chip-n {
-  color: var(--faint);
+  color: var(--muted);
 }
 
 .chip.on .chip-n {
@@ -524,19 +878,114 @@ a:hover {
   opacity: 0.65;
 }
 
-.contrib .row-meta {
+/* expander under a truncated list */
+
+.more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 0 11px;
+  font-family: inherit;
   font-size: 11px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.more:hover {
+  color: var(--accent);
+  border-color: var(--line-strong);
+}
+
+.more-caret {
+  transition: transform 0.2s ease;
+}
+
+.more-caret.up {
+  transform: rotate(180deg);
 }
 
 /* 0-draft */
 
+.org-intro {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.org-badge {
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.org-badge img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  outline: 1px solid var(--line);
+  outline-offset: 3px;
+}
+
 .org-blurb {
-  margin: 16px 0 0;
+  margin: 0;
   max-width: 60ch;
   color: var(--muted);
   font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.org-grid {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.org-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  height: 100%;
+  padding: 16px 18px 18px;
+}
+
+.org-card:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+  background: var(--line-soft);
+}
+
+.org-card .lang {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.org-card-name {
+  font-size: 13px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.org-card:hover .org-card-name {
+  color: var(--accent);
+}
+
+.org-card-desc {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted);
 }
 
 /* footer */
@@ -551,7 +1000,7 @@ a:hover {
   padding-top: 22px;
   border-top: 1px solid var(--line);
   font-size: 11.5px;
-  color: var(--faint);
+  color: var(--muted);
 }
 
 .collapse {
@@ -573,9 +1022,17 @@ a:hover {
 
 /* ---------- motion ---------- */
 
+/* The stagger used to run 45ms × the element's absolute index, so the last row waited
+   1710ms — and everything below the fold had already played by the time you scrolled to it,
+   meaning the delay bought nothing and cost the footer 1.7s. NN/g measured users being
+   slowed by exactly this and unable to tell a visual-effect delay from a system one. The
+   index is now clamped, so the whole entrance resolves in ~300ms.
+
+   The hidden state deliberately lives inside the keyframes rather than on .reveal itself:
+   an authored `opacity: 0` would leave the page blank if the animation never ran. */
 .reveal {
-  animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--i, 0) * 45ms);
+  animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(min(var(--i, 0), 6) * 45ms);
 }
 
 @keyframes rise {
@@ -617,31 +1074,85 @@ a:hover {
   .row {
     grid-template-columns: 1fr;
     gap: 3px;
-    padding: 14px 4px;
+    padding: 13px 10px;
+    margin: 0 -10px;
   }
   .row-meta {
     justify-self: start;
   }
-  .contrib {
-    grid-template-columns: auto 1fr;
+  /* the marker's 96px column cost a quarter of a 390px screen to hold one word, so it
+     stacks above the body instead of sitting in a gutter */
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
-  .contrib .row-desc,
-  .contrib .row-meta {
-    grid-column: 1 / -1;
+  .marker {
+    margin-top: 0;
   }
-  .advisory {
-    grid-template-columns: 68px minmax(0, 1fr);
-  }
-  .adv-head {
+  /* packed left rather than space-between: at this width a short repo name left enough room
+     to fling its meta to the far edge while a long one wrapped it to the next line, so
+     neighbouring rows disagreed about where to look */
+  .row-head {
     flex-wrap: wrap;
-    gap: 4px 12px;
+    justify-content: flex-start;
+    gap: 3px 12px;
+  }
+  /* the podium keeps its rank + star columns; only the gutters shrink */
+  .pod,
+  .pod-1 {
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 16px 14px;
+  }
+  .pod-1 .pod-name {
+    font-size: 18px;
+  }
+  .pod-2 .pod-name,
+  .pod-3 .pod-name {
+    font-size: 16px;
+  }
+  .pod-rank,
+  .pod-1 .pod-rank {
+    width: 28px;
+    height: 28px;
+  }
+  .pod-1 .pod-stars b {
+    font-size: 21px;
+  }
+  /* stacked rows have no room for a rank column, and the star count already ranks them */
+  .row.work {
+    grid-template-columns: 1fr;
+  }
+  .row-rank {
+    display: none;
+  }
+  .org-intro {
+    gap: 14px;
   }
 }
 
+/* Reduce means remove, reduce, OR replace — so the transform-based rise is replaced by a
+   plain dissolve rather than nuked, and the looping "breathe" on the space hint (the one
+   thing here that actually repeats forever) is the only motion fully removed. */
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .detail,
+  .reveal {
+    animation: fade 0.2s ease both;
+    animation-delay: 0ms;
+  }
+
   .landing .kbd {
-    animation: none !important;
+    animation: none;
+  }
+
+  .pod,
+  .org-card,
+  .cloud-org {
+    transition: none;
+  }
+
+  .pod:hover,
+  .org-card:hover,
+  .cloud-org:hover {
+    transform: none;
   }
 }
