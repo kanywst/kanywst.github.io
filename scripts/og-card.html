@@ -1,0 +1,129 @@
+<!doctype html>
+<!--
+  Source for public/og.png. Rendered at 1200x630 and screenshotted by scripts/make-og.mjs,
+  so the social card is built from the same font and palette as the site instead of being a
+  cropped avatar. Edit here, re-run `node scripts/make-og.mjs`, commit the PNG.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      @font-face {
+        font-family: 'Geist Mono';
+        src: url('../public/fonts/GeistMono-Variable.woff2') format('woff2-variations');
+        font-weight: 100 900;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      body {
+        width: 1200px;
+        height: 630px;
+        background: #0e0e0e;
+        color: #ededed;
+        font-family: 'Geist Mono', monospace;
+        font-size: 14px;
+        letter-spacing: -0.01em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 74px 80px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* the site's own hairline, at the scale this canvas needs */
+      .rule {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      .avatar {
+        width: 86px;
+        height: 86px;
+        border-radius: 50%;
+        outline: 1px solid rgba(255, 255, 255, 0.18);
+        outline-offset: 4px;
+      }
+
+      .handle {
+        font-size: 34px;
+        letter-spacing: -0.01em;
+      }
+
+      .handle span {
+        color: #5eead4;
+      }
+
+      h1 {
+        font-size: 54px;
+        font-weight: 400;
+        line-height: 1.32;
+        letter-spacing: -0.01em;
+        max-width: 20ch;
+      }
+
+      h1 em {
+        font-style: normal;
+        color: #f87171;
+      }
+
+      .stats {
+        display: flex;
+        gap: 56px;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .n {
+        font-size: 40px;
+        font-variant-numeric: lining-nums;
+        letter-spacing: -0.01em;
+      }
+
+      .n.teal {
+        color: #5eead4;
+      }
+
+      .n.amber {
+        color: #e6a564;
+      }
+
+      .k {
+        font-size: 14px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #9a9aa2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rule" style="top: 0"></div>
+    <div class="rule" style="bottom: 0"></div>
+
+    <div class="top">
+      <img class="avatar" src="https://github.com/kanywst.png?size=240" alt="" />
+      <div class="handle">github.com/<span>kanywst</span></div>
+    </div>
+
+    <h1>Identity, <em>Authorization</em>, and Cloud Native Security.</h1>
+
+    <div class="stats" id="stats"></div>
+  </body>
+</html>

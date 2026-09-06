@@ -21,14 +21,24 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://kanywst.github.io/" />
-    <meta property="og:image" content="https://github.com/kanywst.png" />
+    <!-- Built from the site's own font and palette by scripts/make-og.mjs, with the counts
+         read out of profile.json. Committed rather than generated at build time — re-run the
+         script after a sync that moves the headline numbers. -->
+    <meta property="og:image" content="https://kanywst.github.io/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="kanywst — Identity, Authorization, and Cloud Native Security."
+    />
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="kanywst" />
     <meta
       name="twitter:description"
       content="Identity, Authorization, and Cloud Native Security."
     />
+    <meta name="twitter:image" content="https://kanywst.github.io/og.png" />
 
     <!-- Self-hosted so the OpenType features actually work: the Google Fonts build of Geist
          Mono ships without them (ss01/ss02/ss11 and the box-drawing glyphs are all missing
