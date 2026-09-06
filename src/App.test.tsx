@@ -5,7 +5,7 @@ import profile from './data/profile.json';
 
 const prSection = () =>
   screen.getByRole('heading', { name: /pull requests/ }).closest('section') as HTMLElement;
-const contribRows = (root: HTMLElement) => root.querySelectorAll('.row.contrib').length;
+const contribRows = (root: HTMLElement) => root.querySelectorAll('.row.entry').length;
 
 type Item = {
   owner: string;
@@ -62,11 +62,59 @@ describe('App landing → detail', () => {
     const closed = screen.getByRole('button', { name: /^closed/ });
     expect(closed).toHaveAttribute('aria-pressed', 'false');
 
+    // the list renders a preview slice, so expand it first: filtering is only observable in full
+    fireEvent.click(within(prSection()).getByRole('button', { name: /show all/ }));
+
     // toggling closed reveals exactly the closed rows, i.e. the actual filtering, not just chip state
     const before = contribRows(prSection());
     fireEvent.click(closed);
     expect(closed).toHaveAttribute('aria-pressed', 'true');
     expect(contribRows(prSection()) - before).toBe(closedCount);
+  });
+
+  it('previews the PR list and expands to the full set on demand', () => {
+    const visible = profile.contributions.filter((c) => c.state !== 'closed').length;
+    render(<App />);
+    fireEvent.keyDown(window, { key: ' ' });
+
+    const preview = contribRows(prSection());
+    expect(preview).toBeLessThan(visible);
+
+    const more = within(prSection()).getByRole('button', { name: /show all/ });
+    expect(more).toHaveAttribute('aria-expanded', 'false');
+    fireEvent.click(more);
+    expect(contribRows(prSection())).toBe(visible);
+
+    const less = within(prSection()).getByRole('button', { name: /show less/ });
+    expect(less).toHaveAttribute('aria-expanded', 'true');
+    fireEvent.click(less);
+    expect(contribRows(prSection())).toBe(preview);
+  });
+
+  it('ranks selected work by stars, podiuming the top three', () => {
+    const byStars = [...profile.flagships].sort(
+      (a, b) => b.stars - a.stars || a.name.localeCompare(b.name),
+    );
+    render(<App />);
+    fireEvent.keyDown(window, { key: ' ' });
+
+    const section = screen
+      .getByRole('heading', { name: 'selected work' })
+      .closest('section') as HTMLElement;
+
+    const podium = [...section.querySelectorAll('.pod')];
+    expect(podium).toHaveLength(3);
+    expect(podium.map((p) => p.querySelector('.pod-name')!.textContent)).toEqual(
+      byStars.slice(0, 3).map((f) => f.name),
+    );
+    // rank 1 wears the crown, the runners-up carry their numeral
+    expect(podium[0].querySelector('.pod-rank svg')).not.toBeNull();
+    expect(podium[1].querySelector('.pod-rank')!.textContent).toBe('2');
+
+    // the remainder keeps descending, and every entry on the page has at least one star
+    const rest = [...section.querySelectorAll('.row.work .row-name')].map((n) => n.textContent);
+    expect(rest).toEqual(byStars.slice(3).map((f) => f.name));
+    expect(profile.flagships.every((f) => f.stars > 0)).toBe(true);
   });
 
   it('renders one advisory row per entry and badges exactly the CVE-bearing ones', () => {
@@ -77,8 +125,8 @@ describe('App landing → detail', () => {
     const section = screen
       .getByRole('heading', { name: /security advisories/ })
       .closest('section') as HTMLElement;
-    expect(section.querySelectorAll('.row.advisory')).toHaveLength(profile.advisories.length);
-    expect(section.querySelectorAll('.adv-meta .cve')).toHaveLength(cveCount);
+    expect(section.querySelectorAll('.row.entry')).toHaveLength(profile.advisories.length);
+    expect(section.querySelectorAll('.row-meta-inline .cve')).toHaveLength(cveCount);
   });
 
   it('keeps the contribution cloud stable when the state filter changes', () => {
@@ -106,8 +154,12 @@ describe('ContribCloud aggregation', () => {
       'https://github.com/alpha',
       'https://github.com/beta',
     ]);
-    // count badges
-    expect(orgs.map((a) => within(a).getByText(/^[0-9]+$/).textContent)).toEqual(['3', '1']);
+    // a printed count only earns its place where it says something the size doesn't:
+    // "1" on every single-contribution org is noise, so only counts above 1 get a badge
+    expect(within(orgs[0]).getByText('3')).toBeInTheDocument();
+    expect(orgs[1].querySelector('.org-count')).toBeNull();
+    // ...but the count stays in the accessible name for every org, badge or not
+    expect(orgs[1].getAttribute('aria-label')).toBe('beta, 1 pull request');
     // the busier org is drawn larger
     const sizeOf = (a: HTMLAnchorElement) => Number(a.querySelector('img')!.getAttribute('width'));
     expect(sizeOf(orgs[0])).toBeGreaterThan(sizeOf(orgs[1]));
