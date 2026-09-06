@@ -1,8 +1,12 @@
 #!/usr/bin/env node
-// Refresh the live parts of src/data/profile.json (stars, versions, upstream PRs, issues)
-// while preserving curated fields (taglines, ordering, featured, blurbs, 0-draft).
+// Refresh the live parts of src/data/profile.json (selected work, upstream PRs, issues)
+// while preserving the curated blurbs (0-draft, profile).
 //
 // Usage:  node scripts/sync-profile.mjs        # requires `gh` authenticated
+//
+// The *selected work* list is discovered, not hand-picked: every public, non-fork,
+// non-archived kanywst repo with at least one star, ranked by stars. TAGLINE_BY_REPO /
+// LANG_BY_REPO only refine how a discovered repo reads.
 //
 // Domain tags are assigned from DOMAIN_BY_REPO below (stable, repo-keyed) so re-syncs
 // never lose them and new contributions get tagged automatically.
@@ -12,6 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { DOMAIN_BY_REPO } from './domains.mjs';
+import { LANG_BY_REPO, TAGLINE_BY_REPO } from './taglines.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const FILE = resolve(here, '../src/data/profile.json');
@@ -80,22 +85,46 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
 
 const profile = JSON.parse(readFileSync(FILE, 'utf8'));
 
-// --- flagships: stars + latest release tag ---
-for (const repo of profile.flagships) {
-  const slug = `${repo.owner}/${repo.name}`;
-  try {
-    const { stargazerCount } = ghJSON(['repo', 'view', slug, '--json', 'stargazerCount']);
-    repo.stars = stargazerCount;
-  } catch {
-    console.warn(`! stars unavailable for ${slug}`);
-  }
-  try {
-    const tag = gh(['release', 'view', '-R', slug, '--json', 'tagName', '-q', '.tagName']).trim();
-    if (tag) repo.version = normalizeVersion(tag);
-  } catch {
-    /* no releases, so keep whatever curation set (often null) */
-  }
+// --- selected work: every own repo people actually starred, ranked by stars ---
+// Stars are the whole selection rule. No manual list, no `featured` flag: a repo that
+// earns its first star joins the showcase on the next sync and one that never does
+// stays out, so the section can't quietly drift out of date.
+function fetchFlagships() {
+  const repos = ghJSON([
+    'repo', 'list', 'kanywst', '--limit', '300', '--no-archived', '--source',
+    '--visibility', 'public', '--json',
+    'name,description,stargazerCount,primaryLanguage,url',
+  ])
+    .filter((r) => r.stargazerCount > 0)
+    // stars desc; name asc only to keep ties deterministic across syncs
+    .sort((a, b) => b.stargazerCount - a.stargazerCount || a.name.localeCompare(b.name));
+
+  return repos.map((r) => {
+    let version = null;
+    try {
+      const tag = gh([
+        'release', 'view', '-R', `kanywst/${r.name}`, '--json', 'tagName', '-q', '.tagName',
+      ]).trim();
+      if (tag) version = normalizeVersion(tag);
+    } catch {
+      /* no releases: the UI just omits the version */
+    }
+    return {
+      name: r.name,
+      owner: 'kanywst',
+      lang: LANG_BY_REPO[r.name] ?? r.primaryLanguage?.name ?? '',
+      version,
+      stars: r.stargazerCount,
+      tagline: TAGLINE_BY_REPO[r.name] ?? r.description ?? '',
+      url: r.url,
+    };
+  });
 }
+
+// Keep the previous list rather than blanking the section if gh returns nothing.
+const flagships = fetchFlagships();
+if (flagships.length) profile.flagships = flagships;
+else console.warn('! no starred repos returned; keeping the previous selected work');
 
 // --- external PRs (all states; UI filters closed) and issues ---
 const prs = fetchExternal('prs');
@@ -116,7 +145,8 @@ writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');
 
 const by = (arr, s) => arr.filter((c) => c.state === s).length;
 console.log(
-  `synced ${profile.meta.syncedAt}: ${profile.flagships.length} flagships, ` +
+  `synced ${profile.meta.syncedAt}: ${profile.flagships.length} starred repos ` +
+    `(top: ${profile.flagships.map((f) => `${f.name} ★${f.stars}`).slice(0, 3).join(', ')}), ` +
     `PRs ${prs.length} (${by(prs, 'merged')} merged / ${by(prs, 'open')} open / ${by(prs, 'closed')} closed), ` +
     `issues ${issues.length}`,
 );
