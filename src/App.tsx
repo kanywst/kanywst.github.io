@@ -131,13 +131,15 @@ type Flagship = {
 function PodiumCard({ repo, rank, style }: { repo: Flagship; rank: number; style: CSSProperties }) {
   return (
     <li className="reveal" style={style}>
-      <a
-        className={`pod pod-${rank}`}
-        href={repo.url}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`${repo.name}, ranked ${rank} by stars, ${repo.stars} stars`}
-      >
+      <a className={`pod pod-${rank}`} href={repo.url} target="_blank" rel="noreferrer">
+        {/* An aria-label here would REPLACE the accessible name rather than add to it, so
+            the tagline, language and version below were never announced — the top three
+            repos read out as less than the plain rows underneath them. The rank and star
+            count are carried as visually-hidden text instead, which leaves the rest of the
+            card's real content in the accessible name where it belongs. */}
+        <span className="sr-only">
+          Rank {rank}, {repo.stars} star{repo.stars === 1 ? '' : 's'}.
+        </span>
         <span className="pod-rank" aria-hidden="true">
           {rank === 1 ? <CrownIcon /> : rank}
         </span>

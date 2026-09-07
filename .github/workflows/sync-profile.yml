@@ -52,6 +52,11 @@ jobs:
       # a daily cost.
       - name: Redraw the OG card
         if: steps.sync.outputs.changed == 'true'
+        # Best-effort on purpose. Without this, a flaky chromium download would abort the
+        # job and the correct, already-fetched profile.json would never be committed or
+        # deployed — withholding real data because a cosmetic asset failed to redraw. The
+        # card going one day stale is the cheaper failure, and it shows up as a red step.
+        continue-on-error: true
         run: |
           npm ci
           npx playwright install --with-deps chromium
