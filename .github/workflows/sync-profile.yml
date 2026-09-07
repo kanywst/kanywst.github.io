@@ -7,7 +7,12 @@ name: Sync profile data
 on:
   schedule:
     - cron: '0 6 * * *' # daily at 06:00 UTC
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      redraw_og:
+        description: 'Redraw the OG card even when the data has not changed'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -51,7 +56,11 @@ jobs:
       # mechanism. Only runs when the data actually moved, so the chromium download is not
       # a daily cost.
       - name: Redraw the OG card
-        if: steps.sync.outputs.changed == 'true'
+        # The cron only reaches this on a day the counts actually moved, which makes it the
+        # one path here that can sit unexercised for weeks and then fail when it finally
+        # matters. The dispatch input runs it on demand so it can be proven on an ordinary
+        # day; with unchanged data it redraws an identical PNG and the commit finds nothing.
+        if: steps.sync.outputs.changed == 'true' || inputs.redraw_og
         # Best-effort on purpose. Without this, a flaky chromium download would abort the
         # job and the correct, already-fetched profile.json would never be committed or
         # deployed — withholding real data because a cosmetic asset failed to redraw. The
@@ -63,10 +72,16 @@ jobs:
           node scripts/make-og.mjs
 
       - name: Commit refreshed data
-        if: steps.sync.outputs.changed == 'true'
+        if: steps.sync.outputs.changed == 'true' || inputs.redraw_og
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # a forced redraw of unchanged data produces an identical PNG, so there is
+          # genuinely nothing to commit and that is a success, not a failure
+          if git diff --quiet; then
+            echo 'nothing changed'
+            exit 0
+          fi
           git commit -am 'chore: sync profile.json [skip ci]'
           git push
 
