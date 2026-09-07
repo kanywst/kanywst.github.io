@@ -33,7 +33,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "license": "Apache-2.0",
-      "version": "v0.6.2",
+      "version": "v0.6.3",
       "stars": 0,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey",
@@ -56,7 +56,7 @@
       "lang": "Go",
       "license": "MIT",
       "version": "v1.0.4",
-      "stars": 26,
+      "stars": 27,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509",
       "featured": false
@@ -232,6 +232,15 @@
       "domain": "OIDC",
       "title": "fix(ema): floor the jti replay marker TTL at KV's minimum",
       "url": "https://github.com/cloudflare/workers-oauth-provider/pull/303"
+    },
+    {
+      "owner": "envoyproxy",
+      "repo": "gateway",
+      "number": 9743,
+      "state": "merged",
+      "domain": "Cloud Native",
+      "title": "fix(luavalidator): block getfenv/setfenv/newproxy/module in the Lua security sandbox",
+      "url": "https://github.com/envoyproxy/gateway/pull/9743"
     },
     {
       "owner": "spiffe",
@@ -531,15 +540,6 @@
       "url": "https://github.com/Infisical/infisical/pull/7673"
     },
     {
-      "owner": "envoyproxy",
-      "repo": "gateway",
-      "number": 9743,
-      "state": "open",
-      "domain": "Cloud Native",
-      "title": "fix(luavalidator): block getfenv/setfenv/newproxy/module in the Lua security sandbox",
-      "url": "https://github.com/envoyproxy/gateway/pull/9743"
-    },
-    {
       "owner": "rothgar",
       "repo": "awesome-tuis",
       "number": 814,
@@ -730,9 +730,36 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-06"
+    "syncedAt": "2026-09-07"
   },
   "issues": [
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 641,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "Conformance suite: pdp_auth_type=api_key is unusable with discovery, and blocks the invalid-credentials 401 module",
+      "url": "https://github.com/openid/authzen/issues/641"
+    },
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 640,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "Conformance suite batch default-value module tests sub-field merging, which c-3-2-7 and #231 rule out",
+      "url": "https://github.com/openid/authzen/issues/640"
+    },
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 639,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "Response shape is unspecified when an Access Evaluations request omits `evaluations`",
+      "url": "https://github.com/openid/authzen/issues/639"
+    },
     {
       "owner": "ory",
       "repo": "polis",
