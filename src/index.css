@@ -482,10 +482,14 @@ a {
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
-.pod:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-  border-color: var(--line-strong);
+/* gated like every other hover on the page: on a touchscreen an ungated :hover sticks
+   after the tap, leaving the card lifted until you tap somewhere else */
+@media (hover: hover) {
+  .pod:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+  }
 }
 
 .pod-rank {
@@ -517,8 +521,10 @@ a {
   letter-spacing: var(--track);
 }
 
-.pod:hover .pod-name {
-  color: var(--accent);
+@media (hover: hover) {
+  .pod:hover .pod-name {
+    color: var(--accent);
+  }
 }
 
 .pod-desc {
@@ -972,11 +978,13 @@ a {
   padding: 16px 18px 18px;
 }
 
-.org-card:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-  border-color: var(--line-strong);
-  background: var(--line-soft);
+@media (hover: hover) {
+  .org-card:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+    background: var(--line-soft);
+  }
 }
 
 .org-card .lang {
@@ -990,8 +998,10 @@ a {
   overflow-wrap: anywhere;
 }
 
-.org-card:hover .org-card-name {
-  color: var(--accent);
+@media (hover: hover) {
+  .org-card:hover .org-card-name {
+    color: var(--accent);
+  }
 }
 
 .org-card-desc {
