@@ -45,6 +45,18 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # The OG card bakes the headline counts into a PNG, so a sync that moves them leaves
+      # the social preview asserting a stale number about a real record. Regenerating it
+      # here is what keeps the card honest — a comment telling a human to remember is not a
+      # mechanism. Only runs when the data actually moved, so the chromium download is not
+      # a daily cost.
+      - name: Redraw the OG card
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          node scripts/make-og.mjs
+
       - name: Commit refreshed data
         if: steps.sync.outputs.changed == 'true'
         run: |
