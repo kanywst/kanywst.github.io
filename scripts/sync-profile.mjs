@@ -107,6 +107,15 @@ function fetchFlagships() {
     // stars desc; name asc only to keep ties deterministic across syncs
     .sort((a, b) => b.stargazerCount - a.stargazerCount || a.name.localeCompare(b.name));
 
+  // `gh release view` exits non-zero both for "this repo has no releases" and for a rate
+  // limit or a network hiccup, and the two are not reliably distinguishable. The old loop
+  // mutated existing entries so a flaky call simply left the version alone; this one builds
+  // each entry from scratch, so without a fallback one bad call would write null over a
+  // real version. Carrying the last known value forward means a repo that genuinely deletes
+  // its releases keeps a stale version until someone notices — the cheaper of the two
+  // wrong answers, and the same trade the PR/issue guards below make.
+  const knownVersion = new Map((profile.flagships ?? []).map((f) => [f.name, f.version]));
+
   return repos.map((r) => {
     let version = null;
     try {
@@ -115,7 +124,7 @@ function fetchFlagships() {
       ]).trim();
       if (tag) version = normalizeVersion(tag);
     } catch {
-      /* no releases: the UI just omits the version */
+      version = knownVersion.get(r.name) ?? null;
     }
     return {
       name: r.name,
@@ -123,6 +132,9 @@ function fetchFlagships() {
       lang: LANG_BY_REPO[r.name] ?? r.primaryLanguage?.name ?? '',
       version,
       stars: r.stargazerCount,
+      // no `license`: it was curated per-repo but never rendered anywhere in the UI, and
+      // `gh repo list` only exposes a licence key/name, not the SPDX id the old field held.
+      // Dropped deliberately rather than carried as a field nothing reads.
       tagline: TAGLINE_BY_REPO[r.name] ?? r.description ?? '',
       url: r.url,
     };
