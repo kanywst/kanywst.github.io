@@ -89,12 +89,20 @@ const profile = JSON.parse(readFileSync(FILE, 'utf8'));
 // Stars are the whole selection rule. No manual list, no `featured` flag: a repo that
 // earns its first star joins the showcase on the next sync and one that never does
 // stays out, so the section can't quietly drift out of date.
+// filled by fetchFlagships so the override audit below can tell "not starred yet" (fine,
+// the override is just waiting) from "no such repo" (a rename that silently dropped a
+// hand-written tagline)
+let allOwnRepoNames = new Set();
+
 function fetchFlagships() {
-  const repos = ghJSON([
+  const all = ghJSON([
     'repo', 'list', 'kanywst', '--limit', '300', '--no-archived', '--source',
     '--visibility', 'public', '--json',
     'name,description,stargazerCount,primaryLanguage,url',
-  ])
+  ]);
+  allOwnRepoNames = new Set(all.map((r) => r.name));
+
+  const repos = all
     .filter((r) => r.stargazerCount > 0)
     // stars desc; name asc only to keep ties deterministic across syncs
     .sort((a, b) => b.stargazerCount - a.stargazerCount || a.name.localeCompare(b.name));
@@ -154,4 +162,16 @@ const untagged = [...prs, ...issues].filter((c) => !c.domain);
 if (untagged.length) {
   console.log(`! ${untagged.length} untagged, add their repos to DOMAIN_BY_REPO:`);
   for (const c of untagged) console.log(`    ${c.owner}/${c.repo}`);
+}
+
+// The overrides are keyed by repo name, so a rename makes one stop matching and the repo
+// silently falls back to its GitHub description — a hand-written tagline would disappear
+// with nothing to notice it. Only the "no such repo" case is a problem worth printing: an
+// override on a repo that simply hasn't earned a star yet is doing exactly what it should,
+// and a warning that fires every single run is a warning nobody reads.
+const overrides = new Set([...Object.keys(TAGLINE_BY_REPO), ...Object.keys(LANG_BY_REPO)]);
+const orphaned = [...overrides].filter((name) => !allOwnRepoNames.has(name));
+if (orphaned.length) {
+  console.log(`! ${orphaned.length} override(s) in taglines.mjs name a repo that no longer exists:`);
+  for (const name of orphaned) console.log(`    ${name} (renamed or deleted — the tagline is dead)`);
 }

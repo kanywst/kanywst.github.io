@@ -122,6 +122,14 @@ a {
   outline-offset: -2px;
 }
 
+/* The skip links' targets are focusable only so that following the link moves focus into
+   them on engines that don't implement the sequential focus navigation starting point.
+   They're not interactive, so they get no ring of their own. */
+#pr-list,
+#issue-list {
+  outline: none;
+}
+
 /* 820, not 720: the sections are dense data and the extra 100px is what stops repo names and
    titles from wrapping. It does not disturb the hero's View Transition — .hero-inner is a
    flex item under align-items:flex-start, so it is sized by its content (~420px) in both
@@ -1142,6 +1150,13 @@ a {
 
   .landing .kbd {
     animation: none;
+  }
+
+  /* .detail's own fade is opacity-only, so it is a legitimate reduced-motion *replacement*
+     rather than motion to remove — but 0.45s of it on the whole panel is longer than the
+     preference wants, so it is cut rather than left at the default. */
+  .detail {
+    animation-duration: 0.15s;
   }
 
   .pod,

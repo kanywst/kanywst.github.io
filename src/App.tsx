@@ -481,7 +481,7 @@ function Detail({ onClose }: { onClose: () => void }) {
             skipTo="pr-list"
           />
         )}
-        <div id="pr-list">
+        <div id="pr-list" tabIndex={-1}>
           <ContribRows items={shownPrs} base={prRowsStart} />
         </div>
         {hasPrMore && (
@@ -503,7 +503,7 @@ function Detail({ onClose }: { onClose: () => void }) {
         {hasIssueCloud && (
           <ContribCloud items={issues} noun="issue" style={at(issuesHead + 1)} skipTo="issue-list" />
         )}
-        <div id="issue-list">
+        <div id="issue-list" tabIndex={-1}>
           <ContribRows items={shownIssues} base={issueRowsStart} />
         </div>
         {hasIssueMore && (
