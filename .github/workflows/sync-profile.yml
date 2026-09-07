@@ -72,6 +72,7 @@ jobs:
           node scripts/make-og.mjs
 
       - name: Commit refreshed data
+        id: commit
         if: steps.sync.outputs.changed == 'true' || inputs.redraw_og
         run: |
           git config user.name 'github-actions[bot]'
@@ -79,23 +80,30 @@ jobs:
           # a forced redraw of unchanged data produces an identical PNG, so there is
           # genuinely nothing to commit and that is a success, not a failure
           if git diff --quiet; then
-            echo 'nothing changed'
+            echo 'nothing to commit'
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -am 'chore: sync profile.json [skip ci]'
           git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
 
+      # Gated on what was actually pushed, not on whether the data moved. A GITHUB_TOKEN push
+      # does not trigger deploy.yml, so if this job doesn't deploy, nothing does — and a
+      # forced redraw of og-card.html would have committed a new PNG to main that the live
+      # site never served. Keying on the commit means both paths deploy, and a forced redraw
+      # that produced a byte-identical PNG correctly deploys nothing.
       - name: Build
-        if: steps.sync.outputs.changed == 'true'
+        if: steps.commit.outputs.pushed == 'true'
         run: |
           npm install
           npm run build
 
       - uses: actions/upload-pages-artifact@v5
-        if: steps.sync.outputs.changed == 'true'
+        if: steps.commit.outputs.pushed == 'true'
         with:
           path: dist
 
       - id: deployment
-        if: steps.sync.outputs.changed == 'true'
+        if: steps.commit.outputs.pushed == 'true'
         uses: actions/deploy-pages@v5
