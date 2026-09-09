@@ -21,7 +21,7 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.0.4",
+      "version": "v1.1.1",
       "stars": 27,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
@@ -61,6 +61,15 @@
       "stars": 2,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
+    },
+    {
+      "name": "rapg",
+      "owner": "kanywst",
+      "lang": "Go",
+      "version": "v0.3.2",
+      "stars": 2,
+      "tagline": "Local-first secret manager for the AI-agent era — keep API keys out of .env files and out of your agent transcripts.",
+      "url": "https://github.com/kanywst/rapg"
     },
     {
       "name": "hammurabi",
@@ -165,6 +174,24 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 309,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Refresh the wimsey implementation status date",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/309"
+    },
+    {
+      "owner": "avelino",
+      "repo": "awesome-go",
+      "number": 6676,
+      "state": "merged",
+      "domain": "",
+      "title": "Add y509 to Security",
+      "url": "https://github.com/avelino/awesome-go/pull/6676"
+    },
     {
       "owner": "charm-and-friends",
       "repo": "charm-in-the-wild",
@@ -501,10 +528,64 @@
     {
       "owner": "NixOS",
       "repo": "nixpkgs",
+      "number": 561552,
+      "state": "open",
+      "domain": "Tooling",
+      "title": "rapg: init at 0.3.2",
+      "url": "https://github.com/NixOS/nixpkgs/pull/561552"
+    },
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-identifier",
+      "number": 98,
+      "state": "open",
+      "domain": "",
+      "title": "Add an Implementation Status section with an entry for wimsey",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-identifier/pull/98"
+    },
+    {
+      "owner": "microsoft",
+      "repo": "winget-pkgs",
+      "number": 431389,
+      "state": "open",
+      "domain": "",
+      "title": "New package: kanywst.y509 version 1.1.1",
+      "url": "https://github.com/microsoft/winget-pkgs/pull/431389"
+    },
+    {
+      "owner": "jhawlwut",
+      "repo": "apparitor",
+      "number": 76,
+      "state": "open",
+      "domain": "",
+      "title": "docs: fix broken kanywst/opa-authzen PDP reference",
+      "url": "https://github.com/jhawlwut/apparitor/pull/76"
+    },
+    {
+      "owner": "Binject",
+      "repo": "awesome-go-security",
+      "number": 18,
+      "state": "open",
+      "domain": "",
+      "title": "Add y509 to Private Key Infrastructure",
+      "url": "https://github.com/Binject/awesome-go-security/pull/18"
+    },
+    {
+      "owner": "guardrailsio",
+      "repo": "awesome-golang-security",
+      "number": 28,
+      "state": "open",
+      "domain": "",
+      "title": "Add y509 to Private Key Infrastructure",
+      "url": "https://github.com/guardrailsio/awesome-golang-security/pull/28"
+    },
+    {
+      "owner": "NixOS",
+      "repo": "nixpkgs",
       "number": 559182,
       "state": "open",
       "domain": "Tooling",
-      "title": "y509: init at 1.0.4",
+      "title": "y509: init at 1.1.1",
       "url": "https://github.com/NixOS/nixpkgs/pull/559182"
     },
     {
@@ -578,6 +659,24 @@
       "domain": "OIDC",
       "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
       "url": "https://github.com/dexidp/dex/pull/4611"
+    },
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 311,
+      "state": "closed",
+      "domain": "Workload Identity",
+      "title": "Add an Implementation Status section to the mutual TLS draft",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/311"
+    },
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 310,
+      "state": "closed",
+      "domain": "Workload Identity",
+      "title": "Add an Implementation Status section to the WPT draft",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/310"
     },
     {
       "owner": "supabase",
@@ -707,9 +806,27 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-08"
+    "syncedAt": "2026-09-09"
   },
   "issues": [
+    {
+      "owner": "Spacecraft-Software",
+      "repo": "Bravais",
+      "number": 78,
+      "state": "open",
+      "domain": "",
+      "title": "rapg now ships a flake upstream; the flakes/rapg wrapper can be dropped",
+      "url": "https://github.com/Spacecraft-Software/Bravais/issues/78"
+    },
+    {
+      "owner": "k8gb-io",
+      "repo": "k8gb",
+      "number": 2527,
+      "state": "open",
+      "domain": "",
+      "title": "[BUG] Local playground serves no DNS on arm64: edge BIND image is amd64-only and segfaults under emulation",
+      "url": "https://github.com/k8gb-io/k8gb/issues/2527"
+    },
     {
       "owner": "openid",
       "repo": "authzen",
