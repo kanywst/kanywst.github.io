@@ -4,7 +4,15 @@
       "Bash(npm install *)",
       "Bash(npm run *)",
       "Bash(curl -sL https://atilatair.tech/ -o /tmp/atila.html)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_press_key",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_take_screenshot",
+      "Bash(rm -f issue-cloud.png)",
+      "Bash(rm -rf .playwright-mcp)",
+      "Bash(set -e)"
     ]
   }
 }
