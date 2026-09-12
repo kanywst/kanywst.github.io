@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "version": "v1.2.0",
-      "stars": 27,
+      "stars": 28,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
     },
@@ -40,7 +40,7 @@
       "owner": "kanywst",
       "lang": "Python",
       "version": "v0.7.0",
-      "stars": 4,
+      "stars": 5,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
     },
@@ -526,6 +526,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "kubescape",
+      "repo": "cel-admission-library",
+      "number": 125,
+      "state": "open",
+      "domain": "",
+      "title": "feat: modernize C-0046 to variables pattern",
+      "url": "https://github.com/kubescape/cel-admission-library/pull/125"
+    },
+    {
       "owner": "NixOS",
       "repo": "nixpkgs",
       "number": 561552,
@@ -806,7 +815,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-11"
+    "syncedAt": "2026-09-12"
   },
   "issues": [
     {
