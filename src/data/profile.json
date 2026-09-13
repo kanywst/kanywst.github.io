@@ -247,6 +247,15 @@
       "url": "https://github.com/envoyproxy/gateway/pull/9743"
     },
     {
+      "owner": "rothgar",
+      "repo": "awesome-tuis",
+      "number": 814,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "Add y509 to Development",
+      "url": "https://github.com/rothgar/awesome-tuis/pull/814"
+    },
+    {
       "owner": "spiffe",
       "repo": "spiffe",
       "number": 417,
@@ -607,15 +616,6 @@
       "url": "https://github.com/Infisical/infisical/pull/7673"
     },
     {
-      "owner": "rothgar",
-      "repo": "awesome-tuis",
-      "number": 814,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "Add y509 to Development",
-      "url": "https://github.com/rothgar/awesome-tuis/pull/814"
-    },
-    {
       "owner": "vouch",
       "repo": "vouch-proxy",
       "number": 616,
@@ -815,7 +815,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-12"
+    "syncedAt": "2026-09-13"
   },
   "issues": [
     {
