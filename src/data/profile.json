@@ -31,7 +31,7 @@
       "owner": "kanywst",
       "lang": "List",
       "version": null,
-      "stars": 10,
+      "stars": 11,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization"
     },
@@ -39,7 +39,7 @@
       "name": "a2acode",
       "owner": "kanywst",
       "lang": "Python",
-      "version": "v0.7.0",
+      "version": "v0.7.1",
       "stars": 5,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
@@ -57,7 +57,7 @@
       "name": "omega",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.4.0",
+      "version": "v0.5.0",
       "stars": 2,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
@@ -66,7 +66,7 @@
       "name": "rapg",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.3.3",
+      "version": "v0.4.0",
       "stars": 2,
       "tagline": "Local-first secret manager for the AI-agent era — keep API keys out of .env files and out of your agent transcripts.",
       "url": "https://github.com/kanywst/rapg"
@@ -75,7 +75,7 @@
       "name": "hammurabi",
       "owner": "kanywst",
       "lang": "TypeScript",
-      "version": "v1.0.1",
+      "version": "v1.0.2",
       "stars": 1,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
@@ -815,7 +815,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-15"
+    "syncedAt": "2026-09-16"
   },
   "issues": [
     {
