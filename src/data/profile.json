@@ -184,6 +184,15 @@
       "url": "https://github.com/kubescape/cel-admission-library/pull/125"
     },
     {
+      "owner": "jhawlwut",
+      "repo": "apparitor",
+      "number": 76,
+      "state": "merged",
+      "domain": "",
+      "title": "docs: fix broken kanywst/opa-authzen PDP reference",
+      "url": "https://github.com/jhawlwut/apparitor/pull/76"
+    },
+    {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-s2s-protocol",
       "number": 309,
@@ -571,15 +580,6 @@
       "url": "https://github.com/microsoft/winget-pkgs/pull/431389"
     },
     {
-      "owner": "jhawlwut",
-      "repo": "apparitor",
-      "number": 76,
-      "state": "open",
-      "domain": "",
-      "title": "docs: fix broken kanywst/opa-authzen PDP reference",
-      "url": "https://github.com/jhawlwut/apparitor/pull/76"
-    },
-    {
       "owner": "Binject",
       "repo": "awesome-go-security",
       "number": 18,
@@ -815,7 +815,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-16"
+    "syncedAt": "2026-09-17"
   },
   "issues": [
     {
@@ -853,15 +853,6 @@
       "domain": "Authorization",
       "title": "Conformance suite batch default-value module tests sub-field merging, which c-3-2-7 and #231 rule out",
       "url": "https://github.com/openid/authzen/issues/640"
-    },
-    {
-      "owner": "openid",
-      "repo": "authzen",
-      "number": 639,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "Response shape is unspecified when an Access Evaluations request omits `evaluations`",
-      "url": "https://github.com/openid/authzen/issues/639"
     },
     {
       "owner": "ory",
@@ -916,6 +907,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 639,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Response shape is unspecified when an Access Evaluations request omits `evaluations`",
+      "url": "https://github.com/openid/authzen/issues/639"
     },
     {
       "owner": "kgateway-dev",
