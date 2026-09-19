@@ -21,8 +21,8 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.3.0",
-      "stars": 29,
+      "version": "v1.4.0",
+      "stars": 30,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
     },
@@ -48,7 +48,7 @@
       "name": "opa-authzen-plugin",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.7.0",
+      "version": "v0.8.0",
       "stars": 3,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
@@ -815,9 +815,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-18"
+    "syncedAt": "2026-09-19"
   },
   "issues": [
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 657,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "COAZ-MCP defines no mapping for `initialize`, so Unknown Methods denies it",
+      "url": "https://github.com/openid/authzen/issues/657"
+    },
     {
       "owner": "Spacecraft-Software",
       "repo": "Bravais",
