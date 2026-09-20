@@ -31,7 +31,7 @@
       "owner": "kanywst",
       "lang": "List",
       "version": null,
-      "stars": 11,
+      "stars": 10,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization"
     },
@@ -79,6 +79,15 @@
       "stars": 1,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
+    },
+    {
+      "name": "mandatum",
+      "owner": "kanywst",
+      "lang": "Go",
+      "version": "v0.1.0",
+      "stars": 1,
+      "tagline": "Verifiable delegation for AI agents — signed chains rooted in a human sponsor, attenuating at every hop, revocable per link, and evaluated across whole action sequences.",
+      "url": "https://github.com/kanywst/mandatum"
     }
   ],
   "advisories": [
@@ -815,7 +824,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-19"
+    "syncedAt": "2026-09-20"
   },
   "issues": [
     {
