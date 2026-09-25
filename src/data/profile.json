@@ -571,15 +571,6 @@
       "url": "https://github.com/kubescape/regolibrary/pull/831"
     },
     {
-      "owner": "NixOS",
-      "repo": "nixpkgs",
-      "number": 561552,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "rapg: init at 0.3.2",
-      "url": "https://github.com/NixOS/nixpkgs/pull/561552"
-    },
-    {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-identifier",
       "number": 98,
@@ -686,6 +677,15 @@
       "domain": "OIDC",
       "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
       "url": "https://github.com/dexidp/dex/pull/4611"
+    },
+    {
+      "owner": "NixOS",
+      "repo": "nixpkgs",
+      "number": 561552,
+      "state": "closed",
+      "domain": "Tooling",
+      "title": "rapg: init at 0.3.2",
+      "url": "https://github.com/NixOS/nixpkgs/pull/561552"
     },
     {
       "owner": "ietf-wg-wimse",
@@ -833,7 +833,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-24"
+    "syncedAt": "2026-09-25"
   },
   "issues": [
     {
