@@ -185,6 +185,15 @@
   "contributions": [
     {
       "owner": "kubescape",
+      "repo": "regolibrary",
+      "number": 831,
+      "state": "merged",
+      "domain": "",
+      "title": "fix(verify-image-signature): check initContainers and ephemeralContainers",
+      "url": "https://github.com/kubescape/regolibrary/pull/831"
+    },
+    {
+      "owner": "kubescape",
       "repo": "cel-admission-library",
       "number": 125,
       "state": "merged",
@@ -562,15 +571,6 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "kubescape",
-      "repo": "regolibrary",
-      "number": 831,
-      "state": "open",
-      "domain": "",
-      "title": "fix(verify-image-signature): check initContainers and ephemeralContainers",
-      "url": "https://github.com/kubescape/regolibrary/pull/831"
-    },
-    {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-identifier",
       "number": 98,
@@ -833,7 +833,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-25"
+    "syncedAt": "2026-09-26"
   },
   "issues": [
     {
