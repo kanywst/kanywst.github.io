@@ -40,7 +40,7 @@
       "owner": "kanywst",
       "lang": "Python",
       "version": "v0.7.1",
-      "stars": 5,
+      "stars": 6,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
     },
@@ -571,6 +571,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "Kong",
+      "repo": "kong",
+      "number": 15022,
+      "state": "open",
+      "domain": "",
+      "title": "fix(plugins/standard-webhooks): follow the spec",
+      "url": "https://github.com/Kong/kong/pull/15022"
+    },
+    {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-identifier",
       "number": 98,
@@ -833,7 +842,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-26"
+    "syncedAt": "2026-09-27"
   },
   "issues": [
     {
