@@ -310,6 +310,15 @@
       "url": "https://github.com/openid/authzen/pull/599"
     },
     {
+      "owner": "vouch",
+      "repo": "vouch-proxy",
+      "number": 616,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix panic in cookie.Cookie() on malformed multipart cookie names",
+      "url": "https://github.com/vouch/vouch-proxy/pull/616"
+    },
+    {
       "owner": "lldap",
       "repo": "lldap",
       "number": 1469,
@@ -634,15 +643,6 @@
       "url": "https://github.com/Infisical/infisical/pull/7673"
     },
     {
-      "owner": "vouch",
-      "repo": "vouch-proxy",
-      "number": 616,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "fix panic in cookie.Cookie() on malformed multipart cookie names",
-      "url": "https://github.com/vouch/vouch-proxy/pull/616"
-    },
-    {
       "owner": "go-jose",
       "repo": "go-jose",
       "number": 264,
@@ -842,7 +842,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-27"
+    "syncedAt": "2026-09-28"
   },
   "issues": [
     {
@@ -898,15 +898,6 @@
       "domain": "Identity",
       "title": "IdP-initiated SAML responses can be replayed; no used-assertion state is kept",
       "url": "https://github.com/ory/polis/issues/4077"
-    },
-    {
-      "owner": "vouch",
-      "repo": "vouch-proxy",
-      "number": 615,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "panic in cookie.Cookie() on malformed multipart cookie names",
-      "url": "https://github.com/vouch/vouch-proxy/issues/615"
     },
     {
       "owner": "openid",
@@ -970,6 +961,15 @@
       "domain": "Authorization",
       "title": "Fix evaluation JSON schemas to match the final 1.0 text",
       "url": "https://github.com/openid/authzen/issues/598"
+    },
+    {
+      "owner": "vouch",
+      "repo": "vouch-proxy",
+      "number": 615,
+      "state": "closed",
+      "domain": "OIDC",
+      "title": "panic in cookie.Cookie() on malformed multipart cookie names",
+      "url": "https://github.com/vouch/vouch-proxy/issues/615"
     },
     {
       "owner": "glauth",
