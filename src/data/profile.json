@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "version": "v1.4.0",
-      "stars": 34,
+      "stars": 35,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
     },
@@ -842,7 +842,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-28"
+    "syncedAt": "2026-09-29"
   },
   "issues": [
     {
