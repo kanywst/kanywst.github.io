@@ -68,7 +68,7 @@
       "lang": "Go",
       "version": "v0.4.0",
       "stars": 2,
-      "tagline": "Local-first secret manager for the AI-agent era — keep API keys out of .env files and out of your agent transcripts.",
+      "tagline": "[Deprecated] Local-first secret manager for the AI-agent era. Superseded by 1Password's agent-safe secret delivery; archiving on or after 2026-12-29.",
       "url": "https://github.com/kanywst/rapg"
     },
     {
@@ -580,6 +580,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "ratatui",
+      "repo": "awesome-ratatui",
+      "number": 471,
+      "state": "open",
+      "domain": "",
+      "title": "Add wtfi2",
+      "url": "https://github.com/ratatui/awesome-ratatui/pull/471"
+    },
+    {
       "owner": "Kong",
       "repo": "kong",
       "number": 15022,
@@ -842,7 +851,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-29"
+    "syncedAt": "2026-09-30"
   },
   "issues": [
     {
