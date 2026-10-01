@@ -40,7 +40,7 @@
       "owner": "kanywst",
       "lang": "Python",
       "version": "v0.7.1",
-      "stars": 6,
+      "stars": 7,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
     },
@@ -88,6 +88,15 @@
       "stars": 1,
       "tagline": "Verifiable delegation for AI agents — signed chains rooted in a human sponsor, attenuating at every hop, revocable per link, and evaluated across whole action sequences.",
       "url": "https://github.com/kanywst/mandatum"
+    },
+    {
+      "name": "wtfi2",
+      "owner": "kanywst",
+      "lang": "Rust",
+      "version": "v0.6.0",
+      "stars": 1,
+      "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
+      "url": "https://github.com/kanywst/wtfi2"
     }
   ],
   "advisories": [
@@ -851,7 +860,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-09-30"
+    "syncedAt": "2026-10-01"
   },
   "issues": [
     {
