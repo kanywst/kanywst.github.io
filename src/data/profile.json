@@ -75,7 +75,7 @@
       "name": "hammurabi",
       "owner": "kanywst",
       "lang": "TypeScript",
-      "version": "v1.0.2",
+      "version": "v1.1.0",
       "stars": 1,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
@@ -860,7 +860,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-01"
+    "syncedAt": "2026-10-02"
   },
   "issues": [
     {
