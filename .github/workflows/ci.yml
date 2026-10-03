@@ -65,4 +65,5 @@ jobs:
           node-version: 24
           cache: 'npm'
       - run: npm ci
-      - run: npm audit --audit-level=high
+      # Only runtime deps ship (static site), so dev-only advisories don't gate PRs.
+      - run: npm audit --omit=dev --audit-level=high
