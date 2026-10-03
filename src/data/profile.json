@@ -40,7 +40,7 @@
       "owner": "kanywst",
       "lang": "Python",
       "version": "v0.7.1",
-      "stars": 7,
+      "stars": 8,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
     },
@@ -192,6 +192,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "ratatui",
+      "repo": "awesome-ratatui",
+      "number": 471,
+      "state": "merged",
+      "domain": "",
+      "title": "Add wtfi2",
+      "url": "https://github.com/ratatui/awesome-ratatui/pull/471"
+    },
     {
       "owner": "kubescape",
       "repo": "regolibrary",
@@ -589,15 +598,6 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "ratatui",
-      "repo": "awesome-ratatui",
-      "number": 471,
-      "state": "open",
-      "domain": "",
-      "title": "Add wtfi2",
-      "url": "https://github.com/ratatui/awesome-ratatui/pull/471"
-    },
-    {
       "owner": "Kong",
       "repo": "kong",
       "number": 15022,
@@ -860,7 +860,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-02"
+    "syncedAt": "2026-10-03"
   },
   "issues": [
     {
