@@ -21,7 +21,7 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.7.0",
+      "version": "v1.10.0",
       "stars": 35,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
@@ -88,6 +88,15 @@
       "stars": 1,
       "tagline": "Verifiable delegation for AI agents — signed chains rooted in a human sponsor, attenuating at every hop, revocable per link, and evaluated across whole action sequences.",
       "url": "https://github.com/kanywst/mandatum"
+    },
+    {
+      "name": "mcp-opa-authz",
+      "owner": "kanywst",
+      "lang": "Go",
+      "version": "v0.6.0",
+      "stars": 1,
+      "tagline": "MCP server giving LLM agents real authorization answers: evaluate Rego in-process via OPA, or ask an OpenID AuthZEN 1.0 PDP",
+      "url": "https://github.com/kanywst/mcp-opa-authz"
     },
     {
       "name": "wtfi2",
@@ -192,6 +201,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "open-policy-agent",
+      "repo": "awesome-opa",
+      "number": 93,
+      "state": "merged",
+      "domain": "",
+      "title": "Add mcp-opa-authz to Tools and Utilities",
+      "url": "https://github.com/open-policy-agent/awesome-opa/pull/93"
+    },
     {
       "owner": "ratatui",
       "repo": "awesome-ratatui",
@@ -589,15 +607,6 @@
       "url": "https://github.com/dexidp/dex/pull/4598"
     },
     {
-      "owner": "open-policy-agent",
-      "repo": "awesome-opa",
-      "number": 93,
-      "state": "open",
-      "domain": "",
-      "title": "Add mcp-opa-authz to Tools and Utilities",
-      "url": "https://github.com/open-policy-agent/awesome-opa/pull/93"
-    },
-    {
       "owner": "Kong",
       "repo": "kong",
       "number": 15022,
@@ -848,19 +857,10 @@
       "domain": "Cloud Native",
       "title": "cleanup: replace ioutil with os in abac_test.go",
       "url": "https://github.com/kubernetes/kubernetes/pull/137316"
-    },
-    {
-      "owner": "enix",
-      "repo": "x509-certificate-exporter",
-      "number": 451,
-      "state": "closed",
-      "domain": "PKI",
-      "title": "feat: enhance shutdown function to accept context for improved control",
-      "url": "https://github.com/enix/x509-certificate-exporter/pull/451"
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-04"
+    "syncedAt": "2026-10-05"
   },
   "issues": [
     {
