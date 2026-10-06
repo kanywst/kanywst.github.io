@@ -21,8 +21,8 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.10.0",
-      "stars": 35,
+      "version": "v1.11.0",
+      "stars": 36,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
     },
@@ -97,6 +97,15 @@
       "stars": 1,
       "tagline": "MCP server giving LLM agents real authorization answers: evaluate Rego in-process via OPA, or ask an OpenID AuthZEN 1.0 PDP",
       "url": "https://github.com/kanywst/mcp-opa-authz"
+    },
+    {
+      "name": "wimsey",
+      "owner": "kanywst",
+      "lang": "Rust",
+      "version": "v0.8.0",
+      "stars": 1,
+      "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
+      "url": "https://github.com/kanywst/wimsey"
     },
     {
       "name": "wtfi2",
@@ -860,7 +869,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-05"
+    "syncedAt": "2026-10-06"
   },
   "issues": [
     {
