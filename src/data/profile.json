@@ -39,7 +39,7 @@
       "name": "a2acode",
       "owner": "kanywst",
       "lang": "Python",
-      "version": "v0.7.1",
+      "version": "v0.8.0",
       "stars": 9,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
@@ -57,7 +57,7 @@
       "name": "omega",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.5.0",
+      "version": "v0.6.0",
       "stars": 2,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
@@ -66,7 +66,7 @@
       "name": "rapg",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.4.0",
+      "version": "v0.4.1",
       "stars": 2,
       "tagline": "[Deprecated] Local-first secret manager for the AI-agent era. Superseded by 1Password's agent-safe secret delivery; archiving on or after 2026-12-29.",
       "url": "https://github.com/kanywst/rapg"
@@ -84,7 +84,7 @@
       "name": "mandatum",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.1.0",
+      "version": "v0.2.0",
       "stars": 1,
       "tagline": "Verifiable delegation for AI agents — signed chains rooted in a human sponsor, attenuating at every hop, revocable per link, and evaluated across whole action sequences.",
       "url": "https://github.com/kanywst/mandatum"
@@ -93,7 +93,7 @@
       "name": "mcp-opa-authz",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.6.0",
+      "version": "v0.6.1",
       "stars": 1,
       "tagline": "MCP server giving LLM agents real authorization answers: evaluate Rego in-process via OPA, or ask an OpenID AuthZEN 1.0 PDP",
       "url": "https://github.com/kanywst/mcp-opa-authz"
@@ -589,33 +589,6 @@
       "url": "https://github.com/dexidp/dex/pull/4599"
     },
     {
-      "owner": "open-policy-agent",
-      "repo": "opa",
-      "number": 8395,
-      "state": "merged",
-      "domain": "Authorization",
-      "title": "internal/providers/aws: Refactor deprecated crypto/elliptic APIs to crypto/ecdh",
-      "url": "https://github.com/open-policy-agent/opa/pull/8395"
-    },
-    {
-      "owner": "spiffe",
-      "repo": "spire",
-      "number": 6693,
-      "state": "merged",
-      "domain": "Workload Identity",
-      "title": "chore: fix typos in common package",
-      "url": "https://github.com/spiffe/spire/pull/6693"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4598,
-      "state": "merged",
-      "domain": "OIDC",
-      "title": "fix: fix typo in grpc listener error message",
-      "url": "https://github.com/dexidp/dex/pull/4598"
-    },
-    {
       "owner": "Kong",
       "repo": "kong",
       "number": 15022,
@@ -857,19 +830,10 @@
       "domain": "PKI",
       "title": "docs: Update Helm repository references to OCI registry",
       "url": "https://github.com/cert-manager/cert-manager/pull/8592"
-    },
-    {
-      "owner": "kubernetes",
-      "repo": "kubernetes",
-      "number": 137316,
-      "state": "closed",
-      "domain": "Cloud Native",
-      "title": "cleanup: replace ioutil with os in abac_test.go",
-      "url": "https://github.com/kubernetes/kubernetes/pull/137316"
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-06"
+    "syncedAt": "2026-10-07"
   },
   "issues": [
     {
