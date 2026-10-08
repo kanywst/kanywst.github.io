@@ -27,6 +27,15 @@
       "url": "https://github.com/kanywst/y509"
     },
     {
+      "name": "a2acode",
+      "owner": "kanywst",
+      "lang": "Python",
+      "version": "v0.8.0",
+      "stars": 10,
+      "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
+      "url": "https://github.com/kanywst/a2acode"
+    },
+    {
       "name": "awesome-authorization",
       "owner": "kanywst",
       "lang": "List",
@@ -36,19 +45,10 @@
       "url": "https://github.com/kanywst/awesome-authorization"
     },
     {
-      "name": "a2acode",
-      "owner": "kanywst",
-      "lang": "Python",
-      "version": "v0.8.0",
-      "stars": 9,
-      "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
-      "url": "https://github.com/kanywst/a2acode"
-    },
-    {
       "name": "opa-authzen-plugin",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.9.0",
+      "version": "v0.9.1",
       "stars": 3,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
@@ -544,51 +544,6 @@
       "url": "https://github.com/openfga/openfga/pull/2980"
     },
     {
-      "owner": "smallstep",
-      "repo": "cli",
-      "number": 1580,
-      "state": "merged",
-      "domain": "PKI",
-      "title": "Fix typo in README.md",
-      "url": "https://github.com/smallstep/cli/pull/1580"
-    },
-    {
-      "owner": "istio",
-      "repo": "istio",
-      "number": 59306,
-      "state": "merged",
-      "domain": "Service Mesh",
-      "title": "dns: remove TODO about skipping node's own IP",
-      "url": "https://github.com/istio/istio/pull/59306"
-    },
-    {
-      "owner": "google-gemini",
-      "repo": "gemini-cli",
-      "number": 20964,
-      "state": "merged",
-      "domain": "Tooling",
-      "title": "docs: fix incorrect relative links to command reference",
-      "url": "https://github.com/google-gemini/gemini-cli/pull/20964"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4600,
-      "state": "merged",
-      "domain": "OIDC",
-      "title": "DEP for Identity Assertion JWT Authorization Grant (ID-JAG) / requested_token_type urn:ietf:params:oauth:token-type:id-jag",
-      "url": "https://github.com/dexidp/dex/pull/4600"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4599,
-      "state": "merged",
-      "domain": "OIDC",
-      "title": "fix: correct error message for device request expiry",
-      "url": "https://github.com/dexidp/dex/pull/4599"
-    },
-    {
       "owner": "Kong",
       "repo": "kong",
       "number": 15022,
@@ -833,7 +788,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-07"
+    "syncedAt": "2026-10-08"
   },
   "issues": [
     {
