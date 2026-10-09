@@ -247,13 +247,13 @@
       "url": "https://github.com/kubescape/cel-admission-library/pull/125"
     },
     {
-      "owner": "jhawlwut",
+      "owner": "counterbranch",
       "repo": "apparitor",
       "number": 76,
       "state": "merged",
       "domain": "",
       "title": "docs: fix broken kanywst/opa-authzen PDP reference",
-      "url": "https://github.com/jhawlwut/apparitor/pull/76"
+      "url": "https://github.com/counterbranch/apparitor/pull/76"
     },
     {
       "owner": "ietf-wg-wimse",
@@ -643,15 +643,6 @@
       "url": "https://github.com/open-policy-agent/contrib/pull/296"
     },
     {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4611,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
-      "url": "https://github.com/dexidp/dex/pull/4611"
-    },
-    {
       "owner": "NixOS",
       "repo": "nixpkgs",
       "number": 561552,
@@ -767,28 +758,10 @@
       "domain": "Observability",
       "title": "test: Clarify parser error position handling with inline comments",
       "url": "https://github.com/prometheus/prometheus/pull/18265"
-    },
-    {
-      "owner": "prometheus",
-      "repo": "prometheus",
-      "number": 18264,
-      "state": "closed",
-      "domain": "Observability",
-      "title": "docs: Fix typos and improve comments",
-      "url": "https://github.com/prometheus/prometheus/pull/18264"
-    },
-    {
-      "owner": "cert-manager",
-      "repo": "cert-manager",
-      "number": 8592,
-      "state": "closed",
-      "domain": "PKI",
-      "title": "docs: Update Helm repository references to OCI registry",
-      "url": "https://github.com/cert-manager/cert-manager/pull/8592"
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-08"
+    "syncedAt": "2026-10-09"
   },
   "issues": [
     {
