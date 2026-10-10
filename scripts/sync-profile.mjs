@@ -49,15 +49,19 @@ function normalizeVersion(tag) {
   return m[0].startsWith('v') ? m[0] : `v${m[0]}`;
 }
 
-// kanywst opens hundreds of self-PRs (agent loops, ~450 total). A low --limit returns
-// only the most-recent items, swamped by self-PRs, silently hiding older EXTERNAL ones.
-// 1000 covers the current volume; if exceeded this needs real pagination.
+// kanywst opens hundreds of self-PRs (agent loops). Search returns at most 1000 results,
+// so own repos are excluded in the query (fetchExternal) and the limit only has to cover
+// external items.
 const LIMIT = '1000';
 
 function fetchExternal(kind /* 'prs' | 'issues' */) {
+  // Exclude own repos in the query itself: search caps at 1000 results, and self-PRs
+  // alone passed that, so a client-side filter silently dropped the oldest external PRs.
   const args = ['search', kind, '--author=kanywst', '--limit', LIMIT, '--json',
     'repository,title,state,number,url,createdAt'];
   if (kind === 'issues') args.push('--include-prs=false');
+  // `--` keeps gh from parsing the leading '-' as a flag; every flag must come before it
+  args.push('--', '-user:kanywst', '-user:0-draft');
   return ghJSON(args)
     // guard against unexpected shapes, then keep external repos only
     .filter((x) => x?.repository?.nameWithOwner && !own.test(x.repository.nameWithOwner))
