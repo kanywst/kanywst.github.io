@@ -31,7 +31,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.6.0",
-      "stars": 27,
+      "stars": 31,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -88,15 +88,6 @@
       "stars": 1,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
-    },
-    {
-      "name": "mandatum",
-      "owner": "kanywst",
-      "lang": "Go",
-      "version": "v0.2.0",
-      "stars": 1,
-      "tagline": "Verifiable delegation for AI agents — signed chains rooted in a human sponsor, attenuating at every hop, revocable per link, and evaluated across whole action sequences.",
-      "url": "https://github.com/kanywst/mandatum"
     },
     {
       "name": "mcp-opa-authz",
