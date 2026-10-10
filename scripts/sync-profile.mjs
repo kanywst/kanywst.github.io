@@ -24,7 +24,8 @@ const FILE = resolve(here, '../src/data/profile.json');
 const GH_TIMEOUT_MS = 20_000;
 const GH_MAX_BUFFER = 5 * 1024 * 1024;
 
-const own = /^(kanywst|0-draft)\//;
+const OWN_OWNERS = ['kanywst', '0-draft'];
+const isOwn = (nameWithOwner) => OWN_OWNERS.includes(nameWithOwner.split('/')[0]);
 
 // Items that exist upstream but don't belong in the showcase. kgateway#14625 is a
 // duplicate of #14624 that a `gh issue create` retry opened; it was closed minutes later.
@@ -49,18 +50,27 @@ function normalizeVersion(tag) {
   return m[0].startsWith('v') ? m[0] : `v${m[0]}`;
 }
 
-// kanywst opens hundreds of self-PRs (agent loops, ~450 total). A low --limit returns
-// only the most-recent items, swamped by self-PRs, silently hiding older EXTERNAL ones.
-// 1000 covers the current volume; if exceeded this needs real pagination.
+// kanywst opens hundreds of self-PRs (agent loops). Search returns at most 1000 results,
+// so own repos are excluded in the query (fetchExternal) and the limit only has to cover
+// external items.
 const LIMIT = '1000';
 
 function fetchExternal(kind /* 'prs' | 'issues' */) {
+  // Exclude own repos in the query itself: search caps at 1000 results, and self-PRs
+  // alone passed that, so a client-side filter silently dropped the oldest external PRs.
   const args = ['search', kind, '--author=kanywst', '--limit', LIMIT, '--json',
     'repository,title,state,number,url,createdAt'];
   if (kind === 'issues') args.push('--include-prs=false');
-  return ghJSON(args)
+  // `--` keeps gh from parsing the leading '-' as a flag; every flag must come before it
+  args.push('--', ...OWN_OWNERS.map((o) => `-user:${o}`));
+  const rows = ghJSON(args);
+  // at the cap the oldest items are already gone; fail instead of writing a short list
+  if (rows.length >= Number(LIMIT)) {
+    throw new Error(`gh search ${kind} hit the ${LIMIT}-result cap; results are truncated`);
+  }
+  return rows
     // guard against unexpected shapes, then keep external repos only
-    .filter((x) => x?.repository?.nameWithOwner && !own.test(x.repository.nameWithOwner))
+    .filter((x) => x?.repository?.nameWithOwner && !isOwn(x.repository.nameWithOwner))
     .filter((x) => !EXCLUDE.has(`${x.repository.nameWithOwner}#${x.number}`))
     .map((x) => {
       const [owner, repo] = x.repository.nameWithOwner.split('/');

@@ -206,7 +206,7 @@
       "repo": "awesome-opa",
       "number": 93,
       "state": "merged",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Add mcp-opa-authz to Tools and Utilities",
       "url": "https://github.com/open-policy-agent/awesome-opa/pull/93"
     },
@@ -215,7 +215,7 @@
       "repo": "awesome-ratatui",
       "number": 471,
       "state": "merged",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add wtfi2",
       "url": "https://github.com/ratatui/awesome-ratatui/pull/471"
     },
@@ -224,7 +224,7 @@
       "repo": "regolibrary",
       "number": 831,
       "state": "merged",
-      "domain": "",
+      "domain": "Authorization",
       "title": "fix(verify-image-signature): check initContainers and ephemeralContainers",
       "url": "https://github.com/kubescape/regolibrary/pull/831"
     },
@@ -233,7 +233,7 @@
       "repo": "cel-admission-library",
       "number": 125,
       "state": "merged",
-      "domain": "",
+      "domain": "Authorization",
       "title": "feat: modernize C-0046 to variables pattern",
       "url": "https://github.com/kubescape/cel-admission-library/pull/125"
     },
@@ -242,7 +242,7 @@
       "repo": "apparitor",
       "number": 76,
       "state": "merged",
-      "domain": "",
+      "domain": "Authorization",
       "title": "docs: fix broken kanywst/opa-authzen PDP reference",
       "url": "https://github.com/counterbranch/apparitor/pull/76"
     },
@@ -260,7 +260,7 @@
       "repo": "awesome-go",
       "number": 6676,
       "state": "merged",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add y509 to Security",
       "url": "https://github.com/avelino/awesome-go/pull/6676"
     },
@@ -499,11 +499,128 @@
       "url": "https://github.com/spiffe/spire/pull/7066"
     },
     {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 6857,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Add iss claim support for WIT-SVIDs",
+      "url": "https://github.com/spiffe/spire/pull/6857"
+    },
+    {
+      "owner": "aserto-dev",
+      "repo": "topaz",
+      "number": 715,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "fix: Backup() returns nil instead of err",
+      "url": "https://github.com/aserto-dev/topaz/pull/715"
+    },
+    {
+      "owner": "golangci",
+      "repo": "golangci-lint",
+      "number": 6440,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "docs: fix typos and grammar errors in docs and code comments",
+      "url": "https://github.com/golangci/golangci-lint/pull/6440"
+    },
+    {
+      "owner": "openfga",
+      "repo": "openfga",
+      "number": 2980,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "docs: fix typos in RELEASES.md and Makefile",
+      "url": "https://github.com/openfga/openfga/pull/2980"
+    },
+    {
+      "owner": "smallstep",
+      "repo": "cli",
+      "number": 1580,
+      "state": "merged",
+      "domain": "PKI",
+      "title": "Fix typo in README.md",
+      "url": "https://github.com/smallstep/cli/pull/1580"
+    },
+    {
+      "owner": "istio",
+      "repo": "istio",
+      "number": 59306,
+      "state": "merged",
+      "domain": "Service Mesh",
+      "title": "dns: remove TODO about skipping node's own IP",
+      "url": "https://github.com/istio/istio/pull/59306"
+    },
+    {
+      "owner": "google-gemini",
+      "repo": "gemini-cli",
+      "number": 20964,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "docs: fix incorrect relative links to command reference",
+      "url": "https://github.com/google-gemini/gemini-cli/pull/20964"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4600,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "DEP for Identity Assertion JWT Authorization Grant (ID-JAG) / requested_token_type urn:ietf:params:oauth:token-type:id-jag",
+      "url": "https://github.com/dexidp/dex/pull/4600"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4599,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix: correct error message for device request expiry",
+      "url": "https://github.com/dexidp/dex/pull/4599"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8395,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "internal/providers/aws: Refactor deprecated crypto/elliptic APIs to crypto/ecdh",
+      "url": "https://github.com/open-policy-agent/opa/pull/8395"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 6693,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "chore: fix typos in common package",
+      "url": "https://github.com/spiffe/spire/pull/6693"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4598,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix: fix typo in grpc listener error message",
+      "url": "https://github.com/dexidp/dex/pull/4598"
+    },
+    {
+      "owner": "pwn2winctf",
+      "repo": "2020submissions",
+      "number": 149,
+      "state": "merged",
+      "domain": "CTF",
+      "title": "Register team kanyewest",
+      "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
+    },
+    {
       "owner": "loft-sh",
       "repo": "vcluster",
       "number": 4203,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "fix(syncer): translate ephemeral container images",
       "url": "https://github.com/loft-sh/vcluster/pull/4203"
     },
@@ -512,7 +629,7 @@
       "repo": "kong",
       "number": 15022,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "fix(plugins/standard-webhooks): follow the spec",
       "url": "https://github.com/Kong/kong/pull/15022"
     },
@@ -521,7 +638,7 @@
       "repo": "draft-ietf-wimse-identifier",
       "number": 98,
       "state": "open",
-      "domain": "",
+      "domain": "Workload Identity",
       "title": "Add an Implementation Status section with an entry for wimsey",
       "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-identifier/pull/98"
     },
@@ -530,7 +647,7 @@
       "repo": "winget-pkgs",
       "number": 431389,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "New package: kanywst.y509 version 1.11.0",
       "url": "https://github.com/microsoft/winget-pkgs/pull/431389"
     },
@@ -539,7 +656,7 @@
       "repo": "awesome-go-security",
       "number": 18,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add y509 to Private Key Infrastructure",
       "url": "https://github.com/Binject/awesome-go-security/pull/18"
     },
@@ -548,7 +665,7 @@
       "repo": "awesome-golang-security",
       "number": 28,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add y509 to Private Key Infrastructure",
       "url": "https://github.com/guardrailsio/awesome-golang-security/pull/28"
     },
@@ -596,6 +713,24 @@
       "domain": "OIDC",
       "title": "fix(oidc): verify userinfo sub matches the ID Token sub",
       "url": "https://github.com/dexidp/dex/pull/4828"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "contrib",
+      "number": 296,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "Add missing READMEs for authzen, data_filter_azure, and wasm",
+      "url": "https://github.com/open-policy-agent/contrib/pull/296"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4611,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
+      "url": "https://github.com/dexidp/dex/pull/4611"
     },
     {
       "owner": "NixOS",
@@ -677,6 +812,78 @@
       "domain": "Supply Chain",
       "title": "docs: add enterprise private-infrastructure guidance",
       "url": "https://github.com/sigstore/cosign/pull/4830"
+    },
+    {
+      "owner": "cilium",
+      "repo": "cilium",
+      "number": 45293,
+      "state": "closed",
+      "domain": "Service Mesh",
+      "title": "auth/spire: Add configurable gRPC message size limit",
+      "url": "https://github.com/cilium/cilium/pull/45293"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8481,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "topdown/http: limit response body size in http.send",
+      "url": "https://github.com/open-policy-agent/opa/pull/8481"
+    },
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8451,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "server: add configurable route aliases",
+      "url": "https://github.com/open-policy-agent/opa/pull/8451"
+    },
+    {
+      "owner": "prometheus",
+      "repo": "prometheus",
+      "number": 18265,
+      "state": "closed",
+      "domain": "Observability",
+      "title": "test: Clarify parser error position handling with inline comments",
+      "url": "https://github.com/prometheus/prometheus/pull/18265"
+    },
+    {
+      "owner": "prometheus",
+      "repo": "prometheus",
+      "number": 18264,
+      "state": "closed",
+      "domain": "Observability",
+      "title": "docs: Fix typos and improve comments",
+      "url": "https://github.com/prometheus/prometheus/pull/18264"
+    },
+    {
+      "owner": "cert-manager",
+      "repo": "cert-manager",
+      "number": 8592,
+      "state": "closed",
+      "domain": "PKI",
+      "title": "docs: Update Helm repository references to OCI registry",
+      "url": "https://github.com/cert-manager/cert-manager/pull/8592"
+    },
+    {
+      "owner": "kubernetes",
+      "repo": "kubernetes",
+      "number": 137316,
+      "state": "closed",
+      "domain": "Cloud Native",
+      "title": "cleanup: replace ioutil with os in abac_test.go",
+      "url": "https://github.com/kubernetes/kubernetes/pull/137316"
+    },
+    {
+      "owner": "enix",
+      "repo": "x509-certificate-exporter",
+      "number": 451,
+      "state": "closed",
+      "domain": "PKI",
+      "title": "feat: enhance shutdown function to accept context for improved control",
+      "url": "https://github.com/enix/x509-certificate-exporter/pull/451"
     }
   ],
   "meta": {
@@ -688,7 +895,7 @@
       "repo": "vcluster",
       "number": 4205,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "Projected clusterTrustBundle and podCertificate sources are not translated",
       "url": "https://github.com/loft-sh/vcluster/issues/4205"
     },
@@ -697,7 +904,7 @@
       "repo": "vcluster",
       "number": 4202,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "sync.toHost.pods.translateImage is not applied to ephemeral containers",
       "url": "https://github.com/loft-sh/vcluster/issues/4202"
     },
@@ -706,7 +913,7 @@
       "repo": "vcluster",
       "number": 4201,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "Two objects in different virtual namespaces can map to the same host name",
       "url": "https://github.com/loft-sh/vcluster/issues/4201"
     },
@@ -733,7 +940,7 @@
       "repo": "Bravais",
       "number": 78,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "rapg now ships a flake upstream; the flakes/rapg wrapper can be dropped",
       "url": "https://github.com/Spacecraft-Software/Bravais/issues/78"
     },
@@ -742,7 +949,7 @@
       "repo": "k8gb",
       "number": 2527,
       "state": "open",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "[BUG] Local playground serves no DNS on arm64: edge BIND image is amd64-only and segfaults under emulation",
       "url": "https://github.com/k8gb-io/k8gb/issues/2527"
     },

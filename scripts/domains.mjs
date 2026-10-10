@@ -16,10 +16,15 @@ export const DOMAIN_BY_REPO = {
   'php-casbin/php-casbin': 'Authorization',
   'openid/authzen': 'Authorization',
   'FairwindsOps/polaris': 'Authorization',
+  'open-policy-agent/awesome-opa': 'Authorization',
+  'kubescape/regolibrary': 'Authorization',
+  'kubescape/cel-admission-library': 'Authorization',
+  'counterbranch/apparitor': 'Authorization',
   // workload identity
   'spiffe/spire': 'Workload Identity',
   'spiffe/spiffe': 'Workload Identity',
   'ietf-wg-wimse/draft-ietf-wimse-s2s-protocol': 'Workload Identity',
+  'ietf-wg-wimse/draft-ietf-wimse-identifier': 'Workload Identity',
   'kumahq/kuma': 'Workload Identity',
   // supply chain
   'sigstore/sigstore-go': 'Supply Chain',
@@ -43,6 +48,9 @@ export const DOMAIN_BY_REPO = {
   'netbirdio/netbird': 'Cloud Native',
   'envoyproxy/gateway': 'Cloud Native',
   'kgateway-dev/kgateway': 'Cloud Native',
+  'Kong/kong': 'Cloud Native',
+  'loft-sh/vcluster': 'Cloud Native',
+  'k8gb-io/k8gb': 'Cloud Native',
   // identity / OIDC
   'dexidp/dex': 'OIDC',
   'zalando/skipper': 'OIDC',
@@ -76,5 +84,11 @@ export const DOMAIN_BY_REPO = {
   'rothgar/awesome-tuis': 'Tooling',
   'charm-and-friends/charm-in-the-wild': 'Tooling',
   'NixOS/nixpkgs': 'Tooling',
+  'microsoft/winget-pkgs': 'Tooling',
+  'Spacecraft-Software/Bravais': 'Tooling',
+  'ratatui/awesome-ratatui': 'Tooling',
+  'avelino/awesome-go': 'Tooling',
+  'Binject/awesome-go-security': 'Tooling',
+  'guardrailsio/awesome-golang-security': 'Tooling',
   'pwn2winctf/2020submissions': 'CTF',
 };
