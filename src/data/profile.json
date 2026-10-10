@@ -22,9 +22,18 @@
       "owner": "kanywst",
       "lang": "Go",
       "version": "v1.11.0",
-      "stars": 36,
+      "stars": 37,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
+    },
+    {
+      "name": "wtfi2",
+      "owner": "kanywst",
+      "lang": "Rust",
+      "version": "v0.6.0",
+      "stars": 27,
+      "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
+      "url": "https://github.com/kanywst/wtfi2"
     },
     {
       "name": "a2acode",
@@ -106,15 +115,6 @@
       "stars": 1,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey"
-    },
-    {
-      "name": "wtfi2",
-      "owner": "kanywst",
-      "lang": "Rust",
-      "version": "v0.6.0",
-      "stars": 1,
-      "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
-      "url": "https://github.com/kanywst/wtfi2"
     }
   ],
   "advisories": [
@@ -508,40 +508,13 @@
       "url": "https://github.com/spiffe/spire/pull/7066"
     },
     {
-      "owner": "spiffe",
-      "repo": "spire",
-      "number": 6857,
-      "state": "merged",
-      "domain": "Workload Identity",
-      "title": "Add iss claim support for WIT-SVIDs",
-      "url": "https://github.com/spiffe/spire/pull/6857"
-    },
-    {
-      "owner": "aserto-dev",
-      "repo": "topaz",
-      "number": 715,
-      "state": "merged",
-      "domain": "Authorization",
-      "title": "fix: Backup() returns nil instead of err",
-      "url": "https://github.com/aserto-dev/topaz/pull/715"
-    },
-    {
-      "owner": "golangci",
-      "repo": "golangci-lint",
-      "number": 6440,
-      "state": "merged",
-      "domain": "Tooling",
-      "title": "docs: fix typos and grammar errors in docs and code comments",
-      "url": "https://github.com/golangci/golangci-lint/pull/6440"
-    },
-    {
-      "owner": "openfga",
-      "repo": "openfga",
-      "number": 2980,
-      "state": "merged",
-      "domain": "Authorization",
-      "title": "docs: fix typos in RELEASES.md and Makefile",
-      "url": "https://github.com/openfga/openfga/pull/2980"
+      "owner": "loft-sh",
+      "repo": "vcluster",
+      "number": 4203,
+      "state": "open",
+      "domain": "",
+      "title": "fix(syncer): translate ephemeral container images",
+      "url": "https://github.com/loft-sh/vcluster/pull/4203"
     },
     {
       "owner": "Kong",
@@ -567,7 +540,7 @@
       "number": 431389,
       "state": "open",
       "domain": "",
-      "title": "New package: kanywst.y509 version 1.6.0",
+      "title": "New package: kanywst.y509 version 1.11.0",
       "url": "https://github.com/microsoft/winget-pkgs/pull/431389"
     },
     {
@@ -632,15 +605,6 @@
       "domain": "OIDC",
       "title": "fix(oidc): verify userinfo sub matches the ID Token sub",
       "url": "https://github.com/dexidp/dex/pull/4828"
-    },
-    {
-      "owner": "open-policy-agent",
-      "repo": "contrib",
-      "number": 296,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "Add missing READMEs for authzen, data_filter_azure, and wasm",
-      "url": "https://github.com/open-policy-agent/contrib/pull/296"
     },
     {
       "owner": "NixOS",
@@ -722,48 +686,39 @@
       "domain": "Supply Chain",
       "title": "docs: add enterprise private-infrastructure guidance",
       "url": "https://github.com/sigstore/cosign/pull/4830"
-    },
-    {
-      "owner": "cilium",
-      "repo": "cilium",
-      "number": 45293,
-      "state": "closed",
-      "domain": "Service Mesh",
-      "title": "auth/spire: Add configurable gRPC message size limit",
-      "url": "https://github.com/cilium/cilium/pull/45293"
-    },
-    {
-      "owner": "open-policy-agent",
-      "repo": "opa",
-      "number": 8481,
-      "state": "closed",
-      "domain": "Authorization",
-      "title": "topdown/http: limit response body size in http.send",
-      "url": "https://github.com/open-policy-agent/opa/pull/8481"
-    },
-    {
-      "owner": "open-policy-agent",
-      "repo": "opa",
-      "number": 8451,
-      "state": "closed",
-      "domain": "Authorization",
-      "title": "server: add configurable route aliases",
-      "url": "https://github.com/open-policy-agent/opa/pull/8451"
-    },
-    {
-      "owner": "prometheus",
-      "repo": "prometheus",
-      "number": 18265,
-      "state": "closed",
-      "domain": "Observability",
-      "title": "test: Clarify parser error position handling with inline comments",
-      "url": "https://github.com/prometheus/prometheus/pull/18265"
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-09"
+    "syncedAt": "2026-10-10"
   },
   "issues": [
+    {
+      "owner": "loft-sh",
+      "repo": "vcluster",
+      "number": 4205,
+      "state": "open",
+      "domain": "",
+      "title": "Projected clusterTrustBundle and podCertificate sources are not translated",
+      "url": "https://github.com/loft-sh/vcluster/issues/4205"
+    },
+    {
+      "owner": "loft-sh",
+      "repo": "vcluster",
+      "number": 4202,
+      "state": "open",
+      "domain": "",
+      "title": "sync.toHost.pods.translateImage is not applied to ephemeral containers",
+      "url": "https://github.com/loft-sh/vcluster/issues/4202"
+    },
+    {
+      "owner": "loft-sh",
+      "repo": "vcluster",
+      "number": 4201,
+      "state": "open",
+      "domain": "",
+      "title": "Two objects in different virtual namespaces can map to the same host name",
+      "url": "https://github.com/loft-sh/vcluster/issues/4201"
+    },
     {
       "owner": "openid",
       "repo": "authzen",
