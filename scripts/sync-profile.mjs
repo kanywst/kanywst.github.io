@@ -24,7 +24,8 @@ const FILE = resolve(here, '../src/data/profile.json');
 const GH_TIMEOUT_MS = 20_000;
 const GH_MAX_BUFFER = 5 * 1024 * 1024;
 
-const own = /^(kanywst|0-draft)\//;
+const OWN_OWNERS = ['kanywst', '0-draft'];
+const isOwn = (nameWithOwner) => OWN_OWNERS.includes(nameWithOwner.split('/')[0]);
 
 // Items that exist upstream but don't belong in the showcase. kgateway#14625 is a
 // duplicate of #14624 that a `gh issue create` retry opened; it was closed minutes later.
@@ -61,10 +62,15 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
     'repository,title,state,number,url,createdAt'];
   if (kind === 'issues') args.push('--include-prs=false');
   // `--` keeps gh from parsing the leading '-' as a flag; every flag must come before it
-  args.push('--', '-user:kanywst', '-user:0-draft');
-  return ghJSON(args)
+  args.push('--', ...OWN_OWNERS.map((o) => `-user:${o}`));
+  const rows = ghJSON(args);
+  // at the cap the oldest items are already gone; fail instead of writing a short list
+  if (rows.length >= Number(LIMIT)) {
+    throw new Error(`gh search ${kind} hit the ${LIMIT}-result cap; results are truncated`);
+  }
+  return rows
     // guard against unexpected shapes, then keep external repos only
-    .filter((x) => x?.repository?.nameWithOwner && !own.test(x.repository.nameWithOwner))
+    .filter((x) => x?.repository?.nameWithOwner && !isOwn(x.repository.nameWithOwner))
     .filter((x) => !EXCLUDE.has(`${x.repository.nameWithOwner}#${x.number}`))
     .map((x) => {
       const [owner, repo] = x.repository.nameWithOwner.split('/');
