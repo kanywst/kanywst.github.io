@@ -18,6 +18,15 @@
   },
   "flagships": [
     {
+      "name": "wtfi2",
+      "owner": "kanywst",
+      "lang": "Rust",
+      "version": "v0.6.0",
+      "stars": 37,
+      "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
+      "url": "https://github.com/kanywst/wtfi2"
+    },
+    {
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
@@ -25,15 +34,6 @@
       "stars": 37,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
-    },
-    {
-      "name": "wtfi2",
-      "owner": "kanywst",
-      "lang": "Rust",
-      "version": "v0.6.0",
-      "stars": 34,
-      "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
-      "url": "https://github.com/kanywst/wtfi2"
     },
     {
       "name": "a2acode",
@@ -614,6 +614,15 @@
       "domain": "CTF",
       "title": "Register team kanyewest",
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
+    },
+    {
+      "owner": "charm-and-friends",
+      "repo": "charm-in-the-wild",
+      "number": 137,
+      "state": "open",
+      "domain": "Tooling",
+      "title": "Add whosent to Cyber Security",
+      "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/137"
     },
     {
       "owner": "loft-sh",
