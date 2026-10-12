@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.6.0",
-      "stars": 37,
+      "stars": 45,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -66,7 +66,7 @@
       "name": "omega",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.6.0",
+      "version": "v0.7.0",
       "stars": 2,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
@@ -84,7 +84,7 @@
       "name": "hammurabi",
       "owner": "kanywst",
       "lang": "TypeScript",
-      "version": "v1.1.0",
+      "version": "v1.1.1",
       "stars": 1,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
@@ -616,6 +616,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "modelcontextprotocol",
+      "repo": "go-sdk",
+      "number": 1388,
+      "state": "open",
+      "domain": "",
+      "title": "examples: check token audience and set UserID in auth examples",
+      "url": "https://github.com/modelcontextprotocol/go-sdk/pull/1388"
+    },
+    {
       "owner": "charm-and-friends",
       "repo": "charm-in-the-wild",
       "number": 137,
@@ -896,7 +905,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-11"
+    "syncedAt": "2026-10-12"
   },
   "issues": [
     {
