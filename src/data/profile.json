@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.6.0",
-      "stars": 55,
+      "stars": 61,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -254,6 +254,15 @@
       "domain": "Authorization",
       "title": "docs: fix broken kanywst/opa-authzen PDP reference",
       "url": "https://github.com/counterbranch/apparitor/pull/76"
+    },
+    {
+      "owner": "Binject",
+      "repo": "awesome-go-security",
+      "number": 18,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "Add y509 to Private Key Infrastructure",
+      "url": "https://github.com/Binject/awesome-go-security/pull/18"
     },
     {
       "owner": "ietf-wg-wimse",
@@ -625,6 +634,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 9372,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "docs: add Authz Playground to the OPA ecosystem",
+      "url": "https://github.com/open-policy-agent/opa/pull/9372"
+    },
+    {
       "owner": "charm-and-friends",
       "repo": "charm-in-the-wild",
       "number": 137,
@@ -668,15 +686,6 @@
       "domain": "Tooling",
       "title": "New package: kanywst.y509 version 1.11.0",
       "url": "https://github.com/microsoft/winget-pkgs/pull/431389"
-    },
-    {
-      "owner": "Binject",
-      "repo": "awesome-go-security",
-      "number": 18,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "Add y509 to Private Key Infrastructure",
-      "url": "https://github.com/Binject/awesome-go-security/pull/18"
     },
     {
       "owner": "guardrailsio",
@@ -905,7 +914,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-13"
+    "syncedAt": "2026-10-14"
   },
   "issues": [
     {
