@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.6.0",
-      "stars": 61,
+      "stars": 68,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -54,6 +54,15 @@
       "url": "https://github.com/kanywst/awesome-authorization"
     },
     {
+      "name": "omega",
+      "owner": "kanywst",
+      "lang": "Go",
+      "version": "v0.9.0",
+      "stars": 3,
+      "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
+      "url": "https://github.com/kanywst/omega"
+    },
+    {
       "name": "opa-authzen-plugin",
       "owner": "kanywst",
       "lang": "Go",
@@ -61,15 +70,6 @@
       "stars": 3,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
-    },
-    {
-      "name": "omega",
-      "owner": "kanywst",
-      "lang": "Go",
-      "version": "v0.8.0",
-      "stars": 2,
-      "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
-      "url": "https://github.com/kanywst/omega"
     },
     {
       "name": "rapg",
@@ -634,6 +634,24 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "abhisheknaiidu",
+      "repo": "awesome-github-profile-readme",
+      "number": 1833,
+      "state": "open",
+      "domain": "",
+      "title": "Add Guestbook to Tools",
+      "url": "https://github.com/abhisheknaiidu/awesome-github-profile-readme/pull/1833"
+    },
+    {
+      "owner": "shyuan",
+      "repo": "awesome-oauth-oidc",
+      "number": 12,
+      "state": "open",
+      "domain": "",
+      "title": "Add whosent to Tool / JWT",
+      "url": "https://github.com/shyuan/awesome-oauth-oidc/pull/12"
+    },
+    {
       "owner": "open-policy-agent",
       "repo": "opa",
       "number": 9372,
@@ -914,7 +932,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-14"
+    "syncedAt": "2026-10-15"
   },
   "issues": [
     {
