@@ -21,8 +21,8 @@
       "name": "wtfi2",
       "owner": "kanywst",
       "lang": "Rust",
-      "version": "v0.6.0",
-      "stars": 68,
+      "version": "v0.7.0",
+      "stars": 73,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -54,22 +54,31 @@
       "url": "https://github.com/kanywst/awesome-authorization"
     },
     {
+      "name": "opa-authzen-plugin",
+      "owner": "kanywst",
+      "lang": "Go",
+      "version": "v0.9.2",
+      "stars": 4,
+      "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
+      "url": "https://github.com/kanywst/opa-authzen-plugin"
+    },
+    {
       "name": "omega",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.9.0",
+      "version": "v0.10.0",
       "stars": 3,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
     },
     {
-      "name": "opa-authzen-plugin",
+      "name": "hammurabi",
       "owner": "kanywst",
-      "lang": "Go",
-      "version": "v0.9.2",
-      "stars": 3,
-      "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
-      "url": "https://github.com/kanywst/opa-authzen-plugin"
+      "lang": "TypeScript",
+      "version": "v1.1.1",
+      "stars": 2,
+      "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
+      "url": "https://github.com/kanywst/hammurabi"
     },
     {
       "name": "rapg",
@@ -79,15 +88,6 @@
       "stars": 2,
       "tagline": "[Deprecated] Local-first secret manager for the AI-agent era. Superseded by 1Password's agent-safe secret delivery; archiving on or after 2026-12-29.",
       "url": "https://github.com/kanywst/rapg"
-    },
-    {
-      "name": "hammurabi",
-      "owner": "kanywst",
-      "lang": "TypeScript",
-      "version": "v1.1.1",
-      "stars": 1,
-      "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
-      "url": "https://github.com/kanywst/hammurabi"
     },
     {
       "name": "mcp-opa-authz",
@@ -932,7 +932,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-15"
+    "syncedAt": "2026-10-16"
   },
   "issues": [
     {
