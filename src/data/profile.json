@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.7.0",
-      "stars": 73,
+      "stars": 76,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -66,7 +66,7 @@
       "name": "omega",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.10.0",
+      "version": "v0.11.0",
       "stars": 3,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
@@ -130,6 +130,16 @@
       "url": "https://github.com/kumahq/kuma/security/advisories/GHSA-744g-c785-x65q"
     },
     {
+      "owner": "zitadel",
+      "repo": "zitadel",
+      "ghsa": "GHSA-93hm-8q29-c8cr",
+      "cve": "CVE-2026-110800",
+      "severity": "low",
+      "title": "SSRF in organization domain HTTP verification",
+      "domain": "Identity",
+      "url": "https://github.com/zitadel/zitadel/security/advisories/GHSA-93hm-8q29-c8cr"
+    },
+    {
       "owner": "falcosecurity",
       "repo": "plugins",
       "ghsa": "GHSA-jhjp-4c2q-xmx4",
@@ -164,15 +174,6 @@
       "title": "in_cidr caveat does not match IPv4-mapped IPv6 addresses",
       "domain": "Authorization",
       "url": "https://github.com/authzed/spicedb/security/advisories/GHSA-5784-6qcr-48fq"
-    },
-    {
-      "owner": "zitadel",
-      "repo": "zitadel",
-      "ghsa": "GHSA-93hm-8q29-c8cr",
-      "severity": "low",
-      "title": "SSRF in organization domain HTTP verification",
-      "domain": "Identity",
-      "url": "https://github.com/zitadel/zitadel/security/advisories/GHSA-93hm-8q29-c8cr"
     }
   ],
   "org": {
@@ -209,6 +210,15 @@
       "domain": "",
       "title": "examples: check token audience and set UserID in auth examples",
       "url": "https://github.com/modelcontextprotocol/go-sdk/pull/1388"
+    },
+    {
+      "owner": "charm-and-friends",
+      "repo": "charm-in-the-wild",
+      "number": 137,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "Add whosent to Cyber Security",
+      "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/137"
     },
     {
       "owner": "open-policy-agent",
@@ -661,15 +671,6 @@
       "url": "https://github.com/open-policy-agent/opa/pull/9372"
     },
     {
-      "owner": "charm-and-friends",
-      "repo": "charm-in-the-wild",
-      "number": 137,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "Add whosent to Cyber Security",
-      "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/137"
-    },
-    {
       "owner": "loft-sh",
       "repo": "vcluster",
       "number": 4203,
@@ -932,7 +933,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-16"
+    "syncedAt": "2026-10-17"
   },
   "issues": [
     {
