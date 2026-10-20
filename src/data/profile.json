@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.7.0",
-      "stars": 81,
+      "stars": 82,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -30,8 +30,8 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.11.0",
-      "stars": 37,
+      "version": "v1.12.0",
+      "stars": 40,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
     },
@@ -57,7 +57,7 @@
       "name": "opa-authzen-plugin",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.9.2",
+      "version": "v0.9.3",
       "stars": 4,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
@@ -66,7 +66,7 @@
       "name": "omega",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.13.0",
+      "version": "v0.14.0",
       "stars": 3,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
@@ -644,6 +644,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 9401,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "docs: add OPA-AuthZEN to the OPA ecosystem",
+      "url": "https://github.com/open-policy-agent/opa/pull/9401"
+    },
+    {
       "owner": "abhisheknaiidu",
       "repo": "awesome-github-profile-readme",
       "number": 1833,
@@ -721,7 +730,7 @@
       "number": 559182,
       "state": "open",
       "domain": "Tooling",
-      "title": "y509: init at 1.2.0",
+      "title": "y509: init at 1.12.0",
       "url": "https://github.com/NixOS/nixpkgs/pull/559182"
     },
     {
@@ -933,7 +942,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-19"
+    "syncedAt": "2026-10-20"
   },
   "issues": [
     {
