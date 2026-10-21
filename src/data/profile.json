@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.7.0",
-      "stars": 82,
+      "stars": 86,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -202,6 +202,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 9401,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "docs: add OPA-AuthZEN to the OPA ecosystem",
+      "url": "https://github.com/open-policy-agent/opa/pull/9401"
+    },
     {
       "owner": "modelcontextprotocol",
       "repo": "go-sdk",
@@ -644,15 +653,6 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "open-policy-agent",
-      "repo": "opa",
-      "number": 9401,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "docs: add OPA-AuthZEN to the OPA ecosystem",
-      "url": "https://github.com/open-policy-agent/opa/pull/9401"
-    },
-    {
       "owner": "abhisheknaiidu",
       "repo": "awesome-github-profile-readme",
       "number": 1833,
@@ -942,7 +942,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-20"
+    "syncedAt": "2026-10-21"
   },
   "issues": [
     {
