@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.7.0",
-      "stars": 88,
+      "stars": 92,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -102,7 +102,7 @@
       "name": "wimsey",
       "owner": "kanywst",
       "lang": "Rust",
-      "version": "v0.8.0",
+      "version": "v0.9.0",
       "stars": 1,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey"
@@ -653,6 +653,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 406,
+      "state": "open",
+      "domain": "Workload Identity",
+      "title": "Refresh the wimsey implementation status date",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/406"
+    },
+    {
       "owner": "abhisheknaiidu",
       "repo": "awesome-github-profile-readme",
       "number": 1833,
@@ -671,15 +680,6 @@
       "url": "https://github.com/shyuan/awesome-oauth-oidc/pull/12"
     },
     {
-      "owner": "open-policy-agent",
-      "repo": "opa",
-      "number": 9372,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "docs: add Authz Playground to the OPA ecosystem",
-      "url": "https://github.com/open-policy-agent/opa/pull/9372"
-    },
-    {
       "owner": "loft-sh",
       "repo": "vcluster",
       "number": 4203,
@@ -696,15 +696,6 @@
       "domain": "Cloud Native",
       "title": "fix(plugins/standard-webhooks): follow the spec",
       "url": "https://github.com/Kong/kong/pull/15022"
-    },
-    {
-      "owner": "ietf-wg-wimse",
-      "repo": "draft-ietf-wimse-identifier",
-      "number": 98,
-      "state": "open",
-      "domain": "Workload Identity",
-      "title": "Add an Implementation Status section with an entry for wimsey",
-      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-identifier/pull/98"
     },
     {
       "owner": "microsoft",
@@ -788,6 +779,15 @@
       "url": "https://github.com/dexidp/dex/pull/4611"
     },
     {
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 9372,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "docs: add Authz Playground to the OPA ecosystem",
+      "url": "https://github.com/open-policy-agent/opa/pull/9372"
+    },
+    {
       "owner": "NixOS",
       "repo": "nixpkgs",
       "number": 561552,
@@ -795,6 +795,15 @@
       "domain": "Tooling",
       "title": "rapg: init at 0.3.2",
       "url": "https://github.com/NixOS/nixpkgs/pull/561552"
+    },
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-identifier",
+      "number": 98,
+      "state": "closed",
+      "domain": "Workload Identity",
+      "title": "Add an Implementation Status section with an entry for wimsey",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-identifier/pull/98"
     },
     {
       "owner": "ietf-wg-wimse",
@@ -942,7 +951,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-22"
+    "syncedAt": "2026-10-23"
   },
   "issues": [
     {
