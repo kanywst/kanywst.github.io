@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.7.0",
-      "stars": 92,
+      "stars": 94,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -202,6 +202,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 406,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Refresh the wimsey implementation status date",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/406"
+    },
     {
       "owner": "open-policy-agent",
       "repo": "opa",
@@ -653,15 +662,6 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "ietf-wg-wimse",
-      "repo": "draft-ietf-wimse-s2s-protocol",
-      "number": 406,
-      "state": "open",
-      "domain": "Workload Identity",
-      "title": "Refresh the wimsey implementation status date",
-      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/406"
-    },
-    {
       "owner": "abhisheknaiidu",
       "repo": "awesome-github-profile-readme",
       "number": 1833,
@@ -951,7 +951,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-23"
+    "syncedAt": "2026-10-24"
   },
   "issues": [
     {
