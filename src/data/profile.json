@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.7.0",
-      "stars": 96,
+      "stars": 97,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -57,7 +57,7 @@
       "name": "opa-authzen-plugin",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.9.3",
+      "version": "v0.10.0",
       "stars": 4,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
@@ -93,7 +93,7 @@
       "name": "mcp-opa-authz",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.6.1",
+      "version": "v0.6.2",
       "stars": 1,
       "tagline": "MCP server giving LLM agents real authorization answers: evaluate Rego in-process via OPA, or ask an OpenID AuthZEN 1.0 PDP",
       "url": "https://github.com/kanywst/mcp-opa-authz"
@@ -273,6 +273,15 @@
       "domain": "Authorization",
       "title": "feat: modernize C-0046 to variables pattern",
       "url": "https://github.com/kubescape/cel-admission-library/pull/125"
+    },
+    {
+      "owner": "microsoft",
+      "repo": "winget-pkgs",
+      "number": 431389,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "New package: kanywst.y509 version 1.11.0",
+      "url": "https://github.com/microsoft/winget-pkgs/pull/431389"
     },
     {
       "owner": "counterbranch",
@@ -662,6 +671,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "punkpeye",
+      "repo": "awesome-mcp-servers",
+      "number": 17583,
+      "state": "open",
+      "domain": "",
+      "title": "Add kanywst/mcp-opa-authz",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers/pull/17583"
+    },
+    {
       "owner": "abhisheknaiidu",
       "repo": "awesome-github-profile-readme",
       "number": 1833,
@@ -696,15 +714,6 @@
       "domain": "Cloud Native",
       "title": "fix(plugins/standard-webhooks): follow the spec",
       "url": "https://github.com/Kong/kong/pull/15022"
-    },
-    {
-      "owner": "microsoft",
-      "repo": "winget-pkgs",
-      "number": 431389,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "New package: kanywst.y509 version 1.11.0",
-      "url": "https://github.com/microsoft/winget-pkgs/pull/431389"
     },
     {
       "owner": "guardrailsio",
@@ -951,7 +960,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-25"
+    "syncedAt": "2026-10-26"
   },
   "issues": [
     {
