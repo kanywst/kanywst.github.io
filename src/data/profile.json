@@ -39,7 +39,7 @@
       "name": "a2acode",
       "owner": "kanywst",
       "lang": "Python",
-      "version": "v0.8.0",
+      "version": "v0.9.0",
       "stars": 10,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
@@ -202,6 +202,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "agentclientprotocol",
+      "repo": "agent-client-protocol",
+      "number": 2491,
+      "state": "merged",
+      "domain": "",
+      "title": "docs(clients): add a2acode to Connectors",
+      "url": "https://github.com/agentclientprotocol/agent-client-protocol/pull/2491"
+    },
     {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-s2s-protocol",
@@ -671,6 +680,24 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "ai-boost",
+      "repo": "awesome-a2a",
+      "number": 223,
+      "state": "open",
+      "domain": "",
+      "title": "🔥 Remove duplicate a2acode entry",
+      "url": "https://github.com/ai-boost/awesome-a2a/pull/223"
+    },
+    {
+      "owner": "trackawesomelist",
+      "repo": "trackawesomelist-source",
+      "number": 137,
+      "state": "open",
+      "domain": "",
+      "title": "Add kanywst/awesome-authorization to config.yml",
+      "url": "https://github.com/trackawesomelist/trackawesomelist-source/pull/137"
+    },
+    {
       "owner": "punkpeye",
       "repo": "awesome-mcp-servers",
       "number": 17583,
@@ -960,7 +987,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-26"
+    "syncedAt": "2026-10-27"
   },
   "issues": [
     {
