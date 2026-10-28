@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.7.0",
-      "stars": 97,
+      "stars": 98,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -30,8 +30,8 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.12.0",
-      "stars": 40,
+      "version": "v1.14.0",
+      "stars": 39,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
     },
@@ -202,6 +202,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "ai-boost",
+      "repo": "awesome-a2a",
+      "number": 223,
+      "state": "merged",
+      "domain": "",
+      "title": "🔥 Remove duplicate a2acode entry",
+      "url": "https://github.com/ai-boost/awesome-a2a/pull/223"
+    },
     {
       "owner": "agentclientprotocol",
       "repo": "agent-client-protocol",
@@ -680,13 +689,13 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "ai-boost",
-      "repo": "awesome-a2a",
-      "number": 223,
+      "owner": "go-jose",
+      "repo": "go-jose",
+      "number": 312,
       "state": "open",
-      "domain": "",
-      "title": "🔥 Remove duplicate a2acode entry",
-      "url": "https://github.com/ai-boost/awesome-a2a/pull/223"
+      "domain": "OIDC",
+      "title": "jwe: reject crit in per-recipient headers",
+      "url": "https://github.com/go-jose/go-jose/pull/312"
     },
     {
       "owner": "trackawesomelist",
@@ -987,9 +996,45 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-27"
+    "syncedAt": "2026-10-28"
   },
   "issues": [
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1130,
+      "state": "open",
+      "domain": "",
+      "title": "bug: OAuth client skips PKCE when the code challenge or verifier is empty",
+      "url": "https://github.com/mark3labs/mcp-go/issues/1130"
+    },
+    {
+      "owner": "sigstore",
+      "repo": "policy-controller",
+      "number": 2032,
+      "state": "open",
+      "domain": "",
+      "title": "signatureFormat accepts any value, so a typo falls back to legacy verification",
+      "url": "https://github.com/sigstore/policy-controller/issues/2032"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7366,
+      "state": "open",
+      "domain": "Workload Identity",
+      "title": "Federation bundle client reads the bundle endpoint response without a size limit",
+      "url": "https://github.com/spiffe/spire/issues/7366"
+    },
+    {
+      "owner": "zalando",
+      "repo": "skipper",
+      "number": 4391,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "oauthGrant callback redirects to a host taken from the Host header",
+      "url": "https://github.com/zalando/skipper/issues/4391"
+    },
     {
       "owner": "loft-sh",
       "repo": "vcluster",
