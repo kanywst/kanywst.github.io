@@ -302,13 +302,13 @@
       "url": "https://github.com/microsoft/winget-pkgs/pull/431389"
     },
     {
-      "owner": "counterbranch",
+      "owner": "agentscm",
       "repo": "apparitor",
       "number": 76,
       "state": "merged",
-      "domain": "Authorization",
+      "domain": "",
       "title": "docs: fix broken kanywst/opa-authzen PDP reference",
-      "url": "https://github.com/counterbranch/apparitor/pull/76"
+      "url": "https://github.com/agentscm/apparitor/pull/76"
     },
     {
       "owner": "Binject",
@@ -689,6 +689,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "crowdsecurity",
+      "repo": "crowdsec",
+      "number": 4786,
+      "state": "open",
+      "domain": "",
+      "title": "pkg/types: fix last address of IPv4-mapped CIDR ranges",
+      "url": "https://github.com/crowdsecurity/crowdsec/pull/4786"
+    },
+    {
       "owner": "go-jose",
       "repo": "go-jose",
       "number": 312,
@@ -996,7 +1005,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-28"
+    "syncedAt": "2026-10-29"
   },
   "issues": [
     {
