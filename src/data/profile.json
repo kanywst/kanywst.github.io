@@ -21,7 +21,7 @@
       "name": "wtfi2",
       "owner": "kanywst",
       "lang": "Rust",
-      "version": "v0.7.0",
+      "version": "v0.8.0",
       "stars": 98,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
@@ -36,6 +36,15 @@
       "url": "https://github.com/kanywst/y509"
     },
     {
+      "name": "awesome-authorization",
+      "owner": "kanywst",
+      "lang": "List",
+      "version": null,
+      "stars": 11,
+      "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
+      "url": "https://github.com/kanywst/awesome-authorization"
+    },
+    {
       "name": "a2acode",
       "owner": "kanywst",
       "lang": "Python",
@@ -43,15 +52,6 @@
       "stars": 10,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
-    },
-    {
-      "name": "awesome-authorization",
-      "owner": "kanywst",
-      "lang": "List",
-      "version": null,
-      "stars": 10,
-      "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
-      "url": "https://github.com/kanywst/awesome-authorization"
     },
     {
       "name": "opa-authzen-plugin",
@@ -202,6 +202,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "akuity",
+      "repo": "kargo",
+      "number": 7773,
+      "state": "merged",
+      "domain": "",
+      "title": "refactor(gitprovider): guard nil PR head in gitea and github providers",
+      "url": "https://github.com/akuity/kargo/pull/7773"
+    },
     {
       "owner": "ai-boost",
       "repo": "awesome-a2a",
@@ -689,6 +698,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "apache",
+      "repo": "apisix",
+      "number": 14125,
+      "state": "open",
+      "domain": "",
+      "title": "fix(ip-restriction): match IPv4 rules against IPv4-mapped addresses",
+      "url": "https://github.com/apache/apisix/pull/14125"
+    },
+    {
       "owner": "crowdsecurity",
       "repo": "crowdsec",
       "number": 4786,
@@ -1005,7 +1023,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-10-29"
+    "syncedAt": "2026-10-30"
   },
   "issues": [
     {
@@ -1135,15 +1153,6 @@
       "url": "https://github.com/ory/polis/issues/4077"
     },
     {
-      "owner": "openid",
-      "repo": "authzen",
-      "number": 554,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "Fix incorrect metadata member name in Section 8.2.1",
-      "url": "https://github.com/openid/authzen/issues/554"
-    },
-    {
       "owner": "in-toto",
       "repo": "in-toto-golang",
       "number": 466,
@@ -1169,6 +1178,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "akuity",
+      "repo": "kargo",
+      "number": 7772,
+      "state": "closed",
+      "domain": "",
+      "title": "Gitea and GitHub ListPullRequests panic on a pull request without head",
+      "url": "https://github.com/akuity/kargo/issues/7772"
     },
     {
       "owner": "openid",
@@ -1214,6 +1232,15 @@
       "domain": "Identity",
       "title": "A disabled user can still bind on the config backend",
       "url": "https://github.com/glauth/glauth/issues/469"
+    },
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 554,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Fix incorrect metadata member name in Section 8.2.1",
+      "url": "https://github.com/openid/authzen/issues/554"
     },
     {
       "owner": "sse-secure-systems",
