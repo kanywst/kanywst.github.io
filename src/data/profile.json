@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.9.0",
-      "stars": 98,
+      "stars": 99,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -36,6 +36,15 @@
       "url": "https://github.com/kanywst/y509"
     },
     {
+      "name": "a2acode",
+      "owner": "kanywst",
+      "lang": "Python",
+      "version": "v0.9.1",
+      "stars": 11,
+      "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
+      "url": "https://github.com/kanywst/a2acode"
+    },
+    {
       "name": "awesome-authorization",
       "owner": "kanywst",
       "lang": "List",
@@ -43,15 +52,6 @@
       "stars": 11,
       "tagline": "Curated authorization & access-control tools, frameworks, standards, and resources.",
       "url": "https://github.com/kanywst/awesome-authorization"
-    },
-    {
-      "name": "a2acode",
-      "owner": "kanywst",
-      "lang": "Python",
-      "version": "v0.9.1",
-      "stars": 10,
-      "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
-      "url": "https://github.com/kanywst/a2acode"
     },
     {
       "name": "opa-authzen-plugin",
@@ -72,6 +72,15 @@
       "url": "https://github.com/kanywst/omega"
     },
     {
+      "name": "rapg",
+      "owner": "kanywst",
+      "lang": "Go",
+      "version": "v0.4.1",
+      "stars": 3,
+      "tagline": "[Deprecated] Local-first secret manager for the AI-agent era. Superseded by 1Password's agent-safe secret delivery; archiving on or after 2026-12-29.",
+      "url": "https://github.com/kanywst/rapg"
+    },
+    {
       "name": "hammurabi",
       "owner": "kanywst",
       "lang": "TypeScript",
@@ -79,15 +88,6 @@
       "stars": 2,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
-    },
-    {
-      "name": "rapg",
-      "owner": "kanywst",
-      "lang": "Go",
-      "version": "v0.4.1",
-      "stars": 2,
-      "tagline": "[Deprecated] Local-first secret manager for the AI-agent era. Superseded by 1Password's agent-safe secret delivery; archiving on or after 2026-12-29.",
-      "url": "https://github.com/kanywst/rapg"
     },
     {
       "name": "mcp-opa-authz",
@@ -1041,18 +1041,9 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-01"
+    "syncedAt": "2026-11-02"
   },
   "issues": [
-    {
-      "owner": "mark3labs",
-      "repo": "mcp-go",
-      "number": 1130,
-      "state": "open",
-      "domain": "",
-      "title": "bug: OAuth client skips PKCE when the code challenge or verifier is empty",
-      "url": "https://github.com/mark3labs/mcp-go/issues/1130"
-    },
     {
       "owner": "sigstore",
       "repo": "policy-controller",
@@ -1205,6 +1196,15 @@
       "domain": "",
       "title": "Gitea and GitHub ListPullRequests panic on a pull request without head",
       "url": "https://github.com/akuity/kargo/issues/7772"
+    },
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1130,
+      "state": "closed",
+      "domain": "",
+      "title": "bug: OAuth client skips PKCE when the code challenge or verifier is empty",
+      "url": "https://github.com/mark3labs/mcp-go/issues/1130"
     },
     {
       "owner": "openid",
