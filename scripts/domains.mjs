@@ -100,7 +100,7 @@ export const DOMAIN_BY_REPO = {
   'atuinsh/atuin': 'Tooling',
   'crowdsecurity/crowdsec': 'Runtime Security',
   'golang/vulndb': 'Supply Chain',
-  'mark3labs/mcp-go': 'OIDC',
+  'mark3labs/mcp-go': 'Tooling',
   'modelcontextprotocol/go-sdk': 'OIDC',
   'punkpeye/awesome-mcp-servers': 'Tooling',
   'shyuan/awesome-oauth-oidc': 'Tooling',

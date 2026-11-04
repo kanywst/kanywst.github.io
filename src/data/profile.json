@@ -711,7 +711,7 @@
       "repo": "mcp-go",
       "number": 1167,
       "state": "open",
-      "domain": "OIDC",
+      "domain": "Tooling",
       "title": "fix(server): reject argument keys that match a declared property only by case",
       "url": "https://github.com/mark3labs/mcp-go/pull/1167"
     },
@@ -720,7 +720,7 @@
       "repo": "mcp-go",
       "number": 1166,
       "state": "open",
-      "domain": "OIDC",
+      "domain": "Tooling",
       "title": "fix(server): reject JSON-RPC member names that differ from the defined ones only by case",
       "url": "https://github.com/mark3labs/mcp-go/pull/1166"
     },
@@ -1094,7 +1094,7 @@
       "repo": "mcp-go",
       "number": 1165,
       "state": "open",
-      "domain": "OIDC",
+      "domain": "Tooling",
       "title": "bug: input schema validation is skipped for argument names that differ only by case",
       "url": "https://github.com/mark3labs/mcp-go/issues/1165"
     },
@@ -1103,7 +1103,7 @@
       "repo": "mcp-go",
       "number": 1164,
       "state": "open",
-      "domain": "OIDC",
+      "domain": "Tooling",
       "title": "bug: JSON-RPC member names are matched case-insensitively",
       "url": "https://github.com/mark3labs/mcp-go/issues/1164"
     },
@@ -1265,7 +1265,7 @@
       "repo": "mcp-go",
       "number": 1130,
       "state": "closed",
-      "domain": "OIDC",
+      "domain": "Tooling",
       "title": "bug: OAuth client skips PKCE when the code challenge or verifier is empty",
       "url": "https://github.com/mark3labs/mcp-go/issues/1130"
     },
