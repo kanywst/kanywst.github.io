@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.9.0",
-      "stars": 104,
+      "stars": 105,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
