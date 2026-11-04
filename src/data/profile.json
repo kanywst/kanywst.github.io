@@ -30,7 +30,7 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.14.0",
+      "version": "v1.15.0",
       "stars": 40,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
@@ -57,7 +57,7 @@
       "name": "opa-authzen-plugin",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.10.0",
+      "version": "v0.11.0",
       "stars": 4,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
@@ -84,10 +84,19 @@
       "name": "hammurabi",
       "owner": "kanywst",
       "lang": "TypeScript",
-      "version": "v2.2.0",
+      "version": "v2.5.0",
       "stars": 2,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
+    },
+    {
+      "name": "wimsey",
+      "owner": "kanywst",
+      "lang": "Rust",
+      "version": "v0.9.0",
+      "stars": 2,
+      "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
+      "url": "https://github.com/kanywst/wimsey"
     },
     {
       "name": "mcp-opa-authz",
@@ -97,15 +106,6 @@
       "stars": 1,
       "tagline": "MCP server giving LLM agents real authorization answers: evaluate Rego in-process via OPA, or ask an OpenID AuthZEN 1.0 PDP",
       "url": "https://github.com/kanywst/mcp-opa-authz"
-    },
-    {
-      "name": "wimsey",
-      "owner": "kanywst",
-      "lang": "Rust",
-      "version": "v0.9.0",
-      "stars": 1,
-      "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
-      "url": "https://github.com/kanywst/wimsey"
     }
   ],
   "advisories": [
@@ -207,7 +207,7 @@
       "repo": "kargo",
       "number": 7773,
       "state": "merged",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "refactor(gitprovider): guard nil PR head in gitea and github providers",
       "url": "https://github.com/akuity/kargo/pull/7773"
     },
@@ -216,7 +216,7 @@
       "repo": "awesome-a2a",
       "number": 223,
       "state": "merged",
-      "domain": "",
+      "domain": "Tooling",
       "title": "🔥 Remove duplicate a2acode entry",
       "url": "https://github.com/ai-boost/awesome-a2a/pull/223"
     },
@@ -225,7 +225,7 @@
       "repo": "agent-client-protocol",
       "number": 2491,
       "state": "merged",
-      "domain": "",
+      "domain": "Tooling",
       "title": "docs(clients): add a2acode to Connectors",
       "url": "https://github.com/agentclientprotocol/agent-client-protocol/pull/2491"
     },
@@ -252,7 +252,7 @@
       "repo": "go-sdk",
       "number": 1388,
       "state": "merged",
-      "domain": "",
+      "domain": "OIDC",
       "title": "examples: check token audience and set UserID in auth examples",
       "url": "https://github.com/modelcontextprotocol/go-sdk/pull/1388"
     },
@@ -315,7 +315,7 @@
       "repo": "apparitor",
       "number": 76,
       "state": "merged",
-      "domain": "",
+      "domain": "Authorization",
       "title": "docs: fix broken kanywst/opa-authzen PDP reference",
       "url": "https://github.com/agentscm/apparitor/pull/76"
     },
@@ -581,6 +581,15 @@
       "url": "https://github.com/spiffe/spire/pull/7066"
     },
     {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4828,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix(oidc): verify userinfo sub matches the ID Token sub",
+      "url": "https://github.com/dexidp/dex/pull/4828"
+    },
+    {
       "owner": "spiffe",
       "repo": "spire",
       "number": 6857,
@@ -698,6 +707,33 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1167,
+      "state": "open",
+      "domain": "Tooling",
+      "title": "fix(server): reject argument keys that match a declared property only by case",
+      "url": "https://github.com/mark3labs/mcp-go/pull/1167"
+    },
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1166,
+      "state": "open",
+      "domain": "Tooling",
+      "title": "fix(server): reject JSON-RPC member names that differ from the defined ones only by case",
+      "url": "https://github.com/mark3labs/mcp-go/pull/1166"
+    },
+    {
+      "owner": "atuinsh",
+      "repo": "atuin",
+      "number": 4644,
+      "state": "open",
+      "domain": "Tooling",
+      "title": "fix(daemon): keep the launchd agent's socket out of $TMPDIR",
+      "url": "https://github.com/atuinsh/atuin/pull/4644"
+    },
+    {
       "owner": "open-policy-agent",
       "repo": "awesome-opa",
       "number": 94,
@@ -720,7 +756,7 @@
       "repo": "apisix",
       "number": 14125,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "fix(ip-restriction): match IPv4 rules against IPv4-mapped addresses",
       "url": "https://github.com/apache/apisix/pull/14125"
     },
@@ -729,7 +765,7 @@
       "repo": "crowdsec",
       "number": 4786,
       "state": "open",
-      "domain": "",
+      "domain": "Runtime Security",
       "title": "pkg/types: fix last address of IPv4-mapped CIDR ranges",
       "url": "https://github.com/crowdsecurity/crowdsec/pull/4786"
     },
@@ -747,7 +783,7 @@
       "repo": "trackawesomelist-source",
       "number": 137,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add kanywst/awesome-authorization to config.yml",
       "url": "https://github.com/trackawesomelist/trackawesomelist-source/pull/137"
     },
@@ -756,7 +792,7 @@
       "repo": "awesome-mcp-servers",
       "number": 17583,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add kanywst/mcp-opa-authz",
       "url": "https://github.com/punkpeye/awesome-mcp-servers/pull/17583"
     },
@@ -765,7 +801,7 @@
       "repo": "awesome-github-profile-readme",
       "number": 1833,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add Guestbook to Tools",
       "url": "https://github.com/abhisheknaiidu/awesome-github-profile-readme/pull/1833"
     },
@@ -774,7 +810,7 @@
       "repo": "awesome-oauth-oidc",
       "number": 12,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add whosent to Tool / JWT",
       "url": "https://github.com/shyuan/awesome-oauth-oidc/pull/12"
     },
@@ -842,15 +878,6 @@
       "url": "https://github.com/in-toto/in-toto-golang/pull/467"
     },
     {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4828,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "fix(oidc): verify userinfo sub matches the ID Token sub",
-      "url": "https://github.com/dexidp/dex/pull/4828"
-    },
-    {
       "owner": "open-policy-agent",
       "repo": "contrib",
       "number": 296,
@@ -867,6 +894,15 @@
       "domain": "OIDC",
       "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
       "url": "https://github.com/dexidp/dex/pull/4611"
+    },
+    {
+      "owner": "rothgar",
+      "repo": "awesome-tuis",
+      "number": 992,
+      "state": "closed",
+      "domain": "Tooling",
+      "title": "Add sweep",
+      "url": "https://github.com/rothgar/awesome-tuis/pull/992"
     },
     {
       "owner": "open-policy-agent",
@@ -1041,15 +1077,51 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-03"
+    "syncedAt": "2026-11-04"
   },
   "issues": [
+    {
+      "owner": "golang",
+      "repo": "vulndb",
+      "number": 6911,
+      "state": "open",
+      "domain": "Supply Chain",
+      "title": "x/vulndb: potential Go vuln in github.com/mark3labs/mcp-go",
+      "url": "https://github.com/golang/vulndb/issues/6911"
+    },
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1165,
+      "state": "open",
+      "domain": "Tooling",
+      "title": "bug: input schema validation is skipped for argument names that differ only by case",
+      "url": "https://github.com/mark3labs/mcp-go/issues/1165"
+    },
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1164,
+      "state": "open",
+      "domain": "Tooling",
+      "title": "bug: JSON-RPC member names are matched case-insensitively",
+      "url": "https://github.com/mark3labs/mcp-go/issues/1164"
+    },
+    {
+      "owner": "atuinsh",
+      "repo": "atuin",
+      "number": 4643,
+      "state": "open",
+      "domain": "Tooling",
+      "title": "[Bug]: launchd agent leaves $TMPDIR/atuin-$UID root-owned, pty-proxy refuses it",
+      "url": "https://github.com/atuinsh/atuin/issues/4643"
+    },
     {
       "owner": "sigstore",
       "repo": "policy-controller",
       "number": 2032,
       "state": "open",
-      "domain": "",
+      "domain": "Supply Chain",
       "title": "signatureFormat accepts any value, so a typo falls back to legacy verification",
       "url": "https://github.com/sigstore/policy-controller/issues/2032"
     },
@@ -1171,15 +1243,6 @@
       "url": "https://github.com/in-toto/in-toto-golang/issues/466"
     },
     {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4827,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "connector(oidc): userinfo sub is not verified against the ID Token sub",
-      "url": "https://github.com/dexidp/dex/issues/4827"
-    },
-    {
       "owner": "open-policy-agent",
       "repo": "opa",
       "number": 8480,
@@ -1193,7 +1256,7 @@
       "repo": "kargo",
       "number": 7772,
       "state": "closed",
-      "domain": "",
+      "domain": "Cloud Native",
       "title": "Gitea and GitHub ListPullRequests panic on a pull request without head",
       "url": "https://github.com/akuity/kargo/issues/7772"
     },
@@ -1202,7 +1265,7 @@
       "repo": "mcp-go",
       "number": 1130,
       "state": "closed",
-      "domain": "",
+      "domain": "Tooling",
       "title": "bug: OAuth client skips PKCE when the code challenge or verifier is empty",
       "url": "https://github.com/mark3labs/mcp-go/issues/1130"
     },
@@ -1331,6 +1394,15 @@
       "domain": "Workload Identity",
       "title": "http_challenge: agent name regex rejects valid names and accepts symbols",
       "url": "https://github.com/spiffe/spire/issues/7065"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4827,
+      "state": "closed",
+      "domain": "OIDC",
+      "title": "connector(oidc): userinfo sub is not verified against the ID Token sub",
+      "url": "https://github.com/dexidp/dex/issues/4827"
     },
     {
       "owner": "spiffe",
