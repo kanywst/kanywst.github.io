@@ -57,7 +57,7 @@
       "name": "opa-authzen-plugin",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.11.0",
+      "version": "v0.12.0",
       "stars": 4,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
@@ -84,7 +84,7 @@
       "name": "hammurabi",
       "owner": "kanywst",
       "lang": "TypeScript",
-      "version": "v2.5.0",
+      "version": "v2.6.0",
       "stars": 2,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
@@ -97,6 +97,15 @@
       "stars": 2,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey"
+    },
+    {
+      "name": "howbad",
+      "owner": "kanywst",
+      "lang": "Go",
+      "version": "v0.3.0",
+      "stars": 1,
+      "tagline": "If a coding agent on your machine got prompt-injected right now, how bad would it be? Finds the credentials it could use and asks each provider what they can do.",
+      "url": "https://github.com/kanywst/howbad"
     },
     {
       "name": "mcp-opa-authz",
@@ -1077,7 +1086,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-04"
+    "syncedAt": "2026-11-05"
   },
   "issues": [
     {
