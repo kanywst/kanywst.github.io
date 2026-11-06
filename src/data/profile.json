@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.9.0",
-      "stars": 105,
+      "stars": 106,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -211,6 +211,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "charm-and-friends",
+      "repo": "charm-in-the-wild",
+      "number": 154,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "Add chonk to System Management",
+      "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/154"
+    },
     {
       "owner": "akuity",
       "repo": "kargo",
@@ -1086,18 +1095,9 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-05"
+    "syncedAt": "2026-11-06"
   },
   "issues": [
-    {
-      "owner": "golang",
-      "repo": "vulndb",
-      "number": 6911,
-      "state": "open",
-      "domain": "Supply Chain",
-      "title": "x/vulndb: potential Go vuln in github.com/mark3labs/mcp-go",
-      "url": "https://github.com/golang/vulndb/issues/6911"
-    },
     {
       "owner": "mark3labs",
       "repo": "mcp-go",
@@ -1259,6 +1259,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "golang",
+      "repo": "vulndb",
+      "number": 6911,
+      "state": "closed",
+      "domain": "Supply Chain",
+      "title": "x/vulndb: potential Go vuln in github.com/mark3labs/mcp-go",
+      "url": "https://github.com/golang/vulndb/issues/6911"
     },
     {
       "owner": "akuity",
