@@ -743,15 +743,6 @@
       "url": "https://github.com/mark3labs/mcp-go/pull/1166"
     },
     {
-      "owner": "atuinsh",
-      "repo": "atuin",
-      "number": 4644,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "fix(daemon): keep the launchd agent's socket out of $TMPDIR",
-      "url": "https://github.com/atuinsh/atuin/pull/4644"
-    },
-    {
       "owner": "open-policy-agent",
       "repo": "awesome-opa",
       "number": 94,
@@ -912,6 +903,15 @@
       "domain": "OIDC",
       "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
       "url": "https://github.com/dexidp/dex/pull/4611"
+    },
+    {
+      "owner": "atuinsh",
+      "repo": "atuin",
+      "number": 4644,
+      "state": "closed",
+      "domain": "Tooling",
+      "title": "fix(daemon): keep the launchd agent's socket out of $TMPDIR",
+      "url": "https://github.com/atuinsh/atuin/pull/4644"
     },
     {
       "owner": "rothgar",
