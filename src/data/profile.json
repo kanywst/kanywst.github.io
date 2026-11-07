@@ -1095,7 +1095,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-06"
+    "syncedAt": "2026-11-07"
   },
   "issues": [
     {
@@ -1115,15 +1115,6 @@
       "domain": "Tooling",
       "title": "bug: JSON-RPC member names are matched case-insensitively",
       "url": "https://github.com/mark3labs/mcp-go/issues/1164"
-    },
-    {
-      "owner": "atuinsh",
-      "repo": "atuin",
-      "number": 4643,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "[Bug]: launchd agent leaves $TMPDIR/atuin-$UID root-owned, pty-proxy refuses it",
-      "url": "https://github.com/atuinsh/atuin/issues/4643"
     },
     {
       "owner": "sigstore",
@@ -1268,6 +1259,15 @@
       "domain": "Supply Chain",
       "title": "x/vulndb: potential Go vuln in github.com/mark3labs/mcp-go",
       "url": "https://github.com/golang/vulndb/issues/6911"
+    },
+    {
+      "owner": "atuinsh",
+      "repo": "atuin",
+      "number": 4643,
+      "state": "closed",
+      "domain": "Tooling",
+      "title": "[Bug]: launchd agent leaves $TMPDIR/atuin-$UID root-owned, pty-proxy refuses it",
+      "url": "https://github.com/atuinsh/atuin/issues/4643"
     },
     {
       "owner": "akuity",
