@@ -72,19 +72,10 @@
       "url": "https://github.com/kanywst/omega"
     },
     {
-      "name": "rapg",
-      "owner": "kanywst",
-      "lang": "Go",
-      "version": "v0.4.1",
-      "stars": 3,
-      "tagline": "[Deprecated] Local-first secret manager for the AI-agent era. Superseded by 1Password's agent-safe secret delivery; archiving on or after 2026-12-29.",
-      "url": "https://github.com/kanywst/rapg"
-    },
-    {
       "name": "hammurabi",
       "owner": "kanywst",
       "lang": "TypeScript",
-      "version": "v2.6.0",
+      "version": "v2.10.1",
       "stars": 2,
       "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
       "url": "https://github.com/kanywst/hammurabi"
@@ -93,7 +84,7 @@
       "name": "wimsey",
       "owner": "kanywst",
       "lang": "Rust",
-      "version": "v0.9.0",
+      "version": "v0.10.0",
       "stars": 2,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey"
@@ -725,6 +716,24 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "naghim",
+      "repo": "Awesome-Japanese-Study-Materials",
+      "number": 26,
+      "state": "open",
+      "domain": "",
+      "title": "Add goi to Vocabulary",
+      "url": "https://github.com/naghim/Awesome-Japanese-Study-Materials/pull/26"
+    },
+    {
+      "owner": "guilyx",
+      "repo": "awesome-github-pages-portfolios",
+      "number": 28,
+      "state": "open",
+      "domain": "",
+      "title": "Add 0-draft",
+      "url": "https://github.com/guilyx/awesome-github-pages-portfolios/pull/28"
+    },
+    {
       "owner": "mark3labs",
       "repo": "mcp-go",
       "number": 1167,
@@ -1095,7 +1104,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-07"
+    "syncedAt": "2026-11-08"
   },
   "issues": [
     {
