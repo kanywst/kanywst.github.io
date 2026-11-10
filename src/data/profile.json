@@ -63,6 +63,15 @@
       "url": "https://github.com/kanywst/opa-authzen-plugin"
     },
     {
+      "name": "hammurabi",
+      "owner": "kanywst",
+      "lang": "TypeScript",
+      "version": "v2.10.1",
+      "stars": 3,
+      "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
+      "url": "https://github.com/kanywst/hammurabi"
+    },
+    {
       "name": "omega",
       "owner": "kanywst",
       "lang": "Go",
@@ -70,15 +79,6 @@
       "stars": 3,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
-    },
-    {
-      "name": "hammurabi",
-      "owner": "kanywst",
-      "lang": "TypeScript",
-      "version": "v2.10.1",
-      "stars": 2,
-      "tagline": "Engineering laws and mental models, each paired with its counter-force, a field guideline, and a primary source.",
-      "url": "https://github.com/kanywst/hammurabi"
     },
     {
       "name": "wimsey",
@@ -716,6 +716,33 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "stacklok",
+      "repo": "toolhive",
+      "number": 7091,
+      "state": "open",
+      "domain": "",
+      "title": "Bind JWT-bearer resource to the assertion claim",
+      "url": "https://github.com/stacklok/toolhive/pull/7091"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7411,
+      "state": "open",
+      "domain": "Workload Identity",
+      "title": "Add `k8s_clustertrustbundle` BundlePublisher plugin",
+      "url": "https://github.com/spiffe/spire/pull/7411"
+    },
+    {
+      "owner": "authlib",
+      "repo": "authlib",
+      "number": 1029,
+      "state": "open",
+      "domain": "",
+      "title": "feat(oauth): implement the RFC 8693 token exchange grant",
+      "url": "https://github.com/authlib/authlib/pull/1029"
+    },
+    {
       "owner": "naghim",
       "repo": "Awesome-Japanese-Study-Materials",
       "number": 26,
@@ -1104,9 +1131,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-09"
+    "syncedAt": "2026-11-10"
   },
   "issues": [
+    {
+      "owner": "sebadob",
+      "repo": "rauthy",
+      "number": 1896,
+      "state": "open",
+      "domain": "",
+      "title": "Issue ID-JAGs through token exchange",
+      "url": "https://github.com/sebadob/rauthy/issues/1896"
+    },
     {
       "owner": "mark3labs",
       "repo": "mcp-go",
