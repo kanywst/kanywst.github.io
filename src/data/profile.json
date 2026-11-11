@@ -40,7 +40,7 @@
       "owner": "kanywst",
       "lang": "Python",
       "version": "v0.9.1",
-      "stars": 11,
+      "stars": 12,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
     },
@@ -202,6 +202,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "guilyx",
+      "repo": "awesome-github-pages-portfolios",
+      "number": 28,
+      "state": "merged",
+      "domain": "",
+      "title": "Add 0-draft",
+      "url": "https://github.com/guilyx/awesome-github-pages-portfolios/pull/28"
+    },
     {
       "owner": "charm-and-friends",
       "repo": "charm-in-the-wild",
@@ -716,15 +725,6 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
-      "owner": "stacklok",
-      "repo": "toolhive",
-      "number": 7091,
-      "state": "open",
-      "domain": "",
-      "title": "Bind JWT-bearer resource to the assertion claim",
-      "url": "https://github.com/stacklok/toolhive/pull/7091"
-    },
-    {
       "owner": "spiffe",
       "repo": "spire",
       "number": 7411,
@@ -750,15 +750,6 @@
       "domain": "",
       "title": "Add goi to Vocabulary",
       "url": "https://github.com/naghim/Awesome-Japanese-Study-Materials/pull/26"
-    },
-    {
-      "owner": "guilyx",
-      "repo": "awesome-github-pages-portfolios",
-      "number": 28,
-      "state": "open",
-      "domain": "",
-      "title": "Add 0-draft",
-      "url": "https://github.com/guilyx/awesome-github-pages-portfolios/pull/28"
     },
     {
       "owner": "mark3labs",
@@ -939,6 +930,15 @@
       "domain": "OIDC",
       "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
       "url": "https://github.com/dexidp/dex/pull/4611"
+    },
+    {
+      "owner": "stacklok",
+      "repo": "toolhive",
+      "number": 7091,
+      "state": "closed",
+      "domain": "",
+      "title": "Bind JWT-bearer resource to the assertion claim",
+      "url": "https://github.com/stacklok/toolhive/pull/7091"
     },
     {
       "owner": "atuinsh",
@@ -1131,7 +1131,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-10"
+    "syncedAt": "2026-11-11"
   },
   "issues": [
     {
