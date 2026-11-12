@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.9.0",
-      "stars": 106,
+      "stars": 107,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -58,7 +58,7 @@
       "owner": "kanywst",
       "lang": "Go",
       "version": "v0.12.0",
-      "stars": 4,
+      "stars": 5,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
     },
@@ -219,6 +219,15 @@
       "domain": "Tooling",
       "title": "Add chonk to System Management",
       "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/154"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7383,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Limit the size of bundle endpoint and trust bundle URL responses",
+      "url": "https://github.com/spiffe/spire/pull/7383"
     },
     {
       "owner": "akuity",
@@ -644,6 +653,15 @@
       "url": "https://github.com/openfga/openfga/pull/2980"
     },
     {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4611,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
+      "url": "https://github.com/dexidp/dex/pull/4611"
+    },
+    {
       "owner": "smallstep",
       "repo": "cli",
       "number": 1580,
@@ -725,6 +743,33 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "keycloak",
+      "repo": "keycloak",
+      "number": 55111,
+      "state": "open",
+      "domain": "",
+      "title": "Limit AuthZEN queries to tokens with the authzen scope and audience",
+      "url": "https://github.com/keycloak/keycloak/pull/55111"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5150,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "fix(server): use invalid_request for an unsupported subject_token_type and reject any typ other than JWT",
+      "url": "https://github.com/dexidp/dex/pull/5150"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5149,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "fix(server/grants): check requested_token_type before calling the connector in token exchange",
+      "url": "https://github.com/dexidp/dex/pull/5149"
+    },
+    {
       "owner": "spiffe",
       "repo": "spire",
       "number": 7411,
@@ -777,15 +822,6 @@
       "domain": "Authorization",
       "title": "Add zopa to WebAssembly (Wasm)",
       "url": "https://github.com/open-policy-agent/awesome-opa/pull/94"
-    },
-    {
-      "owner": "spiffe",
-      "repo": "spire",
-      "number": 7383,
-      "state": "open",
-      "domain": "Workload Identity",
-      "title": "Limit the size of bundle endpoint and trust bundle URL responses",
-      "url": "https://github.com/spiffe/spire/pull/7383"
     },
     {
       "owner": "apache",
@@ -921,15 +957,6 @@
       "domain": "Authorization",
       "title": "Add missing READMEs for authzen, data_filter_azure, and wasm",
       "url": "https://github.com/open-policy-agent/contrib/pull/296"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4611,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
-      "url": "https://github.com/dexidp/dex/pull/4611"
     },
     {
       "owner": "stacklok",
@@ -1131,9 +1158,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-11"
+    "syncedAt": "2026-11-12"
   },
   "issues": [
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5151,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "Token exchange: accept a refresh token as the subject of an ID-JAG request",
+      "url": "https://github.com/dexidp/dex/issues/5151"
+    },
     {
       "owner": "sebadob",
       "repo": "rauthy",
@@ -1169,15 +1205,6 @@
       "domain": "Supply Chain",
       "title": "signatureFormat accepts any value, so a typo falls back to legacy verification",
       "url": "https://github.com/sigstore/policy-controller/issues/2032"
-    },
-    {
-      "owner": "spiffe",
-      "repo": "spire",
-      "number": 7366,
-      "state": "open",
-      "domain": "Workload Identity",
-      "title": "Federation bundle client reads the bundle endpoint response without a size limit",
-      "url": "https://github.com/spiffe/spire/issues/7366"
     },
     {
       "owner": "zalando",
@@ -1331,6 +1358,15 @@
       "domain": "Tooling",
       "title": "bug: OAuth client skips PKCE when the code challenge or verifier is empty",
       "url": "https://github.com/mark3labs/mcp-go/issues/1130"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7366,
+      "state": "closed",
+      "domain": "Workload Identity",
+      "title": "Federation bundle client reads the bundle endpoint response without a size limit",
+      "url": "https://github.com/spiffe/spire/issues/7366"
     },
     {
       "owner": "openid",
