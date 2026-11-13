@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.9.0",
-      "stars": 107,
+      "stars": 108,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -30,7 +30,7 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.15.0",
+      "version": "v1.16.0",
       "stars": 42,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
@@ -84,7 +84,7 @@
       "name": "wimsey",
       "owner": "kanywst",
       "lang": "Rust",
-      "version": "v0.10.0",
+      "version": "v0.10.1",
       "stars": 2,
       "tagline": "Vendor-neutral WIMSE workload-identity reference implementation: WIT/WPT tokens, RFC 9421 HTTP message signatures, mTLS/WIC.",
       "url": "https://github.com/kanywst/wimsey"
@@ -93,7 +93,7 @@
       "name": "howbad",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.3.0",
+      "version": "v0.4.0",
       "stars": 1,
       "tagline": "If a coding agent on your machine got prompt-injected right now, how bad would it be? Finds the credentials it could use and asks each provider what they can do.",
       "url": "https://github.com/kanywst/howbad"
@@ -202,6 +202,33 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "kubescape",
+      "repo": "cel-admission-library",
+      "number": 176,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "fix(C-0001): match untrusted registries case-insensitively",
+      "url": "https://github.com/kubescape/cel-admission-library/pull/176"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5150,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix(server): use invalid_request for an unsupported subject_token_type and reject any typ other than JWT",
+      "url": "https://github.com/dexidp/dex/pull/5150"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5149,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix(server/grants): check requested_token_type before calling the connector in token exchange",
+      "url": "https://github.com/dexidp/dex/pull/5149"
+    },
     {
       "owner": "guilyx",
       "repo": "awesome-github-pages-portfolios",
@@ -743,6 +770,33 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "thephpleague",
+      "repo": "oauth2-server",
+      "number": 1526,
+      "state": "open",
+      "domain": "",
+      "title": "Reject refresh tokens with a malformed payload",
+      "url": "https://github.com/thephpleague/oauth2-server/pull/1526"
+    },
+    {
+      "owner": "thephpleague",
+      "repo": "oauth2-server",
+      "number": 1525,
+      "state": "open",
+      "domain": "",
+      "title": "Authenticate confidential clients on the device authorization endpoint",
+      "url": "https://github.com/thephpleague/oauth2-server/pull/1525"
+    },
+    {
+      "owner": "kubescape",
+      "repo": "regolibrary",
+      "number": 944,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "fix(C-0001): match untrusted and public registries case-insensitively",
+      "url": "https://github.com/kubescape/regolibrary/pull/944"
+    },
+    {
       "owner": "keycloak",
       "repo": "keycloak",
       "number": 55111,
@@ -750,24 +804,6 @@
       "domain": "",
       "title": "Limit AuthZEN queries to tokens with the authzen scope and audience",
       "url": "https://github.com/keycloak/keycloak/pull/55111"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 5150,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "fix(server): use invalid_request for an unsupported subject_token_type and reject any typ other than JWT",
-      "url": "https://github.com/dexidp/dex/pull/5150"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 5149,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "fix(server/grants): check requested_token_type before calling the connector in token exchange",
-      "url": "https://github.com/dexidp/dex/pull/5149"
     },
     {
       "owner": "spiffe",
@@ -1158,9 +1194,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-12"
+    "syncedAt": "2026-11-13"
   },
   "issues": [
+    {
+      "owner": "kubescape",
+      "repo": "regolibrary",
+      "number": 943,
+      "state": "open",
+      "domain": "Authorization",
+      "title": "bug(C-0001): untrusted and public registries are matched case-sensitively",
+      "url": "https://github.com/kubescape/regolibrary/issues/943"
+    },
     {
       "owner": "dexidp",
       "repo": "dex",
@@ -1322,6 +1367,15 @@
       "domain": "Authorization",
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480"
+    },
+    {
+      "owner": "kubescape",
+      "repo": "cel-admission-library",
+      "number": 175,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "C-0001 matches untrusted registries case-sensitively, so an upper-case host is admitted",
+      "url": "https://github.com/kubescape/cel-admission-library/issues/175"
     },
     {
       "owner": "golang",
