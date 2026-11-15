@@ -40,7 +40,7 @@
       "owner": "kanywst",
       "lang": "Python",
       "version": "v0.9.1",
-      "stars": 12,
+      "stars": 13,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
     },
@@ -228,6 +228,15 @@
       "domain": "OIDC",
       "title": "fix(server/grants): check requested_token_type before calling the connector in token exchange",
       "url": "https://github.com/dexidp/dex/pull/5149"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7411,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Add `k8s_clustertrustbundle` BundlePublisher plugin",
+      "url": "https://github.com/spiffe/spire/pull/7411"
     },
     {
       "owner": "guilyx",
@@ -806,15 +815,6 @@
       "url": "https://github.com/keycloak/keycloak/pull/55111"
     },
     {
-      "owner": "spiffe",
-      "repo": "spire",
-      "number": 7411,
-      "state": "open",
-      "domain": "Workload Identity",
-      "title": "Add `k8s_clustertrustbundle` BundlePublisher plugin",
-      "url": "https://github.com/spiffe/spire/pull/7411"
-    },
-    {
       "owner": "authlib",
       "repo": "authlib",
       "number": 1029,
@@ -1194,9 +1194,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-14"
+    "syncedAt": "2026-11-15"
   },
   "issues": [
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 422,
+      "state": "open",
+      "domain": "Workload Identity",
+      "title": "http-signature and wpt point to workload-creds Section 5.1.4, which -03 doesn't have",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/422"
+    },
     {
       "owner": "kubescape",
       "repo": "regolibrary",
