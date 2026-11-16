@@ -21,7 +21,7 @@
       "name": "wtfi2",
       "owner": "kanywst",
       "lang": "Rust",
-      "version": "v0.9.0",
+      "version": "v0.10.0",
       "stars": 108,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
@@ -202,6 +202,15 @@
     ]
   },
   "contributions": [
+    {
+      "owner": "nMaroulis",
+      "repo": "awesome-agent-client-protocol",
+      "number": 12,
+      "state": "merged",
+      "domain": "",
+      "title": "Add a2acode to Clients & Remote Access",
+      "url": "https://github.com/nMaroulis/awesome-agent-client-protocol/pull/12"
+    },
     {
       "owner": "kubescape",
       "repo": "cel-admission-library",
@@ -779,6 +788,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "pab1it0",
+      "repo": "awesome-a2a",
+      "number": 172,
+      "state": "open",
+      "domain": "",
+      "title": "Add kanywst/a2acode to Developer Tools",
+      "url": "https://github.com/pab1it0/awesome-a2a/pull/172"
+    },
+    {
       "owner": "thephpleague",
       "repo": "oauth2-server",
       "number": 1526,
@@ -1194,9 +1212,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-15"
+    "syncedAt": "2026-11-16"
   },
   "issues": [
+    {
+      "owner": "warrant-dev",
+      "repo": "awesome-authorization",
+      "number": 13,
+      "state": "open",
+      "domain": "",
+      "title": "Link to a maintained authorization list?",
+      "url": "https://github.com/warrant-dev/awesome-authorization/issues/13"
+    },
     {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-s2s-protocol",
