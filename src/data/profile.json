@@ -102,7 +102,7 @@
       "name": "mcp-opa-authz",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.6.2",
+      "version": "v0.7.0",
       "stars": 1,
       "tagline": "MCP server giving LLM agents real authorization answers: evaluate Rego in-process via OPA, or ask an OpenID AuthZEN 1.0 PDP",
       "url": "https://github.com/kanywst/mcp-opa-authz"
@@ -788,6 +788,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "sebadob",
+      "repo": "rauthy",
+      "number": 1916,
+      "state": "open",
+      "domain": "",
+      "title": "feat(oidc): issue ID-JAGs through token exchange",
+      "url": "https://github.com/sebadob/rauthy/pull/1916"
+    },
+    {
       "owner": "pab1it0",
       "repo": "awesome-a2a",
       "number": 172,
@@ -977,15 +986,6 @@
       "url": "https://github.com/NixOS/nixpkgs/pull/559182"
     },
     {
-      "owner": "Infisical",
-      "repo": "infisical",
-      "number": 7673,
-      "state": "open",
-      "domain": "Identity",
-      "title": "fix(pki): scope EST enrollment routes by path params instead of the matched route",
-      "url": "https://github.com/Infisical/infisical/pull/7673"
-    },
-    {
       "owner": "go-jose",
       "repo": "go-jose",
       "number": 264,
@@ -1083,6 +1083,15 @@
       "domain": "Workload Identity",
       "title": "Add an Implementation Status section to the WPT draft",
       "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/310"
+    },
+    {
+      "owner": "Infisical",
+      "repo": "infisical",
+      "number": 7673,
+      "state": "closed",
+      "domain": "Identity",
+      "title": "fix(pki): scope EST enrollment routes by path params instead of the matched route",
+      "url": "https://github.com/Infisical/infisical/pull/7673"
     },
     {
       "owner": "supabase",
@@ -1212,7 +1221,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-16"
+    "syncedAt": "2026-11-17"
   },
   "issues": [
     {
