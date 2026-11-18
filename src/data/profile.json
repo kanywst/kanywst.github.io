@@ -30,7 +30,7 @@
       "name": "y509",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v1.16.0",
+      "version": "v1.17.0",
       "stars": 42,
       "tagline": "A terminal UI for viewing and analyzing X.509 certificate chains.",
       "url": "https://github.com/kanywst/y509"
@@ -40,7 +40,7 @@
       "owner": "kanywst",
       "lang": "Python",
       "version": "v0.9.1",
-      "stars": 13,
+      "stars": 14,
       "tagline": "Serve any ACP coding agent — Claude Code, Gemini CLI, Codex — over the A2A protocol, keeping tool progress, file diffs and permission prompts intact.",
       "url": "https://github.com/kanywst/a2acode"
     },
@@ -57,7 +57,7 @@
       "name": "opa-authzen-plugin",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.12.0",
+      "version": "v0.12.1",
       "stars": 5,
       "tagline": "Extended OPA implementing the OpenID AuthZEN 1.0 Authorization API.",
       "url": "https://github.com/kanywst/opa-authzen-plugin"
@@ -213,6 +213,15 @@
     },
     {
       "owner": "kubescape",
+      "repo": "regolibrary",
+      "number": 944,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "fix(C-0001): match untrusted and public registries case-insensitively",
+      "url": "https://github.com/kubescape/regolibrary/pull/944"
+    },
+    {
+      "owner": "kubescape",
       "repo": "cel-admission-library",
       "number": 176,
       "state": "merged",
@@ -264,6 +273,15 @@
       "domain": "Tooling",
       "title": "Add chonk to System Management",
       "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/154"
+    },
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1166,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "fix(server): reject JSON-RPC member names that differ from the defined ones only by case",
+      "url": "https://github.com/mark3labs/mcp-go/pull/1166"
     },
     {
       "owner": "spiffe",
@@ -417,6 +435,15 @@
       "domain": "Tooling",
       "title": "Add y509 to Security",
       "url": "https://github.com/avelino/awesome-go/pull/6676"
+    },
+    {
+      "owner": "NixOS",
+      "repo": "nixpkgs",
+      "number": 559182,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "y509: init at 1.15.0",
+      "url": "https://github.com/NixOS/nixpkgs/pull/559182"
     },
     {
       "owner": "charm-and-friends",
@@ -788,6 +815,51 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5181,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "feat(oauth2): let an ID-JAG policy set the client's ID at each audience",
+      "url": "https://github.com/dexidp/dex/pull/5181"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5180,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "feat(oauth2): carry auth_time from the subject token into the ID-JAG",
+      "url": "https://github.com/dexidp/dex/pull/5180"
+    },
+    {
+      "owner": "attenu-io",
+      "repo": "attenu-guard",
+      "number": 49,
+      "state": "open",
+      "domain": "",
+      "title": "vectors-02: fix root bound in reject_child_raises_del_max_depth description",
+      "url": "https://github.com/attenu-io/attenu-guard/pull/49"
+    },
+    {
+      "owner": "openid",
+      "repo": "OpenID4VP",
+      "number": 813,
+      "state": "open",
+      "domain": "",
+      "title": "Add missing 1.0 errata Document History entries",
+      "url": "https://github.com/openid/OpenID4VP/pull/813"
+    },
+    {
+      "owner": "kyverno",
+      "repo": "kyverno-authz",
+      "number": 260,
+      "state": "open",
+      "domain": "",
+      "title": "chore(deps): replace the unmaintained ACR credential helper",
+      "url": "https://github.com/kyverno/kyverno-authz/pull/260"
+    },
+    {
       "owner": "sebadob",
       "repo": "rauthy",
       "number": 1916,
@@ -824,15 +896,6 @@
       "url": "https://github.com/thephpleague/oauth2-server/pull/1525"
     },
     {
-      "owner": "kubescape",
-      "repo": "regolibrary",
-      "number": 944,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "fix(C-0001): match untrusted and public registries case-insensitively",
-      "url": "https://github.com/kubescape/regolibrary/pull/944"
-    },
-    {
       "owner": "keycloak",
       "repo": "keycloak",
       "number": 55111,
@@ -867,15 +930,6 @@
       "domain": "Tooling",
       "title": "fix(server): reject argument keys that match a declared property only by case",
       "url": "https://github.com/mark3labs/mcp-go/pull/1167"
-    },
-    {
-      "owner": "mark3labs",
-      "repo": "mcp-go",
-      "number": 1166,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "fix(server): reject JSON-RPC member names that differ from the defined ones only by case",
-      "url": "https://github.com/mark3labs/mcp-go/pull/1166"
     },
     {
       "owner": "open-policy-agent",
@@ -975,15 +1029,6 @@
       "domain": "Tooling",
       "title": "Add y509 to Private Key Infrastructure",
       "url": "https://github.com/guardrailsio/awesome-golang-security/pull/28"
-    },
-    {
-      "owner": "NixOS",
-      "repo": "nixpkgs",
-      "number": 559182,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "y509: init at 1.12.0",
-      "url": "https://github.com/NixOS/nixpkgs/pull/559182"
     },
     {
       "owner": "go-jose",
@@ -1221,9 +1266,45 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-17"
+    "syncedAt": "2026-11-18"
   },
   "issues": [
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5182,
+      "state": "open",
+      "domain": "OIDC",
+      "title": "Accept ID-JAGs from a trusted IdP through the JWT bearer grant",
+      "url": "https://github.com/dexidp/dex/issues/5182"
+    },
+    {
+      "owner": "openid",
+      "repo": "OpenID4VP",
+      "number": 812,
+      "state": "open",
+      "domain": "",
+      "title": "1.0 errata Document History misses some normative changes",
+      "url": "https://github.com/openid/OpenID4VP/issues/812"
+    },
+    {
+      "owner": "oauth-wg",
+      "repo": "oauth-delegate-sd-jwt",
+      "number": 16,
+      "state": "open",
+      "domain": "",
+      "title": "issuer_jwt_hash leaves Issuer Disclosures unbound in the final presentation",
+      "url": "https://github.com/oauth-wg/oauth-delegate-sd-jwt/issues/16"
+    },
+    {
+      "owner": "attenu-io",
+      "repo": "attenu-guard",
+      "number": 48,
+      "state": "open",
+      "domain": "",
+      "title": "draft -03: a child's lowered del_max_depth is never enforced",
+      "url": "https://github.com/attenu-io/attenu-guard/issues/48"
+    },
     {
       "owner": "warrant-dev",
       "repo": "awesome-authorization",
@@ -1241,15 +1322,6 @@
       "domain": "Workload Identity",
       "title": "http-signature and wpt point to workload-creds Section 5.1.4, which -03 doesn't have",
       "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/422"
-    },
-    {
-      "owner": "kubescape",
-      "repo": "regolibrary",
-      "number": 943,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "bug(C-0001): untrusted and public registries are matched case-sensitively",
-      "url": "https://github.com/kubescape/regolibrary/issues/943"
     },
     {
       "owner": "dexidp",
@@ -1277,15 +1349,6 @@
       "domain": "Tooling",
       "title": "bug: input schema validation is skipped for argument names that differ only by case",
       "url": "https://github.com/mark3labs/mcp-go/issues/1165"
-    },
-    {
-      "owner": "mark3labs",
-      "repo": "mcp-go",
-      "number": 1164,
-      "state": "open",
-      "domain": "Tooling",
-      "title": "bug: JSON-RPC member names are matched case-insensitively",
-      "url": "https://github.com/mark3labs/mcp-go/issues/1164"
     },
     {
       "owner": "sigstore",
@@ -1415,6 +1478,15 @@
     },
     {
       "owner": "kubescape",
+      "repo": "regolibrary",
+      "number": 943,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "bug(C-0001): untrusted and public registries are matched case-sensitively",
+      "url": "https://github.com/kubescape/regolibrary/issues/943"
+    },
+    {
+      "owner": "kubescape",
       "repo": "cel-admission-library",
       "number": 175,
       "state": "closed",
@@ -1430,6 +1502,15 @@
       "domain": "Supply Chain",
       "title": "x/vulndb: potential Go vuln in github.com/mark3labs/mcp-go",
       "url": "https://github.com/golang/vulndb/issues/6911"
+    },
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1164,
+      "state": "closed",
+      "domain": "Tooling",
+      "title": "bug: JSON-RPC member names are matched case-insensitively",
+      "url": "https://github.com/mark3labs/mcp-go/issues/1164"
     },
     {
       "owner": "atuinsh",
