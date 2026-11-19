@@ -106,6 +106,15 @@
       "stars": 1,
       "tagline": "MCP server giving LLM agents real authorization answers: evaluate Rego in-process via OPA, or ask an OpenID AuthZEN 1.0 PDP",
       "url": "https://github.com/kanywst/mcp-opa-authz"
+    },
+    {
+      "name": "visado",
+      "owner": "kanywst",
+      "lang": "Rust",
+      "version": "v0.2.0",
+      "stars": 1,
+      "tagline": "Verify AI agent delegation chains and workload credentials at the enforcement point, ask an AuthZEN PDP, and pass the result downstream as an OAuth Transaction Token.",
+      "url": "https://github.com/kanywst/visado"
     }
   ],
   "advisories": [
@@ -815,6 +824,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "KevinColemanInc",
+      "repo": "awesome-privacy",
+      "number": 65,
+      "state": "open",
+      "domain": "",
+      "title": "Add kwangmyong to command line tools",
+      "url": "https://github.com/KevinColemanInc/awesome-privacy/pull/65"
+    },
+    {
       "owner": "dexidp",
       "repo": "dex",
       "number": 5181,
@@ -1266,9 +1284,18 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-18"
+    "syncedAt": "2026-11-19"
   },
   "issues": [
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7431,
+      "state": "open",
+      "domain": "Workload Identity",
+      "title": "Federation bundle client ignores the context passed to FetchBundle",
+      "url": "https://github.com/spiffe/spire/issues/7431"
+    },
     {
       "owner": "dexidp",
       "repo": "dex",
@@ -1322,15 +1349,6 @@
       "domain": "Workload Identity",
       "title": "http-signature and wpt point to workload-creds Section 5.1.4, which -03 doesn't have",
       "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/422"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 5151,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "Token exchange: accept a refresh token as the subject of an ID-JAG request",
-      "url": "https://github.com/dexidp/dex/issues/5151"
     },
     {
       "owner": "sebadob",
@@ -1493,6 +1511,15 @@
       "domain": "Authorization",
       "title": "C-0001 matches untrusted registries case-sensitively, so an upper-case host is admitted",
       "url": "https://github.com/kubescape/cel-admission-library/issues/175"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5151,
+      "state": "closed",
+      "domain": "OIDC",
+      "title": "Token exchange: accept a refresh token as the subject of an ID-JAG request",
+      "url": "https://github.com/dexidp/dex/issues/5151"
     },
     {
       "owner": "golang",
