@@ -827,6 +827,7 @@ a {
 .m-date {
   color: var(--muted);
   font-size: 11px;
+  letter-spacing: var(--track);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }

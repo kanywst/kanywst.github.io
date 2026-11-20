@@ -76,8 +76,10 @@ jobs:
       # against synced data. A failure here stops the commit and the deploy.
       - name: Test the refreshed data
         if: steps.sync.outputs.changed == 'true' || inputs.redraw_og
+        # always a fresh npm ci: the best-effort OG step may have left a half-installed
+        # node_modules behind, and a cosmetic failure there must not fail the data here
         run: |
-          [ -d node_modules ] || npm ci
+          npm ci
           npm test
 
       - name: Commit refreshed data

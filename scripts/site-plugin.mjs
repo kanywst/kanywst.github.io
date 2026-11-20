@@ -14,11 +14,11 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { BOOTSTRAP_DATE } from './history.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://kanywst.github.io/';
 const FEED_ENTRIES = 50;
-const BOOTSTRAP_DATE = '1970-01-01';
 
 const readJSON = (p) => JSON.parse(readFileSync(resolve(root, p), 'utf8'));
 

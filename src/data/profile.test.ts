@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import profile from './profile.json';
+// @ts-expect-error — plain .mjs sync helper, no type declarations
+import { ORG_EXCLUDE } from '../../scripts/taglines.mjs';
 
 // Guards the contract that scripts/sync-profile.mjs writes and App.tsx renders from.
 // If the sync output drifts (renamed field, bad PR state), these fail loudly.
@@ -69,7 +71,7 @@ describe('profile.json contract', () => {
     expect(profile.org.repos.length).toBeGreaterThan(0);
     for (const r of profile.org.repos) {
       expect(r.blurb, r.name).toBeTruthy();
-      expect(['.github', '0-draft.github.io', 'dev.to']).not.toContain(r.name);
+      expect(ORG_EXCLUDE.has(r.name), r.name).toBe(false);
     }
   });
 
