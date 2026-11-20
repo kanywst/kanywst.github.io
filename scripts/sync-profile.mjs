@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { DOMAIN_BY_REPO } from './domains.mjs';
 import { LANG_BY_REPO, TAGLINE_BY_REPO } from './taglines.mjs';
+import { recordHistory } from './history.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const FILE = resolve(here, '../src/data/profile.json');
@@ -172,6 +173,8 @@ profile.meta ??= {};
 profile.meta.syncedAt = new Date().toISOString().slice(0, 10);
 
 writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');
+// first-seen dates + star log behind the "new" / "+N ★" marks (src/data/history.json)
+recordHistory(profile, profile.meta.syncedAt);
 
 const by = (arr, s) => arr.filter((c) => c.state === s).length;
 console.log(

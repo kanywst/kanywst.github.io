@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { DOMAIN_BY_REPO } from './domains.mjs';
+import { recordHistory } from './history.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const FILE = resolve(here, '../src/data/profile.json');
@@ -123,6 +124,7 @@ if (!advisories.length && profile.advisories?.length) {
 }
 profile.advisories = advisories;
 writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');
+recordHistory(profile);
 
 const cves = advisories.filter((a) => a.cve).length;
 console.log(

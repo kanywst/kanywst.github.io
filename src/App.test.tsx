@@ -1,7 +1,8 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import App, { ContribCloud } from './App';
 import profile from './data/profile.json';
+import history from './data/history.json';
 
 const prSection = () =>
   screen.getByRole('heading', { name: /pull requests/ }).closest('section') as HTMLElement;
@@ -189,5 +190,45 @@ describe('ContribCloud aggregation', () => {
   it('renders nothing when there are no items', () => {
     const { container } = render(<ContribCloud items={[]} noun="issue" />);
     expect(container.querySelector('.cloud')).toBeNull();
+  });
+});
+
+describe('this-week marks', () => {
+  afterEach(() => vi.useRealTimers());
+
+  const dated = Object.entries(history.firstSeen as Record<string, string>).filter(
+    ([, d]) => d !== '1970-01-01',
+  );
+  const prUrls = new Set(profile.contributions.map((c) => c.url));
+  const newestPr = dated.filter(([u]) => prUrls.has(u)).sort(([, a], [, b]) => b.localeCompare(a))[0];
+
+  it('shows nothing new once the window has passed', () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2100-01-01T12:00:00Z'));
+    render(<App />);
+    expect(screen.queryByText(/new this week/)).not.toBeInTheDocument();
+    fireEvent.keyDown(window, { key: ' ' });
+    expect(document.querySelectorAll('.new-tag:not(.foot-legend .new-tag)').length).toBe(0);
+  });
+
+  it.runIf(newestPr)('tags a PR first seen today and filters to the new ones on demand', () => {
+    const [url, day] = newestPr!;
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(`${day}T12:00:00Z`));
+    render(<App />);
+    expect(screen.getByText(/new this week/)).toBeInTheDocument();
+    fireEvent.keyDown(window, { key: ' ' });
+
+    const sec = prSection();
+    const toggle = within(sec).getByRole('button', { name: /\d+ new/ });
+    expect(toggle).toHaveAttribute('aria-pressed', 'false');
+    fireEvent.click(toggle);
+    expect(toggle).toHaveAttribute('aria-pressed', 'true');
+
+    const rows = [...sec.querySelectorAll('a.row.entry')];
+    expect(rows.length).toBeGreaterThan(0);
+    // every row left is a new one, and the newest PR is among them
+    for (const r of rows) expect(r.classList.contains('is-new')).toBe(true);
+    expect(rows.some((r) => r.getAttribute('href') === url)).toBe(true);
   });
 });
