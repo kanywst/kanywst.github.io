@@ -50,7 +50,8 @@ export function feedEntries(profile, history) {
     })),
     ...profile.flagships.map((f) => ({
       url: f.url,
-      title: `Selected work: ${f.name} earned its first star`,
+      // firstSeen is when it joined the list, which is not provably its first star
+      title: `Added to selected work: ${f.name}`,
       category: 'repository',
       summary: f.tagline,
     })),

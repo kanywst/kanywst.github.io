@@ -94,7 +94,9 @@ export function advisoryFromApi(data, { repo, ghsa, title, cve }, domains) {
   const [owner, name] = slug.split('/');
   const cveId = data.cve_id ?? cve; // GitHub-assigned, else a pinned downstream CVE
   // Don't fabricate a severity if the API omits/renames the field; flag it ('unknown',
-  // sorted last, warned below) rather than silently claiming a specific level.
+  // sorted last, warned below) rather than silently claiming a specific level. Severity is
+  // always the upstream maintainers' rating of the bug, also for a hand-pinned downstream CVE:
+  // it rates the finding, not the id. The numeric score is the one dropped there (below).
   const sev = (data.severity ?? '').toLowerCase();
   const v4 = data.cvss_severities?.cvss_v4;
   const v3 = data.cvss_severities?.cvss_v3 ?? data.cvss;

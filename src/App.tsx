@@ -298,7 +298,8 @@ function Marker({ kind, label, children }: { kind: string; label: string; childr
   );
 }
 
-const cvssVersion = (vector: string) => /^CVSS:(\d\.\d)/.exec(vector)?.[1] ?? '?';
+// null when the vector carries no version prefix (legacy v2 vectors): no label beats a guess
+const cvssVersion = (vector: string) => /^CVSS:(\d\.\d)/.exec(vector)?.[1] ?? null;
 
 // month precision: the day adds nothing a reader scanning 120 rows can use
 const month = (date?: string) => date?.slice(0, 7);
@@ -361,7 +362,9 @@ function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; n
                   {a.cvss.score.toFixed(1)}
                   {/* GitHub picks the version behind `severity` itself, so the score names
                       its own (v4.0 / v3.1) rather than passing as the same measurement */}
-                  <span className="cvss-v">v{cvssVersion(a.cvss.vector)}</span>
+                  {cvssVersion(a.cvss.vector) && (
+                    <span className="cvss-v">v{cvssVersion(a.cvss.vector)}</span>
+                  )}
                 </span>
               )}
             </Marker>
