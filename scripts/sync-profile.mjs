@@ -170,29 +170,46 @@ function fetchOrgRepos() {
   return { all, rows };
 }
 
+// Sections a guard held back this run (kept from an earlier sync). Every guard below degrades
+// to "keep the previous data" instead of aborting, so the other sections and the later
+// advisories / dev.to steps still refresh; syncedAt only advances when nothing was held.
+const kept = [];
+const hold = (name, why) => {
+  kept.push(name);
+  const msg = `${name}: ${why}; keeping the previous list`;
+  console.warn(`! ${msg}`);
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
+};
+
 const org = fetchOrgRepos();
+if (!org) kept.push('0-draft repos');
 const prevOrg = profile.org.repos?.length ?? 0;
 // a sharp drop is far likelier a degraded fetch than half the org archived overnight; keep
 // the last good list and say so, the same trade the empty-PR guard makes
 // A real large drop (a batch archived, new ORG_EXCLUDE entries) would trip this every day, so
 // it says so on the run summary, and FORCE_ORG=1 (workflow_dispatch env or a local run)
 // writes the new list anyway.
-const orgShrank = org && org.rows.length < prevOrg / 2 && !process.env.FORCE_ORG;
-if (org && (!org.rows.length || orgShrank)) {
-  const msg = `0-draft repos fell from ${prevOrg} to ${org.rows.length}; keeping the previous list (FORCE_ORG=1 to accept)`;
-  console.warn(`! ${msg}`);
-  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
-} else if (org) profile.org.repos = org.rows;
+// Same 10-row floor as the PR guard: at a handful of cards, halving is ordinary.
+const orgShrank =
+  org && prevOrg >= 10 && org.rows.length < prevOrg / 2 && !process.env.FORCE_ORG;
+if (org && (!org.rows.length || orgShrank))
+  hold('0-draft repos', `fell from ${prevOrg} to ${org.rows.length} (FORCE_ORG=1 to accept)`);
+else if (org) profile.org.repos = org.rows;
 
 // --- external PRs (all states; UI filters closed) and issues ---
-const prs = fetchExternal('prs');
-const issues = fetchExternal('issues');
-
-// Abort rather than bump syncedAt with possibly-stale data if the fetch came back empty
-// (kanywst always has external PRs now; an empty result means gh hiccuped).
-if (!prs.length) {
-  throw new Error('No upstream PRs returned; aborting to avoid stale sync metadata.');
+// a failed search (gh error, or the 1000-result cap) is held like any other guard
+function tryExternal(kind, name) {
+  try {
+    return fetchExternal(kind);
+  } catch (err) {
+    hold(name, err.message);
+    return null;
+  }
 }
+const prs = tryExternal('prs', 'upstream PRs');
+const issues = tryExternal('issues', 'upstream issues');
+// kanywst always has external PRs now; an empty result means gh hiccuped
+if (prs && !prs.length) hold('upstream PRs', 'search returned none');
 // Same shrink guard as the 0-draft and writing lists: a degraded search that returns a
 // fraction of the PRs would otherwise be committed, and shrink the chips, cloud and reach
 // figure with it. FORCE_PRS=1 accepts a real large drop. It keeps the previous list and
@@ -200,17 +217,12 @@ if (!prs.length) {
 // still refresh. Only from 10 rows up: at small counts halving is ordinary.
 const shrank = (now, prev) =>
   prev?.length >= 10 && now.length < prev.length / 2 && !process.env.FORCE_PRS;
-// sections a guard kept from an earlier sync this run; syncedAt only advances when none did
-const kept = [];
 function guardList(name, now, prev) {
   if (!shrank(now, prev)) return now;
-  kept.push(name);
-  const msg = `${name} shrank ${prev.length}→${now.length}; keeping the previous list (FORCE_PRS=1 to accept)`;
-  console.warn(`! ${msg}`);
-  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
+  hold(name, `shrank ${prev.length}→${now.length} (FORCE_PRS=1 to accept)`);
   return prev;
 }
-profile.contributions = guardList('upstream PRs', prs, profile.contributions);
+if (prs?.length) profile.contributions = guardList('upstream PRs', prs, profile.contributions);
 
 // --- reach of the merged work: how many upstream repos, and their combined stars ---
 // One aggregate on purpose, not a per-PR weight: ranking or sizing PRs by repo stars would
@@ -286,7 +298,9 @@ try {
   if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
 }
 // don't wipe a real issue list if the issues fetch came back empty (gh hiccup)
-profile.issues = issues.length ? guardList('upstream issues', issues, profile.issues) : (profile.issues ?? []);
+// an empty issue list is kept too (gh hiccup); only a real answer replaces it
+if (issues?.length) profile.issues = guardList('upstream issues', issues, profile.issues);
+else profile.issues ??= [];
 profile.meta ??= {};
 // syncedAt is the page's "this data is current" claim, so a run whose core lists were held
 // back by a guard doesn't advance it; meta.kept names what was held, until a clean run.
@@ -307,14 +321,16 @@ if (org) {
 }
 recordHistory(profile, profile.meta.syncedAt);
 
+// reported from what was written (a held list is the previous one)
+const { contributions: pc, issues: pi } = profile;
 const by = (arr, s) => arr.filter((c) => c.state === s).length;
 console.log(
   `synced ${profile.meta.syncedAt}: ${profile.flagships.length} starred repos ` +
     `(top: ${profile.flagships.map((f) => `${f.name} ★${f.stars}`).slice(0, 3).join(', ')}), ` +
-    `PRs ${prs.length} (${by(prs, 'merged')} merged / ${by(prs, 'open')} open / ${by(prs, 'closed')} closed), ` +
-    `issues ${issues.length}`,
+    `PRs ${pc.length} (${by(pc, 'merged')} merged / ${by(pc, 'open')} open / ${by(pc, 'closed')} closed), ` +
+    `issues ${pi.length}`,
 );
-const untagged = [...prs, ...issues].filter((c) => !c.domain);
+const untagged = [...pc, ...pi].filter((c) => !c.domain);
 if (untagged.length) {
   console.log(`! ${untagged.length} untagged, add their repos to DOMAIN_BY_REPO:`);
   for (const c of untagged) console.log(`    ${c.owner}/${c.repo}`);
