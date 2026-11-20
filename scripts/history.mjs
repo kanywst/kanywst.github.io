@@ -3,7 +3,8 @@
 // profile.json is a snapshot — each sync rewrites the live arrays wholesale, so on its own it
 // cannot say what changed. history.json is the memory next to it:
 //
-//   firstSeen  url → the sync date an item first appeared (PR, issue, advisory, starred repo).
+//   firstSeen  url → the sync date an item first appeared (PR, issue, advisory, starred repo,
+//              0-draft repo).
 //              Append-only on purpose: an item that drops out for a run (gh hiccup, a repo
 //              briefly at 0 stars) keeps its original date and does not come back as "new".
 //   stars      repo name → [[date, stars], ...], one entry per *change*, so a quiet repo
@@ -49,6 +50,7 @@ export function trackedUrls(profile) {
     ...(profile.contributions ?? []),
     ...(profile.issues ?? []),
     ...(profile.advisories ?? []),
+    ...(profile.org?.repos ?? []),
   ]
     .map((x) => x.url)
     .filter(Boolean);

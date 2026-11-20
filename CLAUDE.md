@@ -26,7 +26,7 @@ node scripts/sync-advisories.mjs   # refresh the security-advisories section (pu
 ## Architecture (the parts that span files)
 
 - **`src/data/profile.json`** — single source of truth, two kinds of data:
-  - *Curated* (hand-authored): `org` (0-draft blurb + repos), `profile`. These encode judgment.
+  - *Curated* (hand-authored): `org.blurb` / `org.url`, `profile`. These encode judgment. `org.repos` is *discovered* by `sync-profile.mjs` (every public, non-fork, non-archived 0-draft repo with a description, newest first; the UI previews 6). Shape a card with `ORG_BLURB_BY_REPO` / keep one out with `ORG_EXCLUDE` in `scripts/taglines.mjs`.
   - *Live* (regenerated, do NOT hand-edit): `flagships` (the whole array — see below),
     `contributions` (external PRs, all states merged/open/closed), `issues`, `advisories`,
     `meta.syncedAt`.

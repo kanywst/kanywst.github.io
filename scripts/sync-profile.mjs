@@ -16,7 +16,12 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { DOMAIN_BY_REPO } from './domains.mjs';
-import { LANG_BY_REPO, TAGLINE_BY_REPO } from './taglines.mjs';
+import {
+  LANG_BY_REPO,
+  ORG_BLURB_BY_REPO,
+  ORG_EXCLUDE,
+  TAGLINE_BY_REPO,
+} from './taglines.mjs';
 import { recordHistory } from './history.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -157,6 +162,31 @@ const flagships = fetchFlagships();
 if (flagships.length) profile.flagships = flagships;
 else console.warn('! no starred repos returned; keeping the previous selected work');
 
+// --- 0-draft: every public, non-fork, non-archived repo, newest first ---
+// This list used to be hand-written and went stale: two of its three cards pointed at repos
+// that had since been archived. Discovering it the way selected work is discovered keeps it
+// honest; the org blurb and url above it stay curated.
+function fetchOrgRepos() {
+  return ghJSON([
+    'repo', 'list', '0-draft', '--limit', '300', '--no-archived', '--source',
+    '--visibility', 'public', '--json', 'name,description,primaryLanguage,url,createdAt',
+  ])
+    .filter((r) => !ORG_EXCLUDE.has(r.name))
+    // a repo with no description has nothing to put on a card yet
+    .filter((r) => ORG_BLURB_BY_REPO[r.name] ?? r.description)
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt) || a.name.localeCompare(b.name))
+    .map((r) => ({
+      name: r.name,
+      lang: r.primaryLanguage?.name ?? '',
+      blurb: ORG_BLURB_BY_REPO[r.name] ?? r.description,
+      url: r.url,
+    }));
+}
+
+const orgRepos = fetchOrgRepos();
+if (orgRepos.length) profile.org.repos = orgRepos;
+else console.warn('! no 0-draft repos returned; keeping the previous list');
+
 // --- external PRs (all states; UI filters closed) and issues ---
 const prs = fetchExternal('prs');
 const issues = fetchExternal('issues');
@@ -195,6 +225,8 @@ if (untagged.length) {
 // override on a repo that simply hasn't earned a star yet is doing exactly what it should,
 // and a warning that fires every single run is a warning nobody reads.
 const overrides = new Set([...Object.keys(TAGLINE_BY_REPO), ...Object.keys(LANG_BY_REPO)]);
+const orphanedOrg = Object.keys(ORG_BLURB_BY_REPO).filter((n) => !orgRepos.some((r) => r.name === n));
+if (orphanedOrg.length) console.log(`! ORG_BLURB_BY_REPO names repos not in 0-draft: ${orphanedOrg.join(', ')}`);
 const orphaned = [...overrides].filter((name) => !allOwnRepoNames.has(name));
 if (orphaned.length) {
   console.log(`! ${orphaned.length} override(s) in taglines.mjs name a repo that no longer exists:`);
