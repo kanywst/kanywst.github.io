@@ -188,25 +188,97 @@
   "org": {
     "name": "0-draft",
     "url": "https://github.com/0-draft",
-    "blurb": "Research & incubation org for reference implementations, build-it-the-hard-way guides, and deep dives across identity, authorization, and supply-chain security.",
+    "blurb": "Research & incubation org: source-checked visual explainers, reference implementations and deep dives across identity, authorization and security, most of them in English and Japanese.",
     "repos": [
       {
-        "name": "xds-control-plane-the-hard-way",
-        "lang": "Rust",
-        "blurb": "Build an Envoy xDS control plane from raw protobuf, no service mesh framework.",
-        "url": "https://github.com/0-draft/xds-control-plane-the-hard-way"
+        "name": "how-chat-apps-work",
+        "lang": "TypeScript",
+        "blurb": "How a chat message travels from send to read receipt, step by step: persistent connections, ACKs and idempotent retries, push notifications, E2EE, group fan-out. Interactive sequence diagrams in English and Japanese.",
+        "url": "https://github.com/0-draft/how-chat-apps-work"
+      },
+      {
+        "name": "wtfe2",
+        "lang": "TypeScript",
+        "blurb": "WTF, Engineer? — comics about building software, lettered in Japanese where the license allows",
+        "url": "https://github.com/0-draft/wtfe2"
+      },
+      {
+        "name": "zanzibar-paper",
+        "lang": "MDX",
+        "blurb": "The Zanzibar paper (USENIX ATC '19) side by side with translations in 8 languages, paragraph by paragraph.",
+        "url": "https://github.com/0-draft/zanzibar-paper"
+      },
+      {
+        "name": "claude-english-coach",
+        "lang": "HTML",
+        "blurb": "A template repo for learning English with Claude Code: corrections, a mistake log, vocab and quizzes in plain Markdown.",
+        "url": "https://github.com/0-draft/claude-english-coach"
+      },
+      {
+        "name": "why-hackers-dont-get-caught",
+        "lang": "Astro",
+        "blurb": "Why hackers don't get caught: how attackers hide, layer by layer, why so many named attackers stay out of reach, and the one layer that gave away those who were caught. Visual explainer, EN/JA, every claim sourced.",
+        "url": "https://github.com/0-draft/why-hackers-dont-get-caught"
+      },
+      {
+        "name": "ccretro",
+        "lang": "JavaScript",
+        "blurb": "A retrospective of your Claude Code usage as a local web page — period comparison, follow-through on last month's suggestions, and a /ccretro skill that turns them into skills, hooks and CLAUDE.md",
+        "url": "https://github.com/0-draft/ccretro"
+      },
+      {
+        "name": "vpn-is-the-door",
+        "lang": "Astro",
+        "blurb": "Why VPN appliances are the main way ransomware gets into Japanese organizations (61 of 92 known entry routes in 2025, NPA): statistics, real cases, 31 exploited VPN flaws. EN / 日本語.",
+        "url": "https://github.com/0-draft/vpn-is-the-door"
+      },
+      {
+        "name": "goi",
+        "lang": "TypeScript",
+        "blurb": "A route map of Japanese words worth using: idioms, proverbs and four-character compounds, each with its meaning, origin, an example and sources. English and Japanese.",
+        "url": "https://github.com/0-draft/goi"
+      },
+      {
+        "name": "php2shell-anatomy",
+        "lang": "TypeScript",
+        "blurb": "Defensive awareness site dissecting the php2shell PHP zero-day (CVE-2026-109618 / CVE-2026-109619): why it's critical, who's affected, and how to patch in time.",
+        "url": "https://github.com/0-draft/php2shell-anatomy"
+      },
+      {
+        "name": "aws-credentials",
+        "lang": "TypeScript",
+        "blurb": "AWS credentials, drawn: how they are issued (every STS endpoint, all 11 APIs, every credential path) and how requests are signed with them (SigV4, SigV4a, presigned URLs). Interactive, bilingual (EN/JA).",
+        "url": "https://github.com/0-draft/aws-credentials"
+      },
+      {
+        "name": "aws-connectivity",
+        "lang": "TypeScript",
+        "blurb": "Every way from a corporate network into AWS, drawn as a road map (VPN, Direct Connect, SD-WAN, hubs, PrivateLink, hybrid DNS), plus a Direct Connect deep dive with labs. Bilingual (EN/JA).",
+        "url": "https://github.com/0-draft/aws-connectivity"
+      },
+      {
+        "name": "s3-atlas",
+        "lang": "TypeScript",
+        "blurb": "Everything about Amazon S3 — deep research docs, command cookbook, competitor and market analysis, and an interactive visual atlas (EN/JA).",
+        "url": "https://github.com/0-draft/s3-atlas"
+      },
+      {
+        "name": "casino",
+        "lang": "Python",
+        "blurb": "Blackjack and baccarat played by whoever turns up. Every decision or bet is a GitHub issue and both tables are the README.",
+        "url": "https://github.com/0-draft/casino"
+      },
+      {
+        "name": "authz-playground",
+        "lang": "TypeScript",
+        "blurb": "Give Cedar, OPA/Rego, Casbin and ReBAC the same authorization rules, then watch where their answers diverge. Runs entirely in the browser.",
+        "url": "https://github.com/0-draft/authz-playground"
       },
       {
         "name": "identity-deep-dive",
         "lang": "Python",
-        "blurb": "Collect and score deep-dive candidates across the OAuth, WIMSE and digital-credentials working groups.",
+        "blurb": "Collect, score, and surface deep-dive candidates across OAuth WG, WIMSE, and OpenID Foundation specs",
         "url": "https://github.com/0-draft/identity-deep-dive"
-      },
-      {
-        "name": "microsegmentation-deepdive",
-        "lang": "Shell",
-        "blurb": "Eight microsegmentation patterns run end to end on a laptop: NetworkPolicy, Cilium, Istio, SPIRE, nftables.",
-        "url": "https://github.com/0-draft/microsegmentation-deepdive"
       }
     ]
   },
@@ -822,6 +894,15 @@
       "domain": "CTF",
       "title": "Register team kanyewest",
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7448,
+      "state": "open",
+      "domain": "Workload Identity",
+      "title": "Honor the context and time out federated bundle fetches",
+      "url": "https://github.com/spiffe/spire/pull/7448"
     },
     {
       "owner": "luikyv",
