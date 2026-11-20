@@ -47,15 +47,7 @@ node scripts/sync-advisories.mjs   # refresh the security-advisories section (pu
   (`{ repo, ghsa, domain }`, plus `title` to override the API summary, plus `cve` only to pin a
   downstream-assigned CVE the upstream GHSA doesn't carry — e.g. kuma's finding is CVE-2026-18677
   via Kong Mesh but the kumahq GHSA shows cve=null). Rows sort CVE-first, then by severity.
-- **`src/data/history.json`** — the ledger behind the *this week* marks (`NEW` tag, `▲/▼`
-  rank movement, `+N` stars). `firstSeen` (url → first sync date, append-only) and `stars`
-  (repo → change-only `[date, count]` log, pruned to 30 days + one baseline). Written by
-  `scripts/history.mjs` `recordHistory()`, which both sync scripts call; do NOT hand-edit.
-  If it is ever lost, `node scripts/backfill-history.mjs` rebuilds it from the git history of
-  `profile.json` (needs a full clone). The UI (`src/fresh.ts`) judges "new" / "a week ago"
-  against the *viewer's* clock with one `WINDOW_DAYS = 7`, so marks fade even if the cron
-  stalls. Up = teal, down = muted, star gain = amber; never red/green (the up/down colour
-  convention flips between Japan and the West), and every glyph has `.sr-only` text.
+- **`src/data/history.json`** — the ledger behind the *this week* marks (`NEW` tag, `▲/▼` rank movement, `+N` stars). `firstSeen` (url → first sync date, append-only) and `stars` (repo → change-only `[date, count]` log, pruned to 30 days + one baseline). Written by `scripts/history.mjs` `recordHistory()`, which both sync scripts call; do NOT hand-edit. If it is ever lost, `node scripts/backfill-history.mjs` rebuilds it from the git history of `profile.json` (needs a full clone). The UI (`src/fresh.ts`) judges "new" / "a week ago" against the *viewer's* clock with one `WINDOW_DAYS = 7`, so marks fade even if the cron stalls. Up = teal, down = muted, star gain = amber; never red/green (the up/down colour convention flips between Japan and the West), and every glyph has `.sr-only` text.
 - **`src/App.tsx`** — renders everything from that JSON. A minimal hero is the landing;
   pressing **Space** (collapsed only) reveals the detail; **Esc** / the footer button
   collapse. Detail sections: *selected work* (star-ranked podium + rows) → *upstream pull
