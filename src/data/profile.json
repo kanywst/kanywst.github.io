@@ -22,7 +22,7 @@
       "owner": "kanywst",
       "lang": "Rust",
       "version": "v0.10.0",
-      "stars": 108,
+      "stars": 109,
       "tagline": "Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies — and how to fix it. Rust + ratatui TUI.",
       "url": "https://github.com/kanywst/wtfi2"
     },
@@ -824,6 +824,15 @@
       "url": "https://github.com/pwn2winctf/2020submissions/pull/149"
     },
     {
+      "owner": "luikyv",
+      "repo": "go-oidc",
+      "number": 139,
+      "state": "open",
+      "domain": "",
+      "title": "fix(federation): don't panic on object values in metadata policy operators",
+      "url": "https://github.com/luikyv/go-oidc/pull/139"
+    },
+    {
       "owner": "KevinColemanInc",
       "repo": "awesome-privacy",
       "number": 65,
@@ -1284,7 +1293,7 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-19"
+    "syncedAt": "2026-11-20"
   },
   "issues": [
     {
