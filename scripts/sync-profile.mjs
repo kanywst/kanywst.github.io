@@ -196,7 +196,10 @@ if (!prs.length) {
 // Same shrink guard as the 0-draft and writing lists: a degraded search that returns a
 // fraction of the PRs would otherwise be committed, and shrink the chips, cloud and reach
 // figure with it. FORCE_PRS=1 accepts a real large drop.
-const shrank = (now, prev) => prev && now.length < prev.length / 2 && !process.env.FORCE_PRS;
+// Only from 10 rows up: at small counts halving is ordinary (one issue closed out of one),
+// and aborting the whole sync over it would freeze everything else.
+const shrank = (now, prev) =>
+  prev?.length >= 10 && now.length < prev.length / 2 && !process.env.FORCE_PRS;
 if (shrank(prs, profile.contributions) || shrank(issues, profile.issues)) {
   const msg = `upstream lists shrank (PRs ${profile.contributions.length}→${prs.length}, issues ${profile.issues?.length ?? 0}→${issues.length}); aborting to keep the previous data (FORCE_PRS=1 to accept)`;
   if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
@@ -259,7 +262,12 @@ try {
   profile.meta ??= {};
   profile.meta.mergedReach = fetchMergedReach();
 } catch (err) {
-  console.warn(`! merged-reach lookup failed, keeping the previous figure: ${err.message}`);
+  // dropped, not kept: a figure from an older PR list would sit above the fresh one and no
+  // longer match it. The line simply doesn't render until the next good sync.
+  delete profile.meta.mergedReach;
+  const msg = `merged-reach lookup failed, dropping the figure for this sync: ${err.message}`;
+  console.warn(`! ${msg}`);
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
 }
 // don't wipe a real issue list if the issues fetch came back empty (gh hiccup)
 profile.issues = issues.length ? issues : (profile.issues ?? []);
