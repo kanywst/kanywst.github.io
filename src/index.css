@@ -230,8 +230,15 @@ a {
   display: block;
 }
 
-.text-content p {
+.text-content p,
+.hero-hi {
   margin: 0 0 18px 0;
+}
+
+/* the greeting is the page's <h1> now (it had none), styled to read exactly as the line it was */
+.hero-hi {
+  font: inherit;
+  letter-spacing: inherit;
 }
 
 /* The tagline is the thesis of the whole page, and at the body size on a wide screen it read
@@ -309,6 +316,35 @@ a {
   animation: breathe 2.6s ease-in-out infinite;
 }
 
+.hint-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.hint-more:hover {
+  color: var(--fg);
+}
+
+.hint-more:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* headings take focus when the detail opens (tabindex=-1) so a screen reader lands on them;
+   a heading isn't operable, so no ring — on a deep link it would frame the title for nothing */
+.label:focus {
+  outline: none;
+}
+
 /* ---------- detail ---------- */
 
 .detail {
@@ -322,6 +358,8 @@ a {
    single upstream pair. */
 .sec {
   margin-top: 60px;
+  /* deep links (#advisories …) land with a little air above the heading */
+  scroll-margin-top: 24px;
 }
 
 .sec--open {
@@ -365,6 +403,17 @@ a {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
+}
+
+.sec-sub {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sec-sub b {
+  color: var(--fg);
+  font-weight: 500;
 }
 
 .label-note {
@@ -786,6 +835,43 @@ a {
   font-size: 11.5px;
 }
 
+.m-tag {
+  text-transform: none;
+  letter-spacing: var(--track);
+}
+
+.m-date {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: var(--track);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cvss-v {
+  margin-left: 4px;
+  color: var(--muted);
+  font-size: 9.5px;
+  letter-spacing: var(--track);
+  text-transform: none;
+}
+
+/* the score sits on its own line under the severity word it qualifies: on one line,
+   "MEDIUM | 6.3 v3.1" outran the marker column and ran into the repo name. Indented to the
+   word, past the dot, so the two lines read as one label. */
+.marker:has(.cvss) {
+  flex-wrap: wrap;
+  row-gap: 3px;
+}
+
+.cvss {
+  flex-basis: 100%;
+  padding-left: 13px;
+  color: var(--fg);
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
 .m-domain {
   color: var(--muted);
   font-size: 11px;
@@ -911,8 +997,10 @@ a {
   transition: color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
 }
 
+/* off is a dashed outline, not a dimmed chip: at opacity 0.6 the muted label fell under
+   AA (axe, e2e/site.e2e.ts), and an off filter is still a control someone has to read */
 .chip:not(.on) {
-  opacity: 0.6;
+  border-style: dashed;
 }
 
 .chip:hover {
@@ -940,7 +1028,7 @@ a {
 
 .chip.on .chip-n {
   color: inherit;
-  opacity: 0.65;
+  opacity: 0.85;
 }
 
 /* expander under a truncated list */
@@ -1055,6 +1143,25 @@ a {
   font-size: 12px;
   line-height: 1.55;
   color: var(--muted);
+  /* discovered blurbs are the repos' own GitHub descriptions and some run to three
+     sentences; three lines keeps the grid rows even, the full text is one click away */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.org-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 20px;
+}
+
+.org-grid + .more {
+  margin-top: 14px;
 }
 
 /* footer */
@@ -1445,4 +1552,27 @@ a {
   .cloud-org:hover {
     transform: none;
   }
+}
+
+.foot-link {
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+
+.foot-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent-line);
+}
+
+/* the prerendered detail, shown only when JS is off (scripts/prerender.mjs); its collapse
+   button would do nothing there */
+.noscript-detail {
+  padding-block: 0 64px;
+}
+
+.noscript-detail .collapse,
+.noscript-detail .foot-legend {
+  display: none;
 }

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import profile from './data/profile.json';
 import {
@@ -13,6 +13,18 @@ import {
 
 const { profile: me, flagships, advisories, org, contributions, issues } = profile;
 
+type Article = {
+  title: string;
+  url: string;
+  date: string;
+  tags: string[];
+  minutes: number | null;
+  description: string;
+};
+// filled by scripts/sync-devto.mjs; absent until the first sync after it shipped, and the
+// section simply doesn't render without it
+const writing: Article[] = (profile as { writing?: Article[] }).writing ?? [];
+
 // The sync script already writes them in star order; sorting here too keeps the ranking
 // a property of the UI rather than a trust in the file.
 const ranked = [...flagships].sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name));
@@ -26,6 +38,9 @@ const PREVIEW_ROWS = 6;
 // The top 3 by stars get the podium treatment; the rest stay compact rows.
 const PODIUM = 3;
 
+// 0-draft is discovered newest-first and runs to ~15 repos; two rows of three is the preview.
+const ORG_PREVIEW = 6;
+
 // GitHub's own language colors, so the dot reads as the language at a glance. Anything
 // unmapped falls back to the muted foreground.
 const LANG_COLOR: Record<string, string> = {
@@ -37,8 +52,16 @@ const LANG_COLOR: Record<string, string> = {
   Shell: '#89e051',
   Zig: '#ec915c',
   Ruby: '#701516',
+  HTML: '#e34c26',
+  Astro: '#ff5a03',
+  MDX: '#fcb32c',
   List: '#8b8b93',
 };
+
+// github.com/<login>.png, not avatars.githubusercontent.com/<login>: the short form is keyed
+// on user logins and hands an org (spiffe, kubernetes, …) the default identicon. The .png URL
+// costs a 302, which the preconnect in index.html keeps cheap.
+const avatar = (login: string) => `https://github.com/${login}.png?size=160`;
 
 function LangDot({ lang }: { lang: string }) {
   if (!lang) return null;
@@ -138,7 +161,7 @@ function Hero({ compact }: { compact: boolean }) {
           morphs by a pure translate from centered (landing) to top (compact) */}
       <div className="hero-inner">
         <img
-          src="https://github.com/kanywst.png?size=160"
+          src={avatar(me.name)}
           alt=""
           width={64}
           height={64}
@@ -146,7 +169,7 @@ function Hero({ compact }: { compact: boolean }) {
         />
 
         <div className="text-content">
-          <p>👋 Hi, I&rsquo;m {me.name}.</p>
+          <h1 className="hero-hi">👋 Hi, I&rsquo;m {me.name}.</h1>
           <p>
             {me.tagline.split(/(Authorization)/).map((part, i) =>
               part === 'Authorization' ? (
@@ -257,20 +280,34 @@ type Contribution = {
   domain: string;
   title: string;
   url: string;
+  // landed (merged/closed) or, still open, opened — YYYY-MM-DD
+  date?: string;
 };
 
 // A state marker rather than a filled badge. The old 70px block put the loudest element of
 // every row in the column carrying the least information — with the default filter on,
 // "MERGED" repeated in teal down the whole list and read as a stripe, not as data. The word
 // stays in the DOM (color alone is not an accessible carrier); the dot does the scanning.
-function Marker({ kind, label }: { kind: string; label: string }) {
+function Marker({ kind, label, children }: { kind: string; label: string; children?: ReactNode }) {
   return (
     <span className={`marker marker-${kind}`}>
       <i className="marker-dot" aria-hidden="true" />
       {label}
+      {children}
     </span>
   );
 }
+
+// null when the vector carries no version prefix (legacy v2 vectors): no label beats a guess
+const cvssVersion = (vector: string) => /^CVSS:(\d\.\d)/.exec(vector)?.[1] ?? null;
+
+// filled by sync-profile.mjs; the PR section's one-line reach summary
+const reach = (profile.meta as { mergedReach?: { repos: number; stars: number } }).mergedReach;
+const compact = (n: number) =>
+  new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n).toLowerCase();
+
+// month precision: the day adds nothing a reader scanning 120 rows can use
+const month = (date?: string) => date?.slice(0, 7);
 
 function ContribRows({ items, base, now }: { items: Contribution[]; base: number; now: string }) {
   return (
@@ -286,7 +323,14 @@ function ContribRows({ items, base, now }: { items: Contribution[]; base: number
                   <span className="num">#{c.number}</span>
                   <NewTag url={c.url} now={now} />
                 </span>
-                {c.domain && <span className="m-domain">{c.domain}</span>}
+                <span className="row-meta-inline">
+                  {c.domain && <span className="m-domain">{c.domain}</span>}
+                  {c.date && (
+                    <time className="m-date" dateTime={c.date} title={c.date}>
+                      {month(c.date)}
+                    </time>
+                  )}
+                </span>
               </span>
               <span className="row-desc">{c.title}</span>
             </span>
@@ -306,6 +350,8 @@ type Advisory = {
   title: string;
   domain: string;
   url: string;
+  cvss?: { score: number; vector: string };
+  published?: string;
 };
 
 function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; now: string }) {
@@ -314,7 +360,19 @@ function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; n
       {items.map((a, i) => (
         <li key={a.url} className="reveal" style={{ ['--i']: base + i } as CSSProperties}>
           <a className={`row entry${isNew(a.url, now) ? ' is-new' : ''}`} href={a.url} target="_blank" rel="noreferrer">
-            <Marker kind={`sev-${a.severity}`} label={a.severity} />
+            <Marker kind={`sev-${a.severity}`} label={a.severity}>
+              {a.cvss && (
+                <span className="cvss" title={a.cvss.vector}>
+                  <span className="sr-only"> CVSS </span>
+                  {a.cvss.score.toFixed(1)}
+                  {/* GitHub picks the version behind `severity` itself, so the score names
+                      its own (v4.0 / v3.1) rather than passing as the same measurement */}
+                  {cvssVersion(a.cvss.vector) && (
+                    <span className="cvss-v">v{cvssVersion(a.cvss.vector)}</span>
+                  )}
+                </span>
+              )}
+            </Marker>
             <span className="row-body">
               <span className="row-head">
                 <span className="row-name mono">
@@ -328,6 +386,11 @@ function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; n
                     <span className="ghsa">{a.ghsa}</span>
                   )}
                   <span className="m-domain">{a.domain}</span>
+                  {a.published && (
+                    <time className="m-date" dateTime={a.published} title={`published ${a.published}`}>
+                      {month(a.published)}
+                    </time>
+                  )}
                 </span>
               </span>
               <span className="row-desc">{a.title}</span>
@@ -441,7 +504,7 @@ export function ContribCloud({
             style={{ width: px }}
           >
             <img
-              src={`https://github.com/${owner}.png?size=160`}
+              src={avatar(owner)}
               alt=""
               width={px}
               height={px}
@@ -504,13 +567,25 @@ function NewCount({
   );
 }
 
-function Detail({ onClose, now }: { onClose: () => void; now: string }) {
+// `full` is the static copy scripts/prerender.mjs puts in <noscript>: every row in every
+// state, and no filters or expanders, since nothing can press them there.
+export function Detail({
+  onClose,
+  now,
+  full = false,
+}: {
+  onClose: () => void;
+  now: string;
+  full?: boolean;
+}) {
   const moves = useMemo(() => movements(ranked, now), [now]);
   const prCount = (s: string) => contributions.filter((c) => c.state === s).length;
   // closed PRs are rejected/superseded, so hidden by default and toggleable
-  const [active, setActive] = useState<Set<string>>(() => new Set(['merged', 'open']));
-  const [prsExpanded, setPrsExpanded] = useState(false);
-  const [issuesExpanded, setIssuesExpanded] = useState(false);
+  const [active, setActive] = useState<Set<string>>(
+    () => new Set(full ? PR_STATES : ['merged', 'open']),
+  );
+  const [prsExpanded, setPrsExpanded] = useState(full);
+  const [issuesExpanded, setIssuesExpanded] = useState(full);
   const toggleState = (s: string) =>
     setActive((prev) => {
       const next = new Set(prev);
@@ -520,6 +595,11 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
     });
   const [newPrsOnly, setNewPrsOnly] = useState(false);
   const [newIssuesOnly, setNewIssuesOnly] = useState(false);
+  const [orgExpanded, setOrgExpanded] = useState(full);
+  const [writingExpanded, setWritingExpanded] = useState(full);
+  // discovered newest-first, so the preview is the org's latest work
+  const shownOrg = orgExpanded ? org.repos : org.repos.slice(0, ORG_PREVIEW);
+  const hasOrgMore = !full && org.repos.length > ORG_PREVIEW;
   const statePrs = contributions.filter((c) => active.has(c.state));
   const visiblePrs = newPrsOnly ? statePrs.filter((c) => isNew(c.url, now)) : statePrs;
   const visibleIssues = newIssuesOnly ? issues.filter((x) => isNew(x.url, now)) : issues;
@@ -529,8 +609,8 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
     issuesExpanded || newIssuesOnly ? visibleIssues : visibleIssues.slice(0, PREVIEW_ROWS);
   const hasPrCloud = contributions.length > 0;
   const hasIssueCloud = issues.length > 0;
-  const hasPrMore = !newPrsOnly && visiblePrs.length > PREVIEW_ROWS;
-  const hasIssueMore = !newIssuesOnly && issues.length > PREVIEW_ROWS;
+  const hasPrMore = !full && !newPrsOnly && visiblePrs.length > PREVIEW_ROWS;
+  const hasIssueMore = !full && !newIssuesOnly && issues.length > PREVIEW_ROWS;
 
   // Stagger indices, precomputed in DOM order so every revealed element gets a monotonic
   // --i without mutating a counter mid-render (keeps render pure under Strict/concurrent).
@@ -546,17 +626,26 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
   const issuesHead = prMoreAt + (hasPrMore ? 1 : 0);
   const issueRowsStart = issuesHead + 1 + (hasIssueCloud ? 1 : 0);
   const issueMoreAt = issueRowsStart + shownIssues.length;
-  const draftHead = issueMoreAt + (hasIssueMore ? 1 : 0);
+  const hasWriting = writing.length > 0;
+  const shownWriting = writingExpanded ? writing : writing.slice(0, PREVIEW_ROWS);
+  const hasWritingMore = !full && writing.length > PREVIEW_ROWS;
+  const writingHead = issueMoreAt + (hasIssueMore ? 1 : 0);
+  const writingRowsStart = writingHead + 1;
+  const writingMoreAt = writingRowsStart + shownWriting.length;
+  const draftHead = hasWriting ? writingMoreAt + (hasWritingMore ? 1 : 0) : writingHead;
   const orgBlurbAt = draftHead + 1;
   const orgReposStart = orgBlurbAt + 1;
-  const footerAt = orgReposStart + org.repos.length;
+  const orgMoreAt = orgReposStart + shownOrg.length;
+  const footerAt = orgMoreAt + (hasOrgMore ? 1 : 0);
 
   return (
     <div className="detail">
-      <section className="sec">
+      <section className="sec" id="work" aria-labelledby="work-h">
         <div className="sec-head reveal" style={at(workHead)}>
           <div className="label-row">
-            <h2 className="label">selected work</h2>
+            <h2 className="label" id="work-h" tabIndex={-1}>
+              selected work
+            </h2>
             <NewCount items={ranked} now={now} />
           </div>
           <span className="label-note">every starred repo, most stars first</span>
@@ -612,10 +701,12 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
       {/* the one section that gets room rather than chrome: these are real disclosed findings
           in named upstream projects, and letting them breathe against the dense lists below
           is what marks them as the strongest thing here */}
-      <section className="sec sec--open sec--feature">
+      <section className="sec sec--open sec--feature" id="advisories" aria-labelledby="advisories-h">
         <div className="sec-head reveal" style={at(advHead)}>
           <div className="label-row">
-            <h2 className="label">upstream · security advisories</h2>
+            <h2 className="label" id="advisories-h" tabIndex={-1}>
+              upstream · security advisories
+            </h2>
             <NewCount items={advisories} now={now} />
           </div>
           <span className="label-note">
@@ -625,10 +716,12 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
         <AdvisoryRows items={advisories} base={advRowsStart} now={now} />
       </section>
 
-      <section className="sec">
+      <section className="sec" id="pull-requests" aria-labelledby="pull-requests-h">
         <div className="sec-head reveal" style={at(prHead)}>
           <div className="label-row">
-            <h2 className="label">upstream · pull requests</h2>
+            <h2 className="label" id="pull-requests-h" tabIndex={-1}>
+              upstream · pull requests
+            </h2>
             {/* counted over the state filter, so the number always matches what pressing it shows */}
             <NewCount
               items={statePrs}
@@ -637,6 +730,7 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
               onToggle={() => setNewPrsOnly((v) => !v)}
             />
           </div>
+          {!full && (
           <div className="filter" role="group" aria-label="filter pull requests by state">
             {PR_STATES.map((s) => (
               <button
@@ -649,7 +743,19 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
               </button>
             ))}
           </div>
+          )}
         </div>
+        {reach && (
+          <p
+            className="sec-sub reveal"
+            style={at(prHead)}
+            title="awesome lists and package registries are not counted"
+          >
+            PRs merged into <b>{reach.repos}</b> upstream projects with{' '}
+            <b>{compact(reach.stars)}★</b> between them
+            <span className="sr-only"> (awesome lists and package registries not counted)</span>
+          </p>
+        )}
         {hasPrCloud && (
           <ContribCloud
             items={contributions}
@@ -672,10 +778,12 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
         )}
       </section>
 
-      <section className="sec sec--tight">
+      <section className="sec sec--tight" id="issues" aria-labelledby="issues-h">
         <div className="sec-head reveal" style={at(issuesHead)}>
           <div className="label-row">
-            <h2 className="label">upstream · issues filed</h2>
+            <h2 className="label" id="issues-h" tabIndex={-1}>
+              upstream · issues filed
+            </h2>
             <NewCount
               items={issues}
               now={now}
@@ -702,35 +810,120 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
         )}
       </section>
 
-      <section className="sec sec--open">
+      {hasWriting && (
+        <section className="sec" id="writing" aria-labelledby="writing-h">
+          <div className="sec-head reveal" style={at(writingHead)}>
+            <div className="label-row">
+              <h2 className="label" id="writing-h" tabIndex={-1}>
+                writing
+              </h2>
+              <NewCount items={writing} now={now} />
+            </div>
+            <a className="label-note link" href={me.links.devto} target="_blank" rel="noreferrer">
+              {writing.length} articles on dev.to
+            </a>
+          </div>
+          <ul className="rows">
+            {shownWriting.map((w, i) => (
+              <li key={w.url} className="reveal" style={at(writingRowsStart + i)}>
+                <a
+                  className={`row entry${isNew(w.url, now) ? ' is-new' : ''}`}
+                  href={w.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <time className="marker" dateTime={w.date}>
+                    {w.date}
+                  </time>
+                  <span className="row-body">
+                    <span className="row-head">
+                      <span className="row-name">
+                        {w.title}
+                        <NewTag url={w.url} now={now} />
+                      </span>
+                    </span>
+                    <span className="row-meta-inline">
+                      {w.tags.map((t) => (
+                        <span key={t} className="m-domain m-tag">
+                          #{t}
+                        </span>
+                      ))}
+                      {w.minutes ? <span className="m-date">{w.minutes} min</span> : null}
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          {hasWritingMore && (
+            <MoreButton
+              expanded={writingExpanded}
+              total={writing.length}
+              noun="articles"
+              onClick={() => setWritingExpanded((v) => !v)}
+              style={at(writingMoreAt)}
+            />
+          )}
+        </section>
+      )}
+
+      <section className="sec sec--open" id="0-draft" aria-labelledby="0-draft-h">
         <div className="sec-head reveal" style={at(draftHead)}>
-          <h2 className="label">0-draft</h2>
+          <div className="label-row">
+            <h2 className="label" id="0-draft-h" tabIndex={-1}>
+              0-draft
+            </h2>
+            <NewCount items={org.repos} now={now} />
+          </div>
           <a className="label-note link" href={org.url} target="_blank" rel="noreferrer">
             research &amp; incubation
           </a>
         </div>
         <div className="org-intro reveal" style={at(orgBlurbAt)}>
-          <a className="org-badge" href={org.url} target="_blank" rel="noreferrer" tabIndex={-1}>
-            <img src="https://github.com/0-draft.png?size=160" alt="" width={56} height={56} />
+          <a
+            className="org-badge"
+            href={org.url}
+            target="_blank"
+            rel="noreferrer"
+            tabIndex={-1}
+            aria-label="0-draft on GitHub"
+          >
+            <img src={avatar('0-draft')} alt="" width={56} height={56} />
           </a>
           <p className="org-blurb">{org.blurb}</p>
         </div>
         <ul className="org-grid">
-          {org.repos.map((r, i) => (
+          {shownOrg.map((r, i) => (
             <li key={r.url} className="reveal" style={at(orgReposStart + i)}>
               <a className="org-card" href={r.url} target="_blank" rel="noreferrer">
-                <LangDot lang={r.lang} />
+                <span className="org-card-top">
+                  <LangDot lang={r.lang} />
+                  <NewTag url={r.url} now={now} />
+                </span>
                 <span className="org-card-name">{r.name}</span>
                 <span className="org-card-desc">{r.blurb}</span>
               </a>
             </li>
           ))}
         </ul>
+        {hasOrgMore && (
+          <MoreButton
+            expanded={orgExpanded}
+            total={org.repos.length}
+            noun="0-draft repos"
+            onClick={() => setOrgExpanded((v) => !v)}
+            style={at(orgMoreAt)}
+          />
+        )}
       </section>
 
       <footer className="foot reveal" style={at(footerAt)}>
         <span>
-          synced {profile.meta?.syncedAt} · auto-generated from the GitHub &amp; dev.to APIs
+          synced {profile.meta?.syncedAt} · auto-generated from the GitHub
+          {hasWriting ? ' & dev.to APIs' : ' API'} ·{' '}
+          <a className="foot-link" href="/feed.xml">
+            feed
+          </a>
           <span className="foot-legend">
             <span className="new-tag">new</span> / <span className="rank-move up">▲</span> /{' '}
             <span className="star-gain">+★</span> = last {WINDOW_DAYS} days
@@ -745,10 +938,30 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
 }
 
 // everything "new" on the page, for the one-line teaser on the landing
-const allTracked = [...flagships, ...advisories, ...contributions, ...issues];
+const allTracked = [
+  ...flagships,
+  ...advisories,
+  ...contributions,
+  ...issues,
+  ...writing,
+  ...org.repos,
+];
+
+// Sections a link can open straight to: kanywst.github.io/#advisories skips the landing.
+const SECTIONS = ['work', 'advisories', 'pull-requests', 'issues', 'writing', '0-draft'];
+const hashSection = () => {
+  // prerendered in Node (scripts/prerender.mjs), where there is no URL to read
+  if (typeof window === 'undefined') return null;
+  // no decodeURIComponent: the ids need none, and a malformed escape (#%) would throw on
+  // the first render and blank the page
+  const h = window.location.hash.slice(1);
+  return SECTIONS.includes(h) ? h : null;
+};
 
 export default function App() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(() => hashSection() !== null);
+  const moreRef = useRef<HTMLButtonElement>(null);
+  const opened = useRef(false);
   // read once per mount: a badge flipping mid-visit at UTC midnight helps nobody
   const [now] = useState(todayUTC);
   const freshCount = allTracked.filter((x) => isNew(x.url, now)).length;
@@ -772,10 +985,44 @@ export default function App() {
 
   const toggle = useCallback(() => setOpenAnimated((v) => !v), [setOpenAnimated]);
 
+  // Focus follows the swap. The element that had it (the landing, or the collapse button)
+  // unmounts, which used to drop focus to <body> and leave a keyboard user at the top of an
+  // unannounced page. Opening lands on the linked section's heading, or the first one;
+  // closing returns to the button that opens it again.
+  useEffect(() => {
+    if (open) {
+      const target = hashSection() ?? SECTIONS[0];
+      const heading = document.getElementById(`${target}-h`);
+      heading?.focus({ preventScroll: true });
+      if (hashSection()) document.getElementById(target)?.scrollIntoView?.({ behavior: 'auto' });
+    } else if (opened.current) {
+      moreRef.current?.focus();
+      // collapsing drops a section hash, so a reload lands where the reader now is
+      if (hashSection()) history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    opened.current ||= open;
+  }, [open]);
+
+  useEffect(() => {
+    const onHash = () => {
+      // already open: nothing to animate (the browser scrolls to the anchor itself)
+      const target = hashSection();
+      if (!target) return;
+      // already open: the browser scrolls to the anchor, but focus has to follow too
+      if (open) document.getElementById(`${target}-h`)?.focus({ preventScroll: true });
+      else setOpenAnimated(true);
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, [open, setOpenAnimated]);
+
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      // a key something else already handled, or a chord (⌘/Ctrl/Alt + …), isn't ours
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key === 'Escape') {
-        setOpenAnimated(false);
+        // collapsed already: nothing to close, and no view transition to run for nothing
+        if (open) setOpenAnimated(false);
         return;
       }
       // Space only *opens* (collapsed → detail). Once open the page can be long,
@@ -804,6 +1051,10 @@ export default function App() {
           <Detail onClose={() => setOpenAnimated(false)} now={now} />
         </>
       ) : (
+        // A click anywhere still opens it, as a mouse convenience. The landing used to be one
+        // big role="button" with the three hero links nested inside it — interactive content
+        // inside a button, and an aria-label that replaced the hero's own text. The real
+        // control is now the "more" button; the wrapper is only a click target.
         <div
           className="landing"
           onClick={(e) => {
@@ -811,20 +1062,23 @@ export default function App() {
             if ((e.target as HTMLElement).closest('a, button')) return;
             toggle();
           }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              toggle();
-            }
-          }}
-          role="button"
-          tabIndex={0}
-          aria-label="Open profile details"
         >
           <Hero compact={false} />
           <div className="hint">
-            <span className="kbd">space</span>
-            <span>more</span>
+            <button
+              ref={moreRef}
+              type="button"
+              className="hint-more"
+              aria-expanded={false}
+              aria-keyshortcuts="Space"
+              onClick={toggle}
+            >
+              <span className="kbd" aria-hidden="true">
+                space
+              </span>
+              <span>more</span>
+              <span className="sr-only"> — show profile details</span>
+            </button>
             {freshCount > 0 && (
               <span className="hint-new">
                 <i className="new-dot" aria-hidden="true" />

@@ -13,6 +13,18 @@ on:
         description: 'Redraw the OG card even when the data has not changed'
         type: boolean
         default: false
+      force_org:
+        description: 'Accept a 0-draft repo list that shrank by more than half'
+        type: boolean
+        default: false
+      force_prs:
+        description: 'Accept upstream PR/issue lists that shrank by more than half'
+        type: boolean
+        default: false
+      force_writing:
+        description: 'Accept a dev.to article list that shrank by more than half'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -41,9 +53,13 @@ jobs:
         id: sync
         env:
           GH_TOKEN: ${{ github.token }}
+          FORCE_ORG: ${{ inputs.force_org && '1' || '' }}
+          FORCE_PRS: ${{ inputs.force_prs && '1' || '' }}
+          FORCE_WRITING: ${{ inputs.force_writing && '1' || '' }}
         run: |
           node scripts/sync-profile.mjs
           node scripts/sync-advisories.mjs
+          node scripts/sync-devto.mjs
           if git diff --quiet -- src/data/profile.json src/data/history.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
@@ -71,6 +87,17 @@ jobs:
           npx playwright install --with-deps chromium
           node scripts/make-og.mjs
 
+      # The contract tests (profile.test.ts, fresh.test.ts) guard exactly what this job
+      # writes, but its own commit carries [skip ci], so without this step they never ran
+      # against synced data. A failure here stops the commit and the deploy.
+      - name: Test the refreshed data
+        if: steps.sync.outputs.changed == 'true' || inputs.redraw_og
+        # always a fresh npm ci: the best-effort OG step may have left a half-installed
+        # node_modules behind, and a cosmetic failure there must not fail the data here
+        run: |
+          npm ci
+          npm test
+
       - name: Commit refreshed data
         id: commit
         if: steps.sync.outputs.changed == 'true' || inputs.redraw_og
@@ -96,7 +123,7 @@ jobs:
       - name: Build
         if: steps.commit.outputs.pushed == 'true'
         run: |
-          npm install
+          [ -d node_modules ] || npm ci
           npm run build
 
       - uses: actions/upload-pages-artifact@v5

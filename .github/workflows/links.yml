@@ -1,0 +1,39 @@
+name: Links
+
+# Weekly dead-link check over everything the page links to. The build's no-JS copy
+# (scripts/prerender.mjs) carries every row, so dist/index.html holds every PR, issue,
+# advisory, repo and 0-draft link in one file. Nothing else notices when an upstream repo is
+# renamed or deleted, or a hand-written URL in profile.json rots. A red run is the alert.
+
+on:
+  schedule:
+    - cron: '0 7 * * 1' # Mondays 07:00 UTC, after that day's sync
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          # the token lifts GitHub's anonymous rate limit, which ~200 github.com links hit;
+          # 429 counts as alive so a throttled run doesn't report rot that isn't there
+          token: ${{ github.token }}
+          args: >-
+            --no-progress
+            --accept 200..=299,429
+            --max-concurrency 8
+            --exclude-path dist/assets
+            --exclude '^https://kanywst\.github\.io/'
+            dist/index.html
+          fail: true

@@ -67,3 +67,18 @@ jobs:
       - run: npm ci
       # Only runtime deps ship (static site), so dev-only advisories don't gate PRs.
       - run: npm audit --omit=dev --audit-level=high
+
+  # Real-browser checks on the production build: focus on open/close, section deep links,
+  # the prerendered no-JS copy, and an axe scan (serious/critical) of both states.
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm run e2e

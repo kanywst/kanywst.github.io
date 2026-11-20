@@ -232,3 +232,50 @@ describe('this-week marks', () => {
     expect(rows.some((r) => r.getAttribute('href') === url)).toBe(true);
   });
 });
+
+describe('deep links and focus', () => {
+  afterEach(() => window.history.replaceState(null, '', '/'));
+
+  it('opens straight to a section named in the URL hash and focuses its heading', () => {
+    window.history.replaceState(null, '', '/#advisories');
+    render(<App />);
+    const heading = screen.getByRole('heading', { name: /security advisories/ });
+    expect(heading).toHaveFocus();
+    expect(heading.closest('section')).toHaveAttribute('id', 'advisories');
+  });
+
+  it('ignores a hash that is not a section', () => {
+    window.history.replaceState(null, '', '/#nope');
+    render(<App />);
+    expect(screen.queryByRole('heading', { name: 'selected work' })).not.toBeInTheDocument();
+  });
+
+  it('opens from a real button, focuses the first section, and returns focus on Escape', () => {
+    render(<App />);
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Hi, I/);
+    fireEvent.click(screen.getByRole('button', { name: /more/ }));
+    expect(screen.getByRole('heading', { name: 'selected work' })).toHaveFocus();
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.getByRole('button', { name: /more/ })).toHaveFocus();
+  });
+});
+
+describe('malformed hash', () => {
+  afterEach(() => window.history.replaceState(null, '', '/'));
+  it('renders the landing instead of throwing on a broken percent escape', () => {
+    window.history.replaceState(null, '', '/#%E0%A4%A');
+    render(<App />);
+    expect(screen.getByText(/Hi, I/)).toBeInTheDocument();
+  });
+});
+
+describe('keyboard chords', () => {
+  it('ignores Space and Escape pressed with a modifier', () => {
+    render(<App />);
+    fireEvent.keyDown(window, { key: ' ', ctrlKey: true });
+    expect(screen.queryByRole('heading', { name: 'selected work' })).not.toBeInTheDocument();
+    fireEvent.keyDown(window, { key: ' ' });
+    fireEvent.keyDown(window, { key: 'Escape', metaKey: true });
+    expect(screen.getByRole('heading', { name: 'selected work' })).toBeInTheDocument();
+  });
+});

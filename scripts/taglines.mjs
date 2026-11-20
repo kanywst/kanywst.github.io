@@ -29,3 +29,21 @@ export const TAGLINE_BY_REPO = {
 export const LANG_BY_REPO = {
   'awesome-authorization': 'List',
 };
+
+// ---- 0-draft section ----
+// Same idea for the 0-draft org: sync-profile.mjs lists every public, non-fork, non-archived
+// 0-draft repo, newest first. These tables only shape how one reads or keep one out.
+
+// repo name → a shorter card blurb than the GitHub description.
+export const ORG_BLURB_BY_REPO = {
+  // carried over from the hand-written list this discovery replaced (its other two cards
+  // were archived repos, which discovery now drops on purpose)
+  'identity-deep-dive':
+    'Collect and score deep-dive candidates across the OAuth, WIMSE and digital-credentials working groups.',
+};
+
+// repo name → display language, for 0-draft repos GitHub can't classify.
+export const ORG_LANG_BY_REPO = {};
+
+// Public repos that aren't work to show: the org's own plumbing and its landing page.
+export const ORG_EXCLUDE = new Set(['.github', '0-draft.github.io', 'dev.to']);

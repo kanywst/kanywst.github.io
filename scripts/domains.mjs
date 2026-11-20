@@ -106,4 +106,36 @@ export const DOMAIN_BY_REPO = {
   'shyuan/awesome-oauth-oidc': 'Tooling',
   'sigstore/policy-controller': 'Supply Chain',
   'trackawesomelist/trackawesomelist-source': 'Tooling',
+  'nMaroulis/awesome-agent-client-protocol': 'Tooling',
+  'guilyx/awesome-github-pages-portfolios': 'Tooling',
+  'KevinColemanInc/awesome-privacy': 'Tooling',
+  'pab1it0/awesome-a2a': 'Tooling',
+  'naghim/Awesome-Japanese-Study-Materials': 'Tooling',
+  'warrant-dev/awesome-authorization': 'Authorization',
+  'luikyv/go-oidc': 'OIDC',
+  'openid/OpenID4VP': 'Identity',
+  'oauth-wg/oauth-delegate-sd-jwt': 'Identity',
+  'sebadob/rauthy': 'OIDC',
+  'thephpleague/oauth2-server': 'OIDC',
+  'keycloak/keycloak': 'Authorization',
+  'authlib/authlib': 'OIDC',
+  'stacklok/toolhive': 'OIDC',
+  'attenu-io/attenu-guard': 'Authorization',
+  'kyverno/kyverno-authz': 'Authorization',
 };
+
+// Lists and registries are left out of the figure: an entry in awesome-go or a winget
+// manifest is a real merged PR, but counting those repos' stars would let a one-line listing
+// outweigh every code contribution combined (it was ~60% of the raw total).
+export const LISTING = /(^|\/)awesome|-in-the-wild$/i;
+export const LISTING_REPOS = new Set([
+  'NixOS/nixpkgs',
+  'microsoft/winget-pkgs',
+  'golang/vulndb',
+  'pwn2winctf/2020submissions',
+  'trackawesomelist/trackawesomelist-source',
+]);
+
+// Large (20k★+) repos already checked to be code, not a list or registry, so the merged-reach
+// figure may count them. The sync names any 20k★+ merged repo missing from here.
+export const REACH_REVIEWED = new Set(['google-gemini/gemini-cli', 'istio/istio']);

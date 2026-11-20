@@ -3,7 +3,8 @@
 // profile.json is a snapshot — each sync rewrites the live arrays wholesale, so on its own it
 // cannot say what changed. history.json is the memory next to it:
 //
-//   firstSeen  url → the sync date an item first appeared (PR, issue, advisory, starred repo).
+//   firstSeen  url → the sync date an item first appeared (PR, issue, advisory, starred repo,
+//              0-draft repo).
 //              Append-only on purpose: an item that drops out for a run (gh hiccup, a repo
 //              briefly at 0 stars) keeps its original date and does not come back as "new".
 //   stars      repo name → [[date, stars], ...], one entry per *change*, so a quiet repo
@@ -13,6 +14,10 @@
 //              leaves is closed with a 0 only once it is missing from a *second* sync, dated
 //              back to the first miss, so a single degraded fetch can't zero a repo and fake
 //              a re-entry or a rank climb for the week after.
+//
+// Most firstSeen dates are sync dates. Two kinds are seeded from the source instead (see
+// seedFirstSeen): a 0-draft repo's creation date and a dev.to article's publish date — for
+// those, "first seen" means "created" / "published".
 //
 // Both ledgers are keyed by name/url, so a renamed repo starts over: new first-seen date,
 // fresh star log. Renames are rare enough that this is cheaper than tracking repo ids.
@@ -49,6 +54,8 @@ export function trackedUrls(profile) {
     ...(profile.contributions ?? []),
     ...(profile.issues ?? []),
     ...(profile.advisories ?? []),
+    ...(profile.org?.repos ?? []),
+    ...(profile.writing ?? []),
   ]
     .map((x) => x.url)
     .filter(Boolean);
@@ -132,6 +139,21 @@ export function writeHistory(history, file = HISTORY_FILE) {
     ) +
       '\n',
   );
+}
+
+/**
+ * Give items a known first-seen date (a repo's creation, an article's publication) instead of
+ * the date a sync happened to notice them. Only fills gaps: a recorded date is never moved.
+ */
+export function seedFirstSeen(dates) {
+  const h = loadHistory();
+  let n = 0;
+  for (const [url, date] of Object.entries(dates)) {
+    if (h.firstSeen[url] || !date) continue;
+    h.firstSeen[url] = date;
+    n++;
+  }
+  if (n) writeHistory(h);
 }
 
 /** Called by the sync scripts with the profile they just wrote. */

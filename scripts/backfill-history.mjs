@@ -14,7 +14,7 @@
 
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
-import { BOOTSTRAP_DATE, HISTORY_FILE, foldSnapshot, writeHistory } from './history.mjs';
+import { BOOTSTRAP_DATE, HISTORY_FILE, foldSnapshot, loadHistory, writeHistory } from './history.mjs';
 
 const PATH = 'src/data/profile.json';
 // TZ=UTC: the cron stamps dates in UTC, so commit dates must be read in UTC too or a
@@ -49,6 +49,15 @@ for (const [sha, date] of commits) {
   // handles that — the first fold into an empty ledger gets BOOTSTRAP_DATE.
   history = foldSnapshot(history, snap, date);
   replayed++;
+}
+
+// Seeded dates (0-draft creation, article publication) aren't recoverable from profile.json's
+// history, and replaying would re-date those items to the day they first appeared in a commit.
+// Keep the earlier of the two for every item the current ledger already knows.
+const existing = loadHistory();
+for (const [url, d] of Object.entries(existing.firstSeen)) {
+  const replayed = history.firstSeen[url];
+  if (!replayed || d < replayed) history.firstSeen[url] = d;
 }
 
 // the working tree may hold a sync that isn't committed yet; date it the way the sync did
