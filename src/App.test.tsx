@@ -259,3 +259,12 @@ describe('deep links and focus', () => {
     expect(screen.getByRole('button', { name: /more/ })).toHaveFocus();
   });
 });
+
+describe('malformed hash', () => {
+  afterEach(() => window.history.replaceState(null, '', '/'));
+  it('renders the landing instead of throwing on a broken percent escape', () => {
+    window.history.replaceState(null, '', '/#%E0%A4%A');
+    render(<App />);
+    expect(screen.getByText(/Hi, I/)).toBeInTheDocument();
+  });
+});

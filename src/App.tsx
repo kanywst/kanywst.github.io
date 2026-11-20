@@ -821,7 +821,9 @@ const allTracked = [...flagships, ...advisories, ...contributions, ...issues, ..
 // Sections a link can open straight to: kanywst.github.io/#advisories skips the landing.
 const SECTIONS = ['work', 'advisories', 'pull-requests', 'issues', '0-draft'];
 const hashSection = () => {
-  const h = decodeURIComponent(window.location.hash.slice(1));
+  // no decodeURIComponent: the ids need none, and a malformed escape (#%) would throw on
+  // the first render and blank the page
+  const h = window.location.hash.slice(1);
   return SECTIONS.includes(h) ? h : null;
 };
 
@@ -865,18 +867,19 @@ export default function App() {
     } else if (opened.current) {
       moreRef.current?.focus();
       // collapsing drops a section hash, so a reload lands where the reader now is
-      if (hashSection()) history.replaceState(null, '', window.location.pathname);
+      if (hashSection()) history.replaceState(null, '', window.location.pathname + window.location.search);
     }
     opened.current ||= open;
   }, [open]);
 
   useEffect(() => {
     const onHash = () => {
-      if (hashSection()) setOpenAnimated(true);
+      // already open: nothing to animate (the browser scrolls to the anchor itself)
+      if (hashSection() && !open) setOpenAnimated(true);
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
-  }, [setOpenAnimated]);
+  }, [open, setOpenAnimated]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
