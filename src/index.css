@@ -1055,6 +1055,25 @@ a {
   font-size: 12px;
   line-height: 1.55;
   color: var(--muted);
+  /* discovered blurbs are the repos' own GitHub descriptions and some run to three
+     sentences; three lines keeps the grid rows even, the full text is one click away */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.org-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 20px;
+}
+
+.org-grid + .more {
+  margin-top: 14px;
 }
 
 /* footer */

@@ -26,6 +26,9 @@ const PREVIEW_ROWS = 6;
 // The top 3 by stars get the podium treatment; the rest stay compact rows.
 const PODIUM = 3;
 
+// 0-draft is discovered newest-first and runs to ~15 repos; two rows of three is the preview.
+const ORG_PREVIEW = 6;
+
 // GitHub's own language colors, so the dot reads as the language at a glance. Anything
 // unmapped falls back to the muted foreground.
 const LANG_COLOR: Record<string, string> = {
@@ -37,6 +40,9 @@ const LANG_COLOR: Record<string, string> = {
   Shell: '#89e051',
   Zig: '#ec915c',
   Ruby: '#701516',
+  HTML: '#e34c26',
+  Astro: '#ff5a03',
+  MDX: '#fcb32c',
   List: '#8b8b93',
 };
 
@@ -520,6 +526,10 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
     });
   const [newPrsOnly, setNewPrsOnly] = useState(false);
   const [newIssuesOnly, setNewIssuesOnly] = useState(false);
+  const [orgExpanded, setOrgExpanded] = useState(false);
+  // discovered newest-first, so the preview is the org's latest work
+  const shownOrg = orgExpanded ? org.repos : org.repos.slice(0, ORG_PREVIEW);
+  const hasOrgMore = org.repos.length > ORG_PREVIEW;
   const statePrs = contributions.filter((c) => active.has(c.state));
   const visiblePrs = newPrsOnly ? statePrs.filter((c) => isNew(c.url, now)) : statePrs;
   const visibleIssues = newIssuesOnly ? issues.filter((x) => isNew(x.url, now)) : issues;
@@ -549,7 +559,8 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
   const draftHead = issueMoreAt + (hasIssueMore ? 1 : 0);
   const orgBlurbAt = draftHead + 1;
   const orgReposStart = orgBlurbAt + 1;
-  const footerAt = orgReposStart + org.repos.length;
+  const orgMoreAt = orgReposStart + shownOrg.length;
+  const footerAt = orgMoreAt + (hasOrgMore ? 1 : 0);
 
   return (
     <div className="detail">
@@ -704,7 +715,10 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
 
       <section className="sec sec--open">
         <div className="sec-head reveal" style={at(draftHead)}>
-          <h2 className="label">0-draft</h2>
+          <div className="label-row">
+            <h2 className="label">0-draft</h2>
+            <NewCount items={org.repos} now={now} />
+          </div>
           <a className="label-note link" href={org.url} target="_blank" rel="noreferrer">
             research &amp; incubation
           </a>
@@ -716,16 +730,28 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
           <p className="org-blurb">{org.blurb}</p>
         </div>
         <ul className="org-grid">
-          {org.repos.map((r, i) => (
+          {shownOrg.map((r, i) => (
             <li key={r.url} className="reveal" style={at(orgReposStart + i)}>
               <a className="org-card" href={r.url} target="_blank" rel="noreferrer">
-                <LangDot lang={r.lang} />
+                <span className="org-card-top">
+                  <LangDot lang={r.lang} />
+                  <NewTag url={r.url} now={now} />
+                </span>
                 <span className="org-card-name">{r.name}</span>
                 <span className="org-card-desc">{r.blurb}</span>
               </a>
             </li>
           ))}
         </ul>
+        {hasOrgMore && (
+          <MoreButton
+            expanded={orgExpanded}
+            total={org.repos.length}
+            noun="0-draft repos"
+            onClick={() => setOrgExpanded((v) => !v)}
+            style={at(orgMoreAt)}
+          />
+        )}
       </section>
 
       <footer className="foot reveal" style={at(footerAt)}>
@@ -745,7 +771,7 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
 }
 
 // everything "new" on the page, for the one-line teaser on the landing
-const allTracked = [...flagships, ...advisories, ...contributions, ...issues];
+const allTracked = [...flagships, ...advisories, ...contributions, ...issues, ...org.repos];
 
 export default function App() {
   const [open, setOpen] = useState(false);
