@@ -15,6 +15,10 @@
 //              back to the first miss, so a single degraded fetch can't zero a repo and fake
 //              a re-entry or a rank climb for the week after.
 //
+// Most firstSeen dates are sync dates. Two kinds are seeded from the source instead (see
+// seedFirstSeen): a 0-draft repo's creation date and a dev.to article's publish date — for
+// those, "first seen" means "created" / "published".
+//
 // Both ledgers are keyed by name/url, so a renamed repo starts over: new first-seen date,
 // fresh star log. Renames are rare enough that this is cheaper than tracking repo ids.
 //
