@@ -52,6 +52,27 @@ describe('profile.json contract', () => {
     }
   });
 
+  it('dates upstream rows and scores advisories in the shapes the UI reads', () => {
+    const ymd = /^\d{4}-\d{2}-\d{2}$/;
+    for (const c of [...profile.contributions, ...profile.issues]) expect(c.date, c.url).toMatch(ymd);
+    for (const a of profile.advisories as { cvss?: { score: number; vector: string }; published?: string }[]) {
+      if (a.published) expect(a.published).toMatch(ymd);
+      if (a.cvss) {
+        expect(a.cvss.score).toBeGreaterThanOrEqual(0);
+        expect(a.cvss.score).toBeLessThanOrEqual(10);
+        expect(a.cvss.vector).toMatch(/^CVSS:[34]\.\d\//);
+      }
+    }
+  });
+
+  it('lists discovered 0-draft repos with a blurb and no excluded plumbing', () => {
+    expect(profile.org.repos.length).toBeGreaterThan(0);
+    for (const r of profile.org.repos) {
+      expect(r.blurb, r.name).toBeTruthy();
+      expect(['.github', '0-draft.github.io', 'dev.to']).not.toContain(r.name);
+    }
+  });
+
   it('records when the live half was last synced', () => {
     expect(profile.meta.syncedAt).toBeTruthy();
   });
