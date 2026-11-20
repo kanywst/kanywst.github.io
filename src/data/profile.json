@@ -288,7 +288,7 @@
       "repo": "awesome-agent-client-protocol",
       "number": 12,
       "state": "merged",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add a2acode to Clients & Remote Access",
       "url": "https://github.com/nMaroulis/awesome-agent-client-protocol/pull/12"
     },
@@ -342,7 +342,7 @@
       "repo": "awesome-github-pages-portfolios",
       "number": 28,
       "state": "merged",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add 0-draft",
       "url": "https://github.com/guilyx/awesome-github-pages-portfolios/pull/28"
     },
@@ -909,7 +909,7 @@
       "repo": "go-oidc",
       "number": 139,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "fix(federation): don't panic on object values in metadata policy operators",
       "url": "https://github.com/luikyv/go-oidc/pull/139"
     },
@@ -918,7 +918,7 @@
       "repo": "awesome-privacy",
       "number": 65,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add kwangmyong to command line tools",
       "url": "https://github.com/KevinColemanInc/awesome-privacy/pull/65"
     },
@@ -945,7 +945,7 @@
       "repo": "attenu-guard",
       "number": 49,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "vectors-02: fix root bound in reject_child_raises_del_max_depth description",
       "url": "https://github.com/attenu-io/attenu-guard/pull/49"
     },
@@ -954,7 +954,7 @@
       "repo": "OpenID4VP",
       "number": 813,
       "state": "open",
-      "domain": "",
+      "domain": "Identity",
       "title": "Add missing 1.0 errata Document History entries",
       "url": "https://github.com/openid/OpenID4VP/pull/813"
     },
@@ -963,7 +963,7 @@
       "repo": "kyverno-authz",
       "number": 260,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "chore(deps): replace the unmaintained ACR credential helper",
       "url": "https://github.com/kyverno/kyverno-authz/pull/260"
     },
@@ -972,7 +972,7 @@
       "repo": "rauthy",
       "number": 1916,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "feat(oidc): issue ID-JAGs through token exchange",
       "url": "https://github.com/sebadob/rauthy/pull/1916"
     },
@@ -981,7 +981,7 @@
       "repo": "awesome-a2a",
       "number": 172,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add kanywst/a2acode to Developer Tools",
       "url": "https://github.com/pab1it0/awesome-a2a/pull/172"
     },
@@ -990,7 +990,7 @@
       "repo": "oauth2-server",
       "number": 1526,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "Reject refresh tokens with a malformed payload",
       "url": "https://github.com/thephpleague/oauth2-server/pull/1526"
     },
@@ -999,7 +999,7 @@
       "repo": "oauth2-server",
       "number": 1525,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "Authenticate confidential clients on the device authorization endpoint",
       "url": "https://github.com/thephpleague/oauth2-server/pull/1525"
     },
@@ -1008,7 +1008,7 @@
       "repo": "keycloak",
       "number": 55111,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Limit AuthZEN queries to tokens with the authzen scope and audience",
       "url": "https://github.com/keycloak/keycloak/pull/55111"
     },
@@ -1017,7 +1017,7 @@
       "repo": "authlib",
       "number": 1029,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "feat(oauth): implement the RFC 8693 token exchange grant",
       "url": "https://github.com/authlib/authlib/pull/1029"
     },
@@ -1026,7 +1026,7 @@
       "repo": "Awesome-Japanese-Study-Materials",
       "number": 26,
       "state": "open",
-      "domain": "",
+      "domain": "Tooling",
       "title": "Add goi to Vocabulary",
       "url": "https://github.com/naghim/Awesome-Japanese-Study-Materials/pull/26"
     },
@@ -1170,7 +1170,7 @@
       "repo": "toolhive",
       "number": 7091,
       "state": "closed",
-      "domain": "",
+      "domain": "OIDC",
       "title": "Bind JWT-bearer resource to the assertion claim",
       "url": "https://github.com/stacklok/toolhive/pull/7091"
     },
@@ -1400,7 +1400,7 @@
       "repo": "OpenID4VP",
       "number": 812,
       "state": "open",
-      "domain": "",
+      "domain": "Identity",
       "title": "1.0 errata Document History misses some normative changes",
       "url": "https://github.com/openid/OpenID4VP/issues/812"
     },
@@ -1409,7 +1409,7 @@
       "repo": "oauth-delegate-sd-jwt",
       "number": 16,
       "state": "open",
-      "domain": "",
+      "domain": "Identity",
       "title": "issuer_jwt_hash leaves Issuer Disclosures unbound in the final presentation",
       "url": "https://github.com/oauth-wg/oauth-delegate-sd-jwt/issues/16"
     },
@@ -1418,7 +1418,7 @@
       "repo": "attenu-guard",
       "number": 48,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "draft -03: a child's lowered del_max_depth is never enforced",
       "url": "https://github.com/attenu-io/attenu-guard/issues/48"
     },
@@ -1427,7 +1427,7 @@
       "repo": "awesome-authorization",
       "number": 13,
       "state": "open",
-      "domain": "",
+      "domain": "Authorization",
       "title": "Link to a maintained authorization list?",
       "url": "https://github.com/warrant-dev/awesome-authorization/issues/13"
     },
@@ -1445,7 +1445,7 @@
       "repo": "rauthy",
       "number": 1896,
       "state": "open",
-      "domain": "",
+      "domain": "OIDC",
       "title": "Issue ID-JAGs through token exchange",
       "url": "https://github.com/sebadob/rauthy/issues/1896"
     },
