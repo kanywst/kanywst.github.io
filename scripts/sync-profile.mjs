@@ -90,7 +90,7 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
         url: x.url,
         // when it landed (merged / closed) or, still open, when it was opened. gh reports an
         // open item's closedAt as the zero time, not null
-        date: (x.state.toLowerCase() === 'open' || x.closedAt.startsWith('0001')
+        date: (x.state.toLowerCase() === 'open' || !x.closedAt || x.closedAt.startsWith('0001')
           ? x.createdAt
           : x.closedAt
         ).slice(0, 10),
@@ -196,8 +196,13 @@ function fetchOrgRepos() {
 }
 
 const orgRepos = fetchOrgRepos();
-if (orgRepos.length) profile.org.repos = orgRepos;
-else console.warn('! no 0-draft repos returned; keeping the previous list');
+const prevOrg = profile.org.repos?.length ?? 0;
+// a sharp drop is far likelier a degraded fetch than half the org archived overnight; keep
+// the last good list and say so, the same trade the empty-PR guard makes
+if (!orgRepos.length) console.warn('! no 0-draft repos returned; keeping the previous list');
+else if (orgRepos.length < prevOrg / 2)
+  console.warn(`! 0-draft repos fell from ${prevOrg} to ${orgRepos.length}; keeping the previous list`);
+else profile.org.repos = orgRepos;
 
 // --- external PRs (all states; UI filters closed) and issues ---
 const prs = fetchExternal('prs');

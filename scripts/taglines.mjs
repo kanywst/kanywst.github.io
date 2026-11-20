@@ -35,7 +35,12 @@ export const LANG_BY_REPO = {
 // 0-draft repo, newest first. These tables only shape how one reads or keep one out.
 
 // repo name → a shorter card blurb than the GitHub description.
-export const ORG_BLURB_BY_REPO = {};
+export const ORG_BLURB_BY_REPO = {
+  // carried over from the hand-written list this discovery replaced (its other two cards
+  // were archived repos, which discovery now drops on purpose)
+  'identity-deep-dive':
+    'Collect and score deep-dive candidates across the OAuth, WIMSE and digital-credentials working groups.',
+};
 
 // Public repos that aren't work to show: the org's own plumbing and its landing page.
 export const ORG_EXCLUDE = new Set(['.github', '0-draft.github.io', 'dev.to']);

@@ -300,7 +300,7 @@
       {
         "name": "identity-deep-dive",
         "lang": "Python",
-        "blurb": "Collect, score, and surface deep-dive candidates across OAuth WG, WIMSE, and OpenID Foundation specs",
+        "blurb": "Collect and score deep-dive candidates across the OAuth, WIMSE and digital-credentials working groups.",
         "url": "https://github.com/0-draft/identity-deep-dive"
       }
     ]

@@ -107,7 +107,9 @@ function fetchAdvisory({ repo, ghsa, title, cve }) {
     severity: KNOWN_SEVERITY.has(sev) ? sev : 'unknown',
     // the upstream GHSA's own score; omitted rather than guessed when the advisory has none.
     // For a downstream-assigned CVE (kuma) this is still the upstream maintainers' score.
-    ...(cvss ? { cvss } : {}),
+    // not for a pinned downstream CVE (kuma → Kong Mesh): the upstream score would sit next
+    // to an id someone else assigned and read as that CVE's score
+    ...(cvss && !(cve && !data.cve_id) ? { cvss } : {}),
     ...(data.published_at ? { published: data.published_at.slice(0, 10) } : {}),
     title: title ?? data.summary,
     domain: DOMAIN_BY_REPO[slug] ?? DOMAIN_BY_REPO[repo] ?? '',

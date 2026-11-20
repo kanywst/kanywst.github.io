@@ -863,7 +863,7 @@ export default function App() {
       const target = hashSection() ?? SECTIONS[0];
       const heading = document.getElementById(`${target}-h`);
       heading?.focus({ preventScroll: true });
-      if (hashSection()) document.getElementById(target)?.scrollIntoView?.();
+      if (hashSection()) document.getElementById(target)?.scrollIntoView?.({ behavior: 'auto' });
     } else if (opened.current) {
       moreRef.current?.focus();
       // collapsing drops a section hash, so a reload lands where the reader now is
@@ -875,7 +875,11 @@ export default function App() {
   useEffect(() => {
     const onHash = () => {
       // already open: nothing to animate (the browser scrolls to the anchor itself)
-      if (hashSection() && !open) setOpenAnimated(true);
+      const target = hashSection();
+      if (!target) return;
+      // already open: the browser scrolls to the anchor, but focus has to follow too
+      if (open) document.getElementById(`${target}-h`)?.focus({ preventScroll: true });
+      else setOpenAnimated(true);
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
@@ -933,12 +937,14 @@ export default function App() {
               type="button"
               className="hint-more"
               aria-expanded={false}
+              aria-keyshortcuts="Space"
               onClick={toggle}
             >
               <span className="kbd" aria-hidden="true">
                 space
               </span>
               <span>more</span>
+              <span className="sr-only"> — show profile details</span>
             </button>
             {freshCount > 0 && (
               <span className="hint-new">
