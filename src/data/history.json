@@ -1,0 +1,380 @@
+{
+  "firstSeen": {
+    "https://github.com/0-draft/omega": "1970-01-01",
+    "https://github.com/abhisheknaiidu/awesome-github-profile-readme/pull/1833": "2026-10-15",
+    "https://github.com/agentclientprotocol/agent-client-protocol/pull/2491": "2026-10-27",
+    "https://github.com/agentscm/apparitor/pull/76": "2026-10-29",
+    "https://github.com/ai-boost/awesome-a2a/pull/223": "2026-10-27",
+    "https://github.com/akuity/kargo/issues/7772": "2026-10-30",
+    "https://github.com/akuity/kargo/pull/7773": "2026-10-30",
+    "https://github.com/apache/apisix/pull/14125": "2026-10-30",
+    "https://github.com/aserto-dev/azm/pull/81": "2026-06-22",
+    "https://github.com/aserto-dev/topaz/pull/715": "2026-06-20",
+    "https://github.com/attenu-io/attenu-guard/issues/48": "2026-11-18",
+    "https://github.com/attenu-io/attenu-guard/pull/49": "2026-11-18",
+    "https://github.com/atuinsh/atuin/issues/4643": "2026-11-04",
+    "https://github.com/atuinsh/atuin/pull/4644": "2026-11-04",
+    "https://github.com/authlib/authlib/pull/1029": "2026-11-10",
+    "https://github.com/authzed/spicedb/pull/3184": "1970-01-01",
+    "https://github.com/authzed/spicedb/security/advisories/GHSA-5784-6qcr-48fq": "2026-08-15",
+    "https://github.com/avelino/awesome-go/pull/6676": "2026-09-09",
+    "https://github.com/Binject/awesome-go-security/pull/18": "2026-09-09",
+    "https://github.com/cert-manager/cert-manager/pull/8592": "2026-06-20",
+    "https://github.com/charm-and-friends/charm-in-the-wild/pull/122": "2026-09-03",
+    "https://github.com/charm-and-friends/charm-in-the-wild/pull/137": "2026-10-11",
+    "https://github.com/charm-and-friends/charm-in-the-wild/pull/154": "2026-11-06",
+    "https://github.com/cilium/cilium/pull/45293": "2026-06-20",
+    "https://github.com/cloudflare/workers-oauth-provider/pull/303": "2026-08-18",
+    "https://github.com/counterbranch/apparitor/pull/76": "2026-10-09",
+    "https://github.com/crowdsecurity/crowdsec/pull/4786": "2026-10-29",
+    "https://github.com/dexidp/dex/issues/4827": "2026-06-20",
+    "https://github.com/dexidp/dex/issues/5151": "2026-11-12",
+    "https://github.com/dexidp/dex/issues/5182": "2026-11-18",
+    "https://github.com/dexidp/dex/pull/4598": "2026-06-20",
+    "https://github.com/dexidp/dex/pull/4599": "2026-06-20",
+    "https://github.com/dexidp/dex/pull/4600": "2026-06-20",
+    "https://github.com/dexidp/dex/pull/4611": "2026-06-20",
+    "https://github.com/dexidp/dex/pull/4828": "1970-01-01",
+    "https://github.com/dexidp/dex/pull/5149": "2026-11-12",
+    "https://github.com/dexidp/dex/pull/5150": "2026-11-12",
+    "https://github.com/dexidp/dex/pull/5180": "2026-11-18",
+    "https://github.com/dexidp/dex/pull/5181": "2026-11-18",
+    "https://github.com/enix/x509-certificate-exporter/issues/172": "2026-06-20",
+    "https://github.com/enix/x509-certificate-exporter/pull/451": "2026-06-20",
+    "https://github.com/envoyproxy/gateway/pull/9743": "2026-08-14",
+    "https://github.com/FairwindsOps/polaris/issues/1203": "2026-06-28",
+    "https://github.com/FairwindsOps/polaris/pull/1204": "2026-06-28",
+    "https://github.com/falcosecurity/plugins/pull/1400": "1970-01-01",
+    "https://github.com/falcosecurity/plugins/security/advisories/GHSA-jhjp-4c2q-xmx4": "2026-08-15",
+    "https://github.com/glauth/glauth/issues/469": "2026-07-19",
+    "https://github.com/glauth/glauth/pull/470": "2026-07-19",
+    "https://github.com/go-jose/go-jose/pull/264": "2026-06-25",
+    "https://github.com/go-jose/go-jose/pull/312": "2026-10-28",
+    "https://github.com/golang/go/issues/77942": "2026-06-20",
+    "https://github.com/golang/vulndb/issues/6911": "2026-11-04",
+    "https://github.com/golangci/golangci-lint/pull/6440": "2026-06-20",
+    "https://github.com/google-gemini/gemini-cli/pull/20964": "2026-06-20",
+    "https://github.com/guacsec/guac/issues/3075": "2026-06-20",
+    "https://github.com/guacsec/guac/pull/3076": "2026-06-20",
+    "https://github.com/guardrailsio/awesome-golang-security/pull/28": "2026-09-09",
+    "https://github.com/guilyx/awesome-github-pages-portfolios/pull/28": "2026-11-08",
+    "https://github.com/ietf-wg-wimse/draft-ietf-wimse-identifier/pull/98": "2026-09-09",
+    "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/422": "2026-11-15",
+    "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/296": "2026-08-27",
+    "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/309": "2026-09-09",
+    "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/310": "2026-09-09",
+    "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/311": "2026-09-09",
+    "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/406": "2026-10-23",
+    "https://github.com/in-toto/in-toto-golang/issues/466": "2026-06-20",
+    "https://github.com/in-toto/in-toto-golang/pull/467": "1970-01-01",
+    "https://github.com/Infisical/infisical/pull/7673": "2026-08-18",
+    "https://github.com/istio/istio/pull/59306": "2026-06-20",
+    "https://github.com/jhawlwut/apparitor/pull/76": "2026-09-09",
+    "https://github.com/k8gb-io/k8gb/issues/2527": "2026-09-09",
+    "https://github.com/kanywst/a2acode": "2026-09-07",
+    "https://github.com/kanywst/awesome-authorization": "1970-01-01",
+    "https://github.com/kanywst/brtc": "1970-01-01",
+    "https://github.com/kanywst/hammurabi": "2026-09-07",
+    "https://github.com/kanywst/howbad": "2026-11-05",
+    "https://github.com/kanywst/mandatum": "2026-09-20",
+    "https://github.com/kanywst/mcp-opa-authz": "2026-10-05",
+    "https://github.com/kanywst/omega": "2026-08-19",
+    "https://github.com/kanywst/opa-authzen-plugin": "1970-01-01",
+    "https://github.com/kanywst/rapg": "1970-01-01",
+    "https://github.com/kanywst/spiffe-compliance-checker": "2026-08-19",
+    "https://github.com/kanywst/visado": "2026-11-19",
+    "https://github.com/kanywst/wimsey": "2026-07-19",
+    "https://github.com/kanywst/wtfi2": "2026-10-01",
+    "https://github.com/kanywst/y509": "1970-01-01",
+    "https://github.com/KevinColemanInc/awesome-privacy/pull/65": "2026-11-19",
+    "https://github.com/keycloak/keycloak/pull/55111": "2026-11-12",
+    "https://github.com/kgateway-dev/kgateway/issues/14624": "2026-08-27",
+    "https://github.com/kgateway-dev/kgateway/issues/14625": "2026-08-27",
+    "https://github.com/kgateway-dev/kgateway/pull/14626": "2026-08-27",
+    "https://github.com/Kong/kong/pull/15022": "2026-09-27",
+    "https://github.com/kubernetes/kubernetes/pull/137316": "2026-06-20",
+    "https://github.com/kubescape/cel-admission-library/issues/175": "2026-11-13",
+    "https://github.com/kubescape/cel-admission-library/pull/125": "2026-09-12",
+    "https://github.com/kubescape/cel-admission-library/pull/176": "2026-11-13",
+    "https://github.com/kubescape/regolibrary/issues/943": "2026-11-13",
+    "https://github.com/kubescape/regolibrary/pull/831": "2026-09-24",
+    "https://github.com/kubescape/regolibrary/pull/944": "2026-11-13",
+    "https://github.com/kubewarden/policies/security/advisories/GHSA-8p62-9vh2-272p": "2026-08-15",
+    "https://github.com/kumahq/kuma/security/advisories/GHSA-744g-c785-x65q": "2026-08-15",
+    "https://github.com/kyverno/kyverno-authz/pull/260": "2026-11-18",
+    "https://github.com/lestrrat-go/jwx/issues/2234": "2026-06-27",
+    "https://github.com/lestrrat-go/jwx/pull/2235": "2026-06-27",
+    "https://github.com/lldap/lldap/pull/1468": "2026-07-19",
+    "https://github.com/lldap/lldap/pull/1469": "2026-07-19",
+    "https://github.com/loft-sh/vcluster/issues/4201": "2026-10-10",
+    "https://github.com/loft-sh/vcluster/issues/4202": "2026-10-10",
+    "https://github.com/loft-sh/vcluster/issues/4205": "2026-10-10",
+    "https://github.com/loft-sh/vcluster/pull/4203": "2026-10-10",
+    "https://github.com/luikyv/go-oidc/pull/139": "2026-11-20",
+    "https://github.com/mark3labs/mcp-go/issues/1130": "2026-10-28",
+    "https://github.com/mark3labs/mcp-go/issues/1164": "2026-11-04",
+    "https://github.com/mark3labs/mcp-go/issues/1165": "2026-11-04",
+    "https://github.com/mark3labs/mcp-go/pull/1166": "2026-11-04",
+    "https://github.com/mark3labs/mcp-go/pull/1167": "2026-11-04",
+    "https://github.com/microsoft/winget-pkgs/pull/431389": "2026-09-09",
+    "https://github.com/modelcontextprotocol/go-sdk/pull/1388": "2026-10-12",
+    "https://github.com/naghim/Awesome-Japanese-Study-Materials/pull/26": "2026-11-08",
+    "https://github.com/NixOS/nixpkgs/pull/559182": "2026-09-03",
+    "https://github.com/NixOS/nixpkgs/pull/561552": "2026-09-09",
+    "https://github.com/nMaroulis/awesome-agent-client-protocol/pull/12": "2026-11-16",
+    "https://github.com/oauth-wg/oauth-delegate-sd-jwt/issues/16": "2026-11-18",
+    "https://github.com/open-policy-agent/awesome-opa/pull/93": "2026-10-04",
+    "https://github.com/open-policy-agent/awesome-opa/pull/94": "2026-11-01",
+    "https://github.com/open-policy-agent/contrib/pull/296": "2026-06-20",
+    "https://github.com/open-policy-agent/gatekeeper-library/issues/743": "2026-06-20",
+    "https://github.com/open-policy-agent/opa/issues/8449": "2026-06-20",
+    "https://github.com/open-policy-agent/opa/issues/8480": "2026-06-20",
+    "https://github.com/open-policy-agent/opa/pull/8395": "2026-06-20",
+    "https://github.com/open-policy-agent/opa/pull/8451": "2026-06-20",
+    "https://github.com/open-policy-agent/opa/pull/8481": "2026-06-20",
+    "https://github.com/open-policy-agent/opa/pull/9372": "2026-10-14",
+    "https://github.com/open-policy-agent/opa/pull/9401": "2026-10-20",
+    "https://github.com/openfga/openfga/pull/2980": "2026-06-20",
+    "https://github.com/openfga/openfga/pull/3181": "2026-06-24",
+    "https://github.com/openid/authzen/issues/554": "2026-07-14",
+    "https://github.com/openid/authzen/issues/598": "2026-08-01",
+    "https://github.com/openid/authzen/issues/639": "2026-09-07",
+    "https://github.com/openid/authzen/issues/640": "2026-09-07",
+    "https://github.com/openid/authzen/issues/641": "2026-09-07",
+    "https://github.com/openid/authzen/issues/657": "2026-09-19",
+    "https://github.com/openid/authzen/issues/693": "2026-10-04",
+    "https://github.com/openid/authzen/pull/599": "2026-08-01",
+    "https://github.com/openid/OpenID4VP/issues/812": "2026-11-18",
+    "https://github.com/openid/OpenID4VP/pull/813": "2026-11-18",
+    "https://github.com/openpubkey/openpubkey/pull/373": "2026-06-25",
+    "https://github.com/ory/polis/issues/4077": "2026-08-24",
+    "https://github.com/pab1it0/awesome-a2a/pull/172": "2026-11-16",
+    "https://github.com/Permify/permify/issues/3004": "2026-06-20",
+    "https://github.com/Permify/permify/pull/3005": "1970-01-01",
+    "https://github.com/php-casbin/php-casbin/pull/174": "2026-07-16",
+    "https://github.com/prometheus/prometheus/pull/18264": "2026-06-20",
+    "https://github.com/prometheus/prometheus/pull/18265": "2026-06-20",
+    "https://github.com/punkpeye/awesome-mcp-servers/pull/17583": "2026-10-26",
+    "https://github.com/pwn2winctf/2020submissions/pull/149": "2026-06-20",
+    "https://github.com/ratatui/awesome-ratatui/pull/471": "2026-09-30",
+    "https://github.com/rothgar/awesome-tuis/pull/814": "2026-08-09",
+    "https://github.com/rothgar/awesome-tuis/pull/992": "2026-11-04",
+    "https://github.com/sebadob/rauthy/issues/1896": "2026-11-10",
+    "https://github.com/sebadob/rauthy/pull/1916": "2026-11-17",
+    "https://github.com/shyuan/awesome-oauth-oidc/pull/12": "2026-10-15",
+    "https://github.com/sigstore/cosign/pull/4830": "2026-06-20",
+    "https://github.com/sigstore/gitsign/pull/871": "2026-08-20",
+    "https://github.com/sigstore/policy-controller/issues/2032": "2026-10-28",
+    "https://github.com/sigstore/rekor/pull/2861": "2026-06-25",
+    "https://github.com/sigstore/sigstore-go/issues/644": "2026-06-20",
+    "https://github.com/sigstore/sigstore-go/pull/645": "1970-01-01",
+    "https://github.com/smallstep/certificates/issues/2714": "2026-06-20",
+    "https://github.com/smallstep/certificates/pull/2715": "1970-01-01",
+    "https://github.com/smallstep/cli/pull/1580": "2026-06-20",
+    "https://github.com/Spacecraft-Software/Bravais/issues/78": "2026-09-09",
+    "https://github.com/spiffe/spiffe/pull/417": "2026-08-01",
+    "https://github.com/spiffe/spire/issues/6856": "2026-06-20",
+    "https://github.com/spiffe/spire/issues/7065": "2026-06-20",
+    "https://github.com/spiffe/spire/issues/7366": "2026-10-28",
+    "https://github.com/spiffe/spire/issues/7431": "2026-11-19",
+    "https://github.com/spiffe/spire/pull/6693": "2026-06-20",
+    "https://github.com/spiffe/spire/pull/6857": "2026-06-20",
+    "https://github.com/spiffe/spire/pull/7066": "1970-01-01",
+    "https://github.com/spiffe/spire/pull/7383": "2026-11-01",
+    "https://github.com/spiffe/spire/pull/7411": "2026-11-10",
+    "https://github.com/sse-secure-systems/connaisseur/issues/2130": "2026-06-28",
+    "https://github.com/sse-secure-systems/connaisseur/pull/2131": "2026-06-28",
+    "https://github.com/stacklok/toolhive/pull/7091": "2026-11-10",
+    "https://github.com/supabase/auth/pull/2605": "2026-07-02",
+    "https://github.com/thephpleague/oauth2-server/pull/1525": "2026-11-13",
+    "https://github.com/thephpleague/oauth2-server/pull/1526": "2026-11-13",
+    "https://github.com/theupdateframework/go-tuf/pull/739": "1970-01-01",
+    "https://github.com/trackawesomelist/trackawesomelist-source/pull/137": "2026-10-27",
+    "https://github.com/vouch/vouch-proxy/issues/615": "2026-07-20",
+    "https://github.com/vouch/vouch-proxy/pull/616": "2026-07-20",
+    "https://github.com/warrant-dev/awesome-authorization/issues/13": "2026-11-16",
+    "https://github.com/woodpecker-ci/woodpecker/pull/6809": "2026-07-03",
+    "https://github.com/zalando/skipper/issues/4391": "2026-10-28",
+    "https://github.com/zalando/skipper/security/advisories/GHSA-7g9f-57qp-jhgx": "2026-08-19",
+    "https://github.com/zalando/skipper/security/advisories/GHSA-v9vv-w45w-rppw": "2026-08-19",
+    "https://github.com/zitadel/zitadel/security/advisories/GHSA-93hm-8q29-c8cr": "2026-08-15"
+  },
+  "stars": {
+    "a2acode": [
+      [
+        "2026-10-08",
+        10
+      ],
+      [
+        "2026-11-02",
+        11
+      ],
+      [
+        "2026-11-11",
+        12
+      ],
+      [
+        "2026-11-15",
+        13
+      ],
+      [
+        "2026-11-18",
+        14
+      ]
+    ],
+    "awesome-authorization": [
+      [
+        "2026-09-20",
+        10
+      ],
+      [
+        "2026-10-30",
+        11
+      ]
+    ],
+    "hammurabi": [
+      [
+        "2026-10-16",
+        2
+      ],
+      [
+        "2026-11-10",
+        3
+      ]
+    ],
+    "howbad": [
+      [
+        "2026-11-05",
+        1
+      ]
+    ],
+    "mcp-opa-authz": [
+      [
+        "2026-10-05",
+        1
+      ]
+    ],
+    "omega": [
+      [
+        "2026-10-15",
+        3
+      ]
+    ],
+    "opa-authzen-plugin": [
+      [
+        "2026-10-16",
+        4
+      ],
+      [
+        "2026-11-12",
+        5
+      ]
+    ],
+    "rapg": [
+      [
+        "2026-09-09",
+        2
+      ],
+      [
+        "2026-11-02",
+        3
+      ],
+      [
+        "2026-11-08",
+        0
+      ]
+    ],
+    "visado": [
+      [
+        "2026-11-19",
+        1
+      ]
+    ],
+    "wimsey": [
+      [
+        "2026-10-06",
+        1
+      ],
+      [
+        "2026-11-04",
+        2
+      ]
+    ],
+    "wtfi2": [
+      [
+        "2026-10-21",
+        86
+      ],
+      [
+        "2026-10-22",
+        88
+      ],
+      [
+        "2026-10-23",
+        92
+      ],
+      [
+        "2026-10-24",
+        94
+      ],
+      [
+        "2026-10-25",
+        96
+      ],
+      [
+        "2026-10-26",
+        97
+      ],
+      [
+        "2026-10-28",
+        98
+      ],
+      [
+        "2026-11-02",
+        99
+      ],
+      [
+        "2026-11-03",
+        104
+      ],
+      [
+        "2026-11-04",
+        105
+      ],
+      [
+        "2026-11-06",
+        106
+      ],
+      [
+        "2026-11-12",
+        107
+      ],
+      [
+        "2026-11-13",
+        108
+      ],
+      [
+        "2026-11-20",
+        109
+      ]
+    ],
+    "y509": [
+      [
+        "2026-10-20",
+        40
+      ],
+      [
+        "2026-10-28",
+        39
+      ],
+      [
+        "2026-10-31",
+        40
+      ],
+      [
+        "2026-11-09",
+        42
+      ]
+    ]
+  }
+}
