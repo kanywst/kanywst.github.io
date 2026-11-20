@@ -307,6 +307,36 @@
   },
   "contributions": [
     {
+      "owner": "kubescape",
+      "repo": "regolibrary",
+      "number": 944,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "fix(C-0001): match untrusted and public registries case-insensitively",
+      "url": "https://github.com/kubescape/regolibrary/pull/944",
+      "date": "2026-11-18"
+    },
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1166,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "fix(server): reject JSON-RPC member names that differ from the defined ones only by case",
+      "url": "https://github.com/mark3labs/mcp-go/pull/1166",
+      "date": "2026-11-18"
+    },
+    {
+      "owner": "NixOS",
+      "repo": "nixpkgs",
+      "number": 559182,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "y509: init at 1.15.0",
+      "url": "https://github.com/NixOS/nixpkgs/pull/559182",
+      "date": "2026-11-18"
+    },
+    {
       "owner": "nMaroulis",
       "repo": "awesome-agent-client-protocol",
       "number": 12,
@@ -317,14 +347,14 @@
       "date": "2026-11-15"
     },
     {
-      "owner": "kubescape",
-      "repo": "regolibrary",
-      "number": 944,
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7411,
       "state": "merged",
-      "domain": "Authorization",
-      "title": "fix(C-0001): match untrusted and public registries case-insensitively",
-      "url": "https://github.com/kubescape/regolibrary/pull/944",
-      "date": "2026-11-18"
+      "domain": "Workload Identity",
+      "title": "Add `k8s_clustertrustbundle` BundlePublisher plugin",
+      "url": "https://github.com/spiffe/spire/pull/7411",
+      "date": "2026-11-15"
     },
     {
       "owner": "kubescape",
@@ -359,12 +389,12 @@
     {
       "owner": "spiffe",
       "repo": "spire",
-      "number": 7411,
+      "number": 7383,
       "state": "merged",
       "domain": "Workload Identity",
-      "title": "Add `k8s_clustertrustbundle` BundlePublisher plugin",
-      "url": "https://github.com/spiffe/spire/pull/7411",
-      "date": "2026-11-15"
+      "title": "Limit the size of bundle endpoint and trust bundle URL responses",
+      "url": "https://github.com/spiffe/spire/pull/7383",
+      "date": "2026-11-12"
     },
     {
       "owner": "guilyx",
@@ -374,6 +404,16 @@
       "domain": "Tooling",
       "title": "Add 0-draft",
       "url": "https://github.com/guilyx/awesome-github-pages-portfolios/pull/28",
+      "date": "2026-11-11"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4611,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
+      "url": "https://github.com/dexidp/dex/pull/4611",
       "date": "2026-11-11"
     },
     {
@@ -387,24 +427,14 @@
       "date": "2026-11-05"
     },
     {
-      "owner": "mark3labs",
-      "repo": "mcp-go",
-      "number": 1166,
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4828,
       "state": "merged",
-      "domain": "Tooling",
-      "title": "fix(server): reject JSON-RPC member names that differ from the defined ones only by case",
-      "url": "https://github.com/mark3labs/mcp-go/pull/1166",
-      "date": "2026-11-18"
-    },
-    {
-      "owner": "spiffe",
-      "repo": "spire",
-      "number": 7383,
-      "state": "merged",
-      "domain": "Workload Identity",
-      "title": "Limit the size of bundle endpoint and trust bundle URL responses",
-      "url": "https://github.com/spiffe/spire/pull/7383",
-      "date": "2026-11-12"
+      "domain": "OIDC",
+      "title": "fix(oidc): verify userinfo sub matches the ID Token sub",
+      "url": "https://github.com/dexidp/dex/pull/4828",
+      "date": "2026-11-03"
     },
     {
       "owner": "akuity",
@@ -437,6 +467,16 @@
       "date": "2026-10-26"
     },
     {
+      "owner": "microsoft",
+      "repo": "winget-pkgs",
+      "number": 431389,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "New package: kanywst.y509 version 1.11.0",
+      "url": "https://github.com/microsoft/winget-pkgs/pull/431389",
+      "date": "2026-10-25"
+    },
+    {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-s2s-protocol",
       "number": 406,
@@ -457,16 +497,6 @@
       "date": "2026-10-20"
     },
     {
-      "owner": "modelcontextprotocol",
-      "repo": "go-sdk",
-      "number": 1388,
-      "state": "merged",
-      "domain": "OIDC",
-      "title": "examples: check token audience and set UserID in auth examples",
-      "url": "https://github.com/modelcontextprotocol/go-sdk/pull/1388",
-      "date": "2026-10-12"
-    },
-    {
       "owner": "charm-and-friends",
       "repo": "charm-in-the-wild",
       "number": 137,
@@ -475,6 +505,26 @@
       "title": "Add whosent to Cyber Security",
       "url": "https://github.com/charm-and-friends/charm-in-the-wild/pull/137",
       "date": "2026-10-16"
+    },
+    {
+      "owner": "Binject",
+      "repo": "awesome-go-security",
+      "number": 18,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "Add y509 to Private Key Infrastructure",
+      "url": "https://github.com/Binject/awesome-go-security/pull/18",
+      "date": "2026-10-13"
+    },
+    {
+      "owner": "modelcontextprotocol",
+      "repo": "go-sdk",
+      "number": 1388,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "examples: check token audience and set UserID in auth examples",
+      "url": "https://github.com/modelcontextprotocol/go-sdk/pull/1388",
+      "date": "2026-10-12"
     },
     {
       "owner": "open-policy-agent",
@@ -497,6 +547,16 @@
       "date": "2026-10-02"
     },
     {
+      "owner": "vouch",
+      "repo": "vouch-proxy",
+      "number": 616,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "fix panic in cookie.Cookie() on malformed multipart cookie names",
+      "url": "https://github.com/vouch/vouch-proxy/pull/616",
+      "date": "2026-09-27"
+    },
+    {
       "owner": "kubescape",
       "repo": "regolibrary",
       "number": 831,
@@ -505,26 +565,6 @@
       "title": "fix(verify-image-signature): check initContainers and ephemeralContainers",
       "url": "https://github.com/kubescape/regolibrary/pull/831",
       "date": "2026-09-25"
-    },
-    {
-      "owner": "kubescape",
-      "repo": "cel-admission-library",
-      "number": 125,
-      "state": "merged",
-      "domain": "Authorization",
-      "title": "feat: modernize C-0046 to variables pattern",
-      "url": "https://github.com/kubescape/cel-admission-library/pull/125",
-      "date": "2026-09-14"
-    },
-    {
-      "owner": "microsoft",
-      "repo": "winget-pkgs",
-      "number": 431389,
-      "state": "merged",
-      "domain": "Tooling",
-      "title": "New package: kanywst.y509 version 1.11.0",
-      "url": "https://github.com/microsoft/winget-pkgs/pull/431389",
-      "date": "2026-10-25"
     },
     {
       "owner": "agentscm",
@@ -537,14 +577,24 @@
       "date": "2026-09-16"
     },
     {
-      "owner": "Binject",
-      "repo": "awesome-go-security",
-      "number": 18,
+      "owner": "kubescape",
+      "repo": "cel-admission-library",
+      "number": 125,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "feat: modernize C-0046 to variables pattern",
+      "url": "https://github.com/kubescape/cel-admission-library/pull/125",
+      "date": "2026-09-14"
+    },
+    {
+      "owner": "rothgar",
+      "repo": "awesome-tuis",
+      "number": 814,
       "state": "merged",
       "domain": "Tooling",
-      "title": "Add y509 to Private Key Infrastructure",
-      "url": "https://github.com/Binject/awesome-go-security/pull/18",
-      "date": "2026-10-13"
+      "title": "Add y509 to Development",
+      "url": "https://github.com/rothgar/awesome-tuis/pull/814",
+      "date": "2026-09-13"
     },
     {
       "owner": "ietf-wg-wimse",
@@ -567,14 +617,14 @@
       "date": "2026-09-08"
     },
     {
-      "owner": "NixOS",
-      "repo": "nixpkgs",
-      "number": 559182,
+      "owner": "envoyproxy",
+      "repo": "gateway",
+      "number": 9743,
       "state": "merged",
-      "domain": "Tooling",
-      "title": "y509: init at 1.15.0",
-      "url": "https://github.com/NixOS/nixpkgs/pull/559182",
-      "date": "2026-11-18"
+      "domain": "Cloud Native",
+      "title": "fix(luavalidator): block getfenv/setfenv/newproxy/module in the Lua security sandbox",
+      "url": "https://github.com/envoyproxy/gateway/pull/9743",
+      "date": "2026-09-07"
     },
     {
       "owner": "charm-and-friends",
@@ -587,14 +637,14 @@
       "date": "2026-09-03"
     },
     {
-      "owner": "kgateway-dev",
-      "repo": "kgateway",
-      "number": 14626,
+      "owner": "sigstore",
+      "repo": "gitsign",
+      "number": 871,
       "state": "merged",
-      "domain": "Cloud Native",
-      "title": "fix: deny ListenerSet attachment when allowedListeners cannot be parsed",
-      "url": "https://github.com/kgateway-dev/kgateway/pull/14626",
-      "date": "2026-08-31"
+      "domain": "Supply Chain",
+      "title": "fix(git): preserve trailing CR when splitting raw commit/tag objects",
+      "url": "https://github.com/sigstore/gitsign/pull/871",
+      "date": "2026-09-02"
     },
     {
       "owner": "ietf-wg-wimse",
@@ -607,54 +657,24 @@
       "date": "2026-09-01"
     },
     {
-      "owner": "sigstore",
-      "repo": "gitsign",
-      "number": 871,
-      "state": "merged",
-      "domain": "Supply Chain",
-      "title": "fix(git): preserve trailing CR when splitting raw commit/tag objects",
-      "url": "https://github.com/sigstore/gitsign/pull/871",
-      "date": "2026-09-02"
-    },
-    {
-      "owner": "cloudflare",
-      "repo": "workers-oauth-provider",
-      "number": 303,
-      "state": "merged",
-      "domain": "OIDC",
-      "title": "fix(ema): floor the jti replay marker TTL at KV's minimum",
-      "url": "https://github.com/cloudflare/workers-oauth-provider/pull/303",
-      "date": "2026-08-19"
-    },
-    {
-      "owner": "envoyproxy",
-      "repo": "gateway",
-      "number": 9743,
+      "owner": "kgateway-dev",
+      "repo": "kgateway",
+      "number": 14626,
       "state": "merged",
       "domain": "Cloud Native",
-      "title": "fix(luavalidator): block getfenv/setfenv/newproxy/module in the Lua security sandbox",
-      "url": "https://github.com/envoyproxy/gateway/pull/9743",
-      "date": "2026-09-07"
+      "title": "fix: deny ListenerSet attachment when allowedListeners cannot be parsed",
+      "url": "https://github.com/kgateway-dev/kgateway/pull/14626",
+      "date": "2026-08-31"
     },
     {
-      "owner": "rothgar",
-      "repo": "awesome-tuis",
-      "number": 814,
+      "owner": "aserto-dev",
+      "repo": "azm",
+      "number": 81,
       "state": "merged",
-      "domain": "Tooling",
-      "title": "Add y509 to Development",
-      "url": "https://github.com/rothgar/awesome-tuis/pull/814",
-      "date": "2026-09-13"
-    },
-    {
-      "owner": "spiffe",
-      "repo": "spiffe",
-      "number": 417,
-      "state": "merged",
-      "domain": "Workload Identity",
-      "title": "Add wit-svid to the list of supported use values",
-      "url": "https://github.com/spiffe/spiffe/pull/417",
-      "date": "2026-08-03"
+      "domain": "Authorization",
+      "title": "Fix SubjectSearch over-listing subjects excluded via a wildcard relation",
+      "url": "https://github.com/aserto-dev/azm/pull/81",
+      "date": "2026-08-26"
     },
     {
       "owner": "openid",
@@ -667,14 +687,44 @@
       "date": "2026-08-20"
     },
     {
-      "owner": "vouch",
-      "repo": "vouch-proxy",
-      "number": 616,
+      "owner": "cloudflare",
+      "repo": "workers-oauth-provider",
+      "number": 303,
       "state": "merged",
       "domain": "OIDC",
-      "title": "fix panic in cookie.Cookie() on malformed multipart cookie names",
-      "url": "https://github.com/vouch/vouch-proxy/pull/616",
-      "date": "2026-09-27"
+      "title": "fix(ema): floor the jti replay marker TTL at KV's minimum",
+      "url": "https://github.com/cloudflare/workers-oauth-provider/pull/303",
+      "date": "2026-08-19"
+    },
+    {
+      "owner": "guacsec",
+      "repo": "guac",
+      "number": 3076,
+      "state": "merged",
+      "domain": "Supply Chain",
+      "title": "fix(processor): bound decompressed document size to prevent decompression bombs",
+      "url": "https://github.com/guacsec/guac/pull/3076",
+      "date": "2026-08-12"
+    },
+    {
+      "owner": "theupdateframework",
+      "repo": "go-tuf",
+      "number": 739,
+      "state": "merged",
+      "domain": "Supply Chain",
+      "title": "fix(metadata): reject ed25519 public keys with invalid length",
+      "url": "https://github.com/theupdateframework/go-tuf/pull/739",
+      "date": "2026-08-07"
+    },
+    {
+      "owner": "spiffe",
+      "repo": "spiffe",
+      "number": 417,
+      "state": "merged",
+      "domain": "Workload Identity",
+      "title": "Add wit-svid to the list of supported use values",
+      "url": "https://github.com/spiffe/spiffe/pull/417",
+      "date": "2026-08-03"
     },
     {
       "owner": "lldap",
@@ -697,6 +747,16 @@
       "date": "2026-07-19"
     },
     {
+      "owner": "php-casbin",
+      "repo": "php-casbin",
+      "number": 174,
+      "state": "merged",
+      "domain": "Authorization",
+      "title": "fix: evaluate domain link conditions on transitive role links",
+      "url": "https://github.com/php-casbin/php-casbin/pull/174",
+      "date": "2026-07-19"
+    },
+    {
       "owner": "glauth",
       "repo": "glauth",
       "number": 470,
@@ -707,14 +767,24 @@
       "date": "2026-07-18"
     },
     {
-      "owner": "php-casbin",
-      "repo": "php-casbin",
-      "number": 174,
+      "owner": "openpubkey",
+      "repo": "openpubkey",
+      "number": 373,
       "state": "merged",
-      "domain": "Authorization",
-      "title": "fix: evaluate domain link conditions on transitive role links",
-      "url": "https://github.com/php-casbin/php-casbin/pull/174",
-      "date": "2026-07-19"
+      "domain": "OIDC",
+      "title": "fix: avoid panic on array aud in GQCommitment verification",
+      "url": "https://github.com/openpubkey/openpubkey/pull/373",
+      "date": "2026-07-14"
+    },
+    {
+      "owner": "smallstep",
+      "repo": "certificates",
+      "number": 2715,
+      "state": "merged",
+      "domain": "PKI",
+      "title": "Fix name policy panic on empty or short domain",
+      "url": "https://github.com/smallstep/certificates/pull/2715",
+      "date": "2026-07-14"
     },
     {
       "owner": "woodpecker-ci",
@@ -737,16 +807,6 @@
       "date": "2026-07-01"
     },
     {
-      "owner": "openpubkey",
-      "repo": "openpubkey",
-      "number": 373,
-      "state": "merged",
-      "domain": "OIDC",
-      "title": "fix: avoid panic on array aud in GQCommitment verification",
-      "url": "https://github.com/openpubkey/openpubkey/pull/373",
-      "date": "2026-07-14"
-    },
-    {
       "owner": "openfga",
       "repo": "openfga",
       "number": 3181,
@@ -755,36 +815,6 @@
       "title": "fix: match IPv4-mapped IPv6 addresses in the in_cidr condition",
       "url": "https://github.com/openfga/openfga/pull/3181",
       "date": "2026-06-25"
-    },
-    {
-      "owner": "aserto-dev",
-      "repo": "azm",
-      "number": 81,
-      "state": "merged",
-      "domain": "Authorization",
-      "title": "Fix SubjectSearch over-listing subjects excluded via a wildcard relation",
-      "url": "https://github.com/aserto-dev/azm/pull/81",
-      "date": "2026-08-26"
-    },
-    {
-      "owner": "guacsec",
-      "repo": "guac",
-      "number": 3076,
-      "state": "merged",
-      "domain": "Supply Chain",
-      "title": "fix(processor): bound decompressed document size to prevent decompression bombs",
-      "url": "https://github.com/guacsec/guac/pull/3076",
-      "date": "2026-08-12"
-    },
-    {
-      "owner": "smallstep",
-      "repo": "certificates",
-      "number": 2715,
-      "state": "merged",
-      "domain": "PKI",
-      "title": "Fix name policy panic on empty or short domain",
-      "url": "https://github.com/smallstep/certificates/pull/2715",
-      "date": "2026-07-14"
     },
     {
       "owner": "authzed",
@@ -817,16 +847,6 @@
       "date": "2026-06-15"
     },
     {
-      "owner": "theupdateframework",
-      "repo": "go-tuf",
-      "number": 739,
-      "state": "merged",
-      "domain": "Supply Chain",
-      "title": "fix(metadata): reject ed25519 public keys with invalid length",
-      "url": "https://github.com/theupdateframework/go-tuf/pull/739",
-      "date": "2026-08-07"
-    },
-    {
       "owner": "spiffe",
       "repo": "spire",
       "number": 7066,
@@ -835,16 +855,6 @@
       "title": "Fix http_challenge agent name validation regex",
       "url": "https://github.com/spiffe/spire/pull/7066",
       "date": "2026-06-13"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4828,
-      "state": "merged",
-      "domain": "OIDC",
-      "title": "fix(oidc): verify userinfo sub matches the ID Token sub",
-      "url": "https://github.com/dexidp/dex/pull/4828",
-      "date": "2026-11-03"
     },
     {
       "owner": "spiffe",
@@ -867,16 +877,6 @@
       "date": "2026-03-31"
     },
     {
-      "owner": "golangci",
-      "repo": "golangci-lint",
-      "number": 6440,
-      "state": "merged",
-      "domain": "Tooling",
-      "title": "docs: fix typos and grammar errors in docs and code comments",
-      "url": "https://github.com/golangci/golangci-lint/pull/6440",
-      "date": "2026-03-17"
-    },
-    {
       "owner": "openfga",
       "repo": "openfga",
       "number": 2980,
@@ -889,12 +889,22 @@
     {
       "owner": "dexidp",
       "repo": "dex",
-      "number": 4611,
+      "number": 4600,
       "state": "merged",
       "domain": "OIDC",
-      "title": "feat(oauth2): implement Identity Assertion JWT (ID-JAG) issuance (DEP #4600)",
-      "url": "https://github.com/dexidp/dex/pull/4611",
-      "date": "2026-11-11"
+      "title": "DEP for Identity Assertion JWT Authorization Grant (ID-JAG) / requested_token_type urn:ietf:params:oauth:token-type:id-jag",
+      "url": "https://github.com/dexidp/dex/pull/4600",
+      "date": "2026-03-18"
+    },
+    {
+      "owner": "golangci",
+      "repo": "golangci-lint",
+      "number": 6440,
+      "state": "merged",
+      "domain": "Tooling",
+      "title": "docs: fix typos and grammar errors in docs and code comments",
+      "url": "https://github.com/golangci/golangci-lint/pull/6440",
+      "date": "2026-03-17"
     },
     {
       "owner": "smallstep",
@@ -907,16 +917,6 @@
       "date": "2026-03-10"
     },
     {
-      "owner": "istio",
-      "repo": "istio",
-      "number": 59306,
-      "state": "merged",
-      "domain": "Service Mesh",
-      "title": "dns: remove TODO about skipping node's own IP",
-      "url": "https://github.com/istio/istio/pull/59306",
-      "date": "2026-03-04"
-    },
-    {
       "owner": "google-gemini",
       "repo": "gemini-cli",
       "number": 20964,
@@ -927,14 +927,24 @@
       "date": "2026-03-06"
     },
     {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4600,
+      "owner": "open-policy-agent",
+      "repo": "opa",
+      "number": 8395,
       "state": "merged",
-      "domain": "OIDC",
-      "title": "DEP for Identity Assertion JWT Authorization Grant (ID-JAG) / requested_token_type urn:ietf:params:oauth:token-type:id-jag",
-      "url": "https://github.com/dexidp/dex/pull/4600",
-      "date": "2026-03-18"
+      "domain": "Authorization",
+      "title": "internal/providers/aws: Refactor deprecated crypto/elliptic APIs to crypto/ecdh",
+      "url": "https://github.com/open-policy-agent/opa/pull/8395",
+      "date": "2026-03-05"
+    },
+    {
+      "owner": "istio",
+      "repo": "istio",
+      "number": 59306,
+      "state": "merged",
+      "domain": "Service Mesh",
+      "title": "dns: remove TODO about skipping node's own IP",
+      "url": "https://github.com/istio/istio/pull/59306",
+      "date": "2026-03-04"
     },
     {
       "owner": "dexidp",
@@ -945,16 +955,6 @@
       "title": "fix: correct error message for device request expiry",
       "url": "https://github.com/dexidp/dex/pull/4599",
       "date": "2026-03-02"
-    },
-    {
-      "owner": "open-policy-agent",
-      "repo": "opa",
-      "number": 8395,
-      "state": "merged",
-      "domain": "Authorization",
-      "title": "internal/providers/aws: Refactor deprecated crypto/elliptic APIs to crypto/ecdh",
-      "url": "https://github.com/open-policy-agent/opa/pull/8395",
-      "date": "2026-03-05"
     },
     {
       "owner": "spiffe",
@@ -1287,6 +1287,16 @@
       "date": "2026-03-29"
     },
     {
+      "owner": "Infisical",
+      "repo": "infisical",
+      "number": 7673,
+      "state": "closed",
+      "domain": "Identity",
+      "title": "fix(pki): scope EST enrollment routes by path params instead of the matched route",
+      "url": "https://github.com/Infisical/infisical/pull/7673",
+      "date": "2026-11-17"
+    },
+    {
       "owner": "stacklok",
       "repo": "toolhive",
       "number": 7091,
@@ -1327,16 +1337,6 @@
       "date": "2026-10-22"
     },
     {
-      "owner": "NixOS",
-      "repo": "nixpkgs",
-      "number": 561552,
-      "state": "closed",
-      "domain": "Tooling",
-      "title": "rapg: init at 0.3.2",
-      "url": "https://github.com/NixOS/nixpkgs/pull/561552",
-      "date": "2026-09-24"
-    },
-    {
       "owner": "ietf-wg-wimse",
       "repo": "draft-ietf-wimse-identifier",
       "number": 98,
@@ -1345,6 +1345,16 @@
       "title": "Add an Implementation Status section with an entry for wimsey",
       "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-identifier/pull/98",
       "date": "2026-10-22"
+    },
+    {
+      "owner": "NixOS",
+      "repo": "nixpkgs",
+      "number": 561552,
+      "state": "closed",
+      "domain": "Tooling",
+      "title": "rapg: init at 0.3.2",
+      "url": "https://github.com/NixOS/nixpkgs/pull/561552",
+      "date": "2026-09-24"
     },
     {
       "owner": "ietf-wg-wimse",
@@ -1367,14 +1377,24 @@
       "date": "2026-09-08"
     },
     {
-      "owner": "Infisical",
-      "repo": "infisical",
-      "number": 7673,
+      "owner": "FairwindsOps",
+      "repo": "polaris",
+      "number": 1204,
       "state": "closed",
-      "domain": "Identity",
-      "title": "fix(pki): scope EST enrollment routes by path params instead of the matched route",
-      "url": "https://github.com/Infisical/infisical/pull/7673",
-      "date": "2026-11-17"
+      "domain": "Authorization",
+      "title": "Validate ephemeral containers in per-container checks",
+      "url": "https://github.com/FairwindsOps/polaris/pull/1204",
+      "date": "2026-09-04"
+    },
+    {
+      "owner": "Permify",
+      "repo": "permify",
+      "number": 3005,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "fix(lexer): prevent panic on unterminated string literal",
+      "url": "https://github.com/Permify/permify/pull/3005",
+      "date": "2026-07-15"
     },
     {
       "owner": "supabase",
@@ -1397,16 +1417,6 @@
       "date": "2026-07-10"
     },
     {
-      "owner": "FairwindsOps",
-      "repo": "polaris",
-      "number": 1204,
-      "state": "closed",
-      "domain": "Authorization",
-      "title": "Validate ephemeral containers in per-container checks",
-      "url": "https://github.com/FairwindsOps/polaris/pull/1204",
-      "date": "2026-09-04"
-    },
-    {
       "owner": "lestrrat-go",
       "repo": "jwx",
       "number": 2235,
@@ -1417,14 +1427,14 @@
       "date": "2026-06-27"
     },
     {
-      "owner": "Permify",
-      "repo": "permify",
-      "number": 3005,
+      "owner": "enix",
+      "repo": "x509-certificate-exporter",
+      "number": 451,
       "state": "closed",
-      "domain": "Authorization",
-      "title": "fix(lexer): prevent panic on unterminated string literal",
-      "url": "https://github.com/Permify/permify/pull/3005",
-      "date": "2026-07-15"
+      "domain": "PKI",
+      "title": "feat: enhance shutdown function to accept context for improved control",
+      "url": "https://github.com/enix/x509-certificate-exporter/pull/451",
+      "date": "2026-05-12"
     },
     {
       "owner": "sigstore",
@@ -1435,6 +1445,16 @@
       "title": "docs: add enterprise private-infrastructure guidance",
       "url": "https://github.com/sigstore/cosign/pull/4830",
       "date": "2026-05-04"
+    },
+    {
+      "owner": "cert-manager",
+      "repo": "cert-manager",
+      "number": 8592,
+      "state": "closed",
+      "domain": "PKI",
+      "title": "docs: Update Helm repository references to OCI registry",
+      "url": "https://github.com/cert-manager/cert-manager/pull/8592",
+      "date": "2026-04-30"
     },
     {
       "owner": "cilium",
@@ -1487,16 +1507,6 @@
       "date": "2026-03-10"
     },
     {
-      "owner": "cert-manager",
-      "repo": "cert-manager",
-      "number": 8592,
-      "state": "closed",
-      "domain": "PKI",
-      "title": "docs: Update Helm repository references to OCI registry",
-      "url": "https://github.com/cert-manager/cert-manager/pull/8592",
-      "date": "2026-04-30"
-    },
-    {
       "owner": "kubernetes",
       "repo": "kubernetes",
       "number": 137316,
@@ -1505,16 +1515,6 @@
       "title": "cleanup: replace ioutil with os in abac_test.go",
       "url": "https://github.com/kubernetes/kubernetes/pull/137316",
       "date": "2026-03-02"
-    },
-    {
-      "owner": "enix",
-      "repo": "x509-certificate-exporter",
-      "number": 451,
-      "state": "closed",
-      "domain": "PKI",
-      "title": "feat: enhance shutdown function to accept context for improved control",
-      "url": "https://github.com/enix/x509-certificate-exporter/pull/451",
-      "date": "2026-05-12"
     }
   ],
   "meta": {
@@ -1752,6 +1752,16 @@
       "date": "2026-04-02"
     },
     {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5151,
+      "state": "closed",
+      "domain": "OIDC",
+      "title": "Token exchange: accept a refresh token as the subject of an ID-JAG request",
+      "url": "https://github.com/dexidp/dex/issues/5151",
+      "date": "2026-11-19"
+    },
+    {
       "owner": "kubescape",
       "repo": "regolibrary",
       "number": 943,
@@ -1759,6 +1769,16 @@
       "domain": "Authorization",
       "title": "bug(C-0001): untrusted and public registries are matched case-sensitively",
       "url": "https://github.com/kubescape/regolibrary/issues/943",
+      "date": "2026-11-18"
+    },
+    {
+      "owner": "mark3labs",
+      "repo": "mcp-go",
+      "number": 1164,
+      "state": "closed",
+      "domain": "Tooling",
+      "title": "bug: JSON-RPC member names are matched case-insensitively",
+      "url": "https://github.com/mark3labs/mcp-go/issues/1164",
       "date": "2026-11-18"
     },
     {
@@ -1772,34 +1792,14 @@
       "date": "2026-11-12"
     },
     {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 5151,
+      "owner": "spiffe",
+      "repo": "spire",
+      "number": 7366,
       "state": "closed",
-      "domain": "OIDC",
-      "title": "Token exchange: accept a refresh token as the subject of an ID-JAG request",
-      "url": "https://github.com/dexidp/dex/issues/5151",
-      "date": "2026-11-19"
-    },
-    {
-      "owner": "golang",
-      "repo": "vulndb",
-      "number": 6911,
-      "state": "closed",
-      "domain": "Supply Chain",
-      "title": "x/vulndb: potential Go vuln in github.com/mark3labs/mcp-go",
-      "url": "https://github.com/golang/vulndb/issues/6911",
-      "date": "2026-11-05"
-    },
-    {
-      "owner": "mark3labs",
-      "repo": "mcp-go",
-      "number": 1164,
-      "state": "closed",
-      "domain": "Tooling",
-      "title": "bug: JSON-RPC member names are matched case-insensitively",
-      "url": "https://github.com/mark3labs/mcp-go/issues/1164",
-      "date": "2026-11-18"
+      "domain": "Workload Identity",
+      "title": "Federation bundle client reads the bundle endpoint response without a size limit",
+      "url": "https://github.com/spiffe/spire/issues/7366",
+      "date": "2026-11-12"
     },
     {
       "owner": "atuinsh",
@@ -1812,14 +1812,24 @@
       "date": "2026-11-07"
     },
     {
-      "owner": "akuity",
-      "repo": "kargo",
-      "number": 7772,
+      "owner": "golang",
+      "repo": "vulndb",
+      "number": 6911,
       "state": "closed",
-      "domain": "Cloud Native",
-      "title": "Gitea and GitHub ListPullRequests panic on a pull request without head",
-      "url": "https://github.com/akuity/kargo/issues/7772",
-      "date": "2026-10-29"
+      "domain": "Supply Chain",
+      "title": "x/vulndb: potential Go vuln in github.com/mark3labs/mcp-go",
+      "url": "https://github.com/golang/vulndb/issues/6911",
+      "date": "2026-11-05"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 4827,
+      "state": "closed",
+      "domain": "OIDC",
+      "title": "connector(oidc): userinfo sub is not verified against the ID Token sub",
+      "url": "https://github.com/dexidp/dex/issues/4827",
+      "date": "2026-11-03"
     },
     {
       "owner": "mark3labs",
@@ -1832,14 +1842,34 @@
       "date": "2026-11-02"
     },
     {
-      "owner": "spiffe",
-      "repo": "spire",
-      "number": 7366,
+      "owner": "akuity",
+      "repo": "kargo",
+      "number": 7772,
       "state": "closed",
-      "domain": "Workload Identity",
-      "title": "Federation bundle client reads the bundle endpoint response without a size limit",
-      "url": "https://github.com/spiffe/spire/issues/7366",
-      "date": "2026-11-12"
+      "domain": "Cloud Native",
+      "title": "Gitea and GitHub ListPullRequests panic on a pull request without head",
+      "url": "https://github.com/akuity/kargo/issues/7772",
+      "date": "2026-10-29"
+    },
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 554,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Fix incorrect metadata member name in Section 8.2.1",
+      "url": "https://github.com/openid/authzen/issues/554",
+      "date": "2026-10-29"
+    },
+    {
+      "owner": "vouch",
+      "repo": "vouch-proxy",
+      "number": 615,
+      "state": "closed",
+      "domain": "OIDC",
+      "title": "panic in cookie.Cookie() on malformed multipart cookie names",
+      "url": "https://github.com/vouch/vouch-proxy/issues/615",
+      "date": "2026-09-27"
     },
     {
       "owner": "openid",
@@ -1850,6 +1880,16 @@
       "title": "Response shape is unspecified when an Access Evaluations request omits `evaluations`",
       "url": "https://github.com/openid/authzen/issues/639",
       "date": "2026-09-16"
+    },
+    {
+      "owner": "FairwindsOps",
+      "repo": "polaris",
+      "number": 1203,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Per-container checks skip ephemeral containers",
+      "url": "https://github.com/FairwindsOps/polaris/issues/1203",
+      "date": "2026-09-04"
     },
     {
       "owner": "kgateway-dev",
@@ -1872,14 +1912,14 @@
       "date": "2026-08-20"
     },
     {
-      "owner": "vouch",
-      "repo": "vouch-proxy",
-      "number": 615,
+      "owner": "guacsec",
+      "repo": "guac",
+      "number": 3075,
       "state": "closed",
-      "domain": "OIDC",
-      "title": "panic in cookie.Cookie() on malformed multipart cookie names",
-      "url": "https://github.com/vouch/vouch-proxy/issues/615",
-      "date": "2026-09-27"
+      "domain": "Supply Chain",
+      "title": "[bug] Document decompression has no size limit (decompression bomb)",
+      "url": "https://github.com/guacsec/guac/issues/3075",
+      "date": "2026-08-12"
     },
     {
       "owner": "glauth",
@@ -1892,54 +1932,14 @@
       "date": "2026-07-18"
     },
     {
-      "owner": "openid",
-      "repo": "authzen",
-      "number": 554,
+      "owner": "Permify",
+      "repo": "permify",
+      "number": 3004,
       "state": "closed",
       "domain": "Authorization",
-      "title": "Fix incorrect metadata member name in Section 8.2.1",
-      "url": "https://github.com/openid/authzen/issues/554",
-      "date": "2026-10-29"
-    },
-    {
-      "owner": "sse-secure-systems",
-      "repo": "connaisseur",
-      "number": 2130,
-      "state": "closed",
-      "domain": "Supply Chain",
-      "title": "Policy rules match the registry host case-sensitively",
-      "url": "https://github.com/sse-secure-systems/connaisseur/issues/2130",
-      "date": "2026-07-10"
-    },
-    {
-      "owner": "FairwindsOps",
-      "repo": "polaris",
-      "number": 1203,
-      "state": "closed",
-      "domain": "Authorization",
-      "title": "Per-container checks skip ephemeral containers",
-      "url": "https://github.com/FairwindsOps/polaris/issues/1203",
-      "date": "2026-09-04"
-    },
-    {
-      "owner": "lestrrat-go",
-      "repo": "jwx",
-      "number": 2234,
-      "state": "closed",
-      "domain": "OIDC",
-      "title": "jwt.Parse / jws.VerifyCompactFast accept duplicate JOSE header parameters that jws.Verify rejects",
-      "url": "https://github.com/lestrrat-go/jwx/issues/2234",
-      "date": "2026-06-27"
-    },
-    {
-      "owner": "guacsec",
-      "repo": "guac",
-      "number": 3075,
-      "state": "closed",
-      "domain": "Supply Chain",
-      "title": "[bug] Document decompression has no size limit (decompression bomb)",
-      "url": "https://github.com/guacsec/guac/issues/3075",
-      "date": "2026-08-12"
+      "title": "[BUG] DSL lexer panics (slice out of range) on an unterminated string",
+      "url": "https://github.com/Permify/permify/issues/3004",
+      "date": "2026-07-15"
     },
     {
       "owner": "smallstep",
@@ -1952,14 +1952,24 @@
       "date": "2026-07-14"
     },
     {
-      "owner": "Permify",
-      "repo": "permify",
-      "number": 3004,
+      "owner": "sse-secure-systems",
+      "repo": "connaisseur",
+      "number": 2130,
       "state": "closed",
-      "domain": "Authorization",
-      "title": "[BUG] DSL lexer panics (slice out of range) on an unterminated string",
-      "url": "https://github.com/Permify/permify/issues/3004",
-      "date": "2026-07-15"
+      "domain": "Supply Chain",
+      "title": "Policy rules match the registry host case-sensitively",
+      "url": "https://github.com/sse-secure-systems/connaisseur/issues/2130",
+      "date": "2026-07-10"
+    },
+    {
+      "owner": "lestrrat-go",
+      "repo": "jwx",
+      "number": 2234,
+      "state": "closed",
+      "domain": "OIDC",
+      "title": "jwt.Parse / jws.VerifyCompactFast accept duplicate JOSE header parameters that jws.Verify rejects",
+      "url": "https://github.com/lestrrat-go/jwx/issues/2234",
+      "date": "2026-06-27"
     },
     {
       "owner": "sigstore",
@@ -1982,14 +1992,14 @@
       "date": "2026-06-13"
     },
     {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 4827,
+      "owner": "enix",
+      "repo": "x509-certificate-exporter",
+      "number": 172,
       "state": "closed",
-      "domain": "OIDC",
-      "title": "connector(oidc): userinfo sub is not verified against the ID Token sub",
-      "url": "https://github.com/dexidp/dex/issues/4827",
-      "date": "2026-11-03"
+      "domain": "PKI",
+      "title": "Feature request: Enhance shutdown function to accept context for improved control",
+      "url": "https://github.com/enix/x509-certificate-exporter/issues/172",
+      "date": "2026-05-12"
     },
     {
       "owner": "spiffe",
@@ -2030,16 +2040,6 @@
       "title": "proposal: crypto/tls, crypto/x509: use %w rather than %s in fmt.Errorf",
       "url": "https://github.com/golang/go/issues/77942",
       "date": "2026-03-04"
-    },
-    {
-      "owner": "enix",
-      "repo": "x509-certificate-exporter",
-      "number": 172,
-      "state": "closed",
-      "domain": "PKI",
-      "title": "Feature request: Enhance shutdown function to accept context for improved control",
-      "url": "https://github.com/enix/x509-certificate-exporter/issues/172",
-      "date": "2026-05-12"
     }
   ]
 }

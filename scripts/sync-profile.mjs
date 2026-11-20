@@ -100,7 +100,13 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
     // resolved/landed first (merged|closed-issue), then most recent
     .sort((a, b) => {
       const rank = (s) => (s === 'merged' ? 0 : s === 'open' ? 1 : 2);
-      return rank(a.state) - rank(b.state) || b._date.localeCompare(a._date);
+      // by the date the row shows (landed, or opened if still open), so the month column
+      // reads in order; createdAt only breaks ties
+      return (
+        rank(a.state) - rank(b.state) ||
+        b.date.localeCompare(a.date) ||
+        b._date.localeCompare(a._date)
+      );
     })
     .map(({ _date, ...rest }) => rest);
 }
