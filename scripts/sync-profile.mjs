@@ -20,6 +20,7 @@ import {
   LANG_BY_REPO,
   ORG_BLURB_BY_REPO,
   ORG_EXCLUDE,
+  ORG_LANG_BY_REPO,
   TAGLINE_BY_REPO,
 } from './taglines.mjs';
 import { recordHistory } from './history.mjs';
@@ -178,18 +179,23 @@ else console.warn('! no starred repos returned; keeping the previous selected wo
 // This list used to be hand-written and went stale: two of its three cards pointed at repos
 // that had since been archived. Discovering it the way selected work is discovered keeps it
 // honest; the org blurb and url above it stay curated.
+const ORG_LIMIT = 300;
+
 function fetchOrgRepos() {
-  return ghJSON([
-    'repo', 'list', '0-draft', '--limit', '300', '--no-archived', '--source',
+  const all = ghJSON([
+    'repo', 'list', '0-draft', '--limit', String(ORG_LIMIT), '--no-archived', '--source',
     '--visibility', 'public', '--json', 'name,description,primaryLanguage,url,createdAt',
-  ])
+  ]);
+  // at the cap the list is truncated without a word from gh; same rule as the PR search
+  if (all.length >= ORG_LIMIT) throw new Error(`gh repo list 0-draft hit the ${ORG_LIMIT} cap`);
+  return all
     .filter((r) => !ORG_EXCLUDE.has(r.name))
     // a repo with no description has nothing to put on a card yet
     .filter((r) => ORG_BLURB_BY_REPO[r.name] ?? r.description)
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt) || a.name.localeCompare(b.name))
     .map((r) => ({
       name: r.name,
-      lang: r.primaryLanguage?.name ?? '',
+      lang: ORG_LANG_BY_REPO[r.name] ?? r.primaryLanguage?.name ?? '',
       blurb: ORG_BLURB_BY_REPO[r.name] ?? r.description,
       url: r.url,
     }));
@@ -242,7 +248,7 @@ if (untagged.length) {
 // override on a repo that simply hasn't earned a star yet is doing exactly what it should,
 // and a warning that fires every single run is a warning nobody reads.
 const overrides = new Set([...Object.keys(TAGLINE_BY_REPO), ...Object.keys(LANG_BY_REPO)]);
-const orphanedOrg = Object.keys(ORG_BLURB_BY_REPO).filter((n) => !orgRepos.some((r) => r.name === n));
+const orphanedOrg = [...Object.keys(ORG_BLURB_BY_REPO), ...Object.keys(ORG_LANG_BY_REPO)].filter((n) => !orgRepos.some((r) => r.name === n));
 if (orphanedOrg.length) console.log(`! ORG_BLURB_BY_REPO names repos not in 0-draft: ${orphanedOrg.join(', ')}`);
 const orphaned = [...overrides].filter((name) => !allOwnRepoNames.has(name));
 if (orphaned.length) {

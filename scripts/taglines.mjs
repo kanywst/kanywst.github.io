@@ -42,5 +42,8 @@ export const ORG_BLURB_BY_REPO = {
     'Collect and score deep-dive candidates across the OAuth, WIMSE and digital-credentials working groups.',
 };
 
+// repo name → display language, for 0-draft repos GitHub can't classify.
+export const ORG_LANG_BY_REPO = {};
+
 // Public repos that aren't work to show: the org's own plumbing and its landing page.
 export const ORG_EXCLUDE = new Set(['.github', '0-draft.github.io', 'dev.to']);
