@@ -268,3 +268,14 @@ describe('malformed hash', () => {
     expect(screen.getByText(/Hi, I/)).toBeInTheDocument();
   });
 });
+
+describe('keyboard chords', () => {
+  it('ignores Space and Escape pressed with a modifier', () => {
+    render(<App />);
+    fireEvent.keyDown(window, { key: ' ', ctrlKey: true });
+    expect(screen.queryByRole('heading', { name: 'selected work' })).not.toBeInTheDocument();
+    fireEvent.keyDown(window, { key: ' ' });
+    fireEvent.keyDown(window, { key: 'Escape', metaKey: true });
+    expect(screen.getByRole('heading', { name: 'selected work' })).toBeInTheDocument();
+  });
+});

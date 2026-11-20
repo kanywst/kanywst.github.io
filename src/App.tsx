@@ -751,9 +751,9 @@ export function Detail({
             style={at(prHead)}
             title="awesome lists and package registries are not counted"
           >
-            code merged into <b>{reach.repos}</b> upstream projects with{' '}
+            PRs merged into <b>{reach.repos}</b> upstream projects with{' '}
             <b>{compact(reach.stars)}★</b> between them
-            <span className="sr-only"> (lists and package registries not counted)</span>
+            <span className="sr-only"> (awesome lists and package registries not counted)</span>
           </p>
         )}
         {hasPrCloud && (
@@ -1018,6 +1018,8 @@ export default function App() {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      // a key something else already handled, or a chord (⌘/Ctrl/Alt + …), isn't ours
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key === 'Escape') {
         // collapsed already: nothing to close, and no view transition to run for nothing
         if (open) setOpenAnimated(false);

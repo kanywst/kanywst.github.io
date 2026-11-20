@@ -200,8 +200,11 @@ if (!prs.length) {
 // still refresh. Only from 10 rows up: at small counts halving is ordinary.
 const shrank = (now, prev) =>
   prev?.length >= 10 && now.length < prev.length / 2 && !process.env.FORCE_PRS;
+// sections a guard kept from an earlier sync this run; syncedAt only advances when none did
+const kept = [];
 function guardList(name, now, prev) {
   if (!shrank(now, prev)) return now;
+  kept.push(name);
   const msg = `${name} shrank ${prev.length}→${now.length}; keeping the previous list (FORCE_PRS=1 to accept)`;
   console.warn(`! ${msg}`);
   if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
@@ -285,7 +288,15 @@ try {
 // don't wipe a real issue list if the issues fetch came back empty (gh hiccup)
 profile.issues = issues.length ? guardList('upstream issues', issues, profile.issues) : (profile.issues ?? []);
 profile.meta ??= {};
-profile.meta.syncedAt = new Date().toISOString().slice(0, 10);
+// syncedAt is the page's "this data is current" claim, so a run whose core lists were held
+// back by a guard doesn't advance it; meta.kept names what was held, until a clean run.
+if (kept.length) {
+  profile.meta.kept = kept;
+  console.warn(`! syncedAt left at ${profile.meta.syncedAt}: kept previous ${kept.join(', ')}`);
+} else {
+  delete profile.meta.kept;
+  profile.meta.syncedAt = new Date().toISOString().slice(0, 10);
+}
 
 writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');
 // first-seen dates + star log behind the "new" / "+N ★" marks (src/data/history.json)
