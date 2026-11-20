@@ -23,7 +23,7 @@ import {
   ORG_LANG_BY_REPO,
   TAGLINE_BY_REPO,
 } from './taglines.mjs';
-import { recordHistory } from './history.mjs';
+import { recordHistory, seedFirstSeen } from './history.mjs';
 import { normalizeVersion, orgRows, upstreamRows } from './sync-lib.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -142,24 +142,42 @@ else console.warn('! no starred repos returned; keeping the previous selected wo
 // honest; the org blurb and url above it stay curated.
 const ORG_LIMIT = 300;
 
+// Degrades instead of throwing: 0-draft being unavailable must not take the day's PR and
+// issue refresh down with it. Returns null on any failure (the cap included — a truncated
+// list is exactly what not to write), and the caller keeps the previous list.
 function fetchOrgRepos() {
-  const all = ghJSON([
-    'repo', 'list', '0-draft', '--limit', String(ORG_LIMIT), '--no-archived', '--source',
-    '--visibility', 'public', '--json', 'name,description,primaryLanguage,url,createdAt',
-  ]);
-  // at the cap the list is truncated without a word from gh; same rule as the PR search
-  if (all.length >= ORG_LIMIT) throw new Error(`gh repo list 0-draft hit the ${ORG_LIMIT} cap`);
-  return orgRows(all, { exclude: ORG_EXCLUDE, blurbs: ORG_BLURB_BY_REPO, langs: ORG_LANG_BY_REPO });
+  let all;
+  try {
+    all = ghJSON([
+      'repo', 'list', '0-draft', '--limit', String(ORG_LIMIT), '--no-archived', '--source',
+      '--visibility', 'public', '--json', 'name,description,primaryLanguage,url,createdAt',
+    ]);
+  } catch (err) {
+    console.warn(`! 0-draft repo list failed, keeping the previous list: ${err.message}`);
+    return null;
+  }
+  if (all.length >= ORG_LIMIT) {
+    console.warn(`! gh repo list 0-draft hit the ${ORG_LIMIT} cap; keeping the previous list`);
+    return null;
+  }
+  const rows = orgRows(all, { exclude: ORG_EXCLUDE, blurbs: ORG_BLURB_BY_REPO, langs: ORG_LANG_BY_REPO });
+  // a discovered list drops a repo silently in two ways; name both so a missing card is traceable
+  const skipped = all.filter((r) => !ORG_EXCLUDE.has(r.name) && !rows.some((x) => x.name === r.name));
+  if (skipped.length) {
+    console.warn(`! ${skipped.length} 0-draft repo(s) have no description, so no card:`);
+    for (const r of skipped) console.warn(`    ${r.name}`);
+  }
+  return { all, rows };
 }
 
-const orgRepos = fetchOrgRepos();
+const org = fetchOrgRepos();
 const prevOrg = profile.org.repos?.length ?? 0;
 // a sharp drop is far likelier a degraded fetch than half the org archived overnight; keep
 // the last good list and say so, the same trade the empty-PR guard makes
-if (!orgRepos.length) console.warn('! no 0-draft repos returned; keeping the previous list');
-else if (orgRepos.length < prevOrg / 2)
-  console.warn(`! 0-draft repos fell from ${prevOrg} to ${orgRepos.length}; keeping the previous list`);
-else profile.org.repos = orgRepos;
+if (org && !org.rows.length) console.warn('! no 0-draft repos returned; keeping the previous list');
+else if (org && org.rows.length < prevOrg / 2)
+  console.warn(`! 0-draft repos fell from ${prevOrg} to ${org.rows.length}; keeping the previous list`);
+else if (org) profile.org.repos = org.rows;
 
 // --- external PRs (all states; UI filters closed) and issues ---
 const prs = fetchExternal('prs');
@@ -178,6 +196,11 @@ profile.meta.syncedAt = new Date().toISOString().slice(0, 10);
 
 writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');
 // first-seen dates + star log behind the "new" / "+N ★" marks (src/data/history.json)
+// a 0-draft repo is new from the day it was created, not the day discovery first saw it
+if (org) {
+  const created = new Map(org.all.map((r) => [r.url, r.createdAt.slice(0, 10)]));
+  seedFirstSeen(Object.fromEntries(org.rows.map((r) => [r.url, created.get(r.url)])));
+}
 recordHistory(profile, profile.meta.syncedAt);
 
 const by = (arr, s) => arr.filter((c) => c.state === s).length;
@@ -199,8 +222,19 @@ if (untagged.length) {
 // override on a repo that simply hasn't earned a star yet is doing exactly what it should,
 // and a warning that fires every single run is a warning nobody reads.
 const overrides = new Set([...Object.keys(TAGLINE_BY_REPO), ...Object.keys(LANG_BY_REPO)]);
-const orphanedOrg = [...Object.keys(ORG_BLURB_BY_REPO), ...Object.keys(ORG_LANG_BY_REPO)].filter((n) => !orgRepos.some((r) => r.name === n));
-if (orphanedOrg.length) console.log(`! ORG_BLURB_BY_REPO names repos not in 0-draft: ${orphanedOrg.join(', ')}`);
+// Checked against the full fetched list (not the filtered cards, so an excluded repo with an
+// override isn't a false alarm), and only when that fetch actually succeeded: against a
+// degraded result every override would look orphaned.
+if (org) {
+  const names = new Set(org.all.map((r) => r.name));
+  const orphanedOrg = [...Object.keys(ORG_BLURB_BY_REPO), ...Object.keys(ORG_LANG_BY_REPO)].filter(
+    (n) => !names.has(n),
+  );
+  if (orphanedOrg.length) {
+    console.warn(`! ${orphanedOrg.length} 0-draft override(s) in taglines.mjs name a repo that no longer exists:`);
+    for (const n of orphanedOrg) console.warn(`    ${n} (renamed or archived — the curated text is dead)`);
+  }
+}
 const orphaned = [...overrides].filter((name) => !allOwnRepoNames.has(name));
 if (orphaned.length) {
   console.log(`! ${orphaned.length} override(s) in taglines.mjs name a repo that no longer exists:`);
