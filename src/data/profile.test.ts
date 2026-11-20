@@ -75,6 +75,13 @@ describe('profile.json contract', () => {
     }
   });
 
+  it('summarises merged reach as counts, if present', () => {
+    const r = (profile.meta as { mergedReach?: { repos: number; stars: number } }).mergedReach;
+    if (!r) return;
+    expect(Number.isInteger(r.repos) && r.repos > 0).toBe(true);
+    expect(Number.isInteger(r.stars) && r.stars >= 0).toBe(true);
+  });
+
   it('records when the live half was last synced', () => {
     expect(profile.meta.syncedAt).toBeTruthy();
   });

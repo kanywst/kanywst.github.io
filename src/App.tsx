@@ -301,6 +301,11 @@ function Marker({ kind, label, children }: { kind: string; label: string; childr
 // null when the vector carries no version prefix (legacy v2 vectors): no label beats a guess
 const cvssVersion = (vector: string) => /^CVSS:(\d\.\d)/.exec(vector)?.[1] ?? null;
 
+// filled by sync-profile.mjs; the PR section's one-line reach summary
+const reach = (profile.meta as { mergedReach?: { repos: number; stars: number } }).mergedReach;
+const compact = (n: number) =>
+  new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n).toLowerCase();
+
 // month precision: the day adds nothing a reader scanning 120 rows can use
 const month = (date?: string) => date?.slice(0, 7);
 
@@ -740,6 +745,17 @@ export function Detail({
           </div>
           )}
         </div>
+        {reach && (
+          <p
+            className="sec-sub reveal"
+            style={at(prHead)}
+            title="awesome lists and package registries are not counted"
+          >
+            code merged into <b>{reach.repos}</b> upstream projects with{' '}
+            <b>{compact(reach.stars)}★</b> between them
+            <span className="sr-only"> (lists and package registries not counted)</span>
+          </p>
+        )}
         {hasPrCloud && (
           <ContribCloud
             items={contributions}

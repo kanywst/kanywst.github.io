@@ -189,6 +189,56 @@ if (!prs.length) {
   throw new Error('No upstream PRs returned; aborting to avoid stale sync metadata.');
 }
 profile.contributions = prs;
+
+// --- reach of the merged work: how many upstream repos, and their combined stars ---
+// One aggregate on purpose, not a per-PR weight: ranking or sizing PRs by repo stars would
+// put a typo fix in a famous repo above a real authz fix in a small one. Best-effort; a
+// failure keeps the previous figure.
+// Lists and registries are left out of the figure: an entry in awesome-go or a winget
+// manifest is a real merged PR, but counting those repos' stars would let a one-line listing
+// outweigh every code contribution combined (it was ~60% of the raw total).
+const LISTING = /(^|\/)awesome|-in-the-wild$/i;
+const LISTING_REPOS = new Set([
+  'NixOS/nixpkgs',
+  'microsoft/winget-pkgs',
+  'golang/vulndb',
+  'pwn2winctf/2020submissions',
+  'trackawesomelist/trackawesomelist-source',
+]);
+
+function fetchMergedReach() {
+  const slugs = [
+    ...new Set(prs.filter((p) => p.state === 'merged').map((p) => `${p.owner}/${p.repo}`)),
+  ].filter((s) => !LISTING.test(s) && !LISTING_REPOS.has(s));
+  let stars = 0;
+  for (let i = 0; i < slugs.length; i += 50) {
+    const chunk = slugs.slice(i, i + 50);
+    const query = `{ ${chunk
+      .map((s, j) => {
+        const [o, n] = s.split('/');
+        return `r${j}: repository(owner: ${JSON.stringify(o)}, name: ${JSON.stringify(n)}) { stargazerCount }`;
+      })
+      .join(' ')} }`;
+    // a deleted/renamed repo comes back as null with a partial error; gh still prints the data
+    let data;
+    try {
+      data = JSON.parse(gh(['api', 'graphql', '-f', `query=${query}`])).data;
+    } catch (err) {
+      const out = err.stdout && JSON.parse(err.stdout);
+      if (!out?.data) throw err;
+      data = out.data;
+    }
+    for (const v of Object.values(data ?? {})) stars += v?.stargazerCount ?? 0;
+  }
+  return { repos: slugs.length, stars };
+}
+
+try {
+  profile.meta ??= {};
+  profile.meta.mergedReach = fetchMergedReach();
+} catch (err) {
+  console.warn(`! merged-reach lookup failed, keeping the previous figure: ${err.message}`);
+}
 // don't wipe a real issue list if the issues fetch came back empty (gh hiccup)
 profile.issues = issues.length ? issues : (profile.issues ?? []);
 profile.meta ??= {};
