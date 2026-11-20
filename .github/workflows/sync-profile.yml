@@ -13,6 +13,10 @@ on:
         description: 'Redraw the OG card even when the data has not changed'
         type: boolean
         default: false
+      force_org:
+        description: 'Accept a 0-draft repo list that shrank by more than half'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -41,6 +45,7 @@ jobs:
         id: sync
         env:
           GH_TOKEN: ${{ github.token }}
+          FORCE_ORG: ${{ inputs.force_org && '1' || '' }}
         run: |
           node scripts/sync-profile.mjs
           node scripts/sync-advisories.mjs

@@ -40,8 +40,14 @@ try {
   console.warn(`! dev.to fetch failed, keeping the previous writing list: ${err.message}`);
   process.exit(0);
 }
-if (!rows.length) {
-  console.warn('! dev.to returned no articles; keeping the previous writing list');
+const prev = profile.writing?.length ?? 0;
+// same shrink guard as the 0-draft list: a short 200 (a degraded or cached page) would
+// otherwise cut the section, its count and the feed down to a handful of articles
+if (!rows.length || rows.length < prev / 2) {
+  const msg = `dev.to returned ${rows.length} articles (had ${prev}); keeping the previous writing list`;
+  console.warn(`! ${msg}`);
+  // an Actions annotation, so a guard that keeps tripping shows on the run summary
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-devto::${msg}`);
   process.exit(0);
 }
 

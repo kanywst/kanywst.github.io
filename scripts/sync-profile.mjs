@@ -174,10 +174,15 @@ const org = fetchOrgRepos();
 const prevOrg = profile.org.repos?.length ?? 0;
 // a sharp drop is far likelier a degraded fetch than half the org archived overnight; keep
 // the last good list and say so, the same trade the empty-PR guard makes
-if (org && !org.rows.length) console.warn('! no 0-draft repos returned; keeping the previous list');
-else if (org && org.rows.length < prevOrg / 2)
-  console.warn(`! 0-draft repos fell from ${prevOrg} to ${org.rows.length}; keeping the previous list`);
-else if (org) profile.org.repos = org.rows;
+// A real large drop (a batch archived, new ORG_EXCLUDE entries) would trip this every day, so
+// it says so on the run summary, and FORCE_ORG=1 (workflow_dispatch env or a local run)
+// writes the new list anyway.
+const orgShrank = org && org.rows.length < prevOrg / 2 && !process.env.FORCE_ORG;
+if (org && (!org.rows.length || orgShrank)) {
+  const msg = `0-draft repos fell from ${prevOrg} to ${org.rows.length}; keeping the previous list (FORCE_ORG=1 to accept)`;
+  console.warn(`! ${msg}`);
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
+} else if (org) profile.org.repos = org.rows;
 
 // --- external PRs (all states; UI filters closed) and issues ---
 const prs = fetchExternal('prs');
@@ -228,7 +233,11 @@ function fetchMergedReach() {
       if (!out?.data) throw err;
       data = out.data;
     }
-    for (const v of Object.values(data ?? {})) stars += v?.stargazerCount ?? 0;
+    // a repo that comes back null (deleted, renamed away, no access) would leave a precise-
+    // looking undercount; refuse the whole figure and keep the previous one instead
+    const missing = chunk.filter((_, j) => !data?.[`r${j}`]);
+    if (missing.length) throw new Error(`no star count for ${missing.join(', ')}`);
+    for (const v of Object.values(data)) stars += v.stargazerCount;
   }
   return { repos: slugs.length, stars };
 }
