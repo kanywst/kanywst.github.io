@@ -230,8 +230,15 @@ a {
   display: block;
 }
 
-.text-content p {
+.text-content p,
+.hero-hi {
   margin: 0 0 18px 0;
+}
+
+/* the greeting is the page's <h1> now (it had none), styled to read exactly as the line it was */
+.hero-hi {
+  font: inherit;
+  letter-spacing: inherit;
 }
 
 /* The tagline is the thesis of the whole page, and at the body size on a wide screen it read
@@ -309,6 +316,41 @@ a {
   animation: breathe 2.6s ease-in-out infinite;
 }
 
+.hint-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.hint-more:hover {
+  color: var(--fg);
+}
+
+.hint-more:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* headings take focus when the detail opens (tabindex=-1); a keyboard user gets a quiet
+   marker, a mouse user — whose click moved focus here — gets none */
+.label:focus {
+  outline: none;
+}
+
+.label:focus-visible {
+  outline: 1px solid var(--accent-line);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
 /* ---------- detail ---------- */
 
 .detail {
@@ -322,6 +364,8 @@ a {
    single upstream pair. */
 .sec {
   margin-top: 60px;
+  /* deep links (#advisories …) land with a little air above the heading */
+  scroll-margin-top: 24px;
 }
 
 .sec--open {

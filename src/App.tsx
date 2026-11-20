@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { flushSync } from 'react-dom';
 import profile from './data/profile.json';
 import {
@@ -156,7 +156,7 @@ function Hero({ compact }: { compact: boolean }) {
         />
 
         <div className="text-content">
-          <p>👋 Hi, I&rsquo;m {me.name}.</p>
+          <h1 className="hero-hi">👋 Hi, I&rsquo;m {me.name}.</h1>
           <p>
             {me.tagline.split(/(Authorization)/).map((part, i) =>
               part === 'Authorization' ? (
@@ -568,10 +568,12 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
 
   return (
     <div className="detail">
-      <section className="sec">
+      <section className="sec" id="work" aria-labelledby="work-h">
         <div className="sec-head reveal" style={at(workHead)}>
           <div className="label-row">
-            <h2 className="label">selected work</h2>
+            <h2 className="label" id="work-h" tabIndex={-1}>
+              selected work
+            </h2>
             <NewCount items={ranked} now={now} />
           </div>
           <span className="label-note">every starred repo, most stars first</span>
@@ -627,10 +629,12 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
       {/* the one section that gets room rather than chrome: these are real disclosed findings
           in named upstream projects, and letting them breathe against the dense lists below
           is what marks them as the strongest thing here */}
-      <section className="sec sec--open sec--feature">
+      <section className="sec sec--open sec--feature" id="advisories" aria-labelledby="advisories-h">
         <div className="sec-head reveal" style={at(advHead)}>
           <div className="label-row">
-            <h2 className="label">upstream · security advisories</h2>
+            <h2 className="label" id="advisories-h" tabIndex={-1}>
+              upstream · security advisories
+            </h2>
             <NewCount items={advisories} now={now} />
           </div>
           <span className="label-note">
@@ -640,10 +644,12 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
         <AdvisoryRows items={advisories} base={advRowsStart} now={now} />
       </section>
 
-      <section className="sec">
+      <section className="sec" id="pull-requests" aria-labelledby="pull-requests-h">
         <div className="sec-head reveal" style={at(prHead)}>
           <div className="label-row">
-            <h2 className="label">upstream · pull requests</h2>
+            <h2 className="label" id="pull-requests-h" tabIndex={-1}>
+              upstream · pull requests
+            </h2>
             {/* counted over the state filter, so the number always matches what pressing it shows */}
             <NewCount
               items={statePrs}
@@ -687,10 +693,12 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
         )}
       </section>
 
-      <section className="sec sec--tight">
+      <section className="sec sec--tight" id="issues" aria-labelledby="issues-h">
         <div className="sec-head reveal" style={at(issuesHead)}>
           <div className="label-row">
-            <h2 className="label">upstream · issues filed</h2>
+            <h2 className="label" id="issues-h" tabIndex={-1}>
+              upstream · issues filed
+            </h2>
             <NewCount
               items={issues}
               now={now}
@@ -717,10 +725,12 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
         )}
       </section>
 
-      <section className="sec sec--open">
+      <section className="sec sec--open" id="0-draft" aria-labelledby="0-draft-h">
         <div className="sec-head reveal" style={at(draftHead)}>
           <div className="label-row">
-            <h2 className="label">0-draft</h2>
+            <h2 className="label" id="0-draft-h" tabIndex={-1}>
+              0-draft
+            </h2>
             <NewCount items={org.repos} now={now} />
           </div>
           <a className="label-note link" href={org.url} target="_blank" rel="noreferrer">
@@ -780,8 +790,17 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
 // everything "new" on the page, for the one-line teaser on the landing
 const allTracked = [...flagships, ...advisories, ...contributions, ...issues, ...org.repos];
 
+// Sections a link can open straight to: kanywst.github.io/#advisories skips the landing.
+const SECTIONS = ['work', 'advisories', 'pull-requests', 'issues', '0-draft'];
+const hashSection = () => {
+  const h = decodeURIComponent(window.location.hash.slice(1));
+  return SECTIONS.includes(h) ? h : null;
+};
+
 export default function App() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(() => hashSection() !== null);
+  const moreRef = useRef<HTMLButtonElement>(null);
+  const opened = useRef(false);
   // read once per mount: a badge flipping mid-visit at UTC midnight helps nobody
   const [now] = useState(todayUTC);
   const freshCount = allTracked.filter((x) => isNew(x.url, now)).length;
@@ -805,10 +824,37 @@ export default function App() {
 
   const toggle = useCallback(() => setOpenAnimated((v) => !v), [setOpenAnimated]);
 
+  // Focus follows the swap. The element that had it (the landing, or the collapse button)
+  // unmounts, which used to drop focus to <body> and leave a keyboard user at the top of an
+  // unannounced page. Opening lands on the linked section's heading, or the first one;
+  // closing returns to the button that opens it again.
+  useEffect(() => {
+    if (open) {
+      const target = hashSection() ?? SECTIONS[0];
+      const heading = document.getElementById(`${target}-h`);
+      heading?.focus({ preventScroll: true });
+      if (hashSection()) document.getElementById(target)?.scrollIntoView?.();
+    } else if (opened.current) {
+      moreRef.current?.focus();
+      // collapsing drops a section hash, so a reload lands where the reader now is
+      if (hashSection()) history.replaceState(null, '', window.location.pathname);
+    }
+    opened.current ||= open;
+  }, [open]);
+
+  useEffect(() => {
+    const onHash = () => {
+      if (hashSection()) setOpenAnimated(true);
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, [setOpenAnimated]);
+
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {
-        setOpenAnimated(false);
+        // collapsed already: nothing to close, and no view transition to run for nothing
+        if (open) setOpenAnimated(false);
         return;
       }
       // Space only *opens* (collapsed → detail). Once open the page can be long,
@@ -837,6 +883,10 @@ export default function App() {
           <Detail onClose={() => setOpenAnimated(false)} now={now} />
         </>
       ) : (
+        // A click anywhere still opens it, as a mouse convenience. The landing used to be one
+        // big role="button" with the three hero links nested inside it — interactive content
+        // inside a button, and an aria-label that replaced the hero's own text. The real
+        // control is now the "more" button; the wrapper is only a click target.
         <div
           className="landing"
           onClick={(e) => {
@@ -844,20 +894,21 @@ export default function App() {
             if ((e.target as HTMLElement).closest('a, button')) return;
             toggle();
           }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              toggle();
-            }
-          }}
-          role="button"
-          tabIndex={0}
-          aria-label="Open profile details"
         >
           <Hero compact={false} />
           <div className="hint">
-            <span className="kbd">space</span>
-            <span>more</span>
+            <button
+              ref={moreRef}
+              type="button"
+              className="hint-more"
+              aria-expanded={false}
+              onClick={toggle}
+            >
+              <span className="kbd" aria-hidden="true">
+                space
+              </span>
+              <span>more</span>
+            </button>
             {freshCount > 0 && (
               <span className="hint-new">
                 <i className="new-dot" aria-hidden="true" />
