@@ -1,6 +1,15 @@
 import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { flushSync } from 'react-dom';
 import profile from './data/profile.json';
+import {
+  WINDOW_DAYS,
+  daysAgo,
+  firstSeen,
+  isNew,
+  movements,
+  todayUTC,
+  type Movement,
+} from './fresh';
 
 const { profile: me, flagships, advisories, org, contributions, issues } = profile;
 
@@ -37,6 +46,63 @@ function LangDot({ lang }: { lang: string }) {
     <span className="lang">
       <i className="lang-dot" style={{ background: LANG_COLOR[lang] ?? 'var(--faint)' }} />
       {lang}
+    </span>
+  );
+}
+
+// "new" is a word, not a dot: a dot alone is colour carrying meaning (WCAG 1.4.1), and the
+// word is short enough in a mono face to sit inline with a repo name.
+function NewTag({ url, now }: { url: string; now: string }) {
+  if (!isNew(url, now)) return null;
+  const d = firstSeen(url);
+  return (
+    <span className="new-tag" title={d ? `first seen ${d} (${daysAgo(d, now)})` : undefined}>
+      <i className="new-dot" aria-hidden="true" />
+      new
+    </span>
+  );
+}
+
+// Chart-style movement against a week ago. Glyph + number for the eye, a full sentence for
+// a screen reader; nothing at all when nothing moved, so the marks stay rare enough to read.
+function RankMove({ m }: { m: Movement | undefined }) {
+  if (!m) return null;
+  if (m.kind === 're')
+    return (
+      <span className="rank-move re" title="back in the ranking this week">
+        re<span className="sr-only"> (re-entered this week)</span>
+      </span>
+    );
+  if (m.kind !== 'move' || m.climbed === 0) return null;
+  const up = m.climbed > 0;
+  const n = Math.abs(m.climbed);
+  return (
+    <span
+      className={`rank-move ${up ? 'up' : 'down'}`}
+      title={`${up ? 'up' : 'down'} ${n} place${n === 1 ? '' : 's'} since last week`}
+    >
+      <span aria-hidden="true">
+        {up ? '▲' : '▼'}
+        {n}
+      </span>
+      <span className="sr-only">
+        {' '}
+        ({up ? 'up' : 'down'} {n} place{n === 1 ? '' : 's'} this week)
+      </span>
+    </span>
+  );
+}
+
+function StarGain({ m }: { m: Movement | undefined }) {
+  const gained = m && m.kind !== 'new' ? m.gained : 0;
+  if (!gained) return null;
+  return (
+    <span className="star-gain" title={`+${gained} star${gained === 1 ? '' : 's'} in the last ${WINDOW_DAYS} days`}>
+      <span aria-hidden="true">+{gained}</span>
+      <span className="sr-only">
+        {' '}
+        ({gained} new star{gained === 1 ? '' : 's'} this week)
+      </span>
     </span>
   );
 }
@@ -128,7 +194,19 @@ type Flagship = {
 
 // #1 wears the crown, #2/#3 carry their numeral. Rank is the only difference between
 // them: same card, progressively smaller.
-function PodiumCard({ repo, rank, style }: { repo: Flagship; rank: number; style: CSSProperties }) {
+function PodiumCard({
+  repo,
+  rank,
+  move,
+  now,
+  style,
+}: {
+  repo: Flagship;
+  rank: number;
+  move: Movement | undefined;
+  now: string;
+  style: CSSProperties;
+}) {
   return (
     <li className="reveal" style={style}>
       <a className={`pod pod-${rank}`} href={repo.url} target="_blank" rel="noreferrer">
@@ -140,11 +218,17 @@ function PodiumCard({ repo, rank, style }: { repo: Flagship; rank: number; style
         <span className="sr-only">
           Rank {rank}, {repo.stars} star{repo.stars === 1 ? '' : 's'}.
         </span>
-        <span className="pod-rank" aria-hidden="true">
-          {rank === 1 ? <CrownIcon /> : rank}
+        <span className="pod-rank-col">
+          <span className="pod-rank" aria-hidden="true">
+            {rank === 1 ? <CrownIcon /> : rank}
+          </span>
+          <RankMove m={move} />
         </span>
         <span className="pod-body">
-          <span className="pod-name">{repo.name}</span>
+          <span className="pod-title">
+            <span className="pod-name">{repo.name}</span>
+            <NewTag url={repo.url} now={now} />
+          </span>
           <span className="pod-desc">{repo.tagline}</span>
           <span className="pod-meta">
             <LangDot lang={repo.lang} />
@@ -154,6 +238,7 @@ function PodiumCard({ repo, rank, style }: { repo: Flagship; rank: number; style
         <span className="pod-stars" aria-hidden="true">
           <span className="pod-star-glyph">★</span>
           <b>{repo.stars}</b>
+          <StarGain m={move} />
         </span>
       </a>
     </li>
@@ -183,18 +268,19 @@ function Marker({ kind, label }: { kind: string; label: string }) {
   );
 }
 
-function ContribRows({ items, base }: { items: Contribution[]; base: number }) {
+function ContribRows({ items, base, now }: { items: Contribution[]; base: number; now: string }) {
   return (
     <ul className="rows">
       {items.map((c, i) => (
         <li key={c.url} className="reveal" style={{ ['--i']: base + i } as CSSProperties}>
-          <a className="row entry" href={c.url} target="_blank" rel="noreferrer">
+          <a className={`row entry${isNew(c.url, now) ? ' is-new' : ''}`} href={c.url} target="_blank" rel="noreferrer">
             <Marker kind={c.state} label={c.state} />
             <span className="row-body">
               <span className="row-head">
                 <span className="row-name mono" title={`${c.owner}/${c.repo}#${c.number}`}>
                   {c.owner}/<b>{c.repo}</b>
                   <span className="num">#{c.number}</span>
+                  <NewTag url={c.url} now={now} />
                 </span>
                 {c.domain && <span className="m-domain">{c.domain}</span>}
               </span>
@@ -218,17 +304,18 @@ type Advisory = {
   url: string;
 };
 
-function AdvisoryRows({ items, base }: { items: Advisory[]; base: number }) {
+function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; now: string }) {
   return (
     <ul className="rows">
       {items.map((a, i) => (
         <li key={a.url} className="reveal" style={{ ['--i']: base + i } as CSSProperties}>
-          <a className="row entry" href={a.url} target="_blank" rel="noreferrer">
+          <a className={`row entry${isNew(a.url, now) ? ' is-new' : ''}`} href={a.url} target="_blank" rel="noreferrer">
             <Marker kind={`sev-${a.severity}`} label={a.severity} />
             <span className="row-body">
               <span className="row-head">
                 <span className="row-name mono">
                   {a.owner}/<b>{a.repo}</b>
+                  <NewTag url={a.url} now={now} />
                 </span>
                 <span className="row-meta-inline">
                   {a.cve ? (
@@ -370,7 +457,51 @@ export function ContribCloud({
   );
 }
 
-function Detail({ onClose }: { onClose: () => void }) {
+// "3 new" beside a section heading, so an addition that sorts below the preview fold is still
+// announced where the reader is already looking.
+// On the long lists it doubles as a filter: the lists keep their order (merged first, then
+// by date), so this week's open PR can sit behind the preview fold, and one press brings
+// exactly those rows up instead of reshuffling the list for everyone.
+function NewCount({
+  items,
+  now,
+  pressed,
+  onToggle,
+}: {
+  items: { url: string }[];
+  now: string;
+  pressed?: boolean;
+  onToggle?: () => void;
+}) {
+  const n = items.filter((x) => isNew(x.url, now)).length;
+  if (!n) return null;
+  const body = (
+    <>
+      <i className="new-dot" aria-hidden="true" />
+      {n} new
+    </>
+  );
+  const title = `first seen in the last ${WINDOW_DAYS} days`;
+  if (!onToggle)
+    return (
+      <span className="sec-new" title={title}>
+        {body}
+      </span>
+    );
+  return (
+    <button
+      className={`sec-new as-button${pressed ? ' on' : ''}`}
+      title={pressed ? 'show every row again' : `${title} — show only these`}
+      aria-pressed={pressed}
+      onClick={onToggle}
+    >
+      {body}
+    </button>
+  );
+}
+
+function Detail({ onClose, now }: { onClose: () => void; now: string }) {
+  const moves = useMemo(() => movements(ranked, now), [now]);
   const prCount = (s: string) => contributions.filter((c) => c.state === s).length;
   // closed PRs are rejected/superseded, so hidden by default and toggleable
   const [active, setActive] = useState<Set<string>>(() => new Set(['merged', 'open']));
@@ -383,13 +514,20 @@ function Detail({ onClose }: { onClose: () => void }) {
       else next.add(s);
       return next;
     });
-  const visiblePrs = contributions.filter((c) => active.has(c.state));
-  const shownPrs = prsExpanded ? visiblePrs : visiblePrs.slice(0, PREVIEW_ROWS);
-  const shownIssues = issuesExpanded ? issues : issues.slice(0, PREVIEW_ROWS);
+  const [newPrsOnly, setNewPrsOnly] = useState(false);
+  const [newIssuesOnly, setNewIssuesOnly] = useState(false);
+  const visiblePrs = contributions.filter(
+    (c) => active.has(c.state) && (!newPrsOnly || isNew(c.url, now)),
+  );
+  const visibleIssues = newIssuesOnly ? issues.filter((x) => isNew(x.url, now)) : issues;
+  // "new only" is already a short list, so it skips the preview cut
+  const shownPrs = prsExpanded || newPrsOnly ? visiblePrs : visiblePrs.slice(0, PREVIEW_ROWS);
+  const shownIssues =
+    issuesExpanded || newIssuesOnly ? visibleIssues : visibleIssues.slice(0, PREVIEW_ROWS);
   const hasPrCloud = contributions.length > 0;
   const hasIssueCloud = issues.length > 0;
-  const hasPrMore = visiblePrs.length > PREVIEW_ROWS;
-  const hasIssueMore = issues.length > PREVIEW_ROWS;
+  const hasPrMore = !newPrsOnly && visiblePrs.length > PREVIEW_ROWS;
+  const hasIssueMore = !newIssuesOnly && issues.length > PREVIEW_ROWS;
 
   // Stagger indices, precomputed in DOM order so every revealed element gets a monotonic
   // --i without mutating a counter mid-render (keeps render pure under Strict/concurrent).
@@ -414,28 +552,50 @@ function Detail({ onClose }: { onClose: () => void }) {
     <div className="detail">
       <section className="sec">
         <div className="sec-head reveal" style={at(workHead)}>
-          <h2 className="label">selected work</h2>
+          <div className="label-row">
+            <h2 className="label">selected work</h2>
+            <NewCount items={ranked} now={now} />
+          </div>
           <span className="label-note">every starred repo, most stars first</span>
         </div>
         <ol className="podium">
           {ranked.slice(0, PODIUM).map((f, i) => (
-            <PodiumCard key={f.url} repo={f} rank={i + 1} style={at(flagshipsStart + i)} />
+            <PodiumCard
+              key={f.url}
+              repo={f}
+              rank={i + 1}
+              move={moves.get(f.name)}
+              now={now}
+              style={at(flagshipsStart + i)}
+            />
           ))}
         </ol>
         <ul className="rows">
           {ranked.slice(PODIUM).map((f, i) => (
             <li key={f.url} className="reveal" style={at(flagshipsStart + PODIUM + i)}>
-              <a className="row entry work" href={f.url} target="_blank" rel="noreferrer">
-                <span className="row-rank" aria-hidden="true">
-                  {String(PODIUM + i + 1).padStart(2, '0')}
+              <a
+                className={`row entry work${isNew(f.url, now) ? ' is-new' : ''}`}
+                href={f.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="row-rank">
+                  <span aria-hidden="true">{String(PODIUM + i + 1).padStart(2, '0')}</span>
+                  <RankMove m={moves.get(f.name)} />
                 </span>
                 <span className="row-body">
                   <span className="row-head">
-                    <span className="row-name">{f.name}</span>
+                    <span className="row-title">
+                      <span className="row-name">{f.name}</span>
+                      <NewTag url={f.url} now={now} />
+                    </span>
                     <span className="row-meta">
                       <LangDot lang={f.lang} />
                       {f.version && <span className="m-ver">{f.version}</span>}
-                      <span className="m-star">★{f.stars}</span>
+                      <span className="m-star">
+                        ★{f.stars}
+                        <StarGain m={moves.get(f.name)} />
+                      </span>
                     </span>
                   </span>
                   <span className="row-desc">{f.tagline}</span>
@@ -451,17 +611,28 @@ function Detail({ onClose }: { onClose: () => void }) {
           is what marks them as the strongest thing here */}
       <section className="sec sec--open sec--feature">
         <div className="sec-head reveal" style={at(advHead)}>
-          <h2 className="label">upstream · security advisories</h2>
+          <div className="label-row">
+            <h2 className="label">upstream · security advisories</h2>
+            <NewCount items={advisories} now={now} />
+          </div>
           <span className="label-note">
             {advisories.length} disclosed · {cveCount} CVE{cveCount === 1 ? '' : 's'} assigned
           </span>
         </div>
-        <AdvisoryRows items={advisories} base={advRowsStart} />
+        <AdvisoryRows items={advisories} base={advRowsStart} now={now} />
       </section>
 
       <section className="sec">
         <div className="sec-head reveal" style={at(prHead)}>
-          <h2 className="label">upstream · pull requests</h2>
+          <div className="label-row">
+            <h2 className="label">upstream · pull requests</h2>
+            <NewCount
+              items={contributions}
+              now={now}
+              pressed={newPrsOnly}
+              onToggle={() => setNewPrsOnly((v) => !v)}
+            />
+          </div>
           <div className="filter" role="group" aria-label="filter pull requests by state">
             {PR_STATES.map((s) => (
               <button
@@ -484,7 +655,7 @@ function Detail({ onClose }: { onClose: () => void }) {
           />
         )}
         <div id="pr-list" tabIndex={-1}>
-          <ContribRows items={shownPrs} base={prRowsStart} />
+          <ContribRows items={shownPrs} base={prRowsStart} now={now} />
         </div>
         {hasPrMore && (
           <MoreButton
@@ -499,14 +670,22 @@ function Detail({ onClose }: { onClose: () => void }) {
 
       <section className="sec sec--tight">
         <div className="sec-head reveal" style={at(issuesHead)}>
-          <h2 className="label">upstream · issues filed</h2>
+          <div className="label-row">
+            <h2 className="label">upstream · issues filed</h2>
+            <NewCount
+              items={issues}
+              now={now}
+              pressed={newIssuesOnly}
+              onToggle={() => setNewIssuesOnly((v) => !v)}
+            />
+          </div>
           <span className="label-note">{issues.length} bug reports &amp; proposals in external projects</span>
         </div>
         {hasIssueCloud && (
           <ContribCloud items={issues} noun="issue" style={at(issuesHead + 1)} skipTo="issue-list" />
         )}
         <div id="issue-list" tabIndex={-1}>
-          <ContribRows items={shownIssues} base={issueRowsStart} />
+          <ContribRows items={shownIssues} base={issueRowsStart} now={now} />
         </div>
         {hasIssueMore && (
           <MoreButton
@@ -546,7 +725,13 @@ function Detail({ onClose }: { onClose: () => void }) {
       </section>
 
       <footer className="foot reveal" style={at(footerAt)}>
-        <span>synced {profile.meta?.syncedAt} · auto-generated from the GitHub &amp; dev.to APIs</span>
+        <span>
+          synced {profile.meta?.syncedAt} · auto-generated from the GitHub &amp; dev.to APIs
+          <span className="foot-legend">
+            <span className="new-tag">new</span> / <span className="rank-move up">▲</span> /{' '}
+            <span className="star-gain">+★</span> = last {WINDOW_DAYS} days
+          </span>
+        </span>
         <button className="collapse" onClick={onClose}>
           <span className="kbd">esc</span> collapse
         </button>
@@ -555,8 +740,14 @@ function Detail({ onClose }: { onClose: () => void }) {
   );
 }
 
+// everything "new" on the page, for the one-line teaser on the landing
+const allTracked = [...flagships, ...advisories, ...contributions, ...issues];
+
 export default function App() {
   const [open, setOpen] = useState(false);
+  // read once per mount: a badge flipping mid-visit at UTC midnight helps nobody
+  const [now] = useState(todayUTC);
+  const freshCount = allTracked.filter((x) => isNew(x.url, now)).length;
 
   // Drive the open/close state change through the View Transition API so the hero glides
   // from its centered (landing) position to the top, animated from the real measured
@@ -606,7 +797,7 @@ export default function App() {
       {open ? (
         <>
           <Hero compact />
-          <Detail onClose={() => setOpenAnimated(false)} />
+          <Detail onClose={() => setOpenAnimated(false)} now={now} />
         </>
       ) : (
         <div
@@ -630,6 +821,12 @@ export default function App() {
           <div className="hint">
             <span className="kbd">space</span>
             <span>more</span>
+            {freshCount > 0 && (
+              <span className="hint-new">
+                <i className="new-dot" aria-hidden="true" />
+                {freshCount} new this week
+              </span>
+            )}
           </div>
         </div>
       )}
