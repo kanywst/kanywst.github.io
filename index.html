@@ -65,6 +65,9 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- without JS the detail is already on the page (scripts/prerender.mjs), so the
+         landing's "space · more" hint would point at a control that does nothing -->
+    <noscript><style>.hint { display: none; }</style></noscript>
   </head>
   <body>
     <div id="root"></div>

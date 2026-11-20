@@ -8,7 +8,9 @@
 //   #root       the landing exactly as the client's first render paints it. main.tsx still
 //               uses createRoot (not hydrate): the "new" marks depend on the viewer's clock,
 //               so the client re-renders from scratch and replaces this — same markup, no flash.
-//   <noscript>  the full detail, for readers without JS. With JS on, browsers never parse it.
+//   <noscript>  every row of the detail, for readers without JS, in a <div> so the page keeps
+//               one <main>. With JS on, browsers never parse it. index.html hides the landing's
+//               "more" hint for these readers, since there is nothing for it to open.
 //
 // Needs `vite build --ssr src/entry-server.tsx --outDir dist-ssr` first (see package.json).
 
@@ -30,7 +32,7 @@ writeFileSync(
   html,
   page.replace(
     marker,
-    `<div id="root">${landing}</div>\n    <noscript><main class="container noscript-detail">${detail}</main></noscript>`,
+    `<div id="root">${landing}</div>\n    <noscript><div class="container noscript-detail">${detail}</div></noscript>`,
   ),
 );
 rmSync(ssr, { recursive: true, force: true });

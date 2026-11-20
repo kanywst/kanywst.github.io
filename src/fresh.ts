@@ -30,7 +30,10 @@ export function firstSeen(url: string, h: Ledger = ledger): string | undefined {
   return d && d !== BOOTSTRAP_DATE ? d : undefined;
 }
 
+// An empty `now` means "no clock": the build-time static copy has no viewer to measure a week
+// against, so it carries no marks at all rather than ones frozen at build time.
 export function isNew(url: string, now: string, h: Ledger = ledger): boolean {
+  if (!now) return false;
   const d = firstSeen(url, h);
   return !!d && d > windowStart(now) && d <= now;
 }
@@ -67,6 +70,7 @@ export function movements(
   now: string,
   h: Ledger = ledger,
 ): Map<string, Movement> {
+  if (!now) return new Map();
   const base = windowStart(now);
   const before = ranksAt(base, h);
   const out = new Map<string, Movement>();

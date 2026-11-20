@@ -832,6 +832,14 @@ a {
   white-space: nowrap;
 }
 
+.cvss-v {
+  margin-left: 4px;
+  color: var(--muted);
+  font-size: 9.5px;
+  letter-spacing: var(--track);
+  text-transform: none;
+}
+
 /* the score rides on the severity word it qualifies; the vector is in the tooltip */
 .cvss {
   margin-left: 2px;
@@ -1540,6 +1548,7 @@ a {
   padding-block: 0 64px;
 }
 
-.noscript-detail .collapse {
+.noscript-detail .collapse,
+.noscript-detail .foot-legend {
   display: none;
 }

@@ -286,6 +286,8 @@ function Marker({ kind, label, children }: { kind: string; label: string; childr
   );
 }
 
+const cvssVersion = (vector: string) => /^CVSS:(\d\.\d)/.exec(vector)?.[1] ?? '?';
+
 // month precision: the day adds nothing a reader scanning 120 rows can use
 const month = (date?: string) => date?.slice(0, 7);
 
@@ -345,6 +347,9 @@ function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; n
                 <span className="cvss" title={a.cvss.vector}>
                   <span className="sr-only"> CVSS </span>
                   {a.cvss.score.toFixed(1)}
+                  {/* GitHub picks the version behind `severity` itself, so the score names
+                      its own (v4.0 / v3.1) rather than passing as the same measurement */}
+                  <span className="cvss-v">v{cvssVersion(a.cvss.vector)}</span>
                 </span>
               )}
             </Marker>
@@ -542,13 +547,25 @@ function NewCount({
   );
 }
 
-export function Detail({ onClose, now }: { onClose: () => void; now: string }) {
+// `full` is the static copy scripts/prerender.mjs puts in <noscript>: every row in every
+// state, and no filters or expanders, since nothing can press them there.
+export function Detail({
+  onClose,
+  now,
+  full = false,
+}: {
+  onClose: () => void;
+  now: string;
+  full?: boolean;
+}) {
   const moves = useMemo(() => movements(ranked, now), [now]);
   const prCount = (s: string) => contributions.filter((c) => c.state === s).length;
   // closed PRs are rejected/superseded, so hidden by default and toggleable
-  const [active, setActive] = useState<Set<string>>(() => new Set(['merged', 'open']));
-  const [prsExpanded, setPrsExpanded] = useState(false);
-  const [issuesExpanded, setIssuesExpanded] = useState(false);
+  const [active, setActive] = useState<Set<string>>(
+    () => new Set(full ? PR_STATES : ['merged', 'open']),
+  );
+  const [prsExpanded, setPrsExpanded] = useState(full);
+  const [issuesExpanded, setIssuesExpanded] = useState(full);
   const toggleState = (s: string) =>
     setActive((prev) => {
       const next = new Set(prev);
@@ -558,10 +575,10 @@ export function Detail({ onClose, now }: { onClose: () => void; now: string }) {
     });
   const [newPrsOnly, setNewPrsOnly] = useState(false);
   const [newIssuesOnly, setNewIssuesOnly] = useState(false);
-  const [orgExpanded, setOrgExpanded] = useState(false);
+  const [orgExpanded, setOrgExpanded] = useState(full);
   // discovered newest-first, so the preview is the org's latest work
   const shownOrg = orgExpanded ? org.repos : org.repos.slice(0, ORG_PREVIEW);
-  const hasOrgMore = org.repos.length > ORG_PREVIEW;
+  const hasOrgMore = !full && org.repos.length > ORG_PREVIEW;
   const statePrs = contributions.filter((c) => active.has(c.state));
   const visiblePrs = newPrsOnly ? statePrs.filter((c) => isNew(c.url, now)) : statePrs;
   const visibleIssues = newIssuesOnly ? issues.filter((x) => isNew(x.url, now)) : issues;
@@ -571,8 +588,8 @@ export function Detail({ onClose, now }: { onClose: () => void; now: string }) {
     issuesExpanded || newIssuesOnly ? visibleIssues : visibleIssues.slice(0, PREVIEW_ROWS);
   const hasPrCloud = contributions.length > 0;
   const hasIssueCloud = issues.length > 0;
-  const hasPrMore = !newPrsOnly && visiblePrs.length > PREVIEW_ROWS;
-  const hasIssueMore = !newIssuesOnly && issues.length > PREVIEW_ROWS;
+  const hasPrMore = !full && !newPrsOnly && visiblePrs.length > PREVIEW_ROWS;
+  const hasIssueMore = !full && !newIssuesOnly && issues.length > PREVIEW_ROWS;
 
   // Stagger indices, precomputed in DOM order so every revealed element gets a monotonic
   // --i without mutating a counter mid-render (keeps render pure under Strict/concurrent).
@@ -686,6 +703,7 @@ export function Detail({ onClose, now }: { onClose: () => void; now: string }) {
               onToggle={() => setNewPrsOnly((v) => !v)}
             />
           </div>
+          {!full && (
           <div className="filter" role="group" aria-label="filter pull requests by state">
             {PR_STATES.map((s) => (
               <button
@@ -698,6 +716,7 @@ export function Detail({ onClose, now }: { onClose: () => void; now: string }) {
               </button>
             ))}
           </div>
+          )}
         </div>
         {hasPrCloud && (
           <ContribCloud
