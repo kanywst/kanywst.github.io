@@ -21,6 +21,10 @@ on:
         description: 'Accept upstream PR/issue lists that shrank by more than half'
         type: boolean
         default: false
+      force_writing:
+        description: 'Accept a dev.to article list that shrank by more than half'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -51,6 +55,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           FORCE_ORG: ${{ inputs.force_org && '1' || '' }}
           FORCE_PRS: ${{ inputs.force_prs && '1' || '' }}
+          FORCE_WRITING: ${{ inputs.force_writing && '1' || '' }}
         run: |
           node scripts/sync-profile.mjs
           node scripts/sync-advisories.mjs

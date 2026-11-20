@@ -33,23 +33,31 @@ async function fetchAll() {
 }
 
 const profile = JSON.parse(readFileSync(FILE, 'utf8'));
+// Held like the sync-profile guards: warned, annotated on the run summary, and recorded in
+// meta.kept. syncedAt is left alone — it dates the GitHub lists, which this script doesn't own.
+function hold(why) {
+  const msg = `writing: ${why}; keeping the previous list`;
+  console.warn(`! ${msg}`);
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-devto::${msg}`);
+  profile.meta ??= {};
+  profile.meta.kept = [...new Set([...(profile.meta.kept ?? []), 'writing'])];
+  writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');
+  process.exit(0);
+}
+
 let rows;
 try {
   rows = writingRows(await fetchAll());
 } catch (err) {
-  console.warn(`! dev.to fetch failed, keeping the previous writing list: ${err.message}`);
-  process.exit(0);
+  hold(`dev.to fetch failed (${err.message})`);
 }
 const prev = profile.writing?.length ?? 0;
-// same shrink guard as the 0-draft list: a short 200 (a degraded or cached page) would
-// otherwise cut the section, its count and the feed down to a handful of articles
-if (!rows.length || rows.length < prev / 2) {
-  const msg = `dev.to returned ${rows.length} articles (had ${prev}); keeping the previous writing list`;
-  console.warn(`! ${msg}`);
-  // an Actions annotation, so a guard that keeps tripping shows on the run summary
-  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-devto::${msg}`);
-  process.exit(0);
-}
+// Same shrink guard as the 0-draft list, with the same 10-row floor: a short 200 (a degraded
+// or cached page) would otherwise cut the section, its count and the feed to a handful.
+// FORCE_WRITING=1 (force_writing workflow input) accepts a real drop, including to zero.
+if (!process.env.FORCE_WRITING && prev >= 10 && (!rows.length || rows.length < prev / 2))
+  hold(`dev.to returned ${rows.length} articles, had ${prev} (FORCE_WRITING=1 to accept)`);
+if (!rows.length && !prev) process.exit(0);
 
 profile.writing = rows;
 writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');

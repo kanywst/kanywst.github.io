@@ -182,7 +182,8 @@ const hold = (name, why) => {
 };
 
 const org = fetchOrgRepos();
-if (!org) kept.push('0-draft repos');
+if (!org) hold('0-draft repos', 'repo list unavailable');
+let orgWritten = false;
 const prevOrg = profile.org.repos?.length ?? 0;
 // a sharp drop is far likelier a degraded fetch than half the org archived overnight; keep
 // the last good list and say so, the same trade the empty-PR guard makes
@@ -194,7 +195,10 @@ const orgShrank =
   org && prevOrg >= 10 && org.rows.length < prevOrg / 2 && !process.env.FORCE_ORG;
 if (org && (!org.rows.length || orgShrank))
   hold('0-draft repos', `fell from ${prevOrg} to ${org.rows.length} (FORCE_ORG=1 to accept)`);
-else if (org) profile.org.repos = org.rows;
+else if (org) {
+  profile.org.repos = org.rows;
+  orgWritten = true;
+}
 
 // --- external PRs (all states; UI filters closed) and issues ---
 // a failed search (gh error, or the 1000-result cap) is held like any other guard
@@ -298,9 +302,12 @@ try {
   if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
 }
 // don't wipe a real issue list if the issues fetch came back empty (gh hiccup)
-// an empty issue list is kept too (gh hiccup); only a real answer replaces it
-if (issues?.length) profile.issues = guardList('upstream issues', issues, profile.issues);
-else profile.issues ??= [];
+// An empty answer from a search that succeeded is accepted below 10 rows (all closed out or
+// transferred is possible); from 10 up it is far likelier a hiccup and is held.
+if (issues && !issues.length && (profile.issues?.length ?? 0) >= 10 && !process.env.FORCE_PRS)
+  hold('upstream issues', 'search returned none (FORCE_PRS=1 to accept)');
+else if (issues) profile.issues = guardList('upstream issues', issues, profile.issues);
+profile.issues ??= [];
 profile.meta ??= {};
 // syncedAt is the page's "this data is current" claim, so a run whose core lists were held
 // back by a guard doesn't advance it; meta.kept names what was held, until a clean run.
@@ -315,7 +322,7 @@ if (kept.length) {
 writeFileSync(FILE, JSON.stringify(profile, null, 2) + '\n');
 // first-seen dates + star log behind the "new" / "+N ★" marks (src/data/history.json)
 // a 0-draft repo is new from the day it was created, not the day discovery first saw it
-if (org) {
+if (orgWritten) {
   const created = new Map(org.all.map((r) => [r.url, r.createdAt.slice(0, 10)]));
   seedFirstSeen(Object.fromEntries(org.rows.map((r) => [r.url, created.get(r.url)])));
 }
