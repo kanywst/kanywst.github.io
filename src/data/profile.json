@@ -1518,7 +1518,11 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-20"
+    "syncedAt": "2026-11-20",
+    "mergedReach": {
+      "repos": 37,
+      "stars": 286077
+    }
   },
   "issues": [
     {
