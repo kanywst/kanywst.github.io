@@ -235,9 +235,13 @@ function PodiumCard({
             {repo.version && <span className="m-ver">{repo.version}</span>}
           </span>
         </span>
-        <span className="pod-stars" aria-hidden="true">
-          <span className="pod-star-glyph">★</span>
-          <b>{repo.stars}</b>
+        {/* only the glyph and the number are hidden (the sr-only rank line above already
+            says the count); the gain stays outside so its sentence is announced */}
+        <span className="pod-stars">
+          <span className="pod-star-glyph" aria-hidden="true">
+            ★
+          </span>
+          <b aria-hidden="true">{repo.stars}</b>
           <StarGain m={move} />
         </span>
       </a>
@@ -516,9 +520,8 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
     });
   const [newPrsOnly, setNewPrsOnly] = useState(false);
   const [newIssuesOnly, setNewIssuesOnly] = useState(false);
-  const visiblePrs = contributions.filter(
-    (c) => active.has(c.state) && (!newPrsOnly || isNew(c.url, now)),
-  );
+  const statePrs = contributions.filter((c) => active.has(c.state));
+  const visiblePrs = newPrsOnly ? statePrs.filter((c) => isNew(c.url, now)) : statePrs;
   const visibleIssues = newIssuesOnly ? issues.filter((x) => isNew(x.url, now)) : issues;
   // "new only" is already a short list, so it skips the preview cut
   const shownPrs = prsExpanded || newPrsOnly ? visiblePrs : visiblePrs.slice(0, PREVIEW_ROWS);
@@ -626,8 +629,9 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
         <div className="sec-head reveal" style={at(prHead)}>
           <div className="label-row">
             <h2 className="label">upstream · pull requests</h2>
+            {/* counted over the state filter, so the number always matches what pressing it shows */}
             <NewCount
-              items={contributions}
+              items={statePrs}
               now={now}
               pressed={newPrsOnly}
               onToggle={() => setNewPrsOnly((v) => !v)}
