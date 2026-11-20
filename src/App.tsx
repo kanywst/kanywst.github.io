@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import profile from './data/profile.json';
 import {
@@ -46,9 +46,10 @@ const LANG_COLOR: Record<string, string> = {
   List: '#8b8b93',
 };
 
-// avatars.githubusercontent.com directly: github.com/<login>.png answers with a 302 to it,
-// which cost ~100 extra round trips on the contribution clouds alone
-const avatar = (login: string) => `https://avatars.githubusercontent.com/${login}?s=160`;
+// github.com/<login>.png, not avatars.githubusercontent.com/<login>: the short form is keyed
+// on user logins and hands an org (spiffe, kubernetes, …) the default identicon. The .png URL
+// costs a 302, which the preconnect in index.html keeps cheap.
+const avatar = (login: string) => `https://github.com/${login}.png?size=160`;
 
 function LangDot({ lang }: { lang: string }) {
   if (!lang) return null;
@@ -267,20 +268,26 @@ type Contribution = {
   domain: string;
   title: string;
   url: string;
+  // landed (merged/closed) or, still open, opened — YYYY-MM-DD
+  date?: string;
 };
 
 // A state marker rather than a filled badge. The old 70px block put the loudest element of
 // every row in the column carrying the least information — with the default filter on,
 // "MERGED" repeated in teal down the whole list and read as a stripe, not as data. The word
 // stays in the DOM (color alone is not an accessible carrier); the dot does the scanning.
-function Marker({ kind, label }: { kind: string; label: string }) {
+function Marker({ kind, label, children }: { kind: string; label: string; children?: ReactNode }) {
   return (
     <span className={`marker marker-${kind}`}>
       <i className="marker-dot" aria-hidden="true" />
       {label}
+      {children}
     </span>
   );
 }
+
+// month precision: the day adds nothing a reader scanning 120 rows can use
+const month = (date?: string) => date?.slice(0, 7);
 
 function ContribRows({ items, base, now }: { items: Contribution[]; base: number; now: string }) {
   return (
@@ -296,7 +303,14 @@ function ContribRows({ items, base, now }: { items: Contribution[]; base: number
                   <span className="num">#{c.number}</span>
                   <NewTag url={c.url} now={now} />
                 </span>
-                {c.domain && <span className="m-domain">{c.domain}</span>}
+                <span className="row-meta-inline">
+                  {c.domain && <span className="m-domain">{c.domain}</span>}
+                  {c.date && (
+                    <time className="m-date" dateTime={c.date} title={c.date}>
+                      {month(c.date)}
+                    </time>
+                  )}
+                </span>
               </span>
               <span className="row-desc">{c.title}</span>
             </span>
@@ -316,6 +330,8 @@ type Advisory = {
   title: string;
   domain: string;
   url: string;
+  cvss?: { score: number; vector: string };
+  published?: string;
 };
 
 function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; now: string }) {
@@ -324,7 +340,14 @@ function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; n
       {items.map((a, i) => (
         <li key={a.url} className="reveal" style={{ ['--i']: base + i } as CSSProperties}>
           <a className={`row entry${isNew(a.url, now) ? ' is-new' : ''}`} href={a.url} target="_blank" rel="noreferrer">
-            <Marker kind={`sev-${a.severity}`} label={a.severity} />
+            <Marker kind={`sev-${a.severity}`} label={a.severity}>
+              {a.cvss && (
+                <span className="cvss" title={a.cvss.vector}>
+                  <span className="sr-only"> CVSS </span>
+                  {a.cvss.score.toFixed(1)}
+                </span>
+              )}
+            </Marker>
             <span className="row-body">
               <span className="row-head">
                 <span className="row-name mono">
@@ -338,6 +361,11 @@ function AdvisoryRows({ items, base, now }: { items: Advisory[]; base: number; n
                     <span className="ghsa">{a.ghsa}</span>
                   )}
                   <span className="m-domain">{a.domain}</span>
+                  {a.published && (
+                    <time className="m-date" dateTime={a.published} title={`published ${a.published}`}>
+                      {month(a.published)}
+                    </time>
+                  )}
                 </span>
               </span>
               <span className="row-desc">{a.title}</span>

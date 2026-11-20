@@ -339,16 +339,10 @@ a {
   border-radius: 6px;
 }
 
-/* headings take focus when the detail opens (tabindex=-1); a keyboard user gets a quiet
-   marker, a mouse user — whose click moved focus here — gets none */
+/* headings take focus when the detail opens (tabindex=-1) so a screen reader lands on them;
+   a heading isn't operable, so no ring — on a deep link it would frame the title for nothing */
 .label:focus {
   outline: none;
-}
-
-.label:focus-visible {
-  outline: 1px solid var(--accent-line);
-  outline-offset: 4px;
-  border-radius: 3px;
 }
 
 /* ---------- detail ---------- */
@@ -828,6 +822,23 @@ a {
 .ghsa {
   color: var(--muted);
   font-size: 11.5px;
+}
+
+.m-date {
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* the score rides on the severity word it qualifies; the vector is in the tooltip */
+.cvss {
+  margin-left: 2px;
+  padding-left: 7px;
+  border-left: 1px solid var(--line);
+  color: var(--fg);
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .m-domain {

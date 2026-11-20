@@ -109,7 +109,7 @@ export function jsonLd(profile) {
       name: p.name,
       alternateName: p.alias,
       url: SITE,
-      image: `https://avatars.githubusercontent.com/${p.name}?s=460`,
+      image: `https://github.com/${p.name}.png?size=460`,
       description: p.tagline,
       knowsAbout: p.domains,
       sameAs: [p.links.github, p.links.devto],
