@@ -1521,7 +1521,7 @@
     "syncedAt": "2026-11-20",
     "mergedReach": {
       "repos": 37,
-      "stars": 286076
+      "stars": 286077
     }
   },
   "issues": [
@@ -2044,6 +2044,1748 @@
       "title": "proposal: crypto/tls, crypto/x509: use %w rather than %s in fmt.Errorf",
       "url": "https://github.com/golang/go/issues/77942",
       "date": "2026-03-04"
+    }
+  ],
+  "writing": [
+    {
+      "title": "A Blackjack Table That Lives in a README, Dealt by GitHub Actions",
+      "url": "https://dev.to/kanywst/a-blackjack-table-that-lives-in-a-readme-dealt-by-github-actions-5g63",
+      "date": "2026-11-15",
+      "tags": [
+        "showdev",
+        "python",
+        "githubactions"
+      ],
+      "minutes": 4,
+      "description": "Every decision is a GitHub issue, the dealer is a workflow, and the table is the README. Each click is priced exactly from the cards left in the shoe, and the dealer's hole card does not exist until it is turned over."
+    },
+    {
+      "title": "A Repo That Makes Claude Correct My English Instead of Writing It",
+      "url": "https://dev.to/kanywst/a-repo-that-makes-claude-correct-my-english-instead-of-writing-it-2g9m",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "claude",
+        "english"
+      ],
+      "minutes": 5,
+      "description": "claude-english-coach is a template repo: a CLAUDE.md that makes Claude point at your English mistakes without fixing them, plus Markdown files where every mistake and new word gets logged for quizzes."
+    },
+    {
+      "title": "a2claude Is Now a2acode: Any ACP Coding Agent Behind A2A",
+      "url": "https://dev.to/kanywst/a2claude-is-now-a2acode-any-acp-coding-agent-behind-a2a-29ie",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "ai",
+        "agents"
+      ],
+      "minutes": 5,
+      "description": "I renamed my Claude Code A2A server two weeks after shipping it, because Claude Code had become a launch command. a2acode now fronts Claude Code, Codex or Gemini CLI over ACP and keeps tool calls, diffs and permission prompts on the A2A side."
+    },
+    {
+      "title": "AWS Connectivity: Every Road From Your Network Into AWS, on One Map",
+      "url": "https://dev.to/kanywst/aws-connectivity-every-road-from-your-network-into-aws-on-one-map-12dc",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "aws",
+        "networking"
+      ],
+      "minutes": 6,
+      "description": "A bilingual explainer site that puts VPN, Direct Connect, SD-WAN, the AWS hubs, PrivateLink and hybrid DNS on one road map, with labs that run the documented rules: route selection per hub, quotas as you scale, Tokyo prices, MTU."
+    },
+    {
+      "title": "aws-credentials: STS and SigV4 as a Site You Can Click Through",
+      "url": "https://dev.to/kanywst/aws-credentials-sts-and-sigv4-as-a-site-you-can-click-through-5e20",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "aws",
+        "security"
+      ],
+      "minutes": 4,
+      "description": "An interactive, bilingual site on where AWS temporary credentials come from and how requests are signed with them. The SigV4 signer runs in the browser and reproduces AWS's published examples byte for byte, which is how it found one AWS doesn't."
+    },
+    {
+      "title": "ccretro: A Monthly Claude Code Retro That Checks Last Month's Suggestions",
+      "url": "https://dev.to/kanywst/ccretro-a-monthly-claude-code-retro-that-checks-last-months-suggestions-27gd",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "ai",
+        "claude"
+      ],
+      "minutes": 5,
+      "description": "ccretro reads your local Claude Code transcripts, compares the period with the one before, and on the next run checks whether last month's suggestions happened. A /ccretro skill turns them into skills, hooks and CLAUDE.md lines."
+    },
+    {
+      "title": "DCHP: One CBOR Request for mdoc and SD-JWT VC, In Person and Online",
+      "url": "https://dev.to/kanywst/dchp-one-cbor-request-for-mdoc-and-sd-jwt-vc-in-person-and-online-2lc1",
+      "date": "2026-11-14",
+      "tags": [
+        "identity",
+        "security",
+        "openid"
+      ],
+      "minutes": 11,
+      "description": "OpenID and ISO SC17 WG10 are writing one request/response protocol to replace the split between ISO 18013-5 and OpenID4VP. The CDDL, the transcript that binds it together, and why the key for dc_api_origin decides your KB-JWT nonce today."
+    },
+    {
+      "title": "Disk Viewers Show Sizes. I Wanted One That Says Who Put the Bytes There.",
+      "url": "https://dev.to/kanywst/disk-viewers-show-sizes-i-wanted-one-that-says-who-put-the-bytes-there-318h",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "go",
+        "macos"
+      ],
+      "minutes": 5,
+      "description": "An 81G file on my Mac was a VM disk whose guest used 3.6G. No disk viewer told me that, and docker system prune would not have freed it. chonk groups every byte by owner and reclaims with that owner's own command."
+    },
+    {
+      "title": "goi: Japanese Words People Know but Rarely Say, Each With Its Sources",
+      "url": "https://dev.to/kanywst/goi-japanese-words-people-know-but-rarely-say-each-with-its-sources-10on",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "japanese",
+        "astro"
+      ],
+      "minutes": 3,
+      "description": "A small bilingual glossary of Japanese idioms, proverbs and four-character compounds. Each word has a page with its meaning, origin, an example and the URLs it was checked against, and asks you to guess the meaning first."
+    },
+    {
+      "title": "howbad: What a Prompt-Injected Coding Agent Could Do With the Credentials on Your Machine",
+      "url": "https://dev.to/kanywst/howbad-what-a-prompt-injected-coding-agent-could-do-with-the-credentials-on-your-machine-49pd",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "security",
+        "ai"
+      ],
+      "minutes": 5,
+      "description": "Claude Code, Codex and Cursor run as you, so a hijacked agent gets every credential your shell can reach. howbad finds them and asks each provider, read-only, what they can actually do."
+    },
+    {
+      "title": "I Already Had a VHS Tape for Every README GIF. matinee Turns It Into a Narrated Video.",
+      "url": "https://dev.to/kanywst/i-already-had-a-vhs-tape-for-every-readme-gif-matinee-turns-it-into-a-narrated-video-2k06",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "cli",
+        "terminal"
+      ],
+      "minutes": 4,
+      "description": "My CLI repos each record their README GIF from a VHS .tape. matinee runs the same tape and renders a chaptered, narrated, captioned video in 16:9 and 9:16, with no timestamps written by hand."
+    },
+    {
+      "title": "I Log Every Movie I Watch as a Markdown File, Filed Through GitHub Issues",
+      "url": "https://dev.to/kanywst/i-log-every-movie-i-watch-as-a-markdown-file-filed-through-github-issues-2o54",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "react",
+        "githubactions"
+      ],
+      "minutes": 4,
+      "description": "i-watched-movies is my film diary: one markdown file per movie, an issue form that turns into an auto-merged PR, and a Stats page that checks whether my own taste is predictable. Mostly it is not."
+    },
+    {
+      "title": "I Put Up a php2shell Page Before PHP's Fix Landed. There Is No Exploit on It.",
+      "url": "https://dev.to/kanywst/i-put-up-a-php2shell-page-before-phps-fix-landed-there-is-no-exploit-on-it-11bn",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "php",
+        "security"
+      ],
+      "minutes": 4,
+      "description": "php2shell-anatomy is a one-page defender's brief for CVE-2026-109618 and CVE-2026-109619: fixed versions per branch and per distro, an exposure check, the timeline, and what to do if you can't update yet."
+    },
+    {
+      "title": "identity-deep-dive: A Weekly Briefing and a Sourced Spec Map for OAuth, WIMSE, and OpenID",
+      "url": "https://dev.to/kanywst/identity-deep-dive-a-weekly-briefing-and-a-sourced-spec-map-for-oauth-wimse-and-openid-2hj8",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "oauth",
+        "security"
+      ],
+      "minutes": 5,
+      "description": "Following OAuth WG, WIMSE, and the OpenID Foundation by hand means checking Datatracker, mailing lists, and about ninety GitHub repos. identity-deep-dive collects all of it every six hours, has Claude explain what changed, and keeps a map of 62 specs where every support claim cites an official page."
+    },
+    {
+      "title": "Lettering Programming Comics in Japanese, Only Where the License Allows It",
+      "url": "https://dev.to/kanywst/lettering-programming-comics-in-japanese-only-where-the-license-allows-it-4bp0",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "astro",
+        "opensource"
+      ],
+      "minutes": 5,
+      "description": "wtfe2 erases the English lettering from xkcd, TurnOff.us, Browserling, Bonkers World, Abstruse Goose, SMBC and PHD Comics strips and sets Japanese in its place. Sites whose terms don't allow that get a retelling and a link, and a CI check keeps it that way."
+    },
+    {
+      "title": "mcp-opa-authz: Authorization Answers for Coding Agents, from the Policy Instead of a Guess",
+      "url": "https://dev.to/kanywst/mcp-opa-authz-authorization-answers-for-coding-agents-from-the-policy-instead-of-a-guess-318l",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "mcp",
+        "opa"
+      ],
+      "minutes": 5,
+      "description": "An MCP server that evaluates Rego in-process through OPA, or asks an AuthZEN 1.0 PDP. It keeps undefined apart from false and a broken PDP apart from a deny, and it compiles http.send out of model-written policies."
+    },
+    {
+      "title": "OpenID4VCI Deep Dive: 1.0 Final, the Errata, Interactive Authorization in 1.1, and Server-to-Server",
+      "url": "https://dev.to/kanywst/openid4vci-deep-dive-10-final-the-errata-interactive-authorization-in-11-and-server-to-server-19p4",
+      "date": "2026-11-14",
+      "tags": [
+        "openid",
+        "oauth",
+        "identity"
+      ],
+      "minutes": 12,
+      "description": "OpenID for Verifiable Credential Issuance 1.0 went Final in September 2025. The repo now carries three more texts that disagree on the wire: a 1.0 errata draft, a 1.1 draft with browserless Interactive Authorization, and a new Server-to-Server API. Both grant flows with real message names, and what changes after Final."
+    },
+    {
+      "title": "prpr, a Terminal List of Every Open GitHub Pull Request I Can See",
+      "url": "https://dev.to/kanywst/prpr-a-terminal-list-of-every-open-github-pull-request-i-can-see-3a2g",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "github",
+        "go"
+      ],
+      "minutes": 3,
+      "description": "My open pull requests live under my own account, an org, and other people's projects. prpr puts all of them on one screen, opens one with enter, and waves goodbye when it merges."
+    },
+    {
+      "title": "S3 Atlas, Everything I Know About Amazon S3 on One Site",
+      "url": "https://dev.to/kanywst/s3-atlas-everything-i-know-about-amazon-s3-on-one-site-3efn",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "aws",
+        "s3"
+      ],
+      "minutes": 3,
+      "description": "An EN/JA site with 18 research chapters on Amazon S3, a cost calculator that prices one workload across every S3 class and 21 other services, 134 CLI recipes and 309 API operations."
+    },
+    {
+      "title": "SD-JWT VC Deep Dive: vct, Issuer Keys, Type Metadata, and the URLs a Credential Makes You Fetch",
+      "url": "https://dev.to/kanywst/sd-jwt-vc-deep-dive-vct-issuer-keys-type-metadata-and-the-urls-a-credential-makes-you-fetch-3igm",
+      "date": "2026-11-14",
+      "tags": [
+        "oauth",
+        "security",
+        "identity"
+      ],
+      "minutes": 14,
+      "description": "draft-ietf-oauth-sd-jwt-vc-26 turns RFC 9901 SD-JWT into a credential format. What it adds on the wire, how a verifier picks the Issuer key, why a credential is also a list of URLs, and what changed during IESG review."
+    },
+    {
+      "title": "Signing What Was in the Context Window: draft-durga-wimse-ctx-isolation and Its Self-Reported Taint",
+      "url": "https://dev.to/kanywst/signing-what-was-in-the-context-window-draft-durga-wimse-ctx-isolation-and-its-self-reported-taint-5fif",
+      "date": "2026-11-14",
+      "tags": [
+        "ai",
+        "security",
+        "mcp"
+      ],
+      "minutes": 10,
+      "description": "An individual IETF draft wants every AI agent tool call to carry a signed Context Taint Attestation, and wants MCP servers to refuse tainted state-changing calls. I read the five pages, decoded the example, built a verifier, and found where the trust actually sits."
+    },
+    {
+      "title": "The Zanzibar Paper, Side by Side With Eight Translations",
+      "url": "https://dev.to/kanywst/the-zanzibar-paper-side-by-side-with-eight-translations-34f8",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "authorization",
+        "translation"
+      ],
+      "minutes": 3,
+      "description": "A static site that puts the USENIX ATC '19 Zanzibar paper next to Japanese, Chinese, Korean, Spanish, French, German and Portuguese translations, one paragraph per row, with a validator that rejects a translation that changes a tuple or drops a paragraph."
+    },
+    {
+      "title": "trust-me-bro: Reading an Agent Skill Before It Reads Your .env",
+      "url": "https://dev.to/kanywst/trust-me-bro-reading-an-agent-skill-before-it-reads-your-env-329d",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "security",
+        "ai"
+      ],
+      "minutes": 6,
+      "description": "A skill folder now runs on Claude Code, Codex, Cursor, Copilot and Gemini CLI, and nothing in the format is signed. trust-me-bro is a one-file, no-dependency scanner that reads a skill, plugin or MCP config before you install it."
+    },
+    {
+      "title": "whosent: A TUI That Shows Who Sent the Agent",
+      "url": "https://dev.to/kanywst/whosent-a-tui-that-shows-who-sent-the-agent-1899",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "go",
+        "security"
+      ],
+      "minutes": 5,
+      "description": "A request arrives from research-agent. whosent opens the delegation chain behind it (JWT act, Biscuit, UCAN or macaroons), traces it back to the human, and points at the hop where authority grew."
+    },
+    {
+      "title": "Why Hackers Don't Get Caught: A Sourced Visual Explainer, Layer by Layer",
+      "url": "https://dev.to/kanywst/why-hackers-dont-get-caught-a-sourced-visual-explainer-layer-by-layer-b1k",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "security",
+        "privacy"
+      ],
+      "minutes": 5,
+      "description": "A bilingual site that shows what each observer on the path can read, why so many named attackers are never arrested, and which layer gave way in 31 documented cases. Every claim has a source."
+    },
+    {
+      "title": "WIMSE HTTP Signatures Deep Dive: Proof of Possession That Survives the Load Balancer",
+      "url": "https://dev.to/kanywst/wimse-http-signatures-deep-dive-proof-of-possession-that-survives-the-load-balancer-1176",
+      "date": "2026-11-14",
+      "tags": [
+        "security",
+        "identity",
+        "microservices"
+      ],
+      "minutes": 10,
+      "description": "draft-ietf-wimse-http-signature profiles RFC 9421 so a workload signs each request with the key in its WIT. What is covered, why @authority is not, how wimse-aud, wimse-sign-response and wimse-req-nonce work, and what a real verifier rejects."
+    },
+    {
+      "title": "WIMSE Workload Credentials -03: The WIT Finally Gets a Validation Procedure",
+      "url": "https://dev.to/kanywst/wimse-workload-credentials-03-the-wit-finally-gets-a-validation-procedure-5dg6",
+      "date": "2026-11-14",
+      "tags": [
+        "security",
+        "identity",
+        "jwt"
+      ],
+      "minutes": 11,
+      "description": "draft-ietf-wimse-workload-creds-03 adds a six-step WIT validation checklist, a MUST on the audience of proofs of possession, and binds trust domains to preconfigured anchors with no iss-based key discovery. A field-by-field read of the WIT, what changed from -02, and a validator run against the spec's own example."
+    },
+    {
+      "title": "wtfe: Claims About Engineering Culture by Country, Each One Sourced and Rated",
+      "url": "https://dev.to/kanywst/wtfe-claims-about-engineering-culture-by-country-each-one-sourced-and-rated-1c5d",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "career",
+        "culture"
+      ],
+      "minutes": 4,
+      "description": "A bilingual site about how software engineers in 14 countries and regions tend to work. Every claim cites a public source and carries a label for how much that source can carry."
+    },
+    {
+      "title": "wtfi2: Find the Hop Where Your Wi-Fi Connection Actually Dies",
+      "url": "https://dev.to/kanywst/wtfi2-find-the-hop-where-your-wi-fi-connection-actually-dies-1bif",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "rust",
+        "networking"
+      ],
+      "minutes": 4,
+      "description": "Full bars, browser says offline. wtfi probes every hop from your Wi-Fi link to DNS in parallel, draws the path, and names the first break and what to do about it."
+    },
+    {
+      "title": "wtfi3: Who Is Talking to Whom on My WiFi",
+      "url": "https://dev.to/kanywst/wtfi3-who-is-talking-to-whom-on-my-wifi-3ofe",
+      "date": "2026-11-14",
+      "tags": [
+        "showdev",
+        "go",
+        "networking"
+      ],
+      "minutes": 4,
+      "description": "A single Go binary that turns packets on a network you run into a live map of devices, the services and trackers they reach, DNS lookups and bandwidth. Metadata only: TLS is never decrypted."
+    },
+    {
+      "title": "Zanzibar Implementations Compared (Late 2026): SpiceDB, OpenFGA, Permify, Keto, Topaz, Warrant",
+      "url": "https://dev.to/kanywst/zanzibar-implementations-compared-late-2026-spicedb-openfga-permify-keto-topaz-warrant-43nf",
+      "date": "2026-11-14",
+      "tags": [
+        "authorization",
+        "security",
+        "architecture"
+      ],
+      "minutes": 12,
+      "description": "Six open-source projects say they are modelled on Google Zanzibar. I loaded the same model into two of them and read the protos of the rest. They differ on the consistency token, reverse lookup, conditions, storage and who still ships releases."
+    },
+    {
+      "title": "Zookies Without TrueTime: How SpiceDB, OpenFGA and the Rest Order Their Writes",
+      "url": "https://dev.to/kanywst/zookies-without-truetime-how-spicedb-openfga-and-the-rest-order-their-writes-1m0o",
+      "date": "2026-11-14",
+      "tags": [
+        "authorization",
+        "security",
+        "database"
+      ],
+      "minutes": 13,
+      "description": "The Zanzibar paper's answer to the new enemy problem leans on Spanner's TrueTime. Open-source implementations run on CockroachDB, PostgreSQL and MySQL. I decoded real ZedTokens, read the overlap-key SQL, and measured the window that minimize_latency leaves open."
+    },
+    {
+      "title": "Secret Scanners Look for Credentials. I Wanted One That Looks for Me.",
+      "url": "https://dev.to/kanywst/secret-scanners-look-for-credentials-i-wanted-one-that-looks-for-me-5adj",
+      "date": "2026-11-04",
+      "tags": [
+        "showdev",
+        "git",
+        "privacy"
+      ],
+      "minutes": 3,
+      "description": "Coding agents commit what they see on your machine: home paths, hostnames, session links. None of it is a secret, so gitleaks stays quiet. kwangmyong looks for you, shows it in a terminal UI, and blocks the agent before it pushes."
+    },
+    {
+      "title": "What Coding Agents Leave in Public Git Repos",
+      "url": "https://dev.to/kanywst/what-coding-agents-leave-in-public-git-repos-nm1",
+      "date": "2026-11-04",
+      "tags": [
+        "ai",
+        "git",
+        "privacy"
+      ],
+      "minutes": 3,
+      "description": "Tens of thousands of public files carry a developer's real login in a path an agent wrote, and millions of commits carry a session link. I counted them and wrote a hook that blocks it."
+    },
+    {
+      "title": "Ransomware in Japan: 61 of 92 Known Entry Points in 2025 Were VPN Appliances",
+      "url": "https://dev.to/kanywst/ransomware-in-japan-61-of-92-known-entry-points-in-2025-were-vpn-appliances-49gn",
+      "date": "2026-10-27",
+      "tags": [
+        "showdev",
+        "security",
+        "ransomware"
+      ],
+      "minutes": 4,
+      "description": "Japan's National Police Agency asked ransomware victims how the attacker got in. 61 of the 92 that knew named their VPN appliance; email accounted for two. I built a site that draws that on a floor plan and follows it through real cases and 31 exploited VPN flaws."
+    },
+    {
+      "title": "Mandatum: Making an AI Agent's Authority a Chain You Can Verify",
+      "url": "https://dev.to/kanywst/mandatum-making-an-ai-agents-authority-a-chain-you-can-verify-1hoa",
+      "date": "2026-09-16",
+      "tags": [
+        "showdev",
+        "go",
+        "security"
+      ],
+      "minutes": 5,
+      "description": "Agents inherit credentials, so you cannot say who is responsible, cannot revoke one agent, and cannot constrain a sequence of calls. I built a Go library that turns an agent's authority into a signed chain rooted in a named human."
+    },
+    {
+      "title": "I Made Four Authorization Engines Answer the Same Questions",
+      "url": "https://dev.to/kanywst/i-made-four-authorization-engines-answer-the-same-questions-5a96",
+      "date": "2026-09-12",
+      "tags": [
+        "showdev",
+        "authorization",
+        "security"
+      ],
+      "minutes": 3,
+      "description": "Cedar, OPA/Rego, Casbin and a Zanzibar-style ReBAC model, given identical rules and every possible request, with the disagreements drawn on screen. Runs entirely in the browser."
+    },
+    {
+      "title": "Envoy AI Gateway: A Hands-On Tour You Can Run Before Touching Kubernetes",
+      "url": "https://dev.to/kanywst/envoy-ai-gateway-a-hands-on-tour-you-can-run-before-touching-kubernetes-136p",
+      "date": "2026-08-14",
+      "tags": [
+        "ai",
+        "kubernetes",
+        "envoy"
+      ],
+      "minutes": 28,
+      "description": "Start with the aigw CLI, which needs no Kubernetes at all, then work through schema translation, provider fallback, model name virtualization, the MCP gateway, and finally a kind deployment. Every command and every output here was run on a real machine."
+    },
+    {
+      "title": "Let's Play Shogi: I Turned My GitHub Profile README Into a Playable Board",
+      "url": "https://dev.to/kanywst/lets-play-shogi-i-turned-my-github-profile-readme-into-a-playable-board-333c",
+      "date": "2026-08-13",
+      "tags": [
+        "showdev",
+        "github",
+        "python"
+      ],
+      "minutes": 5,
+      "description": "You can play shogi on my GitHub profile README. Not a single line of JavaScript runs there, so the board is built out of links, images, and Issues. Here is how it works."
+    },
+    {
+      "title": "Mapping MCP, A2A, and ACP: Telling AI Agent Protocols Apart in 2026",
+      "url": "https://dev.to/kanywst/mapping-mcp-a2a-and-acp-telling-ai-agent-protocols-apart-in-2026-1hha",
+      "date": "2026-06-28",
+      "tags": [
+        "ai",
+        "agents",
+        "mcp"
+      ],
+      "minutes": 12,
+      "description": "A clean map of MCP, A2A, and ACP and when to reach for each, brought up to date for 2026. ACP is not an independent protocol anymore: it merged into A2A in August 2025 and its repo is archived. Diagram-heavy, meant to be read top to bottom."
+    },
+    {
+      "title": "The Day client_id Becomes a URL: Client ID Metadata Documents vs Dynamic Client Registration (DCR)",
+      "url": "https://dev.to/kanywst/the-day-clientid-becomes-a-url-client-id-metadata-documents-vs-dynamic-client-registration-dcr-dhi",
+      "date": "2026-06-26",
+      "tags": [
+        "oauth",
+        "security",
+        "identity"
+      ],
+      "minutes": 15,
+      "description": "Two answers to the OAuth client-registration problem, side by side: DCR (RFC 7591) writes a row into the AS database, while CIMD (draft-ietf-oauth-client-id-metadata-document) makes the client_id a URL the AS reads. Why MCP, Bluesky, and Solid moved to CIMD, plus the mechanics, a comparison table, and the SSRF defenses."
+    },
+    {
+      "title": "AgentAuth Deep Dive: Reading the Self-Authenticating UUID for AI Agents from the Source",
+      "url": "https://dev.to/kanywst/agentauth-deep-dive-reading-the-self-authenticating-uuid-for-ai-agents-from-the-source-44eh",
+      "date": "2026-06-25",
+      "tags": [
+        "ai",
+        "security",
+        "mcp"
+      ],
+      "minutes": 14,
+      "description": "No login, no sessions, no server-side DB. AgentAuth folds an AI agent identity and authentication into a single UUID. I read it down to the secp256k1 and keccak256 code, and sort out where it sits next to the official OAuth 2.1 authorization in MCP."
+    },
+    {
+      "title": "JWT (Access Token) vs X.509 Deep Dive: How to Choose What You Present as a Credential",
+      "url": "https://dev.to/kanywst/jwt-access-token-vs-x509-deep-dive-how-to-choose-what-you-present-as-a-credential-34ij",
+      "date": "2026-06-15",
+      "tags": [
+        "security",
+        "authentication",
+        "jwt"
+      ],
+      "minutes": 10,
+      "description": "When you authorize a service or a user, the thing you hand over comes in two broad flavors: a JWT (a bearer access token) and an X.509 certificate (mTLS). They look unrelated, but a single axis explains both: bearer or proof-of-possession. Diagram-heavy, readable top to bottom so you can actually pick one."
+    },
+    {
+      "title": "a2claude: Turn Claude Code Into a Server Other AI Agents Can Call",
+      "url": "https://dev.to/kanywst/a2claude-turn-claude-code-into-a-server-other-ai-agents-can-call-1mf6",
+      "date": "2026-06-14",
+      "tags": [
+        "showdev",
+        "ai",
+        "agents"
+      ],
+      "minutes": 9,
+      "description": "I built a small OSS tool that exposes Claude Code as an A2A protocol agent server. Another agent calls it over the network, a real Claude Code session runs in your project, and the tools it ran, the diffs it wrote, what it cost, and the permissions it needs all come back. A diagram-driven walk through the design."
+    },
+    {
+      "title": "A2A Protocol Auth, Taken Apart: Why the Spec Is Thin and Where That Leaves Holes",
+      "url": "https://dev.to/kanywst/a2a-protocol-auth-taken-apart-why-the-spec-is-thin-and-where-that-leaves-holes-22ii",
+      "date": "2026-06-13",
+      "tags": [
+        "ai",
+        "agents",
+        "security"
+      ],
+      "minutes": 17,
+      "description": "A primary-source read of authentication and authorization in the Agent2Agent (A2A) protocol, built by Google and now stewarded by the Linux Foundation. A2A advertises auth requirements in the Agent Card and hands token issuance and validation off to OAuth2 / OIDC / mTLS. It only defines the frame. This walks through why it was built that way, where the holes are, and how signed Agent Cards plus mTLS close them."
+    },
+    {
+      "title": "gRPC Deep Dive: Stubs, HTTP/2 Frames, and Why Netflix, Spotify, and Mercari Switched",
+      "url": "https://dev.to/kanywst/grpc-deep-dive-stubs-http2-frames-and-why-netflix-spotify-and-mercari-switched-12if",
+      "date": "2026-06-10",
+      "tags": [
+        "grpc",
+        "microservices",
+        "go"
+      ],
+      "minutes": 20,
+      "description": "What RPC actually means, what Protocol Buffers and HTTP/2 each contribute, the four streaming patterns, a Go hands-on measured down to the individual HTTP/2 frames, and what made large companies move their internal traffic to gRPC."
+    },
+    {
+      "title": "What xDS Actually Ships: Your Control Plane Sends protobuf, Not YAML",
+      "url": "https://dev.to/kanywst/what-xds-actually-ships-your-control-plane-sends-protobuf-not-yaml-2oje",
+      "date": "2026-06-09",
+      "tags": [
+        "envoy",
+        "istio",
+        "kubernetes"
+      ],
+      "minutes": 20,
+      "description": "A top-to-bottom walk through what istiod hands to the Envoy sidecars. Start with control plane vs data plane, then xDS, then the fact that the wire carries protobuf instead of YAML, how to read protobuf and a real listener.proto, where to place metadata across LDS/RDS/CDS/EDS, and finally pulling a raw DiscoveryResponse out of a live kind cluster."
+    },
+    {
+      "title": "xDS Deep Dive, Part 2: Designing What You Ship Over the Universal Data Plane API",
+      "url": "https://dev.to/kanywst/xds-deep-dive-part-2-designing-what-you-ship-over-the-universal-data-plane-api-3hef",
+      "date": "2026-06-07",
+      "tags": [
+        "envoy",
+        "servicemesh",
+        "kubernetes"
+      ],
+      "minutes": 32,
+      "description": "Part 1 was about learning to read xDS. This time I flip to the producing side. I read cncf/xds (xdstp:// URIs, Authority, Dynamic Parameters, Resource Error, ORCA, Unified Matcher / CEL) as a control-plane designer would, as a set of design levers, and finish by actually building and serving resources with go-control-plane."
+    },
+    {
+      "title": "Why AWS IAM Is So Hard",
+      "url": "https://dev.to/kanywst/why-aws-iam-is-so-hard-58bp",
+      "date": "2026-06-06",
+      "tags": [
+        "aws",
+        "iam",
+        "security"
+      ],
+      "minutes": 15,
+      "description": "\"It says Allow but I still get denied.\" \"I assumed the role but my permissions did not change.\" These are the spots every IAM beginner gets stuck. I break the difficulty down by its true cause: User vs Role, why a Role carries two policies, how to group policy types into union and intersection, the evaluation order where Deny beats everything, and the asymmetry between same-account and cross-account. Read top to bottom and it clicks."
+    },
+    {
+      "title": "ID-JAG, Transaction Tokens, WIF: The Three Layers of AI Agent Auth",
+      "url": "https://dev.to/kanywst/the-three-layers-of-ai-agent-authentication-what-id-jag-transaction-tokens-and-wif-actually-1mbk",
+      "date": "2026-06-03",
+      "tags": [
+        "oauth",
+        "security",
+        "ai"
+      ],
+      "minutes": 21,
+      "description": "The UX of AI agent auth feels almost identical to running everything on human creds. So why will ID-JAG, Transaction Tokens, and WIF still spread? I read it from the May 2026 IETF drafts and the primary sources for Anthropic WIF / Okta XAA / MCP, the Replit / EchoLeak / Moltbook incidents, and the adoption curves of MFA, short-lived AWS creds, and Sigstore."
+    },
+    {
+      "title": "Transaction Tokens Deep Dive: The OAuth Spec That Carries 'Who, and Why' Across Your Microservices",
+      "url": "https://dev.to/kanywst/transaction-tokens-deep-dive-the-oauth-spec-that-carries-who-and-why-across-your-microservices-7k1",
+      "date": "2026-06-03",
+      "tags": [
+        "oauth",
+        "security",
+        "microservices"
+      ],
+      "minutes": 11,
+      "description": "A close read of IETF draft-ietf-oauth-transaction-tokens-08. How Transaction Tokens (Txn-Tokens) safely propagate request context (user identity and authorization) inside a microservice trust domain, from the flow to the JWT structure to how the TTS works."
+    },
+    {
+      "title": "SPIFFE Compliance Deep Dive",
+      "url": "https://dev.to/kanywst/spiffe-compliance-deep-dive-5e29",
+      "date": "2026-05-31",
+      "tags": [
+        "spiffe",
+        "identity",
+        "security"
+      ],
+      "minutes": 15,
+      "description": "If you run SPIRE, are you SPIFFE compliant? How far do you have to go with a custom implementation? I read the spiffe/spiffe spec end to end and pulled out the MUST requirements for SPIFFE-ID, X.509-SVID, JWT-SVID, Workload API, and Trust Bundle."
+    },
+    {
+      "title": "AWS SigV4 and SigV4A Deep Dive",
+      "url": "https://dev.to/kanywst/aws-sigv4-and-sigv4a-deep-dive-12li",
+      "date": "2026-05-30",
+      "tags": [
+        "aws",
+        "sigv4",
+        "security"
+      ],
+      "minutes": 14,
+      "description": "A four-step breakdown of AWS SigV4 with an 80-line Python implementation, the asymmetric SigV4A (ECDSA P-256) that Multi-Region Access Point forced into existence, plus Chunked Upload, Presigned URL, and the Clock Skew traps that bite in production."
+    },
+    {
+      "title": "AWS IAM Roles Anywhere Deep Dive",
+      "url": "https://dev.to/kanywst/aws-iam-roles-anywhere-deep-dive-j51",
+      "date": "2026-05-28",
+      "tags": [
+        "aws",
+        "iam",
+        "security"
+      ],
+      "minutes": 12,
+      "description": "IAM Roles Anywhere hands out IAM Role temporary credentials to workloads outside AWS, using X.509 certificates instead of long-lived access keys. This article walks through the Trust Anchor / Profile / Role triangle, the CreateSession signing flow, what the credential helper actually does, CRL-based revocation, and pricing, with diagrams the whole way."
+    },
+    {
+      "title": "Microsegmentation Deep Dive",
+      "url": "https://dev.to/kanywst/microsegmentation-deep-dive-from-the-crumbling-castle-wall-to-identity-driven-east-west-control-1c67",
+      "date": "2026-05-27",
+      "tags": [
+        "security",
+        "zerotrust",
+        "networking"
+      ],
+      "minutes": 14,
+      "description": "Perimeter defense no longer stops ransomware spreading sideways. One article on why VLAN/Firewall hit a wall, the four implementation patterns (hypervisor / agent / cloud-native / Identity), and how VMware NSX, Illumio, Akamai Guardicore, Cilium, and Google BeyondCorp each solved it, all at the resolution of implementation and ops."
+    },
+    {
+      "title": "AWS IAM Roles Anywhere Hands-On",
+      "url": "https://dev.to/kanywst/iam-roles-anywhere-hands-on-2fh8",
+      "date": "2026-05-26",
+      "tags": [
+        "aws",
+        "iam",
+        "sts"
+      ],
+      "minutes": 14,
+      "description": "When you're outside EC2/Lambda (home laptop, on-prem server, Raspberry Pi, Kubernetes) and you don't want long-lived keys (AKIA...) sitting around, IAM Roles Anywhere solves it by using an X.509 certificate as your AWS identity. I built a self-signed CA from scratch, registered it with Roles Anywhere, and pulled temporary credentials end-to-end in 60 minutes. Cost: $0."
+    },
+    {
+      "title": "AWS STS Deep Dive",
+      "url": "https://dev.to/kanywst/aws-sts-deep-dive-19ha",
+      "date": "2026-05-24",
+      "tags": [
+        "aws",
+        "sts",
+        "iam"
+      ],
+      "minutes": 18,
+      "description": "I treated AssumeRole as a single API while writing the IAM piece. STS is actually 6 separate APIs (SAML / WebIdentity / Root / SessionToken / FederationToken), and Source Identity, External ID, and Session Policy change its shape entirely. This article opens every box."
+    },
+    {
+      "title": "AWS S3 Deep Dive",
+      "url": "https://dev.to/kanywst/aws-s3-deep-dive-17f3",
+      "date": "2026-05-18",
+      "tags": [
+        "aws",
+        "s3",
+        "security"
+      ],
+      "minutes": 9,
+      "description": "A hands-on, example-driven dissection of AWS S3: the object model visualized with diagrams, the 4 layers of access control (IAM/Bucket Policy/ACL/Block Public Access), and the 4 forms of encryption (SSE-S3/SSE-KMS/SSE-C/CSE)."
+    },
+    {
+      "title": "WORM (Write Once Read Many) Deep Dive",
+      "url": "https://dev.to/kanywst/worm-write-once-read-many-deep-dive-2l7k",
+      "date": "2026-05-18",
+      "tags": [
+        "storage",
+        "security",
+        "compliance"
+      ],
+      "minutes": 17,
+      "description": "A complete tour of WORM (Write Once Read Many) storage, from 1980s optical disc days to modern S3 Object Lock / Azure Immutable Blob / GCS Bucket Lock. Visualizes SEC 17a-4, FINRA fine cases, NetApp SnapLock ComplianceClock, and real-world bank / hospital / data center deployments for ransomware defense with Mermaid diagrams."
+    },
+    {
+      "title": "AWS IAM Deep Dive",
+      "url": "https://dev.to/kanywst/aws-iam-deep-dive-2b81",
+      "date": "2026-05-17",
+      "tags": [
+        "aws",
+        "iam",
+        "security"
+      ],
+      "minutes": 9,
+      "description": "A full breakdown of AWS IAM: principal types, the SigV4 signing math, the six policy kinds, the evaluation order (Deny beats Allow), and Identity Center, all visualized with Mermaid."
+    },
+    {
+      "title": "AWS Free Hands-On",
+      "url": "https://dev.to/kanywst/aws-free-hands-on-build-s3-lambda-dynamodb-on-the-always-free-tier-plus-iam-cloudwatch-and-34le",
+      "date": "2026-05-15",
+      "tags": [
+        "aws",
+        "tutorial",
+        "serverless"
+      ],
+      "minutes": 16,
+      "description": "A 30-minute end-to-end AWS hands-on that respects the new (post 2025-07-15) Free Plan rules and stays entirely inside the Always Free tier. Touches S3, Lambda, DynamoDB, IAM, CloudWatch, SNS, and Budgets."
+    },
+    {
+      "title": "AWS Deep Dive",
+      "url": "https://dev.to/kanywst/aws-deep-dive-what-it-actually-is-how-regions-and-accounts-fit-together-and-where-auth-lives-107k",
+      "date": "2026-05-14",
+      "tags": [
+        "aws",
+        "cloud",
+        "security"
+      ],
+      "minutes": 7,
+      "description": "A first-principles tour of AWS for people who keep saying they \"get it\" but want to actually get it: the physical hierarchy of Regions and AZs, the logical hierarchy of accounts and Organizations, the single HTTPS API entry point, and SigV4 plus the basics of authn/authz."
+    },
+    {
+      "title": "Introducing Zopa: a 60 KB authorization engine for proxy-wasm, written in Zig",
+      "url": "https://dev.to/kanywst/introducing-zopa-a-60-kb-authorization-engine-for-proxy-wasm-written-in-zig-1l66",
+      "date": "2026-05-10",
+      "tags": [
+        "webassembly",
+        "authorization",
+        "zig"
+      ],
+      "minutes": 8,
+      "description": "OPA's wasm build is two orders of magnitude larger than what I want at the edge for an allow/deny decision. Zopa is a 60 KB authorization engine in Zig with no GC, just a per-request arena"
+    },
+    {
+      "title": "What 11 big tech companies actually do with AI in 2026",
+      "url": "https://dev.to/kanywst/what-11-big-tech-companies-actually-do-with-ai-in-2026-a-layered-numbers-first-breakdown-h58",
+      "date": "2026-05-09",
+      "tags": [
+        "ai",
+        "productivity",
+        "engineering"
+      ],
+      "minutes": 23,
+      "description": "Google, Microsoft, Meta, Amazon, Anthropic, Stripe, Shopify, Salesforce, Netflix, Mercari, CyberAgent. Engineers have been saying 'AI boosts productivity' for years now, but what are the companies actually known for AI doing, and how far have they pushed it? A layered breakdown from internal coding to customer support to org-level changes, with concrete numbers and the catches each one carries."
+    },
+    {
+      "title": "Introducing Omega: SPIFFE Workload Identity + AuthZEN Authorization in a Single Binary",
+      "url": "https://dev.to/kanywst/introducing-omega-spiffe-workload-identity-authzen-authorization-in-a-single-binary-48j0",
+      "date": "2026-05-01",
+      "tags": [
+        "spiffe",
+        "authzen",
+        "security"
+      ],
+      "minutes": 4,
+      "description": "Omega is a v0 control plane that ships SPIFFE-compatible workload identity and an OpenID AuthZEN 1.0 PDP (Cedar) in one Apache-2.0 binary."
+    },
+    {
+      "title": "Hacking GitHub: From Tag Rewrites to Dangling Commits, Where the Git Protocol Trusts You Without Checking",
+      "url": "https://dev.to/kanywst/hacking-github-from-tag-rewrites-to-dangling-commits-where-the-git-protocol-trusts-you-without-2o4h",
+      "date": "2026-04-30",
+      "tags": [
+        "security",
+        "github",
+        "git"
+      ],
+      "minutes": 19,
+      "description": "A single line of \"uses: tj-actions/changed-files@v44\" burned 23,000 repositories. About a year later, 75 of 76 Trivy tags were rewritten the same way. Git tags are just labels, commit authors are self-declared, and deleted repos are not actually deleted. Thirteen spots where the trust boundaries of the git protocol and GitHub leak."
+    },
+    {
+      "title": "I built chainscope: reading supply chain attacks across 6 surfaces, one slide at a time",
+      "url": "https://dev.to/kanywst/i-built-chainscope-reading-supply-chain-attacks-across-6-surfaces-one-slide-at-a-time-28mc",
+      "date": "2026-04-29",
+      "tags": [
+        "security",
+        "supplychain",
+        "showdev"
+      ],
+      "minutes": 7,
+      "description": "xz-utils, Shai-Hulud, tj-actions, LiteLLM, pgserve, SUNSPOT. They all get filed under 'supply chain attack', but the stage that broke and the defense that works are different every time. So I built a slide deck you can walk through with the spacebar."
+    },
+    {
+      "title": "SLSA Provenance Hands-on: Generate with GitHub Actions, Verify with slsa-verifier",
+      "url": "https://dev.to/kanywst/slsa-provenance-hands-on-generate-with-github-actions-verify-with-slsa-verifier-56ka",
+      "date": "2026-04-29",
+      "tags": [
+        "security",
+        "supplychain",
+        "slsa"
+      ],
+      "minutes": 11,
+      "description": "After SBOM and Cosign comes Provenance. Issue SLSA Build L3 provenance with slsa-github-generator and verify it with slsa-verifier, end to end on real machines."
+    },
+    {
+      "title": "Why Did Docker Abandon TUF?: A Turbulent History of Container Signing",
+      "url": "https://dev.to/kanywst/why-did-docker-abandon-tuf-a-turbulent-history-of-container-signing-29i4",
+      "date": "2026-04-28",
+      "tags": [
+        "security",
+        "docker",
+        "supplychain"
+      ],
+      "minutes": 10,
+      "description": "Why did Docker Content Trust (Notary v1) fail, and how did the industry pivot to Sigstore and Notary v2? A timeline of container signing architecture, contrasted with PyPI's success story."
+    },
+    {
+      "title": "SLSA Deep Dive: Securing the Supply Chain Using Verifiable Levels",
+      "url": "https://dev.to/kanywst/slsa-deep-dive-securing-the-supply-chain-using-verifiable-levels-klk",
+      "date": "2026-04-26",
+      "tags": [
+        "security",
+        "supplychain",
+        "slsa"
+      ],
+      "minutes": 12,
+      "description": "A complete teardown of the SLSA specification. We dissect the threat model, Build and Source track requirements, Provenance structure, and the verification flow with diagrams."
+    },
+    {
+      "title": "Sigstore Deep Dive: Unmasking the Magic Behind Keyless Verification",
+      "url": "https://dev.to/kanywst/sigstore-deep-dive-unmasking-the-magic-behind-keyless-verification-lmh",
+      "date": "2026-04-22",
+      "tags": [
+        "security",
+        "sigstore",
+        "kubernetes"
+      ],
+      "minutes": 18,
+      "description": "A complete teardown of Fulcio, Rekor, and TUF powering `cosign sign`. Short-lived certificates, Merkle tree inclusion proofs, and trust bootstrapping—explained with diagrams and code."
+    },
+    {
+      "title": "xDS Deep Dive: Dissecting the \"Nervous System\" of the Service Mesh",
+      "url": "https://dev.to/kanywst/xds-deep-dive-dissecting-the-nervous-system-of-the-service-mesh-3m5i",
+      "date": "2026-04-20",
+      "tags": [
+        "envoy",
+        "servicemesh",
+        "kubernetes"
+      ],
+      "minutes": 10,
+      "description": "xDS is the dynamic configuration protocol powering Istio and Envoy. How on earth does it stream configurations to thousands of proxies without restarts? From ACK/NACK and ADS to SotW vs Delta, we dive deep into the actual implementation."
+    },
+    {
+      "title": "Why Can We Use \"Shorter\" Keys?: Key Length vs Security Bits, the Real Story",
+      "url": "https://dev.to/kanywst/why-can-we-use-shorter-keys-key-length-vs-security-bits-the-real-story-1gl3",
+      "date": "2026-04-19",
+      "tags": [
+        "security",
+        "cryptography",
+        "beginners"
+      ],
+      "minutes": 11,
+      "description": "Cryptographic strength is not about key length. It is about security bits. Why RSA-2048 is getting deprecated in 2030, how ECC achieves the same security with shorter keys, and the post-quantum transition. Everything you need to know in 2026."
+    },
+    {
+      "title": "Why I Built awesome-authorization: Mapping the World of Auth Engines onto a Single Page",
+      "url": "https://dev.to/kanywst/why-i-built-awesome-authorization-mapping-the-world-of-auth-engines-onto-a-single-page-4mof",
+      "date": "2026-04-18",
+      "tags": [
+        "authorization",
+        "security",
+        "opensource"
+      ],
+      "minutes": 6,
+      "description": "The year is 2026 and authorization engines are everywhere. OPA, Cedar, OpenFGA, SpiceDB, Casbin, Cerbos... There are too many choices and it is hard to see the big picture. The arrival of the standard AuthZEN API is stirring things up even more. Here is the story of why I built awesome-authorization to organize the entire authorization landscape onto one page, and a visual guide to where these engines stand today."
+    },
+    {
+      "title": "RFC 7523 Deep Dive: JWT Profile",
+      "url": "https://dev.to/kanywst/rfc-7523-deep-dive-jwt-profile-2df5",
+      "date": "2026-04-13",
+      "tags": [
+        "oauth",
+        "jwt",
+        "security"
+      ],
+      "minutes": 5,
+      "description": "A deep dive into RFC 7523, the specification for using JWT for client authentication and authorization grants in OAuth 2.0. Uncovering the mechanics behind modern system-to-system integrations that will bury client_secret for good."
+    },
+    {
+      "title": "RFC 7636 Deep Dive: How PKCE Kills Authorization Code Interception Attacks",
+      "url": "https://dev.to/kanywst/rfc-7636-deep-dive-how-pkce-kills-authorization-code-interception-attacks-91i",
+      "date": "2026-04-12",
+      "tags": [
+        "oauth",
+        "security",
+        "authentication"
+      ],
+      "minutes": 7,
+      "description": "A deep dive into RFC 7636. Thoroughly explaining the PKCE attack model, protocol details, S256 vs. plain, and security design."
+    },
+    {
+      "title": "Why Do SSL/TLS Certificate Lifetimes Keep Getting Shorter?: Everything You Need to Know for the 47-Day Era",
+      "url": "https://dev.to/kanywst/why-do-ssltls-certificate-lifetimes-keep-getting-shorter-everything-you-need-to-know-for-the-2log",
+      "date": "2026-04-11",
+      "tags": [
+        "security",
+        "tls",
+        "devops"
+      ],
+      "minutes": 13,
+      "description": "CA/Browser Forum SC-081 mandates a phased reduction of certificate validity to 47 days by 2029. This article dives deep into the structural flaws of revocation that drove this decision, and the operational challenges it creates."
+    },
+    {
+      "title": "Why I Built opa-authzen-interop: Verifying OPA on AuthZEN Interop",
+      "url": "https://dev.to/kanywst/why-i-built-opa-authzen-interop-verifying-opa-on-authzen-interop-52i9",
+      "date": "2026-04-05",
+      "tags": [
+        "showdev",
+        "opa",
+        "authorization"
+      ],
+      "minutes": 4,
+      "description": "I split out an interop-focused repo to continuously validate opa-authzen-plugin against OpenID AuthZEN Interop. This post covers the background, ecosystem context, current gaps, and next actions."
+    },
+    {
+      "title": "Google Zanzibar Deep Dive: Handling 2 Trillion ACLs in Under 10ms",
+      "url": "https://dev.to/kanywst/google-zanzibar-deep-dive-handling-2-trillion-acls-in-under-10ms-f06",
+      "date": "2026-04-01",
+      "tags": [
+        "authorization",
+        "security",
+        "architecture"
+      ],
+      "minutes": 11,
+      "description": "A deep dive into the Google Zanzibar paper — covering Relation Tuples, the New Enemy problem, Zookies, the Leopard index, and system architecture. With notes on SpiceDB, OpenFGA, and other OSS implementations."
+    },
+    {
+      "title": "I Built an OPA Plugin That Turns It Into an AuthZEN-Compatible PDP",
+      "url": "https://dev.to/kanywst/i-built-an-opa-plugin-that-turns-it-into-an-authzen-compatible-pdp-i81",
+      "date": "2026-04-01",
+      "tags": [
+        "showdev",
+        "opa",
+        "authorization"
+      ],
+      "minutes": 5,
+      "description": "Building an OPA plugin that implements the AuthZEN Authorization API 1.0. How the OPA community discussion led to a plugin approach, and the design decisions behind it."
+    },
+    {
+      "title": "AuthZEN Authorization API 1.0 Deep Dive: The Standard API That Separates Authorization Decisions from Enforcement",
+      "url": "https://dev.to/kanywst/authzen-authorization-api-10-deep-dive-the-standard-api-that-separates-authorization-decisions-1m2a",
+      "date": "2026-03-30",
+      "tags": [
+        "oauth",
+        "security",
+        "authorization"
+      ],
+      "minutes": 17,
+      "description": "A deep dive into OpenID AuthZEN Authorization API 1.0 based on the original specification: PDP/PEP model, information model, Access Evaluation API, batch evaluation, Search APIs, PDP Metadata, HTTPS binding, and security design."
+    },
+    {
+      "title": "RBAC vs ABAC vs ReBAC: How to Choose and Implement Access Control Models",
+      "url": "https://dev.to/kanywst/rbac-vs-abac-vs-rebac-how-to-choose-and-implement-access-control-models-3i2d",
+      "date": "2026-03-29",
+      "tags": [
+        "authorization",
+        "security",
+        "architecture"
+      ],
+      "minutes": 15,
+      "description": "Starting with the RBAC role explosion problem, comparing it with ABAC and ReBAC, and exploring practical policy examples from products like Cedar, OpenFGA, and SpiceDB. A systematic guide to access control model selection criteria."
+    },
+    {
+      "title": "WIMSE (Workload Identity in Multi System Environments) Deep Dive: Standardizing Identity Authentication for Microservices",
+      "url": "https://dev.to/kanywst/wimse-workload-identity-in-multi-system-environments-deep-dive-standardizing-identity-5a12",
+      "date": "2026-03-24",
+      "tags": [
+        "security",
+        "microservices",
+        "oauth"
+      ],
+      "minutes": 11,
+      "description": "A thorough breakdown of IETF draft-ietf-wimse-arch-07. From core concepts to cross-domain scenarios and security considerations, this article walks through the WIMSE architecture — the emerging standard for workload-to-workload authentication in the microservice era."
+    },
+    {
+      "title": "GitHub Profile: A \"Guest Book\" Anyone Can Sign",
+      "url": "https://dev.to/kanywst/github-profile-a-guest-book-anyone-can-sign-2",
+      "date": "2026-03-23",
+      "tags": [
+        "showdev",
+        "github",
+        "python"
+      ],
+      "minutes": 2,
+      "description": "I built a fully automated, interactive guest book using Issue Forms and GitHub Actions, where visitors can leave a message in just 10 seconds."
+    },
+    {
+      "title": "OSS License Deep Dive",
+      "url": "https://dev.to/kanywst/oss-license-deep-dive-245o",
+      "date": "2026-03-23",
+      "tags": [
+        "opensource",
+        "license",
+        "github"
+      ],
+      "minutes": 12,
+      "description": "Graduate from \"just slap MIT on it\""
+    },
+    {
+      "title": "ID-JAG Deep Dive",
+      "url": "https://dev.to/kanywst/id-jag-deep-dive-1mhp",
+      "date": "2026-03-16",
+      "tags": [
+        "oauth",
+        "security",
+        "identity"
+      ],
+      "minutes": 19,
+      "description": "No more OAuth redirect hell for SaaS-to-SaaS integration or LLM agent API calls. Identity Assertion JWT Authorization Grant (ID-JAG) is a new IETF spec that uses existing SSO trust relationships to obtain cross-domain access tokens without user interaction."
+    },
+    {
+      "title": "AI Agent Authentication & Authorization Deep Dive: Reading draft-klrc-aiagent-auth-00",
+      "url": "https://dev.to/kanywst/ai-agent-authentication-authorization-deep-dive-reading-draft-klrc-aiagent-auth-00-5d1",
+      "date": "2026-03-14",
+      "tags": [
+        "ai",
+        "agents",
+        "oauth"
+      ],
+      "minutes": 15,
+      "description": "A thorough walkthrough of the IETF Internet-Draft 'draft-klrc-aiagent-auth-00' published in March 2026. This article explains how to authenticate and authorize AI agents by composing WIMSE, SPIFFE, and OAuth 2.0 — no new protocols required."
+    },
+    {
+      "title": "Identity Chaining Deep Dive: Connecting Identity Across Trust Domains with OAuth",
+      "url": "https://dev.to/kanywst/identity-chaining-deep-dive-connecting-identity-across-trust-domains-with-oauth-2onb",
+      "date": "2026-03-14",
+      "tags": [
+        "oauth",
+        "security",
+        "identity"
+      ],
+      "minutes": 15,
+      "description": "A comprehensive guide to Identity Chaining (draft-ietf-oauth-identity-chaining-08). Learn how to safely propagate identity and authorization information across domains in multi-cloud and microservices architectures, combining RFC 8693 and RFC 7523."
+    },
+    {
+      "title": "RFC 7521 Deep Dive: Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants",
+      "url": "https://dev.to/kanywst/rfc-7521-deep-dive-assertion-framework-for-oauth-20-client-authentication-and-authorization-grants-3gk8",
+      "date": "2026-03-12",
+      "tags": [
+        "oauth",
+        "security",
+        "authentication"
+      ],
+      "minutes": 8,
+      "description": "A deep dive into RFC 7521, the abstract framework for using SAML and JWT assertions as client authentication and authorization grants in OAuth 2.0, with diagrams."
+    },
+    {
+      "title": "OpenID Connect Dynamic Client Registration 1.0 Deep Dive: Dynamic Client Registration for Automation and Scale",
+      "url": "https://dev.to/kanywst/openid-connect-dynamic-client-registration-10-deep-dive-dynamic-client-registration-for-3ga1",
+      "date": "2026-03-09",
+      "tags": [
+        "oauth",
+        "oidc",
+        "security"
+      ],
+      "minutes": 8,
+      "description": "A comprehensive guide to OpenID Connect Dynamic Client Registration 1.0 (based on RFC 7591/7592). Why do we need dynamic registration? We explain its use cases and sequences with easy-to-understand diagrams."
+    },
+    {
+      "title": "brtc (Brute-force Cost): A CLI Tool to Convert Password Strength into \"Time to Crack and a Real USD Invoice\"",
+      "url": "https://dev.to/kanywst/brtc-a-cli-tool-to-convert-password-strength-into-time-to-crack-and-a-real-usd-invoice-24k9",
+      "date": "2026-03-08",
+      "tags": [
+        "security",
+        "go",
+        "cli"
+      ],
+      "minutes": 6,
+      "description": "More than just entropy calculation—I built a Go CLI tool to visualize how much it would cost if an offline attack were launched using modern hardware like an RTX 4090 or AWS clusters. Includes diagrams explaining the difference between online and offline attacks."
+    },
+    {
+      "title": "OpenID Connect Discovery 1.0 Deep Dive: OP's \"Self-Introduction\" and Dynamic Configuration Retrieval",
+      "url": "https://dev.to/kanywst/openid-connect-discovery-10-deep-dive-ops-self-introduction-and-dynamic-configuration-retrieval-2ja9",
+      "date": "2026-03-07",
+      "tags": [
+        "oauth",
+        "security",
+        "authentication"
+      ],
+      "minutes": 7,
+      "description": "Demystifying OpenID Connect Discovery 1.0: Deep diving into Issuer Discovery using WebFinger and metadata retrieval via /.well-known/openid-configuration."
+    },
+    {
+      "title": "RFC 8693 Deep Dive: Token Exchange",
+      "url": "https://dev.to/kanywst/rfc-8693-deep-dive-token-exchange-310i",
+      "date": "2026-03-03",
+      "tags": [
+        "oauth",
+        "oidc",
+        "security"
+      ],
+      "minutes": 10,
+      "description": "A comprehensive, illustrated deep dive into RFC 8693 (Token Exchange), the OAuth 2.0 standard for exchanging one token for another, exploring the crucial differences between Impersonation and Delegation."
+    },
+    {
+      "title": "I Just Wanted a Login Form: The \"Swamp\" of Complexity in the Modern Auth Ecosystem",
+      "url": "https://dev.to/kanywst/i-just-wanted-a-login-form-the-swamp-of-complexity-in-the-modern-auth-ecosystem-23pm",
+      "date": "2026-03-01",
+      "tags": [
+        "showdev",
+        "authentication",
+        "authorization"
+      ],
+      "minutes": 2,
+      "description": "\"ID and password are enough\"—there was a time when I thought so, too. From forgotten passwords and social logins to SAML, RBAC, and ReBAC. This post explains the background and implementation of \"I just wanted a login form.\""
+    },
+    {
+      "title": "What Exactly is \"Authentication\": From the Limits of Passwords to FIDO2, Passkeys, and IdP Architecture",
+      "url": "https://dev.to/kanywst/what-exactly-is-authentication-from-the-limits-of-passwords-to-fido2-passkeys-and-idp-5494",
+      "date": "2026-03-01",
+      "tags": [
+        "authentication",
+        "security",
+        "oidc"
+      ],
+      "minutes": 8,
+      "description": "A systematic explanation of the history and mechanisms of \"Authentication\", covering the transition from passwords to FIDO2, protecting secrets with TPM, and the evolution from LDAP to OIDC and IdPs."
+    },
+    {
+      "title": "OpenID Connect Core 1.0 Deep Dive: Understanding the \"Authentication\" Layer on top of OAuth 2.0",
+      "url": "https://dev.to/kanywst/openid-connect-core-10-deep-dive-understanding-the-authentication-layer-on-top-of-oauth-20-2bei",
+      "date": "2026-02-28",
+      "tags": [
+        "oauth",
+        "security",
+        "authentication"
+      ],
+      "minutes": 15,
+      "description": "Reading through the OIDC Core 1.0 specification with a deep dive into ID Tokens, the 3 Authentication Flows, Claims, UserInfo, and security design."
+    },
+    {
+      "title": "RFC 8705 Deep Dive: Turning Access Tokens into \"Unstealable Tokens\" with mTLS",
+      "url": "https://dev.to/kanywst/rfc-8705-deep-dive-turning-access-tokens-into-unstealable-tokens-with-mtls-406",
+      "date": "2026-02-26",
+      "tags": [
+        "oauth",
+        "security",
+        "tls"
+      ],
+      "minutes": 21,
+      "description": "A deep dive into RFC 8705, explaining the mechanisms of mTLS Client Authentication and Certificate-Bound Access Tokens. Includes comparisons with DPoP and FAPI."
+    },
+    {
+      "title": "RFC 6750 Deep Dive: How Bearer Tokens Actually Work, Straight from the Spec",
+      "url": "https://dev.to/kanywst/rfc-6750-deep-dive-how-bearer-tokens-actually-work-straight-from-the-spec-20ph",
+      "date": "2026-02-24",
+      "tags": [
+        "oauth",
+        "security",
+        "authentication"
+      ],
+      "minutes": 10,
+      "description": "A deep dive into RFC 6750 — the 3 ways to send Bearer Tokens, error handling, security threats, and the evolution toward DPoP."
+    },
+    {
+      "title": "RFC 6749 Deep Dive: Understanding OAuth 2.0 Design Decisions from the Specification",
+      "url": "https://dev.to/kanywst/rfc-6749-deep-dive-understanding-oauth-20-design-decisions-from-the-specification-2amb",
+      "date": "2026-02-23",
+      "tags": [
+        "oauth",
+        "security",
+        "authentication"
+      ],
+      "minutes": 13,
+      "description": "A line-by-line walkthrough of RFC 6749 covering all Grant Types, endpoints, and security design . Also covers the evolution toward OAuth 2.1."
+    },
+    {
+      "title": "Anonymity Technology: The 5 Layers of Defense",
+      "url": "https://dev.to/kanywst/anonymity-technology-the-5-layers-of-defense-1ad9",
+      "date": "2026-02-22",
+      "tags": [
+        "anonymity",
+        "privacy",
+        "security"
+      ],
+      "minutes": 11,
+      "description": "A technical overview of anonymity stacks, from network transport to traffic analysis resistance."
+    },
+    {
+      "title": "OPA & kube-mgmt Deep Dive",
+      "url": "https://dev.to/kanywst/opa-kube-mgmt-deep-dive-2g8",
+      "date": "2026-02-21",
+      "tags": [
+        "opa",
+        "kubernetes",
+        "rego"
+      ],
+      "minutes": 13,
+      "description": "While Gatekeeper is the standard for Kubernetes policy control, its predecessor, the 'OPA + kube-mgmt' setup, remains highly relevant as a versatile policy distribution platform. This article provides a comprehensive, source-code-level deep dive into the sidecar mechanism that syncs ConfigMaps to OPA's memory, the Rego evaluation process, and its application in microservice authorization."
+    },
+    {
+      "title": "Is it True That Go Maps Don't Shrink?",
+      "url": "https://dev.to/kanywst/is-it-true-that-go-maps-dont-shrink-3m3",
+      "date": "2026-02-17",
+      "tags": [
+        "go",
+        "memory",
+        "performance"
+      ],
+      "minutes": 8,
+      "description": "The common belief is that Go maps don't return memory after deletion. I verified this myth with actual measurements in Go 1.25. The result: Alloc decreased by 96%. The real culprit for memory not returning was RSS (in macOS environments). The key lies not in the Map itself, but in the Go runtime's virtual memory management and OS behavior."
+    },
+    {
+      "title": "Go Heap Fragmentation Deep Dive: The Battle Against 'Invisible Memory' Continues",
+      "url": "https://dev.to/kanywst/go-heap-fragmentation-deep-dive-the-battle-against-invisible-memory-continues-4o7h",
+      "date": "2026-02-16",
+      "tags": [
+        "go",
+        "memory",
+        "performance"
+      ],
+      "minutes": 7,
+      "description": "'The GC is running, but memory usage isn't dropping.' The cause is often heap fragmentation. This article details the design of Go's memory allocator, the mechanism of fragmentation, the despair of GOMEMLIMIT being rendered ineffective, and modern countermeasures."
+    },
+    {
+      "title": "Google has way too many AI tools now. It makes no sense.",
+      "url": "https://dev.to/kanywst/google-has-way-too-many-ai-tools-now-it-makes-no-sense-602",
+      "date": "2026-02-15",
+      "tags": [],
+      "minutes": 0,
+      "description": "A post by kt"
+    },
+    {
+      "title": "Hacker Heuristics: Mental Shortcuts for Surviving a World Without 'Correct' Answers",
+      "url": "https://dev.to/kanywst/hacker-heuristics-mental-shortcuts-for-surviving-a-world-without-correct-answers-4725",
+      "date": "2026-02-15",
+      "tags": [
+        "engineering",
+        "design",
+        "architecture"
+      ],
+      "minutes": 4,
+      "description": "In modern complex systems, calculating every variable is impossible. This is a catalog of powerful rules of thumb (heuristics) for engineers to make split-second decisions in the field."
+    },
+    {
+      "title": "Rust Zero-Cost Abstractions Deep Dive",
+      "url": "https://dev.to/kanywst/rust-zero-cost-abstractions-deep-dive-5a0m",
+      "date": "2026-02-14",
+      "tags": [
+        "rust",
+        "cpp",
+        "compiler"
+      ],
+      "minutes": 4,
+      "description": "The common wisdom that 'abstraction is slow' does not apply in the world of Rust and C++. However, not all abstractions are free. We visualize the difference between static and dynamic dispatch, and the compiler magic of 'Monomorphization' and 'Inlining' at the assembly level."
+    },
+    {
+      "title": "SPIFFE/SPIRE Deep Dive",
+      "url": "https://dev.to/kanywst/spiffespire-deep-dive-a5p",
+      "date": "2026-02-14",
+      "tags": [
+        "spiffe",
+        "spire",
+        "security"
+      ],
+      "minutes": 5,
+      "description": "We take a source-code level deep dive into the internal implementation of SPIFFE/SPIRE, the standard for 'Workload Identity' in the cloud-native environment."
+    },
+    {
+      "title": "Do you get my bio?",
+      "url": "https://dev.to/kanywst/do-you-get-my-bio-5djj",
+      "date": "2026-02-13",
+      "tags": [],
+      "minutes": 0,
+      "description": "A post by kt"
+    },
+    {
+      "title": "Rust Traits Deep Dive: Static vs. Dynamic Dispatch",
+      "url": "https://dev.to/kanywst/rust-traits-deep-dive-static-vs-dynamic-dispatch-3eol",
+      "date": "2026-02-11",
+      "tags": [
+        "rust",
+        "traits",
+        "generics"
+      ],
+      "minutes": 5,
+      "description": "Do you think Traits are just Interfaces? You're half right, but you're missing half of Rust's power. Let's fully understand the difference between Static Dispatch (Monomorphization) and Dynamic Dispatch (vtable) with visual diagrams."
+    },
+    {
+      "title": "The Feynman Technique 2026: A Cognitive Algorithm to Kill the 'Illusion of Competence'",
+      "url": "https://dev.to/kanywst/the-feynman-technique-2026-a-cognitive-algorithm-to-kill-the-illusion-of-competence-57c1",
+      "date": "2026-02-11",
+      "tags": [
+        "learning",
+        "career",
+        "productivity"
+      ],
+      "minutes": 4,
+      "description": "In an era where AI gives us instant answers, the value of 'explaining it in your own words' has skyrocketed. We redefine Richard Feynman's 'teaching to learn' method for the context of modern cognitive science and engineering."
+    },
+    {
+      "title": "Pingora Deep Dive: The Rust Proxy That Retired NGINX",
+      "url": "https://dev.to/kanywst/pingora-the-rust-proxy-that-retired-nginx-2hd1",
+      "date": "2026-02-09",
+      "tags": [
+        "rust",
+        "pingora",
+        "proxy"
+      ],
+      "minutes": 4,
+      "description": "Cloudflare ditched NGINX and rewrote it in Rust to create 'Pingora'. This article dissects the source code to explain the 'Two-Stage Connection Pool' mechanism, the full picture of the Server/Service architecture, and the trait methods developers need to implement."
+    },
+    {
+      "title": "Concurrency Design Patterns: From Fundamental Theory to Architecture",
+      "url": "https://dev.to/kanywst/concurrency-design-patterns-from-fundamental-theory-to-architecture-35j7",
+      "date": "2026-02-08",
+      "tags": [
+        "concurrency",
+        "designpatterns",
+        "architecture"
+      ],
+      "minutes": 10,
+      "description": "From the differences between 'concurrency' and 'parallelism' and Amdahl's Law to design strategies viewed through three layers (Architecture, Task, State). A comprehensive guide to the 'First Principles of Concurrency' required for robust system design in the AI era."
+    },
+    {
+      "title": "Concurrency Deep Dive: Memory Models, Lock-Free, and RCU",
+      "url": "https://dev.to/kanywst/concurrency-deep-dive-memory-models-lock-free-and-rcu-11mp",
+      "date": "2026-02-07",
+      "tags": [
+        "rust",
+        "concurrency",
+        "performance"
+      ],
+      "minutes": 10,
+      "description": "What is the CPU doing behind the scenes of 'reading a variable'? Dissecting Store Buffers, MESI Protocol, Memory Ordering (Acquire/Release), and the hardest part of lock-free implementation: 'Memory Reclamation (Epoch/RCU)'."
+    },
+    {
+      "title": "Dunning-Kruger Effect 2.0: The 'Illusion of Omnipotence' in the AI Era",
+      "url": "https://dev.to/kanywst/dunning-kruger-effect-20-the-illusion-of-omnipotence-in-the-ai-era-3aam",
+      "date": "2026-02-06",
+      "tags": [
+        "ai",
+        "career",
+        "psychology"
+      ],
+      "minutes": 4,
+      "description": "With AI, anyone can mimic a Senior Engineer. This is a sweet fantasy and the biggest trap of our time. We explore the 'AI-induced Dunning-Kruger Effect' and the 'Cognitive Offloading' that silently erodes our skills. Here is the survival strategy for true engineers in 2026."
+    },
+    {
+      "title": "Linux Kernel Deep Dive: Zombie Processes and Modern Process Management",
+      "url": "https://dev.to/kanywst/linux-kernel-deep-dive-zombie-processes-and-modern-process-management-1p1g",
+      "date": "2026-02-05",
+      "tags": [
+        "linux",
+        "kernel",
+        "container"
+      ],
+      "minutes": 5,
+      "description": "The horror of increasing 'Z' status processes. Why do processes become zombies after death? Dissecting the kernel mechanisms determining life and death, including waitpid, Subreaper, and the internal implementation of the Go os/exec package."
+    },
+    {
+      "title": "Go Deep Dive: Mutex vs RWMutex",
+      "url": "https://dev.to/kanywst/go-deep-dive-mutex-vs-rwmutex-9o9",
+      "date": "2026-02-04",
+      "tags": [
+        "go",
+        "concurrency",
+        "performance"
+      ],
+      "minutes": 5,
+      "description": "Is RWMutex always the right choice when reads outnumber writes? Let's dive into the internal implementation of Go's sync.Mutex and sync.RWMutex, analyze benchmark results, and establish clear criteria for choosing the right concurrency primitive."
+    },
+    {
+      "title": "Kubernetes Deep Dive: Kubelet",
+      "url": "https://dev.to/kanywst/kubernetes-deep-dive-kubelet-2h8k",
+      "date": "2026-02-04",
+      "tags": [
+        "kubernetes",
+        "kubelet",
+        "internal"
+      ],
+      "minutes": 4,
+      "description": "A thorough explanation of Kubelet internal implementation. Covers mechanisms in kind environments, the hierarchy of CRI (containerd) and OCI (runc), and the definitive differences between the often-misunderstood Eviction and OOM Killer."
+    },
+    {
+      "title": "Stardust: The dashboard that transforms GitHub trends from \"search\" to \"monitoring\"",
+      "url": "https://dev.to/kanywst/stardust-the-dashboard-that-transforms-github-trends-from-search-to-monitoring-5732",
+      "date": "2026-02-01",
+      "tags": [
+        "showdev",
+        "react",
+        "typescript"
+      ],
+      "minutes": 2,
+      "description": "For engineers tired of constantly switching between languages, we've launched \"Stardust\" - a dashboard that lets you simultaneously monitor multiple GitHub trends across different programming languages on a single screen."
+    },
+    {
+      "title": "The Essence of Google-Style Code Review: A Culture of 'Improvement' Over 'Perfection'",
+      "url": "https://dev.to/kanywst/the-essence-of-google-style-code-review-a-culture-of-improvement-over-perfection-566f",
+      "date": "2026-02-01",
+      "tags": [
+        "google",
+        "codereview",
+        "engineering"
+      ],
+      "minutes": 3,
+      "description": "A deep dive into Google's Engineering Practices documentation. Learn about the standards that accelerate teams, including the 'Better is Enough' approval criteria and the critical importance of review speed."
+    },
+    {
+      "title": "Docker Deep Dive: One Container, One Process",
+      "url": "https://dev.to/kanywst/deep-dive-into-dockers-fundamental-principle-one-container-one-process-40lf",
+      "date": "2026-01-31",
+      "tags": [
+        "docker",
+        "kubernetes",
+        "container"
+      ],
+      "minutes": 8,
+      "description": "Deep Dive into Docker's Fundamental Principle: 'One Container, One Process'"
+    },
+    {
+      "title": "Kubernetes Pentest Methodology: Cluster Security from an Attacker's Perspective",
+      "url": "https://dev.to/kanywst/kubernetes-pentest-methodology-cluster-security-from-an-attackers-perspective-1fek",
+      "date": "2026-01-30",
+      "tags": [
+        "kubernetes",
+        "security",
+        "pentest"
+      ],
+      "minutes": 3,
+      "description": "Explaining penetration testing methodologies for Kubernetes environments. Visualizing RBAC abuse after Legacy Token deprecation, attacks evading VAP, and the latest trends in container escape using Mermaid diagrams."
+    },
+    {
+      "title": "Zero Trust 2026: Has the Trust Boundary 'Vanished'? AI, ID-JAG, and Confidential Computing",
+      "url": "https://dev.to/kanywst/zero-trust-2026-has-the-trust-boundary-vanished-ai-id-jag-and-confidential-computing-5d13",
+      "date": "2026-01-29",
+      "tags": [
+        "security",
+        "zerotrust",
+        "ai"
+      ],
+      "minutes": 6,
+      "description": "In 2026, security boundaries have shifted from 'Network' to 'ID' and 'Silicon'. We thoroughly explain the multi-layered defense architecture using 'ID-JAG' for Agentic AI control and 'Confidential VM/Containers' as hardware-level fortresses, based on RFC specs and chip architectures."
+    },
+    {
+      "title": "Node Exporter Deep Dive: Connecting the Linux Kernel and Prometheus",
+      "url": "https://dev.to/kanywst/node-exporter-deep-dive-connecting-the-linux-kernel-and-prometheus-5c6i",
+      "date": "2026-01-28",
+      "tags": [
+        "prometheus",
+        "monitoring",
+        "linux"
+      ],
+      "minutes": 6,
+      "description": "A deep dive into the internal structure of Node Exporter, exploring its interaction with the /proc filesystem, the Collector mechanism, and extensibility via Textfile Collector."
+    },
+    {
+      "title": "Kubernetes Deep Dive: OCI Runtime vs CRI",
+      "url": "https://dev.to/kanywst/kubernetes-deep-dive-oci-runtime-vs-cri-4o2n",
+      "date": "2026-01-27",
+      "tags": [
+        "kubernetes",
+        "container",
+        "cri"
+      ],
+      "minutes": 3,
+      "description": "A deep dive into the clear distinction between OCI Runtime and CRI. We explain the architecture, the historical background of the split, and the technical flow from Kubelet down to the Linux Kernel."
+    },
+    {
+      "title": "Prometheus Deep Dive: Pull Architecture and TSDB Secrets",
+      "url": "https://dev.to/kanywst/prometheus-deep-dive-pull-architecture-and-tsdb-secrets-2jn4",
+      "date": "2026-01-26",
+      "tags": [
+        "prometheus",
+        "monitoring",
+        "tsdb"
+      ],
+      "minutes": 5,
+      "description": "A thorough explanation of the internal structure of 'Prometheus,' the de facto standard for monitoring. Why use the Pull model? How is TSDB memory management (Head Block/WAL) handled? Understand how Prometheus works with diagrams."
+    },
+    {
+      "title": "Thanos Deep Dive: Breaking Through Prometheus's 'Limitations'",
+      "url": "https://dev.to/kanywst/thanos-deep-dive-breaking-through-prometheuss-limitations-a5e",
+      "date": "2026-01-26",
+      "tags": [
+        "prometheus",
+        "thanos",
+        "o11y"
+      ],
+      "minutes": 4,
+      "description": "Thanos solves the challenges of 'long-term storage' and 'High Availability (HA)' in Prometheus. We thoroughly dissect the architecture of how components like Sidecar, Store Gateway, and Compactor coordinate and utilize object storage."
+    },
+    {
+      "title": "Kubernetes Deep Dive: Networking (Service, EndpointSlice, Gateway)",
+      "url": "https://dev.to/kanywst/kubernetes-deep-dive-networking-service-endpointslice-gateway-18cn",
+      "date": "2026-01-25",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "service"
+      ],
+      "minutes": 7,
+      "description": "Understanding Kubernetes Networking resources (Service, EndpointSlice, Ingress, etc.) from internal implementation details."
+    },
+    {
+      "title": "Go vs Rust vs C++: Deep Dive into Reverse Proxy Performance on Mac (Pingora/Envoy/Traefik/Nginx)",
+      "url": "https://dev.to/kanywst/go-vs-rust-vs-c-deep-dive-into-reverse-proxy-performance-on-mac-pingoraenvoytraefiknginx-g40",
+      "date": "2026-01-23",
+      "tags": [
+        "go",
+        "rust",
+        "proxy"
+      ],
+      "minutes": 8,
+      "description": "Go excels at concurrency with Goroutines. However, in the reverse proxy world, Rust's Pingora and C++'s Envoy are stealing the spotlight. We dissect the reasons via context switches, memory management, and real-world benchmarks."
+    },
+    {
+      "title": "Galick: I built the ultimate Load Testing tool (Go + Starlark)",
+      "url": "https://dev.to/kanywst/galick-i-built-the-ultimate-load-testing-tool-go-starlark-ipc",
+      "date": "2026-01-20",
+      "tags": [
+        "showdev",
+        "go",
+        "performance"
+      ],
+      "minutes": 3,
+      "description": "Why choose between performance and flexibility? Galick combines Go's speed with Starlark scripting for the best of both worlds."
+    },
+    {
+      "title": "Rapg: TUI-based Secret Manager",
+      "url": "https://dev.to/kanywst/rapg-tui-based-secret-manager-4d7p",
+      "date": "2026-01-20",
+      "tags": [
+        "showdev",
+        "cli",
+        "go"
+      ],
+      "minutes": 3,
+      "description": "A secure, TUI-based secret manager for developers who want to inject secrets directly into processes without writing them to disk."
+    },
+    {
+      "title": "IssueHub: Helping Beginners Find Their First OSS Contribution Opportunities",
+      "url": "https://dev.to/kanywst/issuehub-helping-beginners-find-their-first-oss-contribution-opportunities-2g7k",
+      "date": "2026-01-18",
+      "tags": [
+        "showdev",
+        "opensource",
+        "nextjs"
+      ],
+      "minutes": 2,
+      "description": "help you find 'good first issues' and take your first step into open source."
+    },
+    {
+      "title": "RSA Performance Anatomy: Why is 'Verification' Blazing Fast and 'Signing' Extremely Slow?",
+      "url": "https://dev.to/kanywst/rsa-performance-anatomy-why-is-verification-blazing-fast-and-signing-extremely-slow-13af",
+      "date": "2026-01-17",
+      "tags": [
+        "algorithms",
+        "cryptography",
+        "math"
+      ],
+      "minutes": 8,
+      "description": "Explaining the mechanism of the Binary Method (Square-and-Multiply) in RSA encryption and how exponent selection affects performance from mathematical and implementation perspectives."
+    },
+    {
+      "title": "gmk(Git Mark): Stop Typing Git URLs",
+      "url": "https://dev.to/kanywst/gmk-stop-typing-git-urls-a7",
+      "date": "2026-01-16",
+      "tags": [
+        "showdev",
+        "rust",
+        "cli"
+      ],
+      "minutes": 2,
+      "description": "A stylish, interactive CLI to bookmark and clone your favorite Git repositories."
+    },
+    {
+      "title": "The Magic of .sock: Why Modern Infrastructure Relies on Unix Domain Sockets",
+      "url": "https://dev.to/kanywst/the-magic-of-sock-why-modern-infrastructure-relies-on-unix-domain-sockets-4ohl",
+      "date": "2026-01-15",
+      "tags": [
+        "linux",
+        "security",
+        "go"
+      ],
+      "minutes": 5,
+      "description": "A deep dive into the mechanics of Unix Domain Sockets, Peer Authentication, and why they are the backbone of zero-trust security in Docker and SPIRE."
+    },
+    {
+      "title": "Go vs Rust: Deep Dive into OS Threads, GC, and CPU Limits",
+      "url": "https://dev.to/kanywst/go-vs-rust-deep-dive-into-os-threads-gc-and-cpu-limits-25a1",
+      "date": "2026-01-14",
+      "tags": [
+        "go",
+        "rust",
+        "performance"
+      ],
+      "minutes": 8,
+      "description": "Dissecting everything from OS kernels to Go's GC and Rust's Ownership model with real benchmarks."
+    },
+    {
+      "title": "Digital Signatures: Mechanics and Go Benchmarks (RSA vs ECDSA vs Ed25519)",
+      "url": "https://dev.to/kanywst/digital-signatures-mechanics-and-go-benchmarks-rsa-vs-ecdsa-vs-ed25519-2d36",
+      "date": "2026-01-13",
+      "tags": [
+        "go",
+        "cryptography",
+        "performance"
+      ],
+      "minutes": 7,
+      "description": "A deep dive into digital signature algorithms, comparing their mechanics and performance using Go benchmarks on Apple Silicon."
+    },
+    {
+      "title": "eBPF: Experiencing eBPF with Cilium",
+      "url": "https://dev.to/kanywst/ebpf-experiencing-ebpf-with-cilium-4k55",
+      "date": "2026-01-12",
+      "tags": [
+        "cilium",
+        "ebpf",
+        "kubernetes"
+      ],
+      "minutes": 8,
+      "description": "Through Cilium, experience the visualization (Hubble), L7 control, Kubernetes Validating Admission Policy, and SPIRE (mTLS) integration brought by eBPF."
+    },
+    {
+      "title": "I'm curious about the process everyone follows to deep dive into a new tech",
+      "url": "https://dev.to/kanywst/im-curious-about-the-process-everyone-follows-to-deep-dive-into-a-new-tech-2c4b",
+      "date": "2026-01-12",
+      "tags": [],
+      "minutes": 0,
+      "description": "A post by kt"
+    },
+    {
+      "title": "Supply Chain Security: A Deep Dive into SBOM and Code Signing",
+      "url": "https://dev.to/kanywst/supply-chain-security-a-deep-dive-into-sbom-and-code-signing-2n1l",
+      "date": "2026-01-11",
+      "tags": [
+        "security",
+        "sbom",
+        "kubernetes"
+      ],
+      "minutes": 11,
+      "description": "A deep dive into SBOM generation with Syft, keyless signing with Cosign, and Kubernetes use cases to protect against supply chain attacks."
+    },
+    {
+      "title": "Docker: Internal Architecture",
+      "url": "https://dev.to/kanywst/docker-internal-architecture-bfo",
+      "date": "2026-01-10",
+      "tags": [
+        "docker",
+        "container",
+        "linux"
+      ],
+      "minutes": 11,
+      "description": "Deep dive into Docker's internal architecture: dockerd, containerd, runc, and kernel namespaces."
+    },
+    {
+      "title": "Linux File System Architecture: A Deep Dive into VFS, Inodes, and Storage",
+      "url": "https://dev.to/kanywst/linux-file-system-architecture-a-deep-dive-into-vfs-inodes-and-storage-1n9",
+      "date": "2026-01-10",
+      "tags": [
+        "linux",
+        "kernel",
+        "systems"
+      ],
+      "minutes": 7,
+      "description": "In Linux, 'everything is a file'—but how does that actually work? I explore the architecture behind VFS, Inodes, and how data lives on Disks vs RAM."
+    },
+    {
+      "title": "Linux Kernel Architecture: From Ring 0 to Network Stack & eBPF",
+      "url": "https://dev.to/kanywst/linux-kernel-architecture-from-ring-0-to-network-stack-ebpf-6o0",
+      "date": "2026-01-10",
+      "tags": [
+        "linux",
+        "kernel",
+        "ebpf"
+      ],
+      "minutes": 9,
+      "description": "A deep dive into Linux kernel fundamentals, system calls, the CPU protection rings, and the packet flow within the network stack. Learn how sk_buff works and where eBPF (XDP/TC) fits in."
+    },
+    {
+      "title": "Velo: A Cross-Platform Network Speed Monitor Built with Go & Wails",
+      "url": "https://dev.to/kanywst/velo-a-cross-platform-network-speed-monitor-built-with-go-wails-3g3p",
+      "date": "2026-01-10",
+      "tags": [
+        "showdev",
+        "wails",
+        "go"
+      ],
+      "minutes": 3,
+      "description": "An open-source desktop tool to automatically monitor and visualize your internet connection speed over time."
+    },
+    {
+      "title": "The Birth of Websites: A Visual Journey through IT History",
+      "url": "https://dev.to/kanywst/the-birth-of-websites-a-visual-journey-through-it-history-444f",
+      "date": "2026-01-09",
+      "tags": [
+        "showdev",
+        "vue",
+        "webdev"
+      ],
+      "minutes": 2,
+      "description": "I built a visual timeline exploring the origins of major tech companies, web services, and even the dark web. Built with Vue 3 & Vite."
+    },
+    {
+      "title": "y509: A terminal user interface (TUI) tool for viewing and analyzing X.509 certificate chains",
+      "url": "https://dev.to/kanywst/y509-a-terminal-user-interface-tui-tool-for-viewing-and-analyzing-x509-certificate-chains-5fn6",
+      "date": "2026-01-09",
+      "tags": [
+        "showdev",
+        "go",
+        "cli"
+      ],
+      "minutes": 4,
+      "description": "I built a TUI tool in Go to visualize and analyze X.509 certificate chains. Say goodbye to scrolling through raw openssl output."
+    },
+    {
+      "title": "Hello World: Managing Dev.to Articles with GitOps",
+      "url": "https://dev.to/kanywst/hello-world-managing-devto-articles-with-gitops-5594",
+      "date": "2026-01-08",
+      "tags": [
+        "productivity",
+        "github",
+        "automation"
+      ],
+      "minutes": 2,
+      "description": "A quick look at why and how I decided to manage my technical blog posts using Git, Markdown, and GitHub Actions."
     }
   ]
 }
