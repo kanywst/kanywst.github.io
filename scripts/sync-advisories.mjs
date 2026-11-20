@@ -95,12 +95,20 @@ function fetchAdvisory({ repo, ghsa, title, cve }) {
   // Don't fabricate a severity if the API omits/renames the field; flag it ('unknown',
   // sorted last, warned below) rather than silently claiming a specific level.
   const sev = (data.severity ?? '').toLowerCase();
+  const v4 = data.cvss_severities?.cvss_v4;
+  const v3 = data.cvss_severities?.cvss_v3 ?? data.cvss;
+  const scored = v4?.score ? v4 : v3?.score ? v3 : null;
+  const cvss = scored ? { score: scored.score, vector: scored.vector_string } : null;
   return {
     owner,
     repo: name,
     ghsa: data.ghsa_id,
     ...(cveId ? { cve: cveId } : {}),
     severity: KNOWN_SEVERITY.has(sev) ? sev : 'unknown',
+    // the upstream GHSA's own score; omitted rather than guessed when the advisory has none.
+    // For a downstream-assigned CVE (kuma) this is still the upstream maintainers' score.
+    ...(cvss ? { cvss } : {}),
+    ...(data.published_at ? { published: data.published_at.slice(0, 10) } : {}),
     title: title ?? data.summary,
     domain: DOMAIN_BY_REPO[slug] ?? DOMAIN_BY_REPO[repo] ?? '',
     url,

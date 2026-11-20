@@ -65,7 +65,7 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
   // Exclude own repos in the query itself: search caps at 1000 results, and self-PRs
   // alone passed that, so a client-side filter silently dropped the oldest external PRs.
   const args = ['search', kind, '--author=kanywst', '--limit', LIMIT, '--json',
-    'repository,title,state,number,url,createdAt'];
+    'repository,title,state,number,url,createdAt,closedAt'];
   if (kind === 'issues') args.push('--include-prs=false');
   // `--` keeps gh from parsing the leading '-' as a flag; every flag must come before it
   args.push('--', ...OWN_OWNERS.map((o) => `-user:${o}`));
@@ -88,6 +88,12 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
         domain: DOMAIN_BY_REPO[x.repository.nameWithOwner] ?? '',
         title: x.title,
         url: x.url,
+        // when it landed (merged / closed) or, still open, when it was opened. gh reports an
+        // open item's closedAt as the zero time, not null
+        date: (x.state.toLowerCase() === 'open' || x.closedAt.startsWith('0001')
+          ? x.createdAt
+          : x.closedAt
+        ).slice(0, 10),
         _date: x.createdAt,
       };
     })
