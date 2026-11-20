@@ -24,6 +24,7 @@ import {
   TAGLINE_BY_REPO,
 } from './taglines.mjs';
 import { recordHistory } from './history.mjs';
+import { normalizeVersion, orgRows, upstreamRows } from './sync-lib.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const FILE = resolve(here, '../src/data/profile.json');
@@ -50,12 +51,6 @@ function ghJSON(args) {
   return JSON.parse(gh(args));
 }
 
-// Normalize a release tag for display: "omega-0.0.2" → "v0.0.2", "v0.12.0" → "v0.12.0".
-function normalizeVersion(tag) {
-  const m = tag.match(/v?\d+\.\d+\.\d+[\w.-]*/);
-  if (!m) return tag;
-  return m[0].startsWith('v') ? m[0] : `v${m[0]}`;
-}
 
 // kanywst opens hundreds of self-PRs (agent loops). Search returns at most 1000 results,
 // so own repos are excluded in the query (fetchExternal) and the limit only has to cover
@@ -75,41 +70,7 @@ function fetchExternal(kind /* 'prs' | 'issues' */) {
   if (rows.length >= Number(LIMIT)) {
     throw new Error(`gh search ${kind} hit the ${LIMIT}-result cap; results are truncated`);
   }
-  return rows
-    // guard against unexpected shapes, then keep external repos only
-    .filter((x) => x?.repository?.nameWithOwner && !isOwn(x.repository.nameWithOwner))
-    .filter((x) => !EXCLUDE.has(`${x.repository.nameWithOwner}#${x.number}`))
-    .map((x) => {
-      const [owner, repo] = x.repository.nameWithOwner.split('/');
-      return {
-        owner,
-        repo,
-        number: x.number,
-        state: x.state.toLowerCase(),
-        domain: DOMAIN_BY_REPO[x.repository.nameWithOwner] ?? '',
-        title: x.title,
-        url: x.url,
-        // when it landed (merged / closed) or, still open, when it was opened. gh reports an
-        // open item's closedAt as the zero time, not null
-        date: (x.state.toLowerCase() === 'open' || !x.closedAt || x.closedAt.startsWith('0001')
-          ? x.createdAt
-          : x.closedAt
-        ).slice(0, 10),
-        _date: x.createdAt,
-      };
-    })
-    // resolved/landed first (merged|closed-issue), then most recent
-    .sort((a, b) => {
-      const rank = (s) => (s === 'merged' ? 0 : s === 'open' ? 1 : 2);
-      // by the date the row shows (landed, or opened if still open), so the month column
-      // reads in order; createdAt only breaks ties
-      return (
-        rank(a.state) - rank(b.state) ||
-        b.date.localeCompare(a.date) ||
-        b._date.localeCompare(a._date)
-      );
-    })
-    .map(({ _date, ...rest }) => rest);
+  return upstreamRows(rows, { isOwn, exclude: EXCLUDE, domains: DOMAIN_BY_REPO });
 }
 
 const profile = JSON.parse(readFileSync(FILE, 'utf8'));
@@ -188,17 +149,7 @@ function fetchOrgRepos() {
   ]);
   // at the cap the list is truncated without a word from gh; same rule as the PR search
   if (all.length >= ORG_LIMIT) throw new Error(`gh repo list 0-draft hit the ${ORG_LIMIT} cap`);
-  return all
-    .filter((r) => !ORG_EXCLUDE.has(r.name))
-    // a repo with no description has nothing to put on a card yet
-    .filter((r) => ORG_BLURB_BY_REPO[r.name] ?? r.description)
-    .sort((a, b) => b.createdAt.localeCompare(a.createdAt) || a.name.localeCompare(b.name))
-    .map((r) => ({
-      name: r.name,
-      lang: ORG_LANG_BY_REPO[r.name] ?? r.primaryLanguage?.name ?? '',
-      blurb: ORG_BLURB_BY_REPO[r.name] ?? r.description,
-      url: r.url,
-    }));
+  return orgRows(all, { exclude: ORG_EXCLUDE, blurbs: ORG_BLURB_BY_REPO, langs: ORG_LANG_BY_REPO });
 }
 
 const orgRepos = fetchOrgRepos();

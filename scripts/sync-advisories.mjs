@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { DOMAIN_BY_REPO } from './domains.mjs';
 import { recordHistory } from './history.mjs';
+import { advisoryFromApi } from './sync-lib.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const FILE = resolve(here, '../src/data/profile.json');
@@ -57,7 +58,6 @@ const ADVISORY_SOURCES = [
 ];
 
 const SEVERITY_RANK = { critical: 0, high: 1, medium: 2, low: 3 };
-const KNOWN_SEVERITY = new Set(['critical', 'high', 'medium', 'low']);
 
 function fetchAdvisory({ repo, ghsa, title, cve }) {
   let data;
@@ -84,37 +84,7 @@ function fetchAdvisory({ repo, ghsa, title, cve }) {
     if (/Resource not accessible by integration/i.test(msg)) return null;
     throw new Error(`advisory fetch failed for ${repo} ${ghsa}: ${msg.trim() || err}`);
   }
-  if (data.state !== 'published') return null;
-  // Derive owner/repo from the live html_url (GitHub keeps it current across renames),
-  // falling back to the static source slug, so a renamed repo doesn't show a stale slug.
-  const url = data.html_url ?? `https://github.com/${repo}/security/advisories/${ghsa}`;
-  const m = url.match(/github\.com\/([^/]+)\/([^/]+)\/security\/advisories\//);
-  const slug = m ? `${m[1]}/${m[2]}` : repo;
-  const [owner, name] = slug.split('/');
-  const cveId = data.cve_id ?? cve; // GitHub-assigned, else a pinned downstream CVE
-  // Don't fabricate a severity if the API omits/renames the field; flag it ('unknown',
-  // sorted last, warned below) rather than silently claiming a specific level.
-  const sev = (data.severity ?? '').toLowerCase();
-  const v4 = data.cvss_severities?.cvss_v4;
-  const v3 = data.cvss_severities?.cvss_v3 ?? data.cvss;
-  const scored = v4?.score ? v4 : v3?.score ? v3 : null;
-  const cvss = scored ? { score: scored.score, vector: scored.vector_string } : null;
-  return {
-    owner,
-    repo: name,
-    ghsa: data.ghsa_id,
-    ...(cveId ? { cve: cveId } : {}),
-    severity: KNOWN_SEVERITY.has(sev) ? sev : 'unknown',
-    // the upstream GHSA's own score; omitted rather than guessed when the advisory has none.
-    // For a downstream-assigned CVE (kuma) this is still the upstream maintainers' score.
-    // not for a pinned downstream CVE (kuma → Kong Mesh): the upstream score would sit next
-    // to an id someone else assigned and read as that CVE's score
-    ...(cvss && !(cve && !data.cve_id) ? { cvss } : {}),
-    ...(data.published_at ? { published: data.published_at.slice(0, 10) } : {}),
-    title: title ?? data.summary,
-    domain: DOMAIN_BY_REPO[slug] ?? DOMAIN_BY_REPO[repo] ?? '',
-    url,
-  };
+  return advisoryFromApi(data, { repo, ghsa, title, cve }, DOMAIN_BY_REPO);
 }
 
 const advisories = ADVISORY_SOURCES.map(fetchAdvisory)
