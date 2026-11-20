@@ -71,6 +71,15 @@ jobs:
           npx playwright install --with-deps chromium
           node scripts/make-og.mjs
 
+      # The contract tests (profile.test.ts, fresh.test.ts) guard exactly what this job
+      # writes, but its own commit carries [skip ci], so without this step they never ran
+      # against synced data. A failure here stops the commit and the deploy.
+      - name: Test the refreshed data
+        if: steps.sync.outputs.changed == 'true' || inputs.redraw_og
+        run: |
+          [ -d node_modules ] || npm ci
+          npm test
+
       - name: Commit refreshed data
         id: commit
         if: steps.sync.outputs.changed == 'true' || inputs.redraw_og
@@ -96,7 +105,7 @@ jobs:
       - name: Build
         if: steps.commit.outputs.pushed == 'true'
         run: |
-          npm install
+          [ -d node_modules ] || npm ci
           npm run build
 
       - uses: actions/upload-pages-artifact@v5
