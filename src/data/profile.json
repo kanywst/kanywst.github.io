@@ -211,7 +211,7 @@
   "org": {
     "name": "0-draft",
     "url": "https://github.com/0-draft",
-    "blurb": "Research & incubation org: source-checked visual explainers, reference implementations and deep dives across identity, authorization and security, most of them in English and Japanese.",
+    "blurb": "Research & incubation org: source-checked visual explainers, reference implementations and deep dives across identity, authorization and security.",
     "repos": [
       {
         "name": "how-chat-apps-work",
