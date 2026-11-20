@@ -824,6 +824,11 @@ a {
   font-size: 11.5px;
 }
 
+.m-tag {
+  text-transform: none;
+  letter-spacing: var(--track);
+}
+
 .m-date {
   color: var(--muted);
   font-size: 11px;
@@ -840,11 +845,17 @@ a {
   text-transform: none;
 }
 
-/* the score rides on the severity word it qualifies; the vector is in the tooltip */
+/* the score sits on its own line under the severity word it qualifies: on one line,
+   "MEDIUM | 6.3 v3.1" outran the marker column and ran into the repo name. Indented to the
+   word, past the dot, so the two lines read as one label. */
+.marker:has(.cvss) {
+  flex-wrap: wrap;
+  row-gap: 3px;
+}
+
 .cvss {
-  margin-left: 2px;
-  padding-left: 7px;
-  border-left: 1px solid var(--line);
+  flex-basis: 100%;
+  padding-left: 13px;
   color: var(--fg);
   letter-spacing: 0;
   font-variant-numeric: tabular-nums;

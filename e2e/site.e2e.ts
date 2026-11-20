@@ -45,8 +45,27 @@ test('without JS the prerendered copy carries every section and row', async ({ b
   const ctx = await browser.newContext({ javaScriptEnabled: false });
   const page = await ctx.newPage();
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(5);
+  // 5 sections, 6 once the dev.to sync has filled `writing`
+  expect(await page.getByRole('heading', { level: 2 }).count()).toBeGreaterThanOrEqual(5);
   await expect(page.locator('.noscript-detail .filter, .noscript-detail .more')).toHaveCount(0);
   await expect(page.locator('.hint')).toBeHidden();
   await ctx.close();
+});
+
+test('row markers never run into the text beside them', async ({ page }) => {
+  // the CVSS score once overran the severity column and sat on top of the repo name
+  for (const width of [1280, 900, 700]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/#advisories');
+    const gaps = await page.locator('.row.entry').evaluateAll((rows) =>
+      rows.map((r) => {
+        const m = r.querySelector('.marker')?.getBoundingClientRect();
+        const b = r.querySelector('.row-body')?.getBoundingClientRect();
+        // stacked (mobile) layout puts the marker above the body: no horizontal overlap there
+        if (!m || !b || m.bottom <= b.top) return 1;
+        return b.left - m.right;
+      }),
+    );
+    expect(Math.min(...gaps), `at ${width}px`).toBeGreaterThan(0);
+  }
 });
