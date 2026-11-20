@@ -66,8 +66,9 @@
       crossorigin
     />
     <!-- without JS the detail is already on the page (scripts/prerender.mjs), so the
-         landing's "space · more" hint would point at a control that does nothing -->
-    <noscript><style>.hint { display: none; }</style></noscript>
+         landing's "space · more" hint would point at a control that does nothing. !important
+         because the bundled stylesheet that sets .hint is linked after this. -->
+    <noscript><style>.hint { display: none !important; }</style></noscript>
   </head>
   <body>
     <div id="root"></div>

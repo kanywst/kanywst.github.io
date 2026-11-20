@@ -785,7 +785,14 @@ export function Detail({
           </a>
         </div>
         <div className="org-intro reveal" style={at(orgBlurbAt)}>
-          <a className="org-badge" href={org.url} target="_blank" rel="noreferrer" tabIndex={-1}>
+          <a
+            className="org-badge"
+            href={org.url}
+            target="_blank"
+            rel="noreferrer"
+            tabIndex={-1}
+            aria-label="0-draft on GitHub"
+          >
             <img src={avatar('0-draft')} alt="" width={56} height={56} />
           </a>
           <p className="org-blurb">{org.blurb}</p>
