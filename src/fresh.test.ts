@@ -106,11 +106,24 @@ describe('foldSnapshot (scripts/history.mjs)', () => {
     l = foldSnapshot(l, snap([{ name: 'a', stars: 2 }]), '2026-11-03');
     l = foldSnapshot(l, snap([{ name: 'a', stars: 3 }]), '2026-11-03');
     l = foldSnapshot(l, snap([]), '2026-11-04');
+    l = foldSnapshot(l, snap([]), '2026-11-04'); // a re-run the same day is still one miss
+    expect(l.stars.a.at(-1)).toEqual(['2026-11-03', 3]);
+    l = foldSnapshot(l, snap([]), '2026-11-05');
     expect(l.stars.a).toEqual([
       ['2026-11-01', 1],
       ['2026-11-03', 3],
       ['2026-11-04', 0],
     ]);
+    expect(l.absent).toEqual({});
+  });
+
+  it('ignores a repo missing from a single degraded sync', () => {
+    let l = foldSnapshot({ firstSeen: { x: BOOTSTRAP_DATE }, stars: {} }, snap([{ name: 'a', stars: 5 }]), '2026-11-01');
+    l = foldSnapshot(l, snap([]), '2026-11-02');
+    expect(l.absent).toEqual({ a: '2026-11-02' });
+    l = foldSnapshot(l, snap([{ name: 'a', stars: 5 }]), '2026-11-03');
+    expect(l.stars.a).toEqual([['2026-11-01', 5]]);
+    expect(l.absent).toEqual({});
   });
 
   it('prunes the log to 30 days plus one baseline entry', () => {

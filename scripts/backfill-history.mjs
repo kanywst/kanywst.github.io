@@ -35,7 +35,7 @@ const commits = git(['log', '--reverse', '--format=%H %cd', '--date=format-local
   .split('\n')
   .map((l) => l.split(' '));
 
-let history = { firstSeen: {}, stars: {} };
+let history = { firstSeen: {}, stars: {}, absent: {} };
 let replayed = 0;
 for (const [sha, date] of commits) {
   let snap;

@@ -9,6 +9,13 @@
 //   stars      repo name → [[date, stars], ...], one entry per *change*, so a quiet repo
 //              costs one line. Pruned to a window plus one baseline entry before it, which is
 //              enough to answer "how many stars at date D" for any D inside the window.
+//   absent     repo name → the first sync date it was missing from the list. A repo that
+//              leaves is closed with a 0 only once it is missing from a *second* sync, dated
+//              back to the first miss, so a single degraded fetch can't zero a repo and fake
+//              a re-entry or a rank climb for the week after.
+//
+// Both ledgers are keyed by name/url, so a renamed repo starts over: new first-seen date,
+// fresh star log. Renames are rare enough that this is cheaper than tracking repo ids.
 //
 // Both sync scripts call recordHistory() after writing profile.json. It is idempotent, so
 // running either script twice, or both in either order, lands on the same ledger.
@@ -48,9 +55,9 @@ export function trackedUrls(profile) {
 }
 
 export function loadHistory(file = HISTORY_FILE) {
-  if (!existsSync(file)) return { firstSeen: {}, stars: {} };
+  if (!existsSync(file)) return { firstSeen: {}, stars: {}, absent: {} };
   const h = JSON.parse(readFileSync(file, 'utf8'));
-  return { firstSeen: h.firstSeen ?? {}, stars: h.stars ?? {} };
+  return { firstSeen: h.firstSeen ?? {}, stars: h.stars ?? {}, absent: h.absent ?? {} };
 }
 
 /** Pure: fold one profile snapshot taken on `date` into the ledger. Returns a new ledger. */
@@ -75,16 +82,23 @@ export function foldSnapshot(history, profile, date) {
     }
   }
   // A repo that left the list (unstarred, archived, renamed) gets a closing 0 so a
-  // past-rank lookup still sees it held a place then and doesn't see it now.
+  // past-rank lookup still sees it held a place then and doesn't see it now — but only once
+  // it has been missing from two different syncs (see `absent` above).
+  const absent = {};
   for (const [name, log] of Object.entries(stars)) {
     const last = log.at(-1);
-    if (!present.has(name) && last && last[1] !== 0) {
-      if (last[0] === date) last[1] = 0;
-      else log.push([date, 0]);
+    if (present.has(name) || !last || last[1] === 0) continue;
+    const since = history.absent?.[name] ?? date;
+    if (since === date) {
+      absent[name] = since;
+      continue;
     }
+    // dated to the first miss; a same-day entry there is overwritten, not stacked
+    if (last[0] >= since) last[1] = 0;
+    else log.push([since, 0]);
   }
 
-  return { firstSeen, stars: pruneStars(stars, date) };
+  return { firstSeen, stars: pruneStars(stars, date), absent };
 }
 
 function pruneStars(stars, date) {
@@ -107,7 +121,15 @@ export function writeHistory(history, file = HISTORY_FILE) {
   const sorted = (o) => Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b)));
   writeFileSync(
     file,
-    JSON.stringify({ firstSeen: sorted(history.firstSeen), stars: sorted(history.stars) }, null, 2) +
+    JSON.stringify(
+      {
+        firstSeen: sorted(history.firstSeen),
+        stars: sorted(history.stars),
+        absent: sorted(history.absent ?? {}),
+      },
+      null,
+      2,
+    ) +
       '\n',
   );
 }
