@@ -135,3 +135,7 @@ export const LISTING_REPOS = new Set([
   'pwn2winctf/2020submissions',
   'trackawesomelist/trackawesomelist-source',
 ]);
+
+// Large (20k★+) repos already checked to be code, not a list or registry, so the merged-reach
+// figure may count them. The sync names any 20k★+ merged repo missing from here.
+export const REACH_REVIEWED = new Set(['google-gemini/gemini-cli', 'istio/istio']);

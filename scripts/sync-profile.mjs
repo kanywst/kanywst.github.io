@@ -15,7 +15,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { DOMAIN_BY_REPO, LISTING, LISTING_REPOS } from './domains.mjs';
+import { DOMAIN_BY_REPO, LISTING, LISTING_REPOS, REACH_REVIEWED } from './domains.mjs';
 import {
   LANG_BY_REPO,
   ORG_BLURB_BY_REPO,
@@ -195,17 +195,19 @@ if (!prs.length) {
 }
 // Same shrink guard as the 0-draft and writing lists: a degraded search that returns a
 // fraction of the PRs would otherwise be committed, and shrink the chips, cloud and reach
-// figure with it. FORCE_PRS=1 accepts a real large drop.
-// Only from 10 rows up: at small counts halving is ordinary (one issue closed out of one),
-// and aborting the whole sync over it would freeze everything else.
+// figure with it. FORCE_PRS=1 accepts a real large drop. It keeps the previous list and
+// carries on rather than throwing, so advisories and dev.to (later steps of the same run)
+// still refresh. Only from 10 rows up: at small counts halving is ordinary.
 const shrank = (now, prev) =>
   prev?.length >= 10 && now.length < prev.length / 2 && !process.env.FORCE_PRS;
-if (shrank(prs, profile.contributions) || shrank(issues, profile.issues)) {
-  const msg = `upstream lists shrank (PRs ${profile.contributions.length}→${prs.length}, issues ${profile.issues?.length ?? 0}→${issues.length}); aborting to keep the previous data (FORCE_PRS=1 to accept)`;
+function guardList(name, now, prev) {
+  if (!shrank(now, prev)) return now;
+  const msg = `${name} shrank ${prev.length}→${now.length}; keeping the previous list (FORCE_PRS=1 to accept)`;
+  console.warn(`! ${msg}`);
   if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
-  throw new Error(msg);
+  return prev;
 }
-profile.contributions = prs;
+profile.contributions = guardList('upstream PRs', prs, profile.contributions);
 
 // --- reach of the merged work: how many upstream repos, and their combined stars ---
 // One aggregate on purpose, not a per-PR weight: ranking or sizing PRs by repo stars would
@@ -215,7 +217,9 @@ profile.contributions = prs;
 
 function fetchMergedReach() {
   const slugs = [
-    ...new Set(prs.filter((p) => p.state === 'merged').map((p) => `${p.owner}/${p.repo}`)),
+    ...new Set(
+      profile.contributions.filter((p) => p.state === 'merged').map((p) => `${p.owner}/${p.repo}`),
+    ),
   ].filter((s) => !LISTING.test(s) && !LISTING_REPOS.has(s));
   let stars = 0;
   let resolved = 0;
@@ -246,14 +250,23 @@ function fetchMergedReach() {
       if (!r) return unresolved.push(slug);
       resolved++;
       stars += r.stargazerCount;
-      // the listing exclusions are a hand-kept set: a big repo nobody has classified yet (not
-      // in DOMAIN_BY_REPO) gets named, so a new list or registry is noticed before it inflates
-      if (r.stargazerCount >= 20_000 && !DOMAIN_BY_REPO[slug]) big.push(slug);
+      // the listing exclusions are a hand-kept set: a big repo nobody has checked against them
+      // (not in REACH_REVIEWED) gets named, so a new list or registry is noticed before it
+      // inflates the figure
+      if (r.stargazerCount >= 20_000 && !REACH_REVIEWED.has(slug)) big.push(slug);
     });
   }
-  if (unresolved.length) console.warn(`! merged reach: no star count for ${unresolved.join(', ')} (left out)`);
+  const note = (msg) => {
+    console.warn(`! ${msg}`);
+    if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
+  };
+  // a few dead repos are left out; more than 10% unresolved is a degraded lookup, not rot,
+  // and the figure is dropped rather than published low
+  if (unresolved.length > slugs.length * 0.1)
+    throw new Error(`${unresolved.length}/${slugs.length} repos unresolved`);
+  if (unresolved.length) note(`merged reach: no star count for ${unresolved.join(', ')} (left out)`);
   if (big.length)
-    console.warn(`! merged reach counts large unclassified repos; tag them in DOMAIN_BY_REPO, and add any list/registry to LISTING_REPOS: ${big.join(', ')}`);
+    note(`merged reach counts unreviewed 20k★+ repos; add code repos to REACH_REVIEWED and lists/registries to LISTING_REPOS: ${big.join(', ')}`);
   if (!resolved) throw new Error('no repo resolved');
   return { repos: resolved, stars };
 }
@@ -270,7 +283,7 @@ try {
   if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
 }
 // don't wipe a real issue list if the issues fetch came back empty (gh hiccup)
-profile.issues = issues.length ? issues : (profile.issues ?? []);
+profile.issues = issues.length ? guardList('upstream issues', issues, profile.issues) : (profile.issues ?? []);
 profile.meta ??= {};
 profile.meta.syncedAt = new Date().toISOString().slice(0, 10);
 
