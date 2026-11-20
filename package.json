@@ -9,14 +9,17 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:md": "markdownlint-cli2",
-    "test": "vitest run"
+    "test": "vitest run",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.0",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.9",
@@ -40,6 +43,7 @@
     "smol-toml": "^1.9.1",
     "katex": "0.18.10",
     "minimatch": "11.0.5",
-    "re2js": "2.9.1"
+    "re2js": "2.9.1",
+    "playwright-core": "1.65.0"
   }
 }
