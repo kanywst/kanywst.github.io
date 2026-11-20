@@ -15,7 +15,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { DOMAIN_BY_REPO } from './domains.mjs';
+import { DOMAIN_BY_REPO, LISTING, LISTING_REPOS } from './domains.mjs';
 import {
   LANG_BY_REPO,
   ORG_BLURB_BY_REPO,
@@ -193,29 +193,31 @@ const issues = fetchExternal('issues');
 if (!prs.length) {
   throw new Error('No upstream PRs returned; aborting to avoid stale sync metadata.');
 }
+// Same shrink guard as the 0-draft and writing lists: a degraded search that returns a
+// fraction of the PRs would otherwise be committed, and shrink the chips, cloud and reach
+// figure with it. FORCE_PRS=1 accepts a real large drop.
+const shrank = (now, prev) => prev && now.length < prev.length / 2 && !process.env.FORCE_PRS;
+if (shrank(prs, profile.contributions) || shrank(issues, profile.issues)) {
+  const msg = `upstream lists shrank (PRs ${profile.contributions.length}→${prs.length}, issues ${profile.issues?.length ?? 0}→${issues.length}); aborting to keep the previous data (FORCE_PRS=1 to accept)`;
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=sync-profile::${msg}`);
+  throw new Error(msg);
+}
 profile.contributions = prs;
 
 // --- reach of the merged work: how many upstream repos, and their combined stars ---
 // One aggregate on purpose, not a per-PR weight: ranking or sizing PRs by repo stars would
 // put a typo fix in a famous repo above a real authz fix in a small one. Best-effort; a
 // failure keeps the previous figure.
-// Lists and registries are left out of the figure: an entry in awesome-go or a winget
-// manifest is a real merged PR, but counting those repos' stars would let a one-line listing
-// outweigh every code contribution combined (it was ~60% of the raw total).
-const LISTING = /(^|\/)awesome|-in-the-wild$/i;
-const LISTING_REPOS = new Set([
-  'NixOS/nixpkgs',
-  'microsoft/winget-pkgs',
-  'golang/vulndb',
-  'pwn2winctf/2020submissions',
-  'trackawesomelist/trackawesomelist-source',
-]);
+
 
 function fetchMergedReach() {
   const slugs = [
     ...new Set(prs.filter((p) => p.state === 'merged').map((p) => `${p.owner}/${p.repo}`)),
   ].filter((s) => !LISTING.test(s) && !LISTING_REPOS.has(s));
   let stars = 0;
+  let resolved = 0;
+  const unresolved = [];
+  const big = [];
   for (let i = 0; i < slugs.length; i += 50) {
     const chunk = slugs.slice(i, i + 50);
     const query = `{ ${chunk
@@ -233,13 +235,24 @@ function fetchMergedReach() {
       if (!out?.data) throw err;
       data = out.data;
     }
-    // a repo that comes back null (deleted, renamed away, no access) would leave a precise-
-    // looking undercount; refuse the whole figure and keep the previous one instead
-    const missing = chunk.filter((_, j) => !data?.[`r${j}`]);
-    if (missing.length) throw new Error(`no star count for ${missing.join(', ')}`);
-    for (const v of Object.values(data)) stars += v.stargazerCount;
+    // A repo that comes back null (deleted, private, renamed away) is left out of both
+    // numbers and named, so the figure stays consistent ("N projects" counts only what was
+    // summed) and keeps moving with the PR list instead of freezing on one dead repo.
+    chunk.forEach((slug, j) => {
+      const r = data?.[`r${j}`];
+      if (!r) return unresolved.push(slug);
+      resolved++;
+      stars += r.stargazerCount;
+      // the listing exclusions are a hand-kept set: a big repo nobody has classified yet (not
+      // in DOMAIN_BY_REPO) gets named, so a new list or registry is noticed before it inflates
+      if (r.stargazerCount >= 20_000 && !DOMAIN_BY_REPO[slug]) big.push(slug);
+    });
   }
-  return { repos: slugs.length, stars };
+  if (unresolved.length) console.warn(`! merged reach: no star count for ${unresolved.join(', ')} (left out)`);
+  if (big.length)
+    console.warn(`! merged reach counts large unclassified repos; tag them in DOMAIN_BY_REPO, and add any list/registry to LISTING_REPOS: ${big.join(', ')}`);
+  if (!resolved) throw new Error('no repo resolved');
+  return { repos: resolved, stars };
 }
 
 try {

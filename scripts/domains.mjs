@@ -123,3 +123,15 @@ export const DOMAIN_BY_REPO = {
   'attenu-io/attenu-guard': 'Authorization',
   'kyverno/kyverno-authz': 'Authorization',
 };
+
+// Lists and registries are left out of the figure: an entry in awesome-go or a winget
+// manifest is a real merged PR, but counting those repos' stars would let a one-line listing
+// outweigh every code contribution combined (it was ~60% of the raw total).
+export const LISTING = /(^|\/)awesome|-in-the-wild$/i;
+export const LISTING_REPOS = new Set([
+  'NixOS/nixpkgs',
+  'microsoft/winget-pkgs',
+  'golang/vulndb',
+  'pwn2winctf/2020submissions',
+  'trackawesomelist/trackawesomelist-source',
+]);
