@@ -51,6 +51,7 @@ export function trackedUrls(profile) {
     ...(profile.issues ?? []),
     ...(profile.advisories ?? []),
     ...(profile.org?.repos ?? []),
+    ...(profile.writing ?? []),
   ]
     .map((x) => x.url)
     .filter(Boolean);
@@ -134,6 +135,21 @@ export function writeHistory(history, file = HISTORY_FILE) {
     ) +
       '\n',
   );
+}
+
+/**
+ * Give items a known first-seen date (a repo's creation, an article's publication) instead of
+ * the date a sync happened to notice them. Only fills gaps: a recorded date is never moved.
+ */
+export function seedFirstSeen(dates) {
+  const h = loadHistory();
+  let n = 0;
+  for (const [url, date] of Object.entries(dates)) {
+    if (h.firstSeen[url] || !date) continue;
+    h.firstSeen[url] = date;
+    n++;
+  }
+  if (n) writeHistory(h);
 }
 
 /** Called by the sync scripts with the profile they just wrote. */

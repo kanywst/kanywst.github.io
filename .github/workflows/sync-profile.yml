@@ -44,6 +44,7 @@ jobs:
         run: |
           node scripts/sync-profile.mjs
           node scripts/sync-advisories.mjs
+          node scripts/sync-devto.mjs
           if git diff --quiet -- src/data/profile.json src/data/history.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else

@@ -54,6 +54,12 @@ export function feedEntries(profile, history) {
       category: 'repository',
       summary: f.tagline,
     })),
+    ...(profile.writing ?? []).map((w) => ({
+      url: w.url,
+      title: `Article: ${w.title}`,
+      category: 'article',
+      summary: w.description,
+    })),
     ...profile.org.repos.map((r) => ({
       url: r.url,
       title: `0-draft: ${r.name}`,

@@ -66,6 +66,21 @@ export function orgRows(all, { exclude, blurbs, langs }) {
     }));
 }
 
+/** dev.to API articles → writing rows, newest first. Reactions are left out on purpose. */
+export function writingRows(articles) {
+  return articles
+    .filter((a) => a?.url && a?.title && a?.published_at)
+    .map((a) => ({
+      title: a.title,
+      url: a.url,
+      date: a.published_at.slice(0, 10),
+      tags: Array.isArray(a.tag_list) ? a.tag_list.slice(0, 3) : [],
+      minutes: a.reading_time_minutes ?? null,
+      description: a.description ?? '',
+    }))
+    .sort((a, b) => b.date.localeCompare(a.date) || a.url.localeCompare(b.url));
+}
+
 export const KNOWN_SEVERITY = new Set(['critical', 'high', 'medium', 'low']);
 
 /** One GitHub security-advisory API response → an advisories[] row, or null if unpublished. */

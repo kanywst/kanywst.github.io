@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error — plain .mjs sync helpers, no type declarations
-import { advisoryFromApi, normalizeVersion, orgRows, upstreamRows } from '../scripts/sync-lib.mjs';
+import { advisoryFromApi, normalizeVersion, orgRows, upstreamRows, writingRows } from '../scripts/sync-lib.mjs';
 
 describe('normalizeVersion', () => {
   it.each([
@@ -76,6 +76,20 @@ describe('orgRows', () => {
       { name: 'new', lang: 'MDX', blurb: 'n', url: 'u2' },
       { name: 'old', lang: 'Go', blurb: 'o', url: 'u1' },
       { name: 'curated', lang: '', blurb: 'by hand', url: 'u5' },
+    ]);
+  });
+});
+
+describe('writingRows', () => {
+  it('keeps title/url/date/tags/minutes, newest first, and drops malformed articles', () => {
+    const out = writingRows([
+      { title: 'a', url: 'u1', published_at: '2026-10-01T00:00:00Z', tag_list: ['x', 'y', 'z', 'w'], reading_time_minutes: 4, public_reactions_count: 3 },
+      { title: 'b', url: 'u2', published_at: '2026-11-01T00:00:00Z', tag_list: null },
+      { title: 'no date', url: 'u3' },
+    ]);
+    expect(out).toEqual([
+      { title: 'b', url: 'u2', date: '2026-11-01', tags: [], minutes: null, description: '' },
+      { title: 'a', url: 'u1', date: '2026-10-01', tags: ['x', 'y', 'z'], minutes: 4, description: '' },
     ]);
   });
 });

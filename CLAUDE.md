@@ -19,6 +19,8 @@ npm test               # vitest run — App + profile.json contract
 npm run lint           # eslint
 node scripts/sync-profile.mjs      # rediscover selected work + refresh PRs/issues from the GitHub API (needs gh)
 node scripts/sync-advisories.mjs   # refresh the security-advisories section (published GHSAs → advisories[])
+node scripts/sync-devto.mjs        # refresh the writing section from the public dev.to API (best-effort, keeps the old list on failure)
+npm run e2e                        # Playwright + axe against the production build (run npm run build first)
 ```
 
 `npm run build` is the CI gate; run `npm test` and `npm run lint` too before calling a change done.
@@ -48,6 +50,8 @@ node scripts/sync-advisories.mjs   # refresh the security-advisories section (pu
   downstream-assigned CVE the upstream GHSA doesn't carry — e.g. kuma's finding is CVE-2026-18677
   via Kong Mesh but the kumahq GHSA shows cve=null). Rows sort CVE-first, then by severity.
 - **`src/data/history.json`** — the ledger behind the *this week* marks (`NEW` tag, `▲/▼` rank movement, `+N` stars). `firstSeen` (url → first sync date, append-only) and `stars` (repo → change-only `[date, count]` log, pruned to 30 days + one baseline). Written by `scripts/history.mjs` `recordHistory()`, which both sync scripts call; do NOT hand-edit. If it is ever lost, `node scripts/backfill-history.mjs` rebuilds it from the git history of `profile.json` (needs a full clone). The UI (`src/fresh.ts`) judges "new" / "a week ago" against the *viewer's* clock with one `WINDOW_DAYS = 7`, so marks fade even if the cron stalls. Up = teal, down = muted, star gain = amber; never red/green (the up/down colour convention flips between Japan and the West), and every glyph has `.sr-only` text.
+- **`writing`** — dev.to articles, written by `scripts/sync-devto.mjs` (also in the daily workflow). Do NOT hand-edit. The section only renders once the array exists. Each article's first-seen date is its publish date.
+- **Build extras** — `scripts/site-plugin.mjs` (vite plugin) emits `feed.xml` (Atom, from `history.json`), `sitemap.xml`, `robots.txt`, JSON-LD, and hashes the `og.png` URL. `scripts/prerender.mjs` renders the landing into `#root` and every row of the detail into a `<noscript>` (`npm run build` runs both). Pure sync transforms live in `scripts/sync-lib.mjs` and are unit-tested in `src/sync.test.ts`.
 - **`src/App.tsx`** — renders everything from that JSON. A minimal hero is the landing;
   pressing **Space** (collapsed only) reveals the detail; **Esc** / the footer button
   collapse. Detail sections: *selected work* (star-ranked podium + rows) → *upstream pull

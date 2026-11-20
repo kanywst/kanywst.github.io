@@ -13,6 +13,18 @@ import {
 
 const { profile: me, flagships, advisories, org, contributions, issues } = profile;
 
+type Article = {
+  title: string;
+  url: string;
+  date: string;
+  tags: string[];
+  minutes: number | null;
+  description: string;
+};
+// filled by scripts/sync-devto.mjs; absent until the first sync after it shipped, and the
+// section simply doesn't render without it
+const writing: Article[] = (profile as { writing?: Article[] }).writing ?? [];
+
 // The sync script already writes them in star order; sorting here too keeps the ranking
 // a property of the UI rather than a trust in the file.
 const ranked = [...flagships].sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name));
@@ -576,6 +588,7 @@ export function Detail({
   const [newPrsOnly, setNewPrsOnly] = useState(false);
   const [newIssuesOnly, setNewIssuesOnly] = useState(false);
   const [orgExpanded, setOrgExpanded] = useState(full);
+  const [writingExpanded, setWritingExpanded] = useState(full);
   // discovered newest-first, so the preview is the org's latest work
   const shownOrg = orgExpanded ? org.repos : org.repos.slice(0, ORG_PREVIEW);
   const hasOrgMore = !full && org.repos.length > ORG_PREVIEW;
@@ -605,7 +618,13 @@ export function Detail({
   const issuesHead = prMoreAt + (hasPrMore ? 1 : 0);
   const issueRowsStart = issuesHead + 1 + (hasIssueCloud ? 1 : 0);
   const issueMoreAt = issueRowsStart + shownIssues.length;
-  const draftHead = issueMoreAt + (hasIssueMore ? 1 : 0);
+  const hasWriting = writing.length > 0;
+  const shownWriting = writingExpanded ? writing : writing.slice(0, PREVIEW_ROWS);
+  const hasWritingMore = !full && writing.length > PREVIEW_ROWS;
+  const writingHead = issueMoreAt + (hasIssueMore ? 1 : 0);
+  const writingRowsStart = writingHead + 1;
+  const writingMoreAt = writingRowsStart + shownWriting.length;
+  const draftHead = hasWriting ? writingMoreAt + (hasWritingMore ? 1 : 0) : writingHead;
   const orgBlurbAt = draftHead + 1;
   const orgReposStart = orgBlurbAt + 1;
   const orgMoreAt = orgReposStart + shownOrg.length;
@@ -772,6 +791,63 @@ export function Detail({
         )}
       </section>
 
+      {hasWriting && (
+        <section className="sec" id="writing" aria-labelledby="writing-h">
+          <div className="sec-head reveal" style={at(writingHead)}>
+            <div className="label-row">
+              <h2 className="label" id="writing-h" tabIndex={-1}>
+                writing
+              </h2>
+              <NewCount items={writing} now={now} />
+            </div>
+            <a className="label-note link" href={me.links.devto} target="_blank" rel="noreferrer">
+              {writing.length} articles on dev.to
+            </a>
+          </div>
+          <ul className="rows">
+            {shownWriting.map((w, i) => (
+              <li key={w.url} className="reveal" style={at(writingRowsStart + i)}>
+                <a
+                  className={`row entry${isNew(w.url, now) ? ' is-new' : ''}`}
+                  href={w.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <time className="marker" dateTime={w.date}>
+                    {w.date}
+                  </time>
+                  <span className="row-body">
+                    <span className="row-head">
+                      <span className="row-name">
+                        {w.title}
+                        <NewTag url={w.url} now={now} />
+                      </span>
+                    </span>
+                    <span className="row-meta-inline">
+                      {w.tags.map((t) => (
+                        <span key={t} className="m-domain m-tag">
+                          #{t}
+                        </span>
+                      ))}
+                      {w.minutes ? <span className="m-date">{w.minutes} min</span> : null}
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          {hasWritingMore && (
+            <MoreButton
+              expanded={writingExpanded}
+              total={writing.length}
+              noun="articles"
+              onClick={() => setWritingExpanded((v) => !v)}
+              style={at(writingMoreAt)}
+            />
+          )}
+        </section>
+      )}
+
       <section className="sec sec--open" id="0-draft" aria-labelledby="0-draft-h">
         <div className="sec-head reveal" style={at(draftHead)}>
           <div className="label-row">
@@ -824,7 +900,8 @@ export function Detail({
 
       <footer className="foot reveal" style={at(footerAt)}>
         <span>
-          synced {profile.meta?.syncedAt} · auto-generated from the GitHub API ·{' '}
+          synced {profile.meta?.syncedAt} · auto-generated from the GitHub
+          {hasWriting ? ' & dev.to APIs' : ' API'} ·{' '}
           <a className="foot-link" href="/feed.xml">
             feed
           </a>
@@ -842,10 +919,17 @@ export function Detail({
 }
 
 // everything "new" on the page, for the one-line teaser on the landing
-const allTracked = [...flagships, ...advisories, ...contributions, ...issues, ...org.repos];
+const allTracked = [
+  ...flagships,
+  ...advisories,
+  ...contributions,
+  ...issues,
+  ...writing,
+  ...org.repos,
+];
 
 // Sections a link can open straight to: kanywst.github.io/#advisories skips the landing.
-const SECTIONS = ['work', 'advisories', 'pull-requests', 'issues', '0-draft'];
+const SECTIONS = ['work', 'advisories', 'pull-requests', 'issues', 'writing', '0-draft'];
 const hashSection = () => {
   // prerendered in Node (scripts/prerender.mjs), where there is no URL to read
   if (typeof window === 'undefined') return null;
