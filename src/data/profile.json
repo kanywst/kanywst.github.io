@@ -111,7 +111,7 @@
       "name": "visado",
       "owner": "kanywst",
       "lang": "Rust",
-      "version": "v0.2.0",
+      "version": "v0.3.0",
       "stars": 1,
       "tagline": "Verify AI agent delegation chains and workload credentials at the enforcement point, ask an AuthZEN PDP, and pass the result downstream as an OAuth Transaction Token.",
       "url": "https://github.com/kanywst/visado"
@@ -1521,7 +1521,7 @@
     "syncedAt": "2026-11-20",
     "mergedReach": {
       "repos": 37,
-      "stars": 286077
+      "stars": 286076
     }
   },
   "issues": [
