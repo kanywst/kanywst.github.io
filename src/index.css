@@ -1533,3 +1533,13 @@ a {
   color: var(--accent);
   text-decoration-color: var(--accent-line);
 }
+
+/* the prerendered detail, shown only when JS is off (scripts/prerender.mjs); its collapse
+   button would do nothing there */
+.noscript-detail {
+  padding-block: 0 64px;
+}
+
+.noscript-detail .collapse {
+  display: none;
+}

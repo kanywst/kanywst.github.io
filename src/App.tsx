@@ -542,7 +542,7 @@ function NewCount({
   );
 }
 
-function Detail({ onClose, now }: { onClose: () => void; now: string }) {
+export function Detail({ onClose, now }: { onClose: () => void; now: string }) {
   const moves = useMemo(() => movements(ranked, now), [now]);
   const prCount = (s: string) => contributions.filter((c) => c.state === s).length;
   // closed PRs are rejected/superseded, so hidden by default and toggleable
@@ -821,6 +821,8 @@ const allTracked = [...flagships, ...advisories, ...contributions, ...issues, ..
 // Sections a link can open straight to: kanywst.github.io/#advisories skips the landing.
 const SECTIONS = ['work', 'advisories', 'pull-requests', 'issues', '0-draft'];
 const hashSection = () => {
+  // prerendered in Node (scripts/prerender.mjs), where there is no URL to read
+  if (typeof window === 'undefined') return null;
   // no decodeURIComponent: the ids need none, and a malformed escape (#%) would throw on
   // the first render and blank the page
   const h = window.location.hash.slice(1);

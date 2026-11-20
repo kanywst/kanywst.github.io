@@ -118,9 +118,14 @@ export function jsonLd(profile) {
 }
 
 export default function sitePlugin() {
+  let ssr = false;
   return {
     name: 'kanywst-site',
     apply: 'build',
+    configResolved(config) {
+      // the prerender pass (vite build --ssr) has no page and must not emit the feed again
+      ssr = !!config.build.ssr;
+    },
     transformIndexHtml(html) {
       const profile = readJSON('src/data/profile.json');
       const og = createHash('sha256')
@@ -134,6 +139,7 @@ export default function sitePlugin() {
         .replace('</head>', `    <script type="application/ld+json">${ld}</script>\n  </head>`);
     },
     generateBundle() {
+      if (ssr) return;
       const profile = readJSON('src/data/profile.json');
       const history = readJSON('src/data/history.json');
       this.emitFile({ type: 'asset', fileName: 'feed.xml', source: atomFeed(profile, history) });
