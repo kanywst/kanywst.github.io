@@ -1465,3 +1465,15 @@ a {
     transform: none;
   }
 }
+
+.foot-link {
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+
+.foot-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent-line);
+}

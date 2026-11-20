@@ -46,6 +46,10 @@ const LANG_COLOR: Record<string, string> = {
   List: '#8b8b93',
 };
 
+// avatars.githubusercontent.com directly: github.com/<login>.png answers with a 302 to it,
+// which cost ~100 extra round trips on the contribution clouds alone
+const avatar = (login: string) => `https://avatars.githubusercontent.com/${login}?s=160`;
+
 function LangDot({ lang }: { lang: string }) {
   if (!lang) return null;
   return (
@@ -144,7 +148,7 @@ function Hero({ compact }: { compact: boolean }) {
           morphs by a pure translate from centered (landing) to top (compact) */}
       <div className="hero-inner">
         <img
-          src="https://github.com/kanywst.png?size=160"
+          src={avatar(me.name)}
           alt=""
           width={64}
           height={64}
@@ -447,7 +451,7 @@ export function ContribCloud({
             style={{ width: px }}
           >
             <img
-              src={`https://github.com/${owner}.png?size=160`}
+              src={avatar(owner)}
               alt=""
               width={px}
               height={px}
@@ -725,7 +729,7 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
         </div>
         <div className="org-intro reveal" style={at(orgBlurbAt)}>
           <a className="org-badge" href={org.url} target="_blank" rel="noreferrer" tabIndex={-1}>
-            <img src="https://github.com/0-draft.png?size=160" alt="" width={56} height={56} />
+            <img src={avatar('0-draft')} alt="" width={56} height={56} />
           </a>
           <p className="org-blurb">{org.blurb}</p>
         </div>
@@ -756,7 +760,10 @@ function Detail({ onClose, now }: { onClose: () => void; now: string }) {
 
       <footer className="foot reveal" style={at(footerAt)}>
         <span>
-          synced {profile.meta?.syncedAt} · auto-generated from the GitHub &amp; dev.to APIs
+          synced {profile.meta?.syncedAt} · auto-generated from the GitHub API ·{' '}
+          <a className="foot-link" href="/feed.xml">
+            feed
+          </a>
           <span className="foot-legend">
             <span className="new-tag">new</span> / <span className="rank-move up">▲</span> /{' '}
             <span className="star-gain">+★</span> = last {WINDOW_DAYS} days
