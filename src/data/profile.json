@@ -307,6 +307,26 @@
   },
   "contributions": [
     {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5181,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "feat(oauth2): let an ID-JAG policy set the client's ID at each audience",
+      "url": "https://github.com/dexidp/dex/pull/5181",
+      "date": "2026-11-20"
+    },
+    {
+      "owner": "dexidp",
+      "repo": "dex",
+      "number": 5180,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "feat(oauth2): carry auth_time from the subject token into the ID-JAG",
+      "url": "https://github.com/dexidp/dex/pull/5180",
+      "date": "2026-11-20"
+    },
+    {
       "owner": "kubescape",
       "repo": "regolibrary",
       "number": 944,
@@ -1017,26 +1037,6 @@
       "date": "2026-11-19"
     },
     {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 5181,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "feat(oauth2): let an ID-JAG policy set the client's ID at each audience",
-      "url": "https://github.com/dexidp/dex/pull/5181",
-      "date": "2026-11-18"
-    },
-    {
-      "owner": "dexidp",
-      "repo": "dex",
-      "number": 5180,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "feat(oauth2): carry auth_time from the subject token into the ID-JAG",
-      "url": "https://github.com/dexidp/dex/pull/5180",
-      "date": "2026-11-18"
-    },
-    {
       "owner": "attenu-io",
       "repo": "attenu-guard",
       "number": 49,
@@ -1518,10 +1518,10 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-20",
+    "syncedAt": "2026-11-21",
     "mergedReach": {
       "repos": 37,
-      "stars": 286077
+      "stars": 286120
     }
   },
   "issues": [
