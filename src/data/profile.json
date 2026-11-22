@@ -1518,10 +1518,10 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-21",
+    "syncedAt": "2026-11-22",
     "mergedReach": {
       "repos": 37,
-      "stars": 286120
+      "stars": 286180
     }
   },
   "issues": [
@@ -1716,16 +1716,6 @@
       "date": "2026-09-07"
     },
     {
-      "owner": "openid",
-      "repo": "authzen",
-      "number": 640,
-      "state": "open",
-      "domain": "Authorization",
-      "title": "Conformance suite batch default-value module tests sub-field merging, which c-3-2-7 and #231 rule out",
-      "url": "https://github.com/openid/authzen/issues/640",
-      "date": "2026-09-06"
-    },
-    {
       "owner": "ory",
       "repo": "polis",
       "number": 4077,
@@ -1754,6 +1744,16 @@
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480",
       "date": "2026-04-02"
+    },
+    {
+      "owner": "openid",
+      "repo": "authzen",
+      "number": 640,
+      "state": "closed",
+      "domain": "Authorization",
+      "title": "Conformance suite batch default-value module tests sub-field merging, which c-3-2-7 and #231 rule out",
+      "url": "https://github.com/openid/authzen/issues/640",
+      "date": "2026-11-21"
     },
     {
       "owner": "dexidp",
