@@ -172,12 +172,16 @@
     "https://github.com/akuity/kargo/issues/7772": "2026-10-30",
     "https://github.com/akuity/kargo/pull/7773": "2026-10-30",
     "https://github.com/apache/apisix/pull/14125": "2026-10-30",
+    "https://github.com/aramase/kontxt/issues/27": "2026-11-24",
     "https://github.com/aserto-dev/azm/pull/81": "2026-06-22",
     "https://github.com/aserto-dev/topaz/pull/715": "2026-06-20",
+    "https://github.com/Atlas-Authorization/atlas-go/issues/1": "2026-11-24",
+    "https://github.com/Atlas-Authorization/atlas-go/issues/2": "2026-11-24",
     "https://github.com/attenu-io/attenu-guard/issues/48": "2026-11-18",
     "https://github.com/attenu-io/attenu-guard/pull/49": "2026-11-18",
     "https://github.com/atuinsh/atuin/issues/4643": "2026-11-04",
     "https://github.com/atuinsh/atuin/pull/4644": "2026-11-04",
+    "https://github.com/authgent/authgent/issues/21": "2026-11-24",
     "https://github.com/authlib/authlib/pull/1029": "2026-11-10",
     "https://github.com/authzed/spicedb/pull/3184": "1970-01-01",
     "https://github.com/authzed/spicedb/security/advisories/GHSA-5784-6qcr-48fq": "2026-08-15",
@@ -189,6 +193,7 @@
     "https://github.com/charm-and-friends/charm-in-the-wild/pull/154": "2026-11-06",
     "https://github.com/cilium/cilium/pull/45293": "2026-06-20",
     "https://github.com/cloudflare/workers-oauth-provider/pull/303": "2026-08-18",
+    "https://github.com/cofide/wimse-s2s-httpsig-poc/issues/22": "2026-11-24",
     "https://github.com/counterbranch/apparitor/pull/76": "2026-10-09",
     "https://github.com/crowdsecurity/crowdsec/pull/4786": "2026-10-29",
     "https://github.com/dexidp/dex/issues/4827": "2026-06-20",
@@ -224,6 +229,7 @@
     "https://github.com/guilyx/awesome-github-pages-portfolios/pull/28": "2026-11-08",
     "https://github.com/ietf-wg-wimse/draft-ietf-wimse-identifier/pull/98": "2026-09-09",
     "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/422": "2026-11-15",
+    "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/425": "2026-11-24",
     "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/296": "2026-08-27",
     "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/309": "2026-09-09",
     "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/pull/310": "2026-09-09",
@@ -287,6 +293,9 @@
     "https://github.com/NixOS/nixpkgs/pull/561552": "2026-09-09",
     "https://github.com/nMaroulis/awesome-agent-client-protocol/pull/12": "2026-11-16",
     "https://github.com/oauth-wg/oauth-delegate-sd-jwt/issues/16": "2026-11-18",
+    "https://github.com/oauth-wg/oauth-transaction-tokens/issues/375": "2026-11-24",
+    "https://github.com/oauth-wg/oauth-transaction-tokens/issues/376": "2026-11-24",
+    "https://github.com/oauth-wg/oauth-transaction-tokens/issues/377": "2026-11-24",
     "https://github.com/open-policy-agent/awesome-opa/pull/93": "2026-10-04",
     "https://github.com/open-policy-agent/awesome-opa/pull/94": "2026-11-01",
     "https://github.com/open-policy-agent/contrib/pull/296": "2026-06-20",
@@ -350,7 +359,9 @@
     "https://github.com/sse-secure-systems/connaisseur/issues/2130": "2026-06-28",
     "https://github.com/sse-secure-systems/connaisseur/pull/2131": "2026-06-28",
     "https://github.com/stacklok/toolhive/pull/7091": "2026-11-10",
+    "https://github.com/strideynet/wit-wpt-go/issues/1": "2026-11-24",
     "https://github.com/supabase/auth/pull/2605": "2026-07-02",
+    "https://github.com/tenuo-ai/tenuo/issues/1151": "2026-11-24",
     "https://github.com/thephpleague/oauth2-server/pull/1525": "2026-11-13",
     "https://github.com/thephpleague/oauth2-server/pull/1526": "2026-11-13",
     "https://github.com/theupdateframework/go-tuf/pull/739": "1970-01-01",
@@ -466,10 +477,6 @@
       ]
     ],
     "wtfi2": [
-      [
-        "2026-10-24",
-        94
-      ],
       [
         "2026-10-25",
         96

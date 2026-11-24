@@ -1528,13 +1528,123 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-23",
+    "syncedAt": "2026-11-24",
     "mergedReach": {
       "repos": 37,
-      "stars": 286274
+      "stars": 286360
     }
   },
   "issues": [
+    {
+      "owner": "strideynet",
+      "repo": "wit-wpt-go",
+      "number": 1,
+      "state": "open",
+      "domain": "",
+      "title": "ValidateWPT does not check exp on the WIT or the WPT",
+      "url": "https://github.com/strideynet/wit-wpt-go/issues/1",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "cofide",
+      "repo": "wimse-s2s-httpsig-poc",
+      "number": 22,
+      "state": "open",
+      "domain": "",
+      "title": "Server does not verify the WIT signature",
+      "url": "https://github.com/cofide/wimse-s2s-httpsig-poc/issues/22",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 425,
+      "state": "open",
+      "domain": "Workload Identity",
+      "title": "workload-creds: WIT validation (5.1.3) has no exp check",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/425",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "authgent",
+      "repo": "authgent",
+      "number": 21,
+      "state": "open",
+      "domain": "",
+      "title": "Txn-Token issued with scope \" \" when the request scope is whitespace",
+      "url": "https://github.com/authgent/authgent/issues/21",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "aramase",
+      "repo": "kontxt",
+      "number": 27,
+      "state": "open",
+      "domain": "",
+      "title": "sdk/verify: Verify accepts a TxToken without exp",
+      "url": "https://github.com/aramase/kontxt/issues/27",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "Atlas-Authorization",
+      "repo": "atlas-go",
+      "number": 2,
+      "state": "open",
+      "domain": "",
+      "title": "VerifyTransactionToken rejects a Txn-Token without iss",
+      "url": "https://github.com/Atlas-Authorization/atlas-go/issues/2",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "Atlas-Authorization",
+      "repo": "atlas-go",
+      "number": 1,
+      "state": "open",
+      "domain": "",
+      "title": "VerifyTransactionToken rejects alg \"Ed25519\"",
+      "url": "https://github.com/Atlas-Authorization/atlas-go/issues/1",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "oauth-wg",
+      "repo": "oauth-transaction-tokens",
+      "number": 377,
+      "state": "open",
+      "domain": "",
+      "title": "typ: is application/txntoken+jwt accepted?",
+      "url": "https://github.com/oauth-wg/oauth-transaction-tokens/issues/377",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "oauth-wg",
+      "repo": "oauth-transaction-tokens",
+      "number": 376,
+      "state": "open",
+      "domain": "",
+      "title": "aud as an array",
+      "url": "https://github.com/oauth-wg/oauth-transaction-tokens/issues/376",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "oauth-wg",
+      "repo": "oauth-transaction-tokens",
+      "number": 375,
+      "state": "open",
+      "domain": "",
+      "title": "No mandatory-to-implement signing algorithm",
+      "url": "https://github.com/oauth-wg/oauth-transaction-tokens/issues/375",
+      "date": "2026-11-24"
+    },
+    {
+      "owner": "tenuo-ai",
+      "repo": "tenuo",
+      "number": 1151,
+      "state": "open",
+      "domain": "",
+      "title": "Interop report: visado, full run against the -02 JWS vectors",
+      "url": "https://github.com/tenuo-ai/tenuo/issues/1151",
+      "date": "2026-11-24"
+    },
     {
       "owner": "a2aproject",
       "repo": "A2A",
