@@ -75,7 +75,7 @@
       "name": "omega",
       "owner": "kanywst",
       "lang": "Go",
-      "version": "v0.15.1",
+      "version": "v0.15.2",
       "stars": 3,
       "tagline": "SPIFFE workload identity + OpenID AuthZEN 1.0 authorization in a single binary: Cedar PDP, federation, tamper-evident audit log, Kubernetes operator.",
       "url": "https://github.com/kanywst/omega"
@@ -111,7 +111,7 @@
       "name": "visado",
       "owner": "kanywst",
       "lang": "Rust",
-      "version": "v0.3.0",
+      "version": "v0.4.0",
       "stars": 1,
       "tagline": "Verify AI agent delegation chains and workload credentials at the enforcement point, ask an AuthZEN PDP, and pass the result downstream as an OAuth Transaction Token.",
       "url": "https://github.com/kanywst/visado"
@@ -1528,10 +1528,10 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-24",
+    "syncedAt": "2026-11-25",
     "mergedReach": {
       "repos": 37,
-      "stars": 286360
+      "stars": 286472
     }
   },
   "issues": [
@@ -1706,16 +1706,6 @@
       "date": "2026-11-15"
     },
     {
-      "owner": "ietf-wg-wimse",
-      "repo": "draft-ietf-wimse-s2s-protocol",
-      "number": 422,
-      "state": "open",
-      "domain": "Workload Identity",
-      "title": "http-signature and wpt point to workload-creds Section 5.1.4, which -03 doesn't have",
-      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/422",
-      "date": "2026-11-14"
-    },
-    {
       "owner": "sebadob",
       "repo": "rauthy",
       "number": 1896,
@@ -1864,6 +1854,16 @@
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480",
       "date": "2026-04-02"
+    },
+    {
+      "owner": "ietf-wg-wimse",
+      "repo": "draft-ietf-wimse-s2s-protocol",
+      "number": 422,
+      "state": "closed",
+      "domain": "Workload Identity",
+      "title": "http-signature and wpt point to workload-creds Section 5.1.4, which -03 doesn't have",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-s2s-protocol/issues/422",
+      "date": "2026-11-24"
     },
     {
       "owner": "spiffe",
