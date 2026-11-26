@@ -307,6 +307,16 @@
   },
   "contributions": [
     {
+      "owner": "sebadob",
+      "repo": "rauthy",
+      "number": 1916,
+      "state": "merged",
+      "domain": "OIDC",
+      "title": "feat(oidc): issue ID-JAGs through token exchange",
+      "url": "https://github.com/sebadob/rauthy/pull/1916",
+      "date": "2026-11-26"
+    },
+    {
       "owner": "naghim",
       "repo": "Awesome-Japanese-Study-Materials",
       "number": 26,
@@ -1087,16 +1097,6 @@
       "date": "2026-11-18"
     },
     {
-      "owner": "sebadob",
-      "repo": "rauthy",
-      "number": 1916,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "feat(oidc): issue ID-JAGs through token exchange",
-      "url": "https://github.com/sebadob/rauthy/pull/1916",
-      "date": "2026-11-17"
-    },
-    {
       "owner": "pab1it0",
       "repo": "awesome-a2a",
       "number": 172,
@@ -1528,10 +1528,10 @@
     }
   ],
   "meta": {
-    "syncedAt": "2026-11-25",
+    "syncedAt": "2026-11-26",
     "mergedReach": {
-      "repos": 37,
-      "stars": 286472
+      "repos": 38,
+      "stars": 288109
     }
   },
   "issues": [
@@ -1706,16 +1706,6 @@
       "date": "2026-11-15"
     },
     {
-      "owner": "sebadob",
-      "repo": "rauthy",
-      "number": 1896,
-      "state": "open",
-      "domain": "OIDC",
-      "title": "Issue ID-JAGs through token exchange",
-      "url": "https://github.com/sebadob/rauthy/issues/1896",
-      "date": "2026-11-09"
-    },
-    {
       "owner": "mark3labs",
       "repo": "mcp-go",
       "number": 1165,
@@ -1854,6 +1844,16 @@
       "title": "topdown/http: limit response body size in http.send",
       "url": "https://github.com/open-policy-agent/opa/issues/8480",
       "date": "2026-04-02"
+    },
+    {
+      "owner": "sebadob",
+      "repo": "rauthy",
+      "number": 1896,
+      "state": "closed",
+      "domain": "OIDC",
+      "title": "Issue ID-JAGs through token exchange",
+      "url": "https://github.com/sebadob/rauthy/issues/1896",
+      "date": "2026-11-26"
     },
     {
       "owner": "ietf-wg-wimse",
